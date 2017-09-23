@@ -1,0 +1,504 @@
+**********************************************************************
+ASYNCHRONOUS SYSTEMS - CSE 535
+
+PHASE 1 : PSEUDOCODE
+
+Submitted By:-
+1. Selina Deep Kaur - 110936206
+2. Dinesh Balani - 111500275
+
+***********************************************************************
+DICTIONARY OF VARIABLES AND MEANINGS
+
+t = no. of byzantine faults to tolerate
+rho = signature of replica
+Ω = signature of Olympus
+Replica- = Previous Replica in chain
+Replica+ = Next Replica in chain
+s = slot number
+o = operation
+shuttle = order shuttle
+r = result
+H = history of configuration denoting the state of the object
+**********************************************************************
+
+
+client(___)
+	
+	'''	
+	Clients requests for a Configuration from Olympus
+	'''
+	send("requestConfiguration") to Olympus
+
+	'''
+	Client receives the configuration with its private key and 
+	public keys of replica from olympus
+	'''
+	receive("Configuration","Public_Key.Replica","Private_key.Client") 		
+		
+		'''
+		Client sends a signed operation containing its uniqueId and type of request 
+		to head of configuration
+		'''
+		<uniqueID, operation, type=initial>_client = signOperation(<uniqueID, operation, type=initial>,"Private_key.Client")
+		send(<uniqueID, operation, type=initial>_client) to head replica of configuration
+
+		'''
+		Client starts its timer and waits for the result
+		'''
+		Timer.start()
+		
+		'''
+		It will wait for a response from server until the timer expires
+		'''
+		while(!Timer.expire())	
+
+			'''
+			If it receives and error statement from any replica, client will ask 
+			for a new configuration
+			'''
+			receive("ErrorStatement") from some Replica
+				send("requestConfiguration") to Olympus
+				#Client will receive the configuration at line 7
+				break
+			
+			'''
+			Receive handler for result proof and result from tail in case of initial 
+			request or any other replica in case of retransmission request
+			'''
+			receive("<resultProof,r>") from some Replica in Configuration
+				#Loop through result statements in result proof and count correct results				
+				count = 0
+				for each resultStatement_rho in resultProof
+					'''
+					To check if the signature on the result statement does not 
+					belong to the replica who sent it. If not verified client
+					asks for latest configuration
+					'''
+					if isSigned(resultStatement_rho by Public_key_rho*) and rho!=rho*
+						send("requestConfiguration") to Olympus
+					'''
+					Checks If hash of result r from replica is equal to result($(r)) in resultStatement
+					'''
+					if resultStatement.$(r) == Cryptographic_hash(r) 
+						count++
+					'''	
+					Checks if a replica has used a different hash on result r, 
+					because of which there is a mis-match in the statement below (Proof of Misbehavior)
+					'''
+					elseif(resultStatement.$*(r)!=Cryptographic_hash(r))
+						send("ProofOfMisbehavior") to Olympus
+
+				'''
+				If The client has at least t+1 (quorum size) replicas giving the same result, 
+				then client will have a correct result, as atleast one of them will be an honest replica
+				Else it will request for latest configuration from Olympus
+				'''
+				if(count>=t+1)  
+					accepts(r)
+				else
+					send("requestConfiguration") to Olympus
+								 
+		'''
+		If Timer expires, then the client will send a retransmission request to all replicas 
+		'''		
+		if(Timer.expire())
+			Timer.start()
+			send(<uniqueID, operation, type=retransmission>_client) to all Replica in Configuration
+
+
+Olympus(__)
+	
+	'''
+	Receive handler for configuration requests. Olympus will:
+	create private and public keys of replicas and client,
+	create the new configuration with 2t+1 replicas and set their mode as active
+	and assign them their keys,
+	send public key for replicas to client and public key for client to replica	
+	'''
+	receive("requestConfiguration") from Client 
+		Replica.Public_Key,Client.Public_Key = createPublicKeys()
+		Replica.Private_Key,Client.Private_Key = createPrivateKeys()
+		'''
+		createNewConfiguration() function will accept following arguments, no. of replicas, 
+		mode of the replicas, private key for replies, and public key given to replicas
+		'''		
+	 	Configuration = createNewConfiguration(2t+1,Mode=ACTIVE,Replica.Private_Key, Client.Public_Key)
+	 	'''
+	 	send back the client configuration(chain of replicas), public key of replicas to read
+	 	signed result statement sent by client and private key of client to sign his order
+	 	statements
+	 	'''
+	 	send("Configuration","Replica.Public_Key","Client.Private_key") to Client
+
+
+	receive("reconfigurationRequest") from Replica or receive("ProofOfMisbehaviour") from Client
+		send("wedgedRequests") to all Replicas
+	'''
+	Receive handler for wedged statements <wedged,Replica.history,Replica.checkPointProof>_rho by replicas
+	'''
+	receive("<wedged,Replica.history,Replica.checkPointProof>_rho") from quorum of Replica in Configuration
+		
+		'''Check if wedged statement is signed by the replica using the public key'''
+		if isSigned(<uniqueID, operation, type>_rho) by Replica.Public_key 
+			if <order,s,o> in statements and <s,o> not in <wedged,Replica.history,Replica.checkPointProof>_rho 
+				'''Misbehaviour is detected by olympus'''
+				'''Pick another replica in quorom, since we have to take only correct replicas'''
+				send("wedgedRequests") to another quorum of Replicas
+			else 
+				'''
+				Check if olympus received wedged statements from a quorom in which Replica.history 
+				contains at most one order proof per slot i.e. (isValidHistory)
+				'''
+				if |<wedged,Replica.history,Replica.checkPointProof>| >= t+1 and isValidHistory(Replica.history) 
+					foreach s in all slots 
+						foreach Replica in quorum
+							'''
+			     			If histories in replicas of quorum are not consistent it implies that a 
+			     			replica in quorum is faulty and Olympus will request wedged statements from another quorum of replicas
+				     		'''
+				     		if(Replica.history[s] is not a prefix of Replica+.history[s])
+				     			send(wedgedRequests") to another quorum of Replicas
+				     		else
+				     			continue
+				     	'''
+				     	Longest history for each slot is updated in LH array and Cryptographic hash of LH is taken
+				     	'''
+				 		LH[s] = max(OrderProof of a slot s from Replica.history)
+			 			ch = cryptographicHash(LH)	 			
+			 	else if Replica.checkPointProof and |<wedged,Replica.history,Replica.checkPointProof>| < t+1
+			 		''' 
+			 		if Replica has sent a checkpoint proof at line 127 but is not sent by t+1 replicas then take the previous valid
+			 		checkpoint of the replica(Replica.checkPointProof-)
+			 		'''
+			 		checkPointProof = Replica.checkPointProof-
+			 	else if Replica.checkPointProof and |<wedged,Replica.history,Replica.checkPointProof>| >= t+1
+			 		''' 
+			 		if Replica has sent a checkpoint proof at line 127 and is sent by more than t+1 replicas then take the
+			 		Replica.chekpointProof as checkPointProof 
+			 		'''
+			 		checkPointProof = Replica.checkPointProof
+			 	else
+			 		'''
+			 		if t+1 replicas doesnt reply to wedged request then send wedged request to another quorum of replicas
+			 		'''
+			 		send("wedgedRequests") to another quorum of Replicas
+
+			 	'''
+			 	Initializing the inithist running state as null and history as longest history calculated above
+			 	'''	
+				inithist.runningState = null	 		
+				inithist.history = LH	 				
+				c=0
+				'''
+				if we have received checkpoint proof from replica in the receive handler at line 127.
+				Olympus will send catchup message to quorum of replicas with the delta of longest history and 
+				history of replicas.
+				'''
+				if(checkPointProof)			
+					send("catchup_Message","LH - Replica.history") to quorum of Replica
+					'''
+					Receive caught_up message and hash of running state from quorum of Replica			
+					'''
+					receive("caught_up","$(state)") from quorum of Replicas
+						foreach $(state) in quorum of Replicas
+							if(ch == $(state))
+							c++;
+						'''
+						Olympus checks that it receives the same cryptographic hash ch in the caught_up messages 
+						from all replicas(t+1) in Quorum.
+						'''  	
+						if(c==t+1)
+							'''
+							Get running states from the t+1 replicas of the quorum
+							'''
+							send("get_running_state") to the quorum of Replicas  
+							receive("Replica.running_state") from some Replica in quorum
+								'''
+								At least 1 match, to assign running_state to the inithist statement
+								'''					
+								if(ch == cryptographic_hash(Replica.running_state))       
+									inithist.runningState = running_state
+									'''
+									The latest history for replica i.e. delta of Longest history and Latest history of replica
+									will be assigned to inithist.history. This covers the scenario: if replica has done some
+									operations between catchup_message event and get_running_state event.
+									'''
+									inithist.history =  LH - Replica.history
+								else
+									'''
+									Get running states from another replica in t+1 replicas of the quorum
+									'''		
+									send("get_running_state") to some other Replica in quorum  
+								
+						else
+							'''
+							else, one or more of the replicas in Q is faulty, and Olympus needs to choose a different quorum.
+							'''
+							send("catchup_Message","LH - Replica.history") to new quorum of Replica
+				'''
+				Generate inithist message containing history and running state to be assigned to next config.
+				create private and public keys of replicas and client,
+				create the new configuration with 2t+1 replicas and set their mode as active
+				and assign them their keys,
+				send public key for replicas to client and vis-a-vis	
+				'''
+				
+				inithist.message = {inithist.history,inithist.runningState}	 
+				Replica.Public_Key,Client.Public_Key = createPublicKeys()
+				Replica.Private_Key,Client.Private_Key = createPrivateKeys()
+				'''
+				createNewConfiguration() function will accept following arguments, no. of replicas, 
+				mode of the replicas, private key for replies, and public key given to replicas
+				'''		
+			 	Configuration* = createNewConfiguration(2t+1,Mode=ACTIVE,Replica.Private_Key, Client.Public_Key)
+			 	'''
+			 	send back the client configuration(chain of replicas), public key of replicas to read
+			 	signed result statement sent by client and private key of client to sign his order
+			 	statements
+			 	'''
+			 	send("Configuration*","Replica.Public_Key","Client.Private_key") to Client
+
+			 	'''
+			 	inithist statement is signed by olympus
+			 	These statements are way of expressing passing on running state to replicas new configuration.
+			 	This helps to ensure that, if all replicas in an earlier configuration accepted the ordering of o in slot s, 
+			 	then the new configuration C' will also accept it.
+			 	'''
+				
+			 	<inithist, Configuration*, inithist.message>_Ω  = signStatement(<inithist, Configuration*, inithist.message>) by Olympus.Private_Key
+				statements = statements U <inithist, Configuration*, inithist.message>_Ω 
+			 	'''
+			 	Checks if configuration* is successor of configuration
+			 	and there is only one inithist statement for Configuration*
+			 	'''
+				if succ(Configuration,Configuration*) and (<inithist, Configuration*, inithist.message> is not in statements)
+					send("inithistStatement") to All Replicas in Configuration*
+		else
+			'''Inavlid authentication is detected by Olympus'''
+			'''Take another replica in quorom since we have to consider only correct replica'''
+			send("wedgedRequests") to another quorum of Replicas
+
+
+Replica(__)
+	
+	'''
+	Replica receives a operation from client or  from previous replica
+	'''
+	receive("<uniqueID, operation, type='initial'>_client") from Client or receive("shuttle") from Replica-
+		'''
+		checks if mode of replica is active and the operation is not already in history of replica
+		'''
+		if  Replica.mode is Active ^ <s,o*> not in Replica.history
+			if Replica is head		
+				'''
+				if replica is head, it will check that the operation has come from client
+				and if it is a inital request, it will assign a new slot number to operation 
+				'''	
+				if isSigned(<uniqueID, operation, type>) by Client.Public_key
+					s = assignSlot(o)
+				else
+				'''Source is not identified and hence head will not proceed with the operation'''
+					terminate("operation")
+				'''
+				Checkpointing will be performed if number of slots is 200 (Our assumption for Periodic checkpointing)
+				Hash of running state will be taken and a checkpoint shuttle will be sent down the chain
+				'''
+				if |s| == 200
+					$(state) = hash(Replica.running_state)					 	
+					<checkpoint,$(state)>_rho = signStatement(<checkpoint,$(state)>,Replica.private_key)
+					checkpointProof = checkPointProof U <checkpoint,$(state)>_p
+					checkPointShuttle = checkpointProof			
+					send(CheckpointShuttle) to Replica+
+
+			if Replica is non-head or tail
+				'''
+				if replica is head or tail  it will check the authenticity of order proof and result Profo, 
+				has come from previous replica					
+				'''	
+				if  !isSigned(shuttle.orderProof<orderStatement>) by Replica-.Private_key or
+					!isSigned(shuttle.ResultProof<resultStatement>) by Replica-.Private_key
+					'''Digital signature of previous replica is not verified'''
+					send("reconfigurationRequest") to Olympus
+				'''
+				If there are any previous 2 replicas rho and rho*  have order statement with 
+				different operations to same slot, or if there are two result statements with different 
+				results for same operation,  Proof of misbehaviour is detected
+				'''
+				if 	shutlle.orderProof.contains(<order,s,o>_rho and <order,s,o*>_rho*) or
+					shuttle.resultProof.contains(<result, o, $(r*)>_rho and <result, o, $(r)>_rho*)
+					send("reconfigurationRequest") to Olympus
+					
+
+			'''
+			All replicas will
+			Exectues the operation and store result in r
+			Create and sign the order statement
+			Hash the result and create and sign the result statement
+			Update the Order Proof and Result Proof with the order statement and result statement
+			Create a shuttle of Order Proof and Result Proof
+			'''		
+			r = executeOperation(operation)
+			orderStatement = <order,s,o>
+			<order,s,o>_rho = signStatement(orderStatement,Replica.Private_Key)	
+			statements = statements U <order,s,o>_rho
+			$(r) = encrypt(r)
+			resultStatement = <result,s,$(r)>		
+			<result, o, $(r)>_rho = signStatement(resultStatement,Replica.Private_Key)			
+			orderProof = orderProof U <order,s,o>_rho
+			Replica.history = Replica.history U orderProof
+			resultProof = resultProof U <result, o, $(r)>_rho
+			shuttle = (uniqueID,orderProof,resultProof)
+				
+
+			if Replica is head or non-head
+				send(uniqueID,shuttle) to Replica+
+
+			'''
+			if replica is tail append the <slot,operation> pair to global history(H) (Persistency)
+			send the result proof along with result to the client
+			Send the Result Shuttle back in the chain in reverse order.
+			'''
+			if Replica is Tail
+				if <s,o*> is not in H
+					H = H U <s,o>
+
+				send(ResultProof, r) to Client
+				ResultShuttle = ResultProof
+				send(uniqueID,ResultShuttle) to Replica-		
+
+	'''
+	Receive handler for result shuttle from next replica.
+	Replica will cache the result proof along with uniqueID will cache the result shuttle
+	'''
+	receive("uniqueID","ResultShuttle") from Replica+
+		'''
+		if result cache of replica has reached 200, then reset the result cache
+		'''
+		if |Replica.ResultCache| == 200 
+			reset("ResultCache")
+		Replica.ResultCache = Replica.ResultCache U cache(uniqueID, ResultShuttle, r)	 	
+	 	if Replica is non-head
+	 		send("uniqueID","ResultShuttle") to Replica-
+	'''
+	Receive handler for checkpoint shuttle from previous replica.
+	Hash of running state will be taken and a checkpoint shuttle will be sent down the chain
+	If replica is tail, it will send back the complete checkpoint shuttle back in the chain in reverse order
+	'''
+	receive("checkPointShuttle") from Replica- 
+		$(state) = hash(Replica.running_state)	 	
+		<checkpoint,$(state)>_rho = signStatement( <checkpoint,$(state)>,private_key)
+		checkpointProof = checkPointProof U <checkpoint,$(state)>_rho
+		checkPointShuttle = checkpointProof	
+		if Replica is non-head
+			send(CheckpointShuttle) to Replica+
+		if Replica is tail
+			CompleteCheckpointShuttle = CheckPointShuttle
+			truncate(Replica.history)
+			send(CompleteCheckpointShuttle) to Replica-	
+	 	
+	'''
+	Handler to receive the complete will send back the complete checkpoint shuttle back in the chain in reverse order
+	'''		
+	receive("CompleteCheckpointShuttle") from Replica+
+		''' Truncate the history of replica '''
+		truncate(Replica.history)
+		if Replica is non-head
+			send(CompleteCheckpointShuttle) to Replica-			
+	
+	'''
+	Receive handler for retransmission of operation to all the replicas
+	'''
+	receive("<uniqueID, operation, type='retransmission'>_client") from Client
+		if isSigned(<uniqueID, operation, type>) by Client.Public_key 			
+			'''
+			Check the result cache associated with this uniqueID, if found send the result back to client
+			'''
+			if(Replica.ResultCache.contains(uniqueID,operation))
+				send(Replica.ResultCache.ResultProof,r) to client
+			'''
+			Checks replica's mode, if immutable then send error statement to client
+			'''
+			else if(Replica.mode == IMMUTABLE)
+				send("Error Statement") to client
+			'''
+			send the operation to the head of the chain, and start their timers
+			'''
+			else
+				Replica.Timer.start()
+				send(<uniqueID, operation, type="retransmission">_client) to head
+				while(!Replica.Timer.expires())
+						receive("ResultShuttle") from Replica+
+							send(ResultShuttle,r) to client
+							Replica.timer.stop()
+				'''If timer expires and no result shuttle is received, send reconfiguration request to olympus'''
+				if Replica.Timer.expires and !ResultShuttle
+					send("reconfigurationRequest") to olympus
+		else
+			terminate(operation)
+
+	'''
+	Receive handler when replica forwards retransmision request sent by client to the head
+	'''
+	receive("<uniqueID, operation, type='retransmission'>_client") from Replica
+		if Replica is head
+			if isSigned(<uniqueID, operation, type>) by Client.Public_key 
+				'''
+				Checks if result for that operation is cached, replica sends the result back and replica cancel its timer
+				'''
+				if(Replica.cache.contains(uniqueID,operation))
+					send(Replica.cache.ResultProof,r) to client
+
+				'''
+				Check if head has the order proof for the operation in its history
+				and is waiting for the result shuttle, head will starts its timer
+				'''
+				else if Replica.history.contains(<order,operation>)
+					Head.timer.start()
+					'''
+					if received before timer expiry, send the result proof back to client
+					'''
+					while(!Head.timer.expires())
+						receive("ResultShuttle") from Replica+
+							send(ResultShuttle,r) to client
+							Replica.timer.stop()
+					'''If timer expires and no result shuttle is received, send reconfiguration request to olympus'''
+					if Head.timer.expires() and !ResultShuttle
+						send("reconfigurationRequest") to olympus
+				else		
+					'''If it doesnt recognize the operation, head start the operation from scratch'''					
+			else
+				terminate(operation)		
+
+	'''
+	Receive handler for catch up message from olympus.
+	Replicas will perform the delta operation, take hash of its running state and send it back to olympus
+	'''			
+	receive("catchUp_Message","LH - Replica.history">) from Olympus 
+		foreach operation in LH-Replica.history
+		 	r = executeOperation(operation)
+		 	$(state) = cryptographicHash(running_state)
+		 	send("caught_up",$(state))  to Olympus
+
+	'''
+	Receive handler for get running statefrom olympus.
+	Replicas will send its running state back to olympus
+	'''	 	
+	receive("get_running_state") to Replica[:t+1]
+		send("Replica.running_state") to Olympus
+	
+	'''
+	Receive handler for wedge requests from olympus.
+	Replicas will send a signed wedged statement including its history or checkpoint proof(if any)back to olympus
+	'''
+	receive("wedgedRequests") from Olympus
+		<wedged,Replica.history,Replica.checkPointProof>_rho = signStatement(<wedged,Replica.history,Replica.checkPointProof> by Replica.Private_Key)
+		statements = statements U <wedged,Replica.history,Replica.checkPointProof>_rho
+		send(<wedged,Replica.history,Replica.checkPointProof>_rho) to Olympus
+
+
+	receive("inithistStatement") from Olympus
+		if(Replica.mode==PENDING and inithistStatement)
+			Replica.history = inithistStatement.history
+			Replica.runningState = inithistStatement.runningState
+			Replica.mode = ACTIVE
