@@ -1,29 +1,53 @@
 import sys
-class Pong(process):
+
+def readConfigFile():
+    config = dict()
+    with open('config.csv','r') as f:  
+        for line in f:
+            if line[0] != '#':
+                (key,sep,val) = line.partition('=')
+                # if the line does not contain '=', it is invalid and hence ignored
+                if len(sep) != 0:
+                    val = val.strip()
+                    config[key.strip()] = int(val) if str.isdecimal(val) else val
+    print(config)
+    return config
+
+class Olympus(process):
     def setup(): pass
 
     def run():
         a = False
-        await(len(listof(p, received(('Ping',), from_=p))) == 1)
 
-    def receive(msg=('Ping',), from_=p):
-        output("Pinged")
-        send(('Pong',), to=p)
+        await(len(listof(p, received(('requestConfiguration',), from_=p))) == 1)
 
-class Ping(process):
-    def setup(p:Pong): pass
+    def receive(msg=('requestConfiguration',), from_=p):
+        config=readConfigFile()
+        noOfReplicas =  2*config('t')+1
+        output(noOfReplicas)
+        output("requestConfiguration")
+        send(('Configuration',), to=p)
+
+class Client(process):
+    def setup(p:Olympus): pass
 
     
     def run():
-        send(('Ping',), to=p)
-        await(some(received('Pong')))
+        send(('requestConfiguration',), to=p)
+        await(some(received('Configuration')))
 
-    def receive(msg=('Pong',)):
-        output("Ponged.")
+    def receive(msg=('Configuration',)):
+        #config=readConfigFile()
+        #noOfReplicas =  2*config('t')+1
+        #output(noOfReplicas)
+        output("Configuration.")
+
+#class Replica(process):
+
 
 def main():
-    pong = new(Pong,args=(), at='Pong')
-    ping = new(Ping,args=(pong,))
-    setup(ping, args=(pong,))
-    start(pong)
-    start(ping)
+    olympus = new(Olympus,args=())
+    client = new(Client,args=(olympus,), at='Client')
+    setup(client, args=(olympus,))
+    start(client)
+    start(olympus)
