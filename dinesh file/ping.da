@@ -1,0 +1,29 @@
+import sys
+class Pong(process):
+    def setup(): pass
+
+    def run():
+        a = False
+        await(len(listof(p, received(('Ping',), from_=p))) == 1)
+
+    def receive(msg=('Ping',), from_=p):
+        output("Pinged")
+        send(('Pong',), to=p)
+
+class Ping(process):
+    def setup(p:Pong): pass
+
+    
+    def run():
+        send(('Ping',), to=p)
+        await(some(received('Pong')))
+
+    def receive(msg=('Pong',)):
+        output("Ponged.")
+
+def main():
+    pong = new(Pong,args=(), at='Pong')
+    ping = new(Ping,args=(pong,))
+    setup(ping, args=(pong,))
+    start(pong)
+    start(ping)
