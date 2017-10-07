@@ -1,5 +1,6 @@
 import sys
 import nacl.utils
+from random import *
 from nacl.public import PrivateKey,Box
 from nacl.encoding import Base64Encoder
 
@@ -14,39 +15,46 @@ def readConfigFile():
                 if len(sep) != 0:
                     val = val.strip()
                     config[key.strip()] = int(val) if str.isdecimal(val) else val
-    print(config)
+    # print(config)
     return config
 
 class Olympus(process):
     globalConfig = dict()
     clients = []
     replicas = []
+    publicKeyClients =[]
+    publicKeyReplicas=[]
     def setup():
-        createInitialConfiguration()
+        createProcesses()
         print()
 
     def run():
         a = False
 
         #print(globalConfig)
-        #await(len(listof(p, received(('requestConfiguration',), from_=p))) == 1)
-        #await(received(('done',)))
+        await(received(('requestConfiguration',)))#, from_=p))
+        # await(len(listof(p, received(('requestConfiguration',), from_=p))) == 1)
+        await(received(('Received Configuration',)))
         #await(received(('reconfigurationRequests',)))
         output('terminating')
 
     def receive(msg=('requestConfiguration',), from_=p):
         print("---------------ENTERING olympus:receieve:requestConfiguration---------------------")
         print(p)
-        send(('Configuration',), to=p)
+        Configuration = replicas
+        send((Configuration,), to=p)
 	
-    def createInitialConfiguration():
-        print("---------------ENTERING createInitialConfiguration ---------------------")
+    def createProcesses():
+        print("---------------ENTERING createProcesses ---------------------")
         globalConfig = readConfigFile()
-        clients, publicKeyClients = createClientProcesses()
-        replicas, publicKeyReplicas = createReplicaProcesses()
+        clients = createClientProcesses()
+        replicas = createReplicaProcesses()
+        print("---------------CREATED CLIENT AND REPLICA PROCESSES:: createProcesses ---------------------")
+
         print(clients)
         print(replicas)
-        #setupProcesses()
+        #setupClientProcesses(clients,publ)
+        #setupReplicaProcesses()
         #startProcesses()
 
 	
@@ -57,7 +65,7 @@ class Olympus(process):
         tempClients =[]
         tempPublicKeys=dict()
         tempPrivateKeys=dict()
-        print("---------------ENTERING CREATE PROCESS---------------------")
+        print("---------------ENTERING CLIENT CREATE PROCESS---------------------")
         noOfClients = globalConfig['num_client']
         hosts = globalConfig['hosts'].split(';')
         client_hosts=globalConfig['client_hosts'].split(';')
@@ -71,20 +79,22 @@ class Olympus(process):
             tempPublicKeys[processAtNode] =  processAtPuKey
 
             client = new(Client, at=processAtNode)
-            setup(client, (self,processAtPrKey,processAtPuKey,))
+            setup(client, (self,i,processAtPrKey,processAtPuKey,))
             start(client)
-            tempClients.insert(i,client)
+            tempClients.insert(i,(client,processAtPuKey))
         
-        return tempClients,tempPublicKeys
+        return tempClients
 
     def createReplicaProcesses():
+        print("---------------ENTERING REPLICA CREATE PROCESS---------------------")
+
         tempReplicas =[]
         tempPublicKeys=dict()
         tempPrivateKeys=dict()
         noOfReplicas = 2*globalConfig['t'] + 1
         hosts = globalConfig['hosts'].split(';')
         replica_hosts=globalConfig['replica_hosts'].split(';')
-        
+        print('No of Replicas:',noOfReplicas)
 
         for i in range(noOfReplicas):
             processAtNode = 'Replica'+str(i)+'@'+hosts[int(replica_hosts[int(i)].strip())].strip()
@@ -94,11 +104,20 @@ class Olympus(process):
 
             tempPrivateKeys[processAtNode] =  processAtPrKey
             tempPublicKeys[processAtNode] =  processAtPuKey
-            replica = new(Replica,args=(),at=processAtNode)
+            replica = new(Replica,at=processAtNode)
+            setup(replica, (self,processAtPrKey,processAtPuKey,))
+            print('Individual Replica',replica)
             start(replica)
-            tempReplicas.insert(i,replica)
+            print("---------------ENTERING REPLICA CREATE PROCESS---------------------")
 
-        return tempReplicas, tempPublicKeys
+            tempReplicas.insert(i,(replica,processAtPuKey))
+
+        print(len(tempReplicas))
+        return tempReplicas
+
+    def createConfiguration():
+        pass
+
         
 
 
@@ -118,28 +137,73 @@ class Olympus(process):
 		
 
 class Client(process):
-    def setup(p,processAtPrKey,processAtPuKey): 
+    globalConfig = dict()
+
+    def setup(p,i,processAtPrKey,processAtPuKey): 
         pass
     
     def run():
-        print(processAtPrKey.encode(Base64Encoder))
+        # print(processAtPrKey.encode(Base64Encoder))
         print("---------------ENTERING client:run---------------------")
         send(('requestConfiguration',), to=p)
-        await(some(received('Configuration')))
-        send(('requestConfiguration',), to=p)
+        await(some(received((Configuration), from_=p)))
+        
+        #send(('requestConfiguration',), to=p)
 
-    def receive(msg=('Configuration',)):
+    def receive(msg=(Configuration,), from_=p):
         print("---------------ENTERING client:receieve:Configuration---------------------")
         #config=readConfigFile()
         #noOfReplicas =  2*config('t')+1
         #output(noOfReplicas)
-        output("Configuration.")
-        send(('done',), to=p)
+        # print(Configuration)
+        print(len(Configuration))
+        for x in range(len(Configuration)):
+            print('Replica:',Configuration[x])
+        operations = getOperations().split(';')
+        print(operations)
+        for i in range(len(operations)):
+             sendRequest(operations[i],Configuration[0])
+        send(('Received Configuration',), to=p)
+
+    def getOperations():
+        globalConfig = readConfigFile()
+        print(self.i)
+        return globalConfig['workload['+str(self.i)+']']
+
+    def sendRequest(operation,receiver):
+        requestID = returnRandomNumber()
+        print('requestID: ',requestID)
+        print(operation)
+        requestStatement = str(requestID), str(operation.strip()),'initial'
+        #requestStatement[0] = str(requestID)#,str(operation.strip()),'initial']
+        box = createABox(processAtPrKey,receiver[1])
+        signedRequestStatement = signTheStatement(box,requestStatement)
+        #send((signedRequestStatement,), to=receiver[0])
+        print(signedRequestStatement)
+
+
+
+    def returnRandomNumber():
+        return randint(1, 10000)
+
+    def signTheStatement(Box,message):
+        return Box.encrypt(message)
+
+    def createABox(prKey,pubKey):
+        return Box(prKey, pubKey)
+
+
+
+
+
 
 class Replica(process):
-	def setup() : pass
+	def setup(p,processAtPrKey,processAtPuKey) : pass
 	def run() : 
-		print("---------------ENTERING replica:run---------------------")
+        #print(processAtPrKey.encode(Base64Encoder))     
+		print("---------------ENTERING hdhdh:run---------------------")
+        #print("------hello------=")
+        #print(processAtPrKey.encode(Base64Encoder))
 
 
 def main():
