@@ -270,10 +270,10 @@ class Replica(da.DistProcess):
         print('------------------printing replicas with their public keys------------')
         print(self._state.replicas)
         super()._label('_st_label_1094', block=False)
-        clientId = requestID = c = signedRequestStatement = typeOfRequest = None
+        clientId = c = requestID = signedRequestStatement = typeOfRequest = None
 
         def ExistentialOpExpr_1095():
-            nonlocal clientId, requestID, c, signedRequestStatement, typeOfRequest
+            nonlocal clientId, c, requestID, signedRequestStatement, typeOfRequest
             for (_, (_, _, c), (clientId, requestID, signedRequestStatement, typeOfRequest)) in self._ReplicaReceivedEvent_0:
                 if True:
                     return True
