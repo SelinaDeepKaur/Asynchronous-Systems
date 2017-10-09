@@ -37,7 +37,7 @@ class Olympus(process):
     privateKeyReplicas=[]
     def setup():
         print("---------------ENTERING Olymus:setup ---------------------")
-
+        self.terminate = False
         # self.globalConfig = readConfigFile()
         # readGlobalConfigFile()
         initialSetup()
@@ -51,11 +51,12 @@ class Olympus(process):
 
     def run():
         a = False
+        await(terminate)
 
         #print(globalConfig)
-        await(received(('requestConfiguration',)))#, from_=p))
+        # await(received(('requestConfiguration',)))#, from_=p))
         # await(len(listof(p, received(('requestConfiguration',), from_=p))) == 1)
-        await(received(('Received Configuration',)))
+        # await(received(('Received Configuration',)))
         #await(received(('reconfigurationRequests',)))
         output('terminating')
 
@@ -194,14 +195,15 @@ class Olympus(process):
 class Client(process):
     globalConfig = dict()
 
-    def setup(p,i,privateKeyClient,): 
-        pass
+    def setup(p,clientID,privateKeyClient,): 
+        self.terminate = False
     
     def run():
         # print(processAtPrKey.encode(Base64Encoder))
         print("---------------ENTERING client:run---------------------")
         send(('requestConfiguration',), to=p)
-        await(some(received((Configuration), from_=p)))
+        # await(some(received((Configuration), from_=p)))
+        await(terminate)
         
         #send(('requestConfiguration',), to=p)
 
@@ -222,8 +224,7 @@ class Client(process):
 
     def getOperations():
         globalConfig = readConfigFile()
-        print(self.i)
-        return globalConfig['workload['+str(self.i)+']']
+        return globalConfig['workload['+str(self.clientID)+']']
 
     def sendRequest(operation,receiver):
         requestID = returnRandomNumber()
@@ -236,8 +237,8 @@ class Client(process):
         box = createABox(privateKeyClient,receiver[1])
         signedRequestStatement = signTheStatement(box,requestStatement)
         print(receiver[0])
-        send(('done',), to=receiver[0])
-        send((i,requestID,signedRequestStatement,'initial'), to=receiver[0])
+        # send(('done',), to=receiver[0])
+        send((clientID,requestID,signedRequestStatement,'initial'), to=receiver[0])
         print(signedRequestStatement)
 
 
@@ -247,16 +248,23 @@ class Client(process):
 
 
 class Replica(process):
-    def setup(p,i,Mode,privateKeyReplica,clients,replicas):pass
+    replicaHistory = dict()
+    slot=0
+    
+    def setup(p,i,Mode,privateKeyReplica,clients,replicas):
+        self.terminate = False
+        self.data = dict()
     def run():
         print('---------------------ENTERING Replica:run-----------------------')
         print(p)
         print("------------------printing replicas with their public keys------------")
         print(replicas)
-        await(some(received((clientId,requestID,signedRequestStatement,typeOfRequest,), from_=c)))
-        await(some(received((rho,requestID,signedRequestStatement,typeOfRequest,), from_=previousReplica)))
+        # await(some(received((rho,requestID,signedRequestStatement,typeOfRequest,), from_=previousReplica)))
+        await(terminate)
+        # await(some(received((clientId,requestID,signedRequestStatement,typeOfRequest,), from_=c)))
+        print('--------------------Something------------------------')
         #awaitbvreceived previous replica
-        await(received(('done',)))
+        # await(received(('done',)))
 
     # def receive(msg=(Configuration,), from_=p):
     def receive(msg=(clientId,requestID,signedRequestStatement,typeOfRequest,), from_=c):
@@ -266,20 +274,45 @@ class Replica(process):
         print(signedRequestStatement)
         
         unSignedRequestStatement = ''
-        slot=0
         operation = ''
         if Mode == 'ACTIVE':
+            print("-----------------------clientId---------------------------")
+            print(clientId)
+            print("-----------------------creating box for decrytion---------------------------")
+            
             unbox = createABox(privateKeyReplica,clients[clientId][1])
-            try:
-                unSignedRequestStatement = unsignTheStatement(unbox,signedRequestStatement)
-                #operation = parseTheUnsignedStatement(unSignedRequestStatement)
-                #slot = assignSlot(operation)
-                print("---------------The unsigned statement received from client---------------------")
-                print(unSignedRequestStatement)
-                #print(operation)
-                #print(slot)
-            except:
-                print('Terminate Operation')
+            print("-----------------------unsigning signedRequestStatement---------------------------")
+            
+            #try:
+            unSignedRequestStatement = unsignTheStatement(unbox,signedRequestStatement)
+            print("-----------------------parsing the unSignedRequestStatement---------------------------")
+            
+            operation,key,value = parseTheUnsignedStatement(unSignedRequestStatement)
+            print("-----------------------Printing Stuff---------------------------")
+            
+            print(operation)
+            print(key)
+            print(value)
+            ret = executeOperation(operation,key,value)
+
+
+            print(ret)
+            print(data)
+
+            #assignSlot(slot,operation)
+            #slot+=1
+            print("---------------The unsigned statement received from client---------------------")
+            print(unSignedRequestStatement)
+            print("---------------The parsed operations---------------------")
+            #print(operation)
+            #print(slot)
+            # except:
+            #     print("Exception")
+            '''
+            except Exception as ex:
+                print("Exception")
+                print(ex)
+            '''                
        
         else:
             print('Replica is not active')
@@ -289,7 +322,7 @@ class Replica(process):
         print(replicas[i+1])
         print("---------------sending shuttle to next replica0-------------")
         send((requestID,signedRequestStatement,'initial'), to=replicas[i+1][0])
-        print("-----------------")
+        print("----------------- I ended ----------------------")
 
 
     def receive(msg=(requestID,signedRequestStatement,typeOfRequest),from_=previousReplica):
@@ -303,7 +336,9 @@ class Replica(process):
          #        unSignedRequestStatement = unsignTheStatement(unbox,signedRequestStatement)
          #    except:
          #        print('Send Reconfiguration Request to Olympus')
+
         if i != 2:
+            print('---------------  Reached here -------------------------')
             send((requestID,signedRequestStatement,'initial'), to=replicas[i+1][0])
 
         # r = executeOperation(operation)
@@ -311,24 +346,71 @@ class Replica(process):
         # orderStatement=('order',)
 
        
+        print('-------------------- I ended -------------------------')
 
         # plaintext = unbox.decrypt(signedRequestStatement)
         # print("-------------Decrypted Message-------------")
         # print(unSignedRequestStatement)
 
-    # def assignSlot(s,o):
-    #     pass
+    def assignSlot(s,o):
+        replicaHistory[s] = ('order',o)
+        print("---------------inside assignslot----")
+        print(replicaHistory[s])
+        
 
-    # def parseTheUnsignedStatement(unSignedRequestStatement):
-    #     pass
+    def parseTheUnsignedStatement(unSignedRequestStatement):
+        print("-----------------------parseTheUnsignedStatement---------------------------")
+        inp = str(unSignedRequestStatement,'utf-8')[:-1]
+        opKeyVal = inp.split('(')
+        operation = opKeyVal[0]
+        keyVal = opKeyVal[1].split(',')
+        key = keyVal[0][1:-1]
+        value = keyVal[1][1:-1]
+        return  operation,key,value
 
-    # def executeOperation(o):
-    #     pass
+
+    def addToDictionary(key,val):
+        print("-----------------------addToDictionary---------------------------")
+
+        data[key]=val
+        return 'OK'
+    def getFrom(key):
+        print("-----------------------getFrom---------------------------")
+
+        try:
+            return data[key]
+        except:
+            return ''
+
+    def appendDictionary(key,val):
+        print("-----------------------appendDictionary---------------------------")
+
+        data[key] = val
+        return 'OK'
+
+    def sliceDictionary(key,val):
+        print("-----------------------sliceDictionary---------------------------")
+
+        value = data[key]
+        data[key] = value[val]
+        return 'OK'
+
+    def executeOperation(operation,key,val):
+        print("-----------------------executeOperation---------------------------")
+
+        function_launch = {
+            'put': addToDictionary,
+            'get': getFrom,
+            'slice': appendDictionary,
+            'append': sliceDictionary
+        }
+
+        return function_launch[operation](key, val)
 
 
-    def receive(msg=('done',), from_=d):
-        print("---------------ENTERING olympus:receieve:requestConfiguration---------------------")
-        print("---------------DONE---------------------")
+    # def receive(msg=('done',), from_=d):
+    #     print("---------------ENTERING olympus:receieve:requestConfiguration---------------------")
+    #     print("---------------DONE---------------------")
 
 
 def main():
