@@ -1,8 +1,10 @@
 import sys
 import nacl.utils
 from random import *
-from nacl.public import PrivateKey,Box
-from nacl.encoding import Base64Encoder
+import nacl.encoding
+import nacl.signing
+# from nacl.public import PrivateKey,Box
+# from nacl.encoding import Base64Encoder
 
 def readConfigFile():
     print("---------------ENTERING readConfigFile ---------------------")
@@ -18,26 +20,33 @@ def readConfigFile():
     # print(config)
     return config
 
-def signTheStatement(box,message):
-    return box.encrypt(message)
+def signTheStatement(signing_key,message):
+    return signing_key.sign(message)
 
-def createABox(prKey,pubKey):
-    return Box(prKey, pubKey)
+# def createABox(prKey,pubKey):
+#     return Box(prKey, pubKey)
 
-def unsignTheStatement(box,message):
-    return box.decrypt(message)       
+def decodeVerifyKey(verify_key_hex):
+    return nacl.signing.VerifyKey(verify_key_hex, encoder=nacl.encoding.HexEncoder)
+
+def verifyTheStatement(verify_key,signed):
+    return verify_key.verify(signed)       
     
 class Olympus(process):
     globalConfig = dict()
     clients = []
     replicas = []
-    publicKeyClients =dict()
-    publicKeyReplicas=dict()
-    privateKeyClients =dict()
-    privateKeyReplicas=[]
+    # publicKeyClients =dict()
+    # publicKeyReplicas=dict()
+    # privateKeyClients =dict()
+    # privateKeyReplicas=[]
     def setup():
         print("---------------ENTERING Olymus:setup ---------------------")
         self.terminate = False
+        self.client_signing_keys=dict()
+        self.client_verify_keys_hex= dict()
+        self.replica_signing_keys=dict()
+        self.replica_verify_keys_hex= dict()
         # self.globalConfig = readConfigFile()
         # readGlobalConfigFile()
         initialSetup()
@@ -74,10 +83,16 @@ class Olympus(process):
     def initialSetup():
         print("---------------ENTERING Olymus:initialSetup ---------------------")
         globalConfig = readConfigFile()
-        privateKeyClients,publicKeyClients = createClientKeys()
-        privateKeyReplicas,publicKeyReplicas=createReplicaKeys()
-        clients = createClientProcesses(privateKeyClients)
-        replicas = createReplicaProcesses(privateKeyReplicas,clients,publicKeyReplicas)
+        noOfClients = globalConfig['num_client']
+        noOfReplicas = 2*globalConfig['t'] + 1
+        # privateKeyClients,publicKeyClients = createClientKeys()
+        # privateKeyReplicas,publicKeyReplicas=createReplicaKeys()
+        client_signing_keys, client_verify_keys_hex = createKeys(noOfClients)
+        clients = createClientProcesses(client_signing_keys)
+        replica_signing_keys, replica_verify_keys_hex = createKeys(noOfReplicas)
+        replicas = createReplicaProcesses(replica_signing_keys,clients,replica_verify_keys_hex)
+        # clients = createClientProcesses(privateKeyClients)
+        # replicas = createReplicaProcesses(privateKeyReplicas,clients,publicKeyReplicas)
 
 
     # def createProcesses():
@@ -93,52 +108,61 @@ class Olympus(process):
         # setupReplicaProcesses(replicas,clients)
         #startProcesses()
 
-	
-    def createClientKeys():
-        print("---------------ENTERING Olymus:createClientKeys ---------------------")
-        tempPublicKeys=dict()
-        tempPrivateKeys=dict()
-        noOfClients = globalConfig['num_client']
-        print(noOfClients)
-        # hosts = globalConfig['hosts'].split(';')
-        # client_hosts=globalConfig['client_hosts'].split(';')
-        for i in range(noOfClients):
-            print("---------------Did I reach here Olymus:setup ---------------------")
+    def createKeys(number):
+        print("---------------ENTERING Olymus:createKeys ---------------------")
+        signing_keys = dict()
+        verify_keys_hex = dict()
+        for i in range(number):
+            signing_key=nacl.signing.SigningKey.generate()
+            verify_key = signing_key.verify_key
+            verify_key_hex = verify_key.encode(encoder=nacl.encoding.HexEncoder)
+            signing_keys[i] = signing_key
+            verify_keys_hex[i] = verify_key_hex
+        return signing_keys,verify_keys_hex
 
-            # processAtNode = 'Client'+str(i)+'@'+hosts[int(client_hosts[int(i)].strip())].strip() 
-            processAtPrKey = PrivateKey.generate()
-            processAtPuKey = processAtPrKey.public_key
 
-            tempPrivateKeys[i] =  processAtPrKey
-            tempPublicKeys[i] =  processAtPuKey
 
-        print("---------------Did I reach here 2 Olymus:setup ---------------------")
+    # def createClientKeys():
+    #     print("---------------ENTERING Olymus:createClientKeys ---------------------")
+    #     tempPublicKeys=dict()
+    #     tempPrivateKeys=dict()
+    #     noOfClients = globalConfig['num_client']
+    #     print(noOfClients)
+    #     # hosts = globalConfig['hosts'].split(';')
+    #     # client_hosts=globalConfig['client_hosts'].split(';')
+    #     for i in range(noOfClients):
 
-        return tempPrivateKeys,tempPublicKeys
+    #         # processAtNode = 'Client'+str(i)+'@'+hosts[int(client_hosts[int(i)].strip())].strip() 
+    #         processAtPrKey = PrivateKey.generate()
+    #         processAtPuKey = processAtPrKey.public_key
 
-    def createReplicaKeys():
-        print("---------------ENTERING Olymus:createReplicaKeys ---------------------")
+    #         tempPrivateKeys[i] =  processAtPrKey
+    #         tempPublicKeys[i] =  processAtPuKey
 
-        tempPublicKeys=dict()
-        tempPrivateKeys=dict()
-        noOfReplicas = 2*globalConfig['t'] + 1
-        # hosts = globalConfig['hosts'].split(';')
-        # replica_hosts=globalConfig['replica_hosts'].split(';')
 
-        for i in range(noOfReplicas):
-            # processAtNode = 'Replica'+str(i)+'@'+hosts[int(replica_hosts[int(i)].strip())].strip()
-            processAtPrKey = PrivateKey.generate()
-            processAtPuKey = processAtPrKey.public_key
+    #     return tempPrivateKeys,tempPublicKeys
 
-            tempPrivateKeys[i] =  processAtPrKey
-            tempPublicKeys[i] =  processAtPuKey
-        return tempPrivateKeys,tempPublicKeys
+    # def createReplicaKeys():
+    #     print("---------------ENTERING Olymus:createReplicaKeys ---------------------")
+
+    #     tempPublicKeys=dict()
+    #     tempPrivateKeys=dict()
+    #     noOfReplicas = 2*globalConfig['t'] + 1
+    #     # hosts = globalConfig['hosts'].split(';')
+    #     # replica_hosts=globalConfig['replica_hosts'].split(';')
+
+    #     for i in range(noOfReplicas):
+    #         # processAtNode = 'Replica'+str(i)+'@'+hosts[int(replica_hosts[int(i)].strip())].strip()
+    #         processAtPrKey = PrivateKey.generate()
+    #         processAtPuKey = processAtPrKey.public_key
+
+    #         tempPrivateKeys[i] =  processAtPrKey
+    #         tempPublicKeys[i] =  processAtPuKey
+    #     return tempPrivateKeys,tempPublicKeys
         
 	
-    def createClientProcesses(privateKeyClients):       
+    def createClientProcesses(client_signing_keys):       
         tempClients =[]
-        tempPublicKeys=dict()
-        tempPrivateKeys=dict()
         print("---------------ENTERING CLIENT CREATE PROCESS---------------------")
         noOfClients = globalConfig['num_client']
         hosts = globalConfig['hosts'].split(';')
@@ -147,14 +171,14 @@ class Olympus(process):
         for i in range(noOfClients):
             processAtNode = 'Client'+str(i)+'@'+hosts[int(client_hosts[int(i)].strip())].strip()            
             client = new(Client, at=processAtNode)
-            setup(client, (self,i,privateKeyClients[i],))
+            setup(client, (self,i,client_signing_keys[i],))
             start(client)
             #tempClients.insert(i,(client,publicKeyReplicas[i]))
-            tempClients.insert(i,(client,publicKeyClients[i]))
+            tempClients.insert(i,(client,client_verify_keys_hex[i]))
         
         return tempClients
 
-    def createReplicaProcesses(privateKeyReplicas,clients,publicKeyReplicas):
+    def createReplicaProcesses(replica_signing_keys,clients,replica_verify_keys_hex):
         print("---------------ENTERING REPLICA CREATE PROCESS---------------------")
         tempReplicas =dict()
         noOfReplicas = 2*globalConfig['t'] + 1
@@ -164,11 +188,11 @@ class Olympus(process):
         for i in range(noOfReplicas):
             processAtNode = 'Replica'+str(i)+'@'+hosts[int(replica_hosts[int(i)].strip())].strip()
             replica = new(Replica,at=processAtNode)
-            tempReplicas[i] = (replica,publicKeyReplicas[i])
+            tempReplicas[i] = (replica,replica_verify_keys_hex[i])
             # tempReplicas.insert(i,(replica,publicKeyReplicas[i]))
 
         for i in range(noOfReplicas):
-            setup(tempReplicas[i][0], (self,i,'ACTIVE',privateKeyReplicas[i],clients,tempReplicas,))
+            setup(tempReplicas[i][0], (self,i,'ACTIVE',replica_signing_keys[i],clients,tempReplicas,))
             start(tempReplicas[i][0])
             
         return tempReplicas
@@ -195,7 +219,7 @@ class Olympus(process):
 class Client(process):
     globalConfig = dict()
 
-    def setup(p,clientID,privateKeyClient,): 
+    def setup(p,clientID,client_signing_key,): 
         self.terminate = False
     
     def run():
@@ -234,8 +258,8 @@ class Client(process):
         # requestStatement = bytes((requestID,str(operation.strip()),'initial'), 'utf8')
         requestStatement = bytes(operation.strip(),'utf8')
         #print(strRequestStatment)
-        box = createABox(privateKeyClient,receiver[1])
-        signedRequestStatement = signTheStatement(box,requestStatement)
+        # box = createABox(client_signing_key,receiver[1])
+        signedRequestStatement = signTheStatement(client_signing_key,requestStatement)
         print(receiver[0])
         # send(('done',), to=receiver[0])
         send((clientID,requestID,signedRequestStatement,'initial'), to=receiver[0])
@@ -251,7 +275,7 @@ class Replica(process):
     replicaHistory = dict()
     slot=0
     
-    def setup(p,i,Mode,privateKeyReplica,clients,replicas):
+    def setup(p,i,Mode,replica_signing_key,clients,replicas):
         self.terminate = False
         self.data = dict()
     def run():
@@ -280,29 +304,33 @@ class Replica(process):
             print(clientId)
             print("-----------------------creating box for decrytion---------------------------")
             
-            unbox = createABox(privateKeyReplica,clients[clientId][1])
+            # unbox = createABox(privateKeyReplica,clients[clientId][1])
             print("-----------------------unsigning signedRequestStatement---------------------------")
-            
+            temp_verify_key = decodeVerifyKey(clients[1][1])
             #try:
-            unSignedRequestStatement = unsignTheStatement(unbox,signedRequestStatement)
+            verified = ''
+            try:
+                verified = verifyTheStatement(temp_verify_key,signedRequestStatement)
+            except:
+                verified = 'Not verified'
             print("-----------------------parsing the unSignedRequestStatement---------------------------")
             
-            operation,key,value = parseTheUnsignedStatement(unSignedRequestStatement)
+            # operation,key,value = parseTheUnsignedStatement(unSignedRequestStatement)
             print("-----------------------Printing Stuff---------------------------")
             
-            print(operation)
-            print(key)
-            print(value)
-            ret = executeOperation(operation,key,value)
+            # print(operation)
+            # print(key)
+            # print(value)
+            # ret = executeOperation(operation,key,value)
 
 
-            print(ret)
-            print(data)
+            # print(ret)
+            # print(data)
 
             #assignSlot(slot,operation)
             #slot+=1
             print("---------------The unsigned statement received from client---------------------")
-            print(unSignedRequestStatement)
+            print(verified)
             print("---------------The parsed operations---------------------")
             #print(operation)
             #print(slot)
