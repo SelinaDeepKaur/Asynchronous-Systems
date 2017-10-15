@@ -1,0 +1,2 @@
+cd Desktop/SBU/ASYNC/BCR/Asynchronous-Systems/phase2/
+python -m da -n Replica0 -D ping.da

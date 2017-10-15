@@ -22,8 +22,8 @@ def executeOperation(operation,key,val):
     function_launch = {
         'put': addToDictionary,
         'get': getFrom,
-        'slice': appendDictionary,
-        'append': sliceDictionary
+        'append': appendDictionary,
+        'slice': sliceDictionary
     }
 
     return function_launch[operation](key, val)
@@ -39,13 +39,24 @@ def parseString(inp2):
     return  operation,key,value
 
 
+def doOperation(inp):
+    operation,key,value = parseString(inp)
+    print(operation)
+    print(key)
+    print(value)
+    ret = executeOperation(operation,key,value)
+    print(ret)
+
+
+
 inp = b"put('movie','star')"
-operation,key,value = parseString(inp)
-print(operation)
-print(key)
-print(value)
-ret = executeOperation(operation,key,value)
-
-
-print(ret)
+doOperation(inp)
 print(data)
+inp = b"append('movie',' wars')"
+doOperation(inp)
+print(data)
+inp = b"get('movie')"
+print(data)
+
+
+

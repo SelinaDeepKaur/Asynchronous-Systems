@@ -7,7 +7,7 @@ import nacl.signing
 # from nacl.encoding import Base64Encoder
 
 def readConfigFile():
-    print("---------------ENTERING readConfigFile ---------------------")
+    # output("---------------ENTERING readConfigFile ---------------------")
     config = dict()
     with open('config.csv','r') as f:  
         for line in f:
@@ -22,6 +22,7 @@ def readConfigFile():
 
 def signTheStatement(signing_key,message):
     return signing_key.sign(message)
+    output('-------------Signed the message---------------------------')
 
 # def createABox(prKey,pubKey):
 #     return Box(prKey, pubKey)
@@ -41,12 +42,14 @@ class Olympus(process):
     # privateKeyClients =dict()
     # privateKeyReplicas=[]
     def setup():
-        print("---------------ENTERING Olymus:setup ---------------------")
+        output("---------------ENTERING Olymus:setup ---------------------")
+        output(self)
         self.terminate = False
         self.client_signing_keys=dict()
         self.client_verify_keys_hex= dict()
         self.replica_signing_keys=dict()
         self.replica_verify_keys_hex= dict()
+
         # self.globalConfig = readConfigFile()
         # readGlobalConfigFile()
         initialSetup()
@@ -56,10 +59,10 @@ class Olympus(process):
         # clients = createClientProcesses(privateKeyClients)
         # replicas = createReplicaProcesses(privateKeyReplicas,publicKeyClients,publicKeyReplicas)
         # createProcesses()
-        print()
+        # print()
 
     def run():
-        a = False
+        # a = False
         await(terminate)
 
         #print(globalConfig)
@@ -70,18 +73,19 @@ class Olympus(process):
         output('terminating')
 
     def receive(msg=('requestConfiguration',), from_=p):
-        print("---------------ENTERING olympus:receieve:requestConfiguration---------------------")
-        print(p)
+        output("---------------ENTERING olympus:receieve:requestConfiguration---------------------")
+        output(p)
         Configuration = replicas
         send((Configuration,), to=p)
 	
     def readGlobalConfigFile():
-        print("---------------ENTERING Olymus:readGlobalConfigFile ---------------------")
-        globalConfig = readConfigFile()
+        output("---------------ENTERING Olymus:readGlobalConfigFile ---------------------")
+        globalConfiggg = readConfigFile()
+        output("----EXIT-----")
 
 
     def initialSetup():
-        print("---------------ENTERING Olymus:initialSetup ---------------------")
+        output("---------------ENTERING Olymus:initialSetup ---------------------")
         globalConfig = readConfigFile()
         noOfClients = globalConfig['num_client']
         noOfReplicas = 2*globalConfig['t'] + 1
@@ -109,7 +113,7 @@ class Olympus(process):
         #startProcesses()
 
     def createKeys(number):
-        print("---------------ENTERING Olymus:createKeys ---------------------")
+        output("---------------ENTERING Olymus:createKeys ---------------------")
         signing_keys = dict()
         verify_keys_hex = dict()
         for i in range(number):
@@ -163,13 +167,14 @@ class Olympus(process):
 	
     def createClientProcesses(client_signing_keys):       
         tempClients =[]
-        print("---------------ENTERING CLIENT CREATE PROCESS---------------------")
+        output("---------------ENTERING CLIENT CREATE PROCESS---------------------")
         noOfClients = globalConfig['num_client']
         hosts = globalConfig['hosts'].split(';')
         client_hosts=globalConfig['client_hosts'].split(';')
         
         for i in range(noOfClients):
-            processAtNode = 'Client'+str(i)+'@'+hosts[int(client_hosts[int(i)].strip())].strip()            
+            processAtNode = 'Client'+str(i)
+            # +'@'+hosts[int(client_hosts[int(i)].strip())].strip()            
             client = new(Client, at=processAtNode)
             setup(client, (self,i,client_signing_keys[i],))
             start(client)
@@ -179,14 +184,15 @@ class Olympus(process):
         return tempClients
 
     def createReplicaProcesses(replica_signing_keys,clients,replica_verify_keys_hex):
-        print("---------------ENTERING REPLICA CREATE PROCESS---------------------")
+        output("---------------ENTERING REPLICA CREATE PROCESS---------------------")
         tempReplicas =dict()
         noOfReplicas = 2*globalConfig['t'] + 1
         hosts = globalConfig['hosts'].split(';')
         replica_hosts=globalConfig['replica_hosts'].split(';')
 
         for i in range(noOfReplicas):
-            processAtNode = 'Replica'+str(i)+'@'+hosts[int(replica_hosts[int(i)].strip())].strip()
+            processAtNode = 'Replica'+str(i)
+            # +'@'+hosts[int(replica_hosts[int(i)].strip())].strip()
             replica = new(Replica,at=processAtNode)
             tempReplicas[i] = (replica,replica_verify_keys_hex[i])
             # tempReplicas.insert(i,(replica,publicKeyReplicas[i]))
@@ -202,12 +208,12 @@ class Olympus(process):
 
 
     def setupProcesses():
-        print("---------------ENTERING setupProcesses ---------------------")
+        output("---------------ENTERING setupProcesses ---------------------")
         for i in range(noOfClients):
             setup(client[i], args=(self,))
 
     def startProcesses():
-        print("---------------ENTERING startProcesses ---------------------")
+        output("---------------ENTERING startProcesses ---------------------")
         for i in range(noOfClients):
             start(client[i])
 
@@ -218,13 +224,15 @@ class Olympus(process):
 
 class Client(process):
     globalConfig = dict()
+    
 
     def setup(p,clientID,client_signing_key,): 
         self.terminate = False
+        self.replicas = dict()
     
     def run():
         # print(processAtPrKey.encode(Base64Encoder))
-        print("---------------ENTERING client:run---------------------")
+        output("---------------ENTERING client:run---------------------")
         send(('requestConfiguration',), to=p)
         # await(some(received((Configuration), from_=p)))
         await(terminate)
@@ -232,19 +240,26 @@ class Client(process):
         #send(('requestConfiguration',), to=p)
 
     def receive(msg=(Configuration,), from_=p):
-        print("---------------ENTERING client:receieve:Configuration---------------------")
+        output("---------------ENTERING client:receieve:Configuration---------------------")
         #config=readConfigFile()
         #noOfReplicas =  2*config('t')+1
         #output(noOfReplicas)
-        # print(Configuration)
-        print(len(Configuration))
+        #print(Configuration)
+        replicas = Configuration
+        output(len(Configuration))
         for x in range(len(Configuration)):
             print('Replica:',Configuration[x])
         operations = getOperations().split(';')
-        print(operations)
+        output(operations)
         for i in range(len(operations)):
              sendRequest(operations[i],Configuration[0])
         send(('Received Configuration',), to=p)
+
+    def receive(msg=(result,resultShuttle),from_=tail):
+    	output('-------------------- Received Result Shuttle -------------------------')
+    	resultVerified = verifyResultProofs(resultShuttle[2])
+    	output(resultVerified)
+    	output(resultShuttle)
 
     def getOperations():
         globalConfig = readConfigFile()
@@ -252,185 +267,322 @@ class Client(process):
 
     def sendRequest(operation,receiver):
         requestID = returnRandomNumber()
-        print('requestID: ',requestID)
-        print(operation)
+        output('requestID: ',requestID)
+        output(operation)
         # requestStatement = b'initial'
         # requestStatement = bytes((requestID,str(operation.strip()),'initial'), 'utf8')
-        requestStatement = bytes(operation.strip(),'utf8')
+        requestStatement = bytes(str(operation.strip()),'utf8')
+        output(requestStatement)
         #print(strRequestStatment)
         # box = createABox(client_signing_key,receiver[1])
         signedRequestStatement = signTheStatement(client_signing_key,requestStatement)
-        print(receiver[0])
+        output(receiver[0])
         # send(('done',), to=receiver[0])
         send((clientID,requestID,signedRequestStatement,'initial'), to=receiver[0])
-        print(signedRequestStatement)
+        output(signedRequestStatement)
 
 
 
     def returnRandomNumber():
         return randint(1, 10000)
 
+    def verifyResultProofs(tempResultProof):
+    	output("-----------------------verifyResultProofs---------------------------")
+    	#Number of order proofs
+    	numOfRP = len(tempResultProof)
+    	i=0
+    	verified = ''
+    	while i < numOfRP:
+    		temp_verify_key = decodeVerifyKey(replicas[i][1])
+    		tempSignedRP = tempResultProof[i]
+    		try:
+    			verified = verifyTheStatement(temp_verify_key,tempSignedRP)
+    			verified = 'True'
+    		except:
+    			verified = 'False'    		
+    		i+=1
+    	return verified
 
-class Replica(process):
-    replicaHistory = dict()
-    slot=0
+class Replica(process):    
+    
     
     def setup(p,i,Mode,replica_signing_key,clients,replicas):
         self.terminate = False
-        self.data = dict()
+        self.data = dict()        
+        self.replicaHistory = dict()
+        self.resultCache = dict()
+        self.slot = 0
     def run():
-        print('---------------------ENTERING Replica:run-----------------------')
-        print(p)
-        print("------------------printing replicas with their public keys------------")
-        print(replicas)
+        output('---------------------ENTERING Replica:run-----------------------')
+        output(p)
+        output("------------------printing replicas with their public keys------------")        
         # await(some(received((rho,requestID,signedRequestStatement,typeOfRequest,), from_=previousReplica)))
         await(terminate)
         # await(some(received((clientId,requestID,signedRequestStatement,typeOfRequest,), from_=c)))
-        print('--------------------Something------------------------')
+        output('--------------------Something------------------------')
         #awaitbvreceived previous replica
         # await(received(('done',)))
 
     # def receive(msg=(Configuration,), from_=p):
     def receive(msg=(clientId,requestID,signedRequestStatement,typeOfRequest,), from_=c):
-        print('---------------------ENTERING Replica:receive:signedRequestStatement-----------------------')
-        print("---------------The signed statement with clientID---------------------")
-        print(clientId)
-        print(signedRequestStatement)
-        
+        output('---------------------ENTERING Replica:receive:signedRequestStatement-----------------------')
+        output("---------------The signed statement with clientID---------------------")
+        output(signedRequestStatement)
+        orderProof=list()
+        resultProof=list()
+        temp_verify_key = decodeVerifyKey(clients[clientId][1])
         unSignedRequestStatement = ''
         operation = ''
-        if Mode == 'ACTIVE':
-            print("-----------------------clientId---------------------------")
-            print(clientId)
-            print("-----------------------creating box for decrytion---------------------------")
-            
-            # unbox = createABox(privateKeyReplica,clients[clientId][1])
-            print("-----------------------unsigning signedRequestStatement---------------------------")
-            temp_verify_key = decodeVerifyKey(clients[1][1])
-            #try:
+        if Mode == 'ACTIVE':            
+            output("------------clientId------------:",clientId)
+            output("-----------------------unsigning signedRequestStatement---------------------------")
             verified = ''
             try:
                 verified = verifyTheStatement(temp_verify_key,signedRequestStatement)
             except:
                 verified = 'Not verified'
-            print("-----------------------parsing the unSignedRequestStatement---------------------------")
-            
-            # operation,key,value = parseTheUnsignedStatement(unSignedRequestStatement)
-            print("-----------------------Printing Stuff---------------------------")
-            
-            # print(operation)
-            # print(key)
-            # print(value)
-            # ret = executeOperation(operation,key,value)
+            # output("---------------The unsigned statement received from client---------------------")
+            output(verified)
+            # output("-----------------------parsing the unSignedRequestStatement---------------------------")            
+            operation,key,value = parseTheUnsignedStatement(verified)
+            # output("-----------------------Printing Stuff---------------------------")            
+            # output(operation)
+            # output(key)
+            # output(value)
+            result = executeOperation(operation,key,value)
+            output(result)
+            signedOrderStatement,signedResultStatement = createStatements(slot,verified,result)
+            output('------------------------Signed Order Statement for union-----------------')
+            output(signedOrderStatement)
+            # orderProof = unionOrderProofs(orderProof,signedOrderStatement)
+            # resultProof = unionResultProofs(resultProof,signedResultStatement)
+            orderProof.append(signedOrderStatement)
+            resultProof.append(signedResultStatement)
+            shuttle = (orderProof,resultProof)            
+            appendToReplicaHistory(slot,verified,orderProof)
+            slot+=1
+            output(shuttle)
+            output(data)
 
-
-            # print(ret)
-            # print(data)
-
-            #assignSlot(slot,operation)
-            #slot+=1
-            print("---------------The unsigned statement received from client---------------------")
-            print(verified)
-            print("---------------The parsed operations---------------------")
-            #print(operation)
-            #print(slot)
-            # except:
-            #     print("Exception")
-            '''
-            except Exception as ex:
-                print("Exception")
-                print(ex)
-            '''                
-       
         else:
-            print('Replica is not active')
+            output('Replica is not active')
         
     #send statement to next replica
-        print("-----------------")
-        print(replicas[i+1])
-        print("---------------sending shuttle to next replica0-------------")
-        send((requestID,signedRequestStatement,'initial'), to=replicas[i+1][0])
-        print("----------------- I ended ----------------------")
+        # output("-----------------")
+        # output(replicas[i+1])
+        output("---------------sending shuttle to next replica-------------")
+        send((clientId,requestID,shuttle,'initial','nonhead'), to=replicas[i+1][0])
+        output("----------------- I ended ----------------------")
 
 
-    def receive(msg=(requestID,signedRequestStatement,typeOfRequest),from_=previousReplica):
-        print("---------------The signed statement from previous replica--------------------")
+    def receive(msg=(clientId,requestID,shuttle,typeOfRequest,replicaType),from_=previousReplica):
+        output("---------------The  shuttle from previous replica--------------------")
         #print(rho)
-        print(signedRequestStatement)
+        # output(shuttle)
 
-         # if i!=2 and Mode == 'ACTIVE':
-         #    unbox = createABox(privateKeyReplica,replicas[i-1][1])
-         #    try:
-         #        unSignedRequestStatement = unsignTheStatement(unbox,signedRequestStatement)
-         #    except:
-         #        print('Send Reconfiguration Request to Olympus')
-
-        if i != 2:
-            print('---------------  Reached here -------------------------')
-            send((requestID,signedRequestStatement,'initial'), to=replicas[i+1][0])
-
-        # r = executeOperation(operation)
-
-        # orderStatement=('order',)
-
+        if i<=2 and Mode == 'ACTIVE':            
+        	tempOrderProof = shuttle[0]
+        	tempResultProof = shuttle[1]
+        	output('----------------OUTPUT TOTAL ORDER PROOFS------------')
+        	output(tempOrderProof)
+        	#Verify with replica history
+        	verified = verifyOrderProofs(tempOrderProof)
+        	resultsVerified = verifyResultProofs(tempResultProof)
+        	if verified != 'False' or resultsVerified != 'False': 
+        	#('order',2,get('movie'))
+	        	tempOrderStatement = verified.decode('utf-8').split(';')
+	        	output(tempOrderStatement)
+	        	tempSlot = tempOrderStatement[1]        	
+	        	tempSignedStatement = tempOrderStatement[2]
+	        	output(tempSlot)
+		        output(tempSignedStatement)	
+	        	inHistory = checkSlotInHistory(int(tempSlot),tempSignedStatement)
+	        	output(inHistory)
+	        	holes = checkForHoles(int(slot))
+	        	output(holes)
+	        	if inHistory =='false' and holes == False:	        	
+		        	# verifyResultProofs()
+		        	operation,key,value = parseTheUnsignedStatement(bytes(tempSignedStatement,'utf-8'))
+		        	result = executeOperation(operation,key,value)
+		        	output('------------DATA DICTIONARY----------')
+		        	output('Data',data)
+		        	tempSignedOrderStatement,tempSignedResultStatement = createStatements(tempSlot,bytes(tempSignedStatement,'utf-8'),result)
+		        	output('Signed Order Statement',tempSignedOrderStatement)
+		        	tempOrderProof.append(tempSignedOrderStatement)
+		        	tempResultProof.append(tempSignedResultStatement)
+		        	appendToReplicaHistory(slot,verified,tempOrderProof)
+		        	shuttle = (tempOrderProof,tempResultProof)
+		        	if i != 2:  
+			        	output(replicas[i+1])
+			        	send((clientId,requestID,shuttle,'initial','nonhead'), to=replicas[i+1][0])
+			        elif i==2:
+			        	# make and send result shuttle to predecessor
+			        	resultShuttle = (requestID,result,tempResultProof)
+			        	# signedResultShuttle = 
+			        	appendToResultCache(resultShuttle)
+			        	send(('result',resultShuttle), to=clients[clientId][0])
+			        	send(('result',resultShuttle), to=replicas[i-1][0])
+			        else:
+			        	output('------------------------JUST CHILL------------------------')
+                # else:
+                # 	output('--------------Misbehavoiur, send reconfig request to olympus--------------')
+		    # else:
+		    # 	output('--------------Signatures Not Verified, send reconfig request to olympus--------------')
+		    #     	terminate = True
+		# else:
+		# 	print('--------------Replica is inactive------------------')
+		#     terminate = True
        
-        print('-------------------- I ended -------------------------')
+        output('-------------------- I ended -------------------------')
 
-        # plaintext = unbox.decrypt(signedRequestStatement)
-        # print("-------------Decrypted Message-------------")
-        # print(unSignedRequestStatement)
+    def receive(msg=(result,resultShuttle),from_=nextReplica):
+    	output('-------------------- Received Result Shuttle -------------------------')
+    	output(result)
+    	# verifyResultProofs(resultShuttle[2])
+    	output(resultShuttle)
+    	#Verify Result Proofs
+    	if i!=0:
+    		send(('result',resultShuttle), to=replicas[i-1][0])
+    	#validate the result shuttle
 
     def assignSlot(s,o):
         replicaHistory[s] = ('order',o)
-        print("---------------inside assignslot----")
-        print(replicaHistory[s])
-        
+        output("---------------inside assignslot----")
+        output(replicaHistory[s])
 
+    def createStatements(s,o,r):
+    	output("-----------------------createStatements---------------------------")    		
+    	orderStatement = bytes(str('\'order\';'+str(s)+';'+o.decode("utf-8")),'utf8')
+    	output(orderStatement)
+    	signedOrderStatement = signTheStatement(replica_signing_key,orderStatement)
+    	hashedR = hashResult(r)
+    	resultStatement = bytes('\'result\';'+str(s)+';'+hashedR,'utf8')
+    	signedResultStatement = signTheStatement(replica_signing_key,resultStatement)
+    	return signedOrderStatement,signedResultStatement
+
+
+    def verifyOrderProofs(tempOrderProof):
+    	output("-----------------------verifyOrderProofs---------------------------")
+    	#Number of order proofs
+    	numOfOP = len(tempOrderProof)
+    	i=0
+    	verified = ''
+    	while i < numOfOP:
+    		temp_verify_key = decodeVerifyKey(replicas[i][1])
+    		tempSignedOP = tempOrderProof[i]
+    		try:
+    			verified = verifyTheStatement(temp_verify_key,tempSignedOP)
+    		except:
+    			verified = 'False'
+    		i+=1
+    	return verified
+
+    def verifyResultProofs(tempResultProof):
+    	output("-----------------------verifyResultProofs---------------------------")
+    	#Number of order proofs
+    	numOfRP = len(tempResultProof)
+    	i=0
+    	verified = ''
+    	while i < numOfRP:
+    		temp_verify_key = decodeVerifyKey(replicas[i][1])
+    		tempSignedRP = tempResultProof[i]
+    		try:
+    			verified = verifyTheStatement(temp_verify_key,tempSignedRP)
+    		except:
+    			verified = 'False'    		
+    		i+=1
+    	return verified
+
+    def checkSlotInHistory(slot,operation):
+    	inHistory = 'false'
+    	output('----------------checkSlotInHistory---------------------')
+    	output('slot',slot)
+    	try:
+    		op = replicaHistory[slot][0]
+    		output('op',op)
+    		if operation ==  op:
+    			inHistory = 'validOperation'
+    		elif operation != op:
+    			inHistory = 'invalidOperation'
+    	except:
+    		pass
+    	return inHistory
+
+    def checkForHoles(slot):
+    	holes = False
+    	if slot == 0:
+    		return holes
+    	try:
+    		op = replicaHistory[slot-1]    		
+    	except:
+    		holes = True
+    	return holes    
+
+    def unionOrderProofs(orderProof,signedOS):
+    	output("-----------------------unionOrderProofs---------------------------")
+    	return orderProof.append(signedOS)
+
+    def unionResultProofs(resultProof,signedRS):
+    	output("-----------------------unionResultProofs---------------------------")
+    	return resultProof.append(signedRS)
+
+    def appendToReplicaHistory(s,o,orderProof):
+    	replicaHistory[s] = (o.decode('utf-8'),orderProof)
+
+    def appendToResultCache(resultSh):
+    	resultCache[resultSh[0]] = (resultSh[1],resultSh[2])
+
+    def hashResult(r):
+    	return r
+
+
+
+    '''Functions to handle operation Statements'''
     def parseTheUnsignedStatement(unSignedRequestStatement):
-        print("-----------------------parseTheUnsignedStatement---------------------------")
-        inp = str(unSignedRequestStatement,'utf-8')[:-1]
-        opKeyVal = inp.split('(')
-        operation = opKeyVal[0]
-        keyVal = opKeyVal[1].split(',')
-        key = keyVal[0][1:-1]
-        value = keyVal[1][1:-1]
-        return  operation,key,value
-
+    	output("-----------------------parseTheUnsignedStatement---------------------------")
+    	inp = str(unSignedRequestStatement,'utf-8')[:-1]
+    	output(inp)
+    	opKeyVal = inp.split('(')
+    	operation = opKeyVal[0]
+    	keyVal = opKeyVal[1].split(',')
+    	key = keyVal[0][1:-1]
+    	value=''
+    	if operation!='get':
+    		value = keyVal[1][1:-1]
+    	return  operation,key,value.strip()
 
     def addToDictionary(key,val):
-        print("-----------------------addToDictionary---------------------------")
-
-        data[key]=val
-        return 'OK'
-    def getFrom(key):
-        print("-----------------------getFrom---------------------------")
-
-        try:
-            return data[key]
-        except:
-            return ''
+    	output("-----------------------addToDictionary---------------------------")
+    	data[key]=val
+    	return 'OK'
+    def getFrom(key,val):
+    	output("-----------------------getFrom---------------------------")
+    	try:
+    		return data[key]
+    	except:
+    		return ''
 
     def appendDictionary(key,val):
-        print("-----------------------appendDictionary---------------------------")
+        output("-----------------------appendDictionary---------------------------")
 
         data[key] = val
         return 'OK'
 
     def sliceDictionary(key,val):
-        print("-----------------------sliceDictionary---------------------------")
+        output("-----------------------sliceDictionary---------------------------")
 
         value = data[key]
         data[key] = value[val]
         return 'OK'
 
     def executeOperation(operation,key,val):
-        print("-----------------------executeOperation---------------------------")
+        output("-----------------------executeOperation---------------------------")
 
         function_launch = {
             'put': addToDictionary,
             'get': getFrom,
-            'slice': appendDictionary,
-            'append': sliceDictionary
+            'append': appendDictionary,
+            'slice': sliceDictionary
         }
 
         return function_launch[operation](key, val)
@@ -442,9 +594,10 @@ class Replica(process):
 
 
 def main():
-    print("---------------ENTERING main---------------------")
+    output("---------------ENTERING main---------------------")
     olympus = new(Olympus,args=())
     #client = new(Client,args=(olympus,), at='Client')
     #setup(client, args=(olympus,))
     #start(client)
+    # setup(olympus, args=())
     start(olympus)
