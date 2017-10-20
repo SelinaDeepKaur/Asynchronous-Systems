@@ -464,14 +464,14 @@ class Replica(process):
 
     def receive(msg=('retransmission',clientId,requestID,signedRequestStatement,), from_=c):
         output('---------------------ENTERING Replica:receive:retransmission-----------------------')
-        if Mode == 'IMMUTABLE':
-            send(('errorStatement',), to=clients[clientId][0])
-        else:
-            resultShuttle = getResultFromResultCache(requestID)
-            if resultShuttle == 'NoResult':
-                send(('retransmission',clientId,requestID,signedRequestStatement,), to=replicas[0][0])
-            else:
-                send(('result',resultShuttle), to=clients[clientId][0])
+        # if Mode == 'IMMUTABLE':
+        #     send(('errorStatement',), to=clients[clientId][0])
+        # else:
+        #     resultShuttle = getResultFromResultCache(requestID)
+        #     if resultShuttle == 'NoResult':
+        #         send(('retransmission',clientId,requestID,signedRequestStatement,), to=replicas[clientId][0])
+        #     else:
+        #         send(('result',resultShuttle), to=clients[clientId][0])
 
 
     def receive(msg=(result,resultShuttle),from_=nextReplica):
