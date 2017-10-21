@@ -1,8 +1,12 @@
 import sys
 import nacl.utils
 from random import *
+import random
 import nacl.encoding
+import nacl.hash
+from nacl.bindings.utils import sodium_memcmp
 import nacl.signing
+import logging
 # from nacl.public import PrivateKey,Box
 # from nacl.encoding import Base64Encoder
 
@@ -19,6 +23,10 @@ def readConfigFile():
                     config[key.strip()] = int(val) if str.isdecimal(val) else val
     # print(config)
     return config
+
+
+
+
 
 def signTheStatement(signing_key,message):
     return signing_key.sign(message)
@@ -42,7 +50,12 @@ class Olympus(process):
     # privateKeyClients =dict()
     # privateKeyReplicas=[]
     def setup():
-        output("---------------ENTERING Olymus:setup ---------------------")
+
+        # logger = logging.getLogger(__name__)
+        # logger.setLevel(logging.INFO)
+
+        # logger.info('-------------------ENTER Olympu: setup---------------')
+        output("---------------ENTERING Olymus:setup ---------------------",level=20)
         output(self)
         self.terminate = False
         self.client_signing_keys=dict()
@@ -113,7 +126,7 @@ class Olympus(process):
         #startProcesses()
 
     def createKeys(number):
-        output("---------------ENTERING Olymus:createKeys ---------------------")
+        output("---------------ENTERING Olymus:createKeys ---------------------",level=40)
         signing_keys = dict()
         verify_keys_hex = dict()
         for i in range(number):
@@ -243,6 +256,21 @@ class Client(process):
         await(terminate)
         
         #send(('requestConfiguration',), to=p)
+    def hashResult(r):
+        output("---------------ENTERING hashResult ---------------------")
+        HASHER = nacl.hash.sha256
+        digest = HASHER(bytes(r,'utf-8'), encoder=nacl.encoding.HexEncoder)
+        encodedMessage = nacl.encoding.HexEncoder.encode(bytes(r,'utf-8'))
+        return digest.decode("utf-8"),encodedMessage.decode("utf-8")
+
+    def checkHashResult(digest,rDigest):
+        output("---------------ENTERING checkHashResult ---------------------")
+        # orig_dgs = HASHER(encodedMessage, encoder=nacl.encoding.HexEncoder)
+        bDigest=bytes(digest,'utf-8')
+        brDigest = bytes(rDigest,'utf-8')
+        if sodium_memcmp(bDigest, brDigest):
+            return True
+        return False
 
     def receive(msg=(Configuration,), from_=p):
         output("---------------ENTERING client:receive:Configuration---------------------")
@@ -254,7 +282,7 @@ class Client(process):
         output(len(Configuration))
         for x in range(len(Configuration)):
             print('Replica:',Configuration[x])
-        operations = getOperations().split(';')
+        operations = getOperations()
         output(operations)
         for i in range(len(operations)):
             output('------SENDING REQUESTS LOOP----------------')
@@ -273,14 +301,23 @@ class Client(process):
                 
         send(('Received Configuration',), to=p)
 
-    def receive(msg=(result,reqID,resultShuttle),from_=tail):
-        output('-------------------- Received Result Shuttle from Tail-------------------------')
-        resultVerified = verifyResultProofs(resultShuttle[2])
+    def receive(msg=(result,resultShuttle),from_=tail):
+        output('-------------------- Received Result Shuttle-----------------------')
+        receivedResult = resultShuttle[1]
+        rDigest,rEncodedMessage = hashResult(receivedResult)
+        resultVerified = verifyResultProofs(resultShuttle[2],rDigest)
         output(resultVerified)
         output(resultShuttle)
 
     def getOperations():        
-        return globalConfig['workload['+str(self.clientID)+']']
+        cWorkLoad = globalConfig['workload['+str(self.clientID)+']']
+        if 'pseudorandom' in cWorkLoad:
+            seedAndNoOfRequests = cWorkLoad[:-1].split('(')[1].split(',')
+            return generatePseudoRandomRequests(int(seedAndNoOfRequests[0]), int(seedAndNoOfRequests[1]))
+        else:
+            return cWorkLoad.split(';')
+
+
 
     def sendRequest(requestID,operation,receiver,typeOfRequest):
         
@@ -294,7 +331,7 @@ class Client(process):
         signedRequestStatement = signTheStatement(client_signing_key,requestStatement)
         # send(('done',), to=receiver[0])
         if typeOfRequest=='initial':
-            send((typeOfRequest,clientID,requestID,signedRequestStatement), to=receiver[0])
+            send((typeOfRequest,clientID,requestID,signedRequestStatement,1), to=receiver[0])
         elif typeOfRequest == 'retransmission':
             for replicaNo in range(noOfReplicas):
                 send((typeOfRequest,clientID,requestID,signedRequestStatement), to=receiver[replicaNo][0])
@@ -303,11 +340,16 @@ class Client(process):
         output(signedRequestStatement)
 
 
+    def generatePseudoRandomRequests(rSeed,noOfRequests):
+        listofRequest = ["put('movie','star')","append('movie',' wars')","get('movie')","put('jedi,'luke skywalker)","slice('jedi','0:4')","get('jedi')"]
+        random.seed(rSeed)
+        requests = random.sample(listofRequest,k=noOfRequests)        
+        return requests
 
     def returnRandomNumber():
         return randint(1, 10000)
 
-    def verifyResultProofs(tempResultProof):
+    def verifyResultProofs(tempResultProof,rDigest):
         output("-----------------------verifyResultProofs---------------------------")
         #Number of order proofs
         numOfRP = len(tempResultProof)
@@ -318,9 +360,17 @@ class Client(process):
             tempSignedRP = tempResultProof[i]
             try:
                 verified = verifyTheStatement(temp_verify_key,tempSignedRP)
-                verified = 'True'
+                output(verified)
+                strVerified = verified.decode('utf8')
+                verifiedTuple = strVerified.split(';')
+                output("--------------------verifying Digest",verifiedTuple[2])
+                output('--------------------originalDigest',rDigest)
+                if checkHashResult(verifiedTuple[2],rDigest):
+                    verified = 'True'
+                else:
+                    verified = 'False'
             except:
-                verified = 'False'          
+                verified = 'Falsela'          
             i+=1
         return verified
 
@@ -335,6 +385,10 @@ class Replica(process):
         self.slot = 0
         self.globalConfig = dict()
         self.noOfReplicas =0
+        self.ReplicaTIMEOUT = 0
+        self.HeadTIMEOUT = 0
+        self.failuresList = list()
+        self.failuresDict = dict()
     def run():
         output('---------------------ENTERING Replica:run-----------------------')
         output(p)
@@ -343,15 +397,30 @@ class Replica(process):
         globalConfig = readConfigFile()
         # TIMEOUT = globalConfig['client_timeout']
         noOfReplicas = 2*globalConfig['t'] + 1
-        
+        ReplicaTIMEOUT = globalConfig['nonhead_timeout']
+        HeadTIMEOUT = globalConfig['head_timeout']
+        # failuresList.append(getFailures())
+        # failuresDict.ge
         await(terminate)
         # await(some(received((clientId,requestID,signedRequestStatement,typeOfRequest,), from_=c)))
         output('--------------------Something------------------------')
         #awaitbvreceived previous replica
         # await(received(('done',)))
 
+    # def getFailures():
+    # 	return globalConfig['failures[0',+str(i)+']']
+
+    # def parseFailures():
+
+
+    def hashResult(r):
+        output("---------------ENTERING hashResult ---------------------")
+        HASHER = nacl.hash.sha256
+        digest = HASHER(bytes(r,'utf-8'), encoder=nacl.encoding.HexEncoder)
+        encodedMessage = nacl.encoding.HexEncoder.encode(bytes(r,'utf-8'))
+        return digest.decode("utf-8"),encodedMessage.decode("utf-8")
     # def receive(msg=(Configuration,), from_=p):
-    def receive(msg=('initial',clientId,requestID,signedRequestStatement,), from_=c):
+    def receive(msg=('initial',clientId,requestID,signedRequestStatement,operationCount), from_=c):
         output('---------------------ENTERING Replica:receive:signedRequestStatement-----------------------')
         output("---------------The signed statement with clientID---------------------")
         output(signedRequestStatement)
@@ -360,7 +429,7 @@ class Replica(process):
         temp_verify_key = decodeVerifyKey(clients[clientId][1])
         unSignedRequestStatement = ''
         operation = ''
-        if Mode == 'ACTIVE':            
+        if Mode == 'ACTIVE' and not checkRequestIDInHistory(requestID):            
             output("------------clientId------------:",clientId)
             output("-----------------------unsigning signedRequestStatement---------------------------")
             verified = ''
@@ -385,24 +454,29 @@ class Replica(process):
             # resultProof = unionResultProofs(resultProof,signedResultStatement)
             orderProof.append(signedOrderStatement)
             resultProof.append(signedResultStatement)
-            shuttle = (orderProof,resultProof)            
-            appendToReplicaHistory(slot,verified,orderProof)
+            shuttle = (orderProof,resultProof)     
+            # if operationCount==2:
+            #    appendToReplicaHistory(slot,verified,orderProof,requestID)    
+            appendToReplicaHistory(slot,verified,orderProof,requestID)
             slot+=1
             output(shuttle)
             output(data)
+            output("---------------sending shuttle to next replica-------------")
+            send((clientId,requestID,shuttle,'initial','nonhead',operationCount), to=replicas[i+1][0])
+            output("----------------- I ended ----------------------")
 
+
+        elif checkRequestIDInHistory(requestID):
+            output('------------------------------REDUNDANT REQUEST-------------------')
         else:
             output('Replica is not active')
         
     #send statement to next replica
         # output("-----------------")
         # output(replicas[i+1])
-        output("---------------sending shuttle to next replica-------------")
-        send((clientId,requestID,shuttle,'initial','nonhead'), to=replicas[i+1][0])
-        output("----------------- I ended ----------------------")
+        
 
-
-    def receive(msg=(clientId,requestID,shuttle,typeOfRequest,replicaType),from_=previousReplica):
+    def receive(msg=(clientId,requestID,shuttle,typeOfRequest,replicaType,operationCount),from_=previousReplica):
         output("---------------The  shuttle from previous replica--------------------")
         #print(rho)
         # output(shuttle)
@@ -437,14 +511,18 @@ class Replica(process):
                     output('Signed Order Statement',tempSignedOrderStatement)
                     tempOrderProof.append(tempSignedOrderStatement)
                     tempResultProof.append(tempSignedResultStatement)
-                    appendToReplicaHistory(slot,verified,tempOrderProof)
+                    appendToReplicaHistory(slot,verified,tempOrderProof,requestID)
                     shuttle = (tempOrderProof,tempResultProof)
                     if i != noOfReplicas-1:  
                         output(replicas[i+1])
-                        send((clientId,requestID,shuttle,'initial','nonhead'), to=replicas[i+1][0])
+                        send((clientId,requestID,shuttle,'initial','nonhead',operationCount), to=replicas[i+1][0])
                     elif i == noOfReplicas-1:
                         # make and send result shuttle to predecessor
                         resultShuttle = (requestID,result,tempResultProof)
+                        # if operationCount==2:
+                        #     appendToResultCache(resultShuttle)
+                        #     # send(('result',resultShuttle), to=clients[clientId][0])
+                        #     send(('result',resultShuttle), to=replicas[i-1][0])
                         # signedResultShuttle = 
                         appendToResultCache(resultShuttle)
                         send(('result',resultShuttle), to=clients[clientId][0])
@@ -463,15 +541,99 @@ class Replica(process):
         output('-------------------- I ended -------------------------')
 
     def receive(msg=('retransmission',clientId,requestID,signedRequestStatement,), from_=c):
-        output('---------------------ENTERING Replica:receive:retransmission-----------------------')
-        # if Mode == 'IMMUTABLE':
-        #     send(('errorStatement',), to=clients[clientId][0])
-        # else:
-        #     resultShuttle = getResultFromResultCache(requestID)
-        #     if resultShuttle == 'NoResult':
-        #         send(('retransmission',clientId,requestID,signedRequestStatement,), to=replicas[clientId][0])
-        #     else:
-        #         send(('result',resultShuttle), to=clients[clientId][0])
+        output('---------------------ENTERING Replica:receive:retransmission-----------------------')        
+        temp_verify_key = decodeVerifyKey(clients[clientId][1])
+        verified = ''
+        try:
+            verified = verifyTheStatement(temp_verify_key,signedRequestStatement)
+        except:
+            verified = 'Not verified'
+
+        if verified !='Not Verified':
+            if Mode == 'IMMUTABLE':
+                send(('errorStatement',), to=clients[clientId][0])
+            else:
+                resultFound,resultShuttle = getResultFromResultCache(requestID)
+                output('-------------Result is----------',resultShuttle)
+                if resultFound == 'NoResult':
+                    if i!=0:
+                        send(('forwardRequest',clientId,requestID,signedRequestStatement,), to=replicas[0][0])
+                        if await(some(received((result,resultShuttle,)), has=(int(resultShuttle[0]) == requestID))):
+                            # --end
+                            output("received result")
+                            send(('result',resultShuttle), to=clients[clientId][0])                
+                        elif timeout(ReplicaTIMEOUT):
+                            output('--------------------- Send Reconfiguration request to Olympus(Non head)--------------------------') 
+                    # if i==0:
+                    #     if checkRequestIDInHistory(requestID):
+                    #         if await(some(received((result,resultShuttle,)), has=(int(resultShuttle[0]) == requestID))):
+                    #                 # --end
+                    #                 output("received result")
+                    #                 send(('result',resultShuttle), to=clients[clientId][0])
+                                    
+                    #         elif timeout(HeadTIMEOUT):
+                    #             output('--------------------- Send Reconfiguration request to Olympus(head)--------------------------')
+                                
+                    #             continue
+                    #     else:
+                    #         output('--------------------- Start timer from scratch(head)--------------------------')
+                    #         # Start timer? and start form scratch                    
+                    #         send(('initial',clientId,requestID,signedRequestStatement,2), to=replicas[0][0])
+                    #         if await(some(received((result,resultShuttle,)), has=(int(resultShuttle[0]) == requestID))):
+                    #                 # --end
+                    #                 output("received result")
+                    #                 send(('result',resultShuttle), to=clients[clientId][0])
+                                    
+                    #         elif timeout(HeadTIMEOUT):
+                    #             output('--------------------- Send Reconfiguration request to Olympus(head)--------------------------')
+                                
+                    #             continue
+
+                        # Handle case for client 0 
+                elif resultFound=='Found':
+                    output('----------------------------Found Result Sending to client')
+                    send(('result',resultShuttle), to=clients[clientId][0])
+
+    def receive(msg=('forwardRequest',clientId,requestID,signedRequestStatement,), from_=p):
+        output('---------------------ENTERING Replica:receive:forwardRequest-----------------------')  
+        temp_verify_key = decodeVerifyKey(clients[clientId][1])
+        verified = ''
+        try:
+            verified = verifyTheStatement(temp_verify_key,signedRequestStatement)
+        except:
+            verified = 'Not verified'
+
+        if verified !='Not Verified':            
+            resultFound,resultShuttle = getResultFromResultCache(requestID)
+            output('-------------Result is----------',resultShuttle)
+            if resultFound == 'NoResult':
+                if checkRequestIDInHistory(requestID):
+                    if await(some(received((result,resultShuttle,)), has=(int(resultShuttle[0]) == requestID))):
+                            # --end
+                            output("received result")
+                            send(('result',resultShuttle), to=clients[clientId][0])
+                            
+                    elif timeout(HeadTIMEOUT):
+                        output('--------------------- Send Reconfiguration request to Olympus(head)--------------------------')
+                        
+                        continue
+                else:
+                    output('--------------------- Start timer from scratch(head)--------------------------')
+                    # Start timer? and start form scratch                    
+                    send(('initial',clientId,requestID,signedRequestStatement,2), to=replicas[0][0])
+                    if await(some(received((result,resultShuttle,)), has=(int(resultShuttle[0]) == requestID))):
+                            # --end
+                            output("received result")
+                            send(('result',resultShuttle), to=clients[clientId][0])
+                            
+                    elif timeout(HeadTIMEOUT):
+                        output('--------------------- Send Reconfiguration request to Olympus(head)--------------------------')
+                        
+                        continue   
+            elif resultFound=='Found':
+                output('----------------------------Found Result Sending to client-------------------')
+                send(('result',resultShuttle), to=clients[clientId][0])
+            
 
 
     def receive(msg=(result,resultShuttle),from_=nextReplica):
@@ -488,8 +650,8 @@ class Replica(process):
             send(('result',resultShuttle), to=replicas[i-1][0])
         #validate the result shuttle
 
-    def assignSlot(s,o):
-        replicaHistory[s] = ('order',o)
+    def assignSlot(s,reqID,o):
+        replicaHistory[s] = ('order',reqID,o)
         output("---------------inside assignslot----")
         output(replicaHistory[s])
 
@@ -498,8 +660,10 @@ class Replica(process):
         orderStatement = bytes(str('\'order\';'+str(s)+';'+o.decode("utf-8")),'utf8')
         output(orderStatement)
         signedOrderStatement = signTheStatement(replica_signing_key,orderStatement)
-        hashedR = hashResult(r)
-        resultStatement = bytes('\'result\';'+str(s)+';'+hashedR,'utf8')
+        output("-----------------------just heres---------------------------")            
+        rDigest,encodedResult = hashResult(r)
+        output("-----------------------heredmsks---------------------------")
+        resultStatement = bytes('\'result\';'+str(s)+';'+rDigest+';'+encodedResult,'utf8')
         signedResultStatement = signTheStatement(replica_signing_key,resultStatement)
         return signedOrderStatement,signedResultStatement
 
@@ -537,6 +701,9 @@ class Replica(process):
             tempi+=1
         return verified
 
+    def checkRequestIDInHistory(reqID):
+        return reqID in [x for v in replicaHistory.values() for x in v]
+
     def checkSlotInHistory(slot,operation):
         inHistory = 'false'
         output('----------------checkSlotInHistory---------------------')
@@ -570,24 +737,19 @@ class Replica(process):
         output("-----------------------unionResultProofs---------------------------")
         return resultProof.append(signedRS)
 
-    def appendToReplicaHistory(s,o,orderProof):
-        replicaHistory[s] = (o.decode('utf-8'),orderProof)
+    def appendToReplicaHistory(s,o,orderProof,reqID):
+        replicaHistory[s] = (o.decode('utf-8'),orderProof,reqID)
 
     def appendToResultCache(resultSh):
+        # pass
         resultCache[resultSh[0]] = (resultSh[1],resultSh[2])
 
     def getResultFromResultCache(requestID):
         try:
             tempResult = resultCache[requestID]
-            return (requestID,tempResult[0],tempResult[1])
+            return 'Found',(requestID,tempResult[0],tempResult[1])
         except KeyError:
-            return 'NoResult'
-        
-
-    def hashResult(r):
-        return r
-
-
+            return 'NoResult',None
 
     '''Functions to handle operation Statements'''
     def parseTheUnsignedStatement(unSignedRequestStatement):
@@ -604,28 +766,61 @@ class Replica(process):
         return  operation,key,value.strip()
 
     def addToDictionary(key,val):
-        output("-----------------------addToDictionary---------------------------")
-        data[key]=val
-        return 'OK'
+	    try:
+	        print(key)
+	        data[key]=val
+	        return 'OK'
+	    except:
+	        return 'Fail'
+
     def getFrom(key,val):
-        output("-----------------------getFrom---------------------------")
         try:
             return data[key]
         except:
             return ''
 
     def appendDictionary(key,val):
-        output("-----------------------appendDictionary---------------------------")
-
-        data[key] = val
-        return 'OK'
+        try:
+            valueExsist = data[key]
+            data[key] = val
+            return 'OK'
+        except:
+            return 'fail'
 
     def sliceDictionary(key,val):
-        output("-----------------------sliceDictionary---------------------------")
+        try:
+            print('key',key)
+            print(data)
+            value = data[key]
+            indices = val.split(':')
+            print(value)
+            data[key] = value[int(indices[0]):int(indices[1])]
+            return 'OK'
+        except:
+            return 'fail'
+    # def addToDictionary(key,val):
+    #     output("-----------------------addToDictionary---------------------------")
+    #     data[key]=val
+    #     return 'OK'
+    # def getFrom(key,val):
+    #     output("-----------------------getFrom---------------------------")
+    #     try:
+    #         return data[key]
+    #     except:
+    #         return ''
 
-        value = data[key]
-        data[key] = value[val]
-        return 'OK'
+    # def appendDictionary(key,val):
+    #     output("-----------------------appendDictionary---------------------------")
+
+    #     data[key] = val
+    #     return 'OK'
+
+    # def sliceDictionary(key,val):
+    #     output("-----------------------sliceDictionary---------------------------")
+
+    #     value = data[key]
+    #     data[key] = value[val]
+    #     return 'OK'
 
     def executeOperation(operation,key,val):
         output("-----------------------executeOperation---------------------------")
@@ -639,7 +834,13 @@ class Replica(process):
 
         return function_launch[operation](key, val)
 
-
+    def changeOperation():
+    	pass
+    def changeResult():
+    	return 'OK'
+    def dropResultStatement():
+    	pass
+    	#Remove heads result statement from the result proof
     # def receive(msg=('done',), from_=d):
     #     print("---------------ENTERING olympus:receieve:requestConfiguration---------------------")
     #     print("---------------DONE---------------------")
