@@ -4,21 +4,21 @@ PatternExpr_364 = da.pat.TuplePattern([da.pat.ConstantPattern('requestConfigurat
 PatternExpr_369 = da.pat.FreePattern('p')
 PatternExpr_884 = da.pat.TuplePattern([da.pat.FreePattern('Configuration')])
 PatternExpr_889 = da.pat.FreePattern('p')
-PatternExpr_956 = da.pat.TuplePattern([da.pat.FreePattern('result'), da.pat.FreePattern('resultShuttle')])
-PatternExpr_1005 = da.pat.TuplePattern([da.pat.FreePattern('result'), da.pat.FreePattern('resultShuttle')])
-PatternExpr_1012 = da.pat.FreePattern('tail')
-PatternExpr_1470 = da.pat.TuplePattern([da.pat.ConstantPattern('initial'), da.pat.FreePattern('clientId'), da.pat.FreePattern('requestID'), da.pat.FreePattern('signedRequestStatement'), da.pat.FreePattern('operationCount')])
-PatternExpr_1483 = da.pat.FreePattern('c')
-PatternExpr_1646 = da.pat.TuplePattern([da.pat.FreePattern('clientId'), da.pat.FreePattern('requestID'), da.pat.FreePattern('shuttle'), da.pat.FreePattern('typeOfRequest'), da.pat.FreePattern('replicaType'), da.pat.FreePattern('operationCount')])
-PatternExpr_1661 = da.pat.FreePattern('previousReplica')
-PatternExpr_1909 = da.pat.TuplePattern([da.pat.ConstantPattern('retransmission'), da.pat.FreePattern('clientId'), da.pat.FreePattern('requestID'), da.pat.FreePattern('signedRequestStatement')])
-PatternExpr_1920 = da.pat.FreePattern('c')
-PatternExpr_2004 = da.pat.TuplePattern([da.pat.FreePattern('result'), da.pat.FreePattern('resultShuttle')])
-PatternExpr_2062 = da.pat.TuplePattern([da.pat.ConstantPattern('forwardRequest'), da.pat.FreePattern('clientId'), da.pat.FreePattern('requestID'), da.pat.FreePattern('signedRequestStatement')])
-PatternExpr_2073 = da.pat.FreePattern('p')
-PatternExpr_2131 = da.pat.TuplePattern([da.pat.FreePattern('result'), da.pat.FreePattern('resultShuttle')])
-PatternExpr_2248 = da.pat.TuplePattern([da.pat.FreePattern('result'), da.pat.FreePattern('resultShuttle')])
-PatternExpr_2255 = da.pat.FreePattern('nextReplica')
+PatternExpr_961 = da.pat.TuplePattern([da.pat.FreePattern('result'), da.pat.FreePattern('resultShuttle')])
+PatternExpr_1017 = da.pat.TuplePattern([da.pat.FreePattern('result'), da.pat.FreePattern('resultShuttle')])
+PatternExpr_1024 = da.pat.FreePattern('tail')
+PatternExpr_1607 = da.pat.TuplePattern([da.pat.ConstantPattern('initial'), da.pat.FreePattern('messageNumber'), da.pat.FreePattern('clientId'), da.pat.FreePattern('requestID'), da.pat.FreePattern('signedRequestStatement'), da.pat.FreePattern('operationCount')])
+PatternExpr_1622 = da.pat.FreePattern('c')
+PatternExpr_1883 = da.pat.TuplePattern([da.pat.FreePattern('messageNumber'), da.pat.FreePattern('clientId'), da.pat.FreePattern('requestID'), da.pat.FreePattern('tempSlot'), da.pat.FreePattern('signedRequestStatement'), da.pat.FreePattern('shuttle'), da.pat.FreePattern('typeOfRequest'), da.pat.FreePattern('replicaType'), da.pat.FreePattern('operationCount'), da.pat.FreePattern('shuttleNumber')])
+PatternExpr_1905 = da.pat.FreePattern('previousReplica')
+PatternExpr_2269 = da.pat.TuplePattern([da.pat.ConstantPattern('retransmission'), da.pat.FreePattern('clientId'), da.pat.FreePattern('requestID'), da.pat.FreePattern('signedRequestStatement')])
+PatternExpr_2280 = da.pat.FreePattern('c')
+PatternExpr_2364 = da.pat.TuplePattern([da.pat.FreePattern('result'), da.pat.FreePattern('resultShuttle')])
+PatternExpr_2422 = da.pat.TuplePattern([da.pat.ConstantPattern('forwardRequest'), da.pat.FreePattern('clientId'), da.pat.FreePattern('requestID'), da.pat.FreePattern('signedRequestStatement')])
+PatternExpr_2433 = da.pat.FreePattern('p')
+PatternExpr_2491 = da.pat.TuplePattern([da.pat.FreePattern('result'), da.pat.FreePattern('resultShuttle')])
+PatternExpr_2608 = da.pat.TuplePattern([da.pat.FreePattern('result'), da.pat.FreePattern('resultShuttle'), da.pat.FreePattern('resultShuttleNumber'), da.pat.FreePattern('clientId')])
+PatternExpr_2618 = da.pat.FreePattern('nextReplica')
 _config_object = {}
 import sys
 import nacl.utils
@@ -57,8 +57,8 @@ class Olympus(da.DistProcess):
         super().__init__(procimpl, props)
         self._events.extend([da.pat.EventPattern(da.pat.ReceivedEvent, '_OlympusReceivedEvent_0', PatternExpr_364, sources=[PatternExpr_369], destinations=None, timestamps=None, record_history=None, handlers=[self._Olympus_handler_363])])
 
-    def setup(self, **rest_2906):
-        super().setup(**rest_2906)
+    def setup(self, **rest_3698):
+        super().setup(**rest_3698)
         self.output('---------------ENTERING Olymus:setup ---------------------', level=20)
         self.output(self._id)
         self._state.terminate = False
@@ -162,10 +162,10 @@ class Client(da.DistProcess):
     def __init__(self, procimpl, props):
         super().__init__(procimpl, props)
         self._ClientReceivedEvent_1 = []
-        self._events.extend([da.pat.EventPattern(da.pat.ReceivedEvent, '_ClientReceivedEvent_0', PatternExpr_884, sources=[PatternExpr_889], destinations=None, timestamps=None, record_history=None, handlers=[self._Client_handler_883]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ClientReceivedEvent_1', PatternExpr_956, sources=None, destinations=None, timestamps=None, record_history=True, handlers=[]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ClientReceivedEvent_2', PatternExpr_1005, sources=[PatternExpr_1012], destinations=None, timestamps=None, record_history=None, handlers=[self._Client_handler_1004])])
+        self._events.extend([da.pat.EventPattern(da.pat.ReceivedEvent, '_ClientReceivedEvent_0', PatternExpr_884, sources=[PatternExpr_889], destinations=None, timestamps=None, record_history=None, handlers=[self._Client_handler_883]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ClientReceivedEvent_1', PatternExpr_961, sources=None, destinations=None, timestamps=None, record_history=True, handlers=[]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ClientReceivedEvent_2', PatternExpr_1017, sources=[PatternExpr_1024], destinations=None, timestamps=None, record_history=None, handlers=[self._Client_handler_1016])])
 
-    def setup(self, p, clientID, client_signing_key, **rest_2906):
-        super().setup(p=p, clientID=clientID, client_signing_key=client_signing_key, **rest_2906)
+    def setup(self, p, clientID, client_signing_key, **rest_3698):
+        super().setup(p=p, clientID=clientID, client_signing_key=client_signing_key, **rest_3698)
         self._state.p = p
         self._state.clientID = clientID
         self._state.client_signing_key = client_signing_key
@@ -214,20 +214,20 @@ class Client(da.DistProcess):
         else:
             return cWorkLoad.split(';')
 
-    def sendRequest(self, requestID, operation, receiver, typeOfRequest):
+    def sendRequest(self, messageNumber, requestID, operation, receiver, typeOfRequest):
         self.output(operation)
         requestStatement = bytes(str(operation.strip()), 'utf8')
         self.output(requestStatement)
         signedRequestStatement = signTheStatement(self._state.client_signing_key, requestStatement)
         if (typeOfRequest == 'initial'):
-            self.send((typeOfRequest, self._state.clientID, requestID, signedRequestStatement, 1), to=receiver[0])
+            self.send((typeOfRequest, messageNumber, self._state.clientID, requestID, signedRequestStatement, 1), to=receiver[0])
         elif (typeOfRequest == 'retransmission'):
             for replicaNo in range(self._state.noOfReplicas):
-                self.send((typeOfRequest, self._state.clientID, requestID, signedRequestStatement), to=receiver[replicaNo][0])
+                self.send((typeOfRequest, messageNumber, self._state.clientID, requestID, signedRequestStatement), to=receiver[replicaNo][0])
         self.output(signedRequestStatement)
 
     def generatePseudoRandomRequests(self, rSeed, noOfRequests):
-        listofRequest = ["put('movie','star')", "append('movie',' wars')", "get('movie')", "put('jedi,'luke skywalker)", "slice('jedi','0:4')", "get('jedi')"]
+        listofRequest = ["put('movie','star')", "append('movie',' wars')", "get('movie')", "put('jedi','luke skywalker')", "slice('jedi','0:4')", "get('jedi')"]
         random.seed(rSeed)
         requests = random.sample(listofRequest, k=noOfRequests)
         return requests
@@ -267,55 +267,58 @@ class Client(da.DistProcess):
             print('Replica:', Configuration[x])
         operations = self.getOperations()
         self.output(operations)
+        messageNumber = 0
         for i in range(len(operations)):
             self.output('------SENDING REQUESTS LOOP----------------')
             requestID = self.returnRandomNumber()
             self.output('requestID: ', requestID)
             self.output('------SENDING REQUESTS LOOP----------------')
-            self.sendRequest(requestID, operations[i], Configuration[0], 'initial')
-            super()._label('_st_label_953', block=False)
+            self.sendRequest(messageNumber, requestID, operations[i], Configuration[0], 'initial')
+            super()._label('_st_label_958', block=False)
             result = resultShuttle = None
 
-            def ExistentialOpExpr_954():
+            def ExistentialOpExpr_959():
                 nonlocal result, resultShuttle
                 for (_, _, (result, resultShuttle)) in self._ClientReceivedEvent_1:
                     if (int(resultShuttle[0]) == requestID):
                         return True
                 return False
-            _st_label_953 = 0
+            _st_label_958 = 0
             self._timer_start()
-            while (_st_label_953 == 0):
-                _st_label_953 += 1
-                if ExistentialOpExpr_954():
+            while (_st_label_958 == 0):
+                _st_label_958 += 1
+                if ExistentialOpExpr_959():
                     self.output('received result')
+                    messageNumber += 1
                     continue
-                    _st_label_953 += 1
+                    _st_label_958 += 1
                 elif self._timer_expired:
                     self.output('Send Retransmission Request.')
-                    self.sendRequest(requestID, operations[i], Configuration, 'retransmission')
+                    self.sendRequest(messageNumber, requestID, operations[i], Configuration, 'retransmission')
+                    messageNumber += 1
                     continue
-                    _st_label_953 += 1
+                    _st_label_958 += 1
                 else:
-                    super()._label('_st_label_953', block=True, timeout=self._state.TIMEOUT)
-                    _st_label_953 -= 1
+                    super()._label('_st_label_958', block=True, timeout=self._state.TIMEOUT)
+                    _st_label_958 -= 1
             else:
-                if (_st_label_953 != 2):
+                if (_st_label_958 != 2):
                     continue
-            if (_st_label_953 != 2):
+            if (_st_label_958 != 2):
                 break
         self.send(('Received Configuration',), to=p)
     _Client_handler_883._labels = None
     _Client_handler_883._notlabels = None
 
-    def _Client_handler_1004(self, result, resultShuttle, tail):
+    def _Client_handler_1016(self, result, resultShuttle, tail):
         self.output('-------------------- Received Result Shuttle-----------------------')
         receivedResult = resultShuttle[1]
         (rDigest, rEncodedMessage) = self.hashResult(receivedResult)
         resultVerified = self.verifyResultProofs(resultShuttle[2], rDigest)
         self.output(resultVerified)
         self.output(resultShuttle)
-    _Client_handler_1004._labels = None
-    _Client_handler_1004._notlabels = None
+    _Client_handler_1016._labels = None
+    _Client_handler_1016._notlabels = None
 
 class Replica(da.DistProcess):
 
@@ -323,10 +326,10 @@ class Replica(da.DistProcess):
         super().__init__(procimpl, props)
         self._ReplicaReceivedEvent_3 = []
         self._ReplicaReceivedEvent_5 = []
-        self._events.extend([da.pat.EventPattern(da.pat.ReceivedEvent, '_ReplicaReceivedEvent_0', PatternExpr_1470, sources=[PatternExpr_1483], destinations=None, timestamps=None, record_history=None, handlers=[self._Replica_handler_1469]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ReplicaReceivedEvent_1', PatternExpr_1646, sources=[PatternExpr_1661], destinations=None, timestamps=None, record_history=None, handlers=[self._Replica_handler_1645]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ReplicaReceivedEvent_2', PatternExpr_1909, sources=[PatternExpr_1920], destinations=None, timestamps=None, record_history=None, handlers=[self._Replica_handler_1908]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ReplicaReceivedEvent_3', PatternExpr_2004, sources=None, destinations=None, timestamps=None, record_history=True, handlers=[]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ReplicaReceivedEvent_4', PatternExpr_2062, sources=[PatternExpr_2073], destinations=None, timestamps=None, record_history=None, handlers=[self._Replica_handler_2061]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ReplicaReceivedEvent_5', PatternExpr_2131, sources=None, destinations=None, timestamps=None, record_history=True, handlers=[]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ReplicaReceivedEvent_6', PatternExpr_2248, sources=[PatternExpr_2255], destinations=None, timestamps=None, record_history=None, handlers=[self._Replica_handler_2247])])
+        self._events.extend([da.pat.EventPattern(da.pat.ReceivedEvent, '_ReplicaReceivedEvent_0', PatternExpr_1607, sources=[PatternExpr_1622], destinations=None, timestamps=None, record_history=None, handlers=[self._Replica_handler_1606]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ReplicaReceivedEvent_1', PatternExpr_1883, sources=[PatternExpr_1905], destinations=None, timestamps=None, record_history=None, handlers=[self._Replica_handler_1882]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ReplicaReceivedEvent_2', PatternExpr_2269, sources=[PatternExpr_2280], destinations=None, timestamps=None, record_history=None, handlers=[self._Replica_handler_2268]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ReplicaReceivedEvent_3', PatternExpr_2364, sources=None, destinations=None, timestamps=None, record_history=True, handlers=[]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ReplicaReceivedEvent_4', PatternExpr_2422, sources=[PatternExpr_2433], destinations=None, timestamps=None, record_history=None, handlers=[self._Replica_handler_2421]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ReplicaReceivedEvent_5', PatternExpr_2491, sources=None, destinations=None, timestamps=None, record_history=True, handlers=[]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ReplicaReceivedEvent_6', PatternExpr_2608, sources=[PatternExpr_2618], destinations=None, timestamps=None, record_history=None, handlers=[self._Replica_handler_2607])])
 
-    def setup(self, p, i, Mode, replica_signing_key, clients, replicas, **rest_2906):
-        super().setup(p=p, i=i, Mode=Mode, replica_signing_key=replica_signing_key, clients=clients, replicas=replicas, **rest_2906)
+    def setup(self, p, i, Mode, replica_signing_key, clients, replicas, **rest_3698):
+        super().setup(p=p, i=i, Mode=Mode, replica_signing_key=replica_signing_key, clients=clients, replicas=replicas, **rest_3698)
         self._state.p = p
         self._state.i = i
         self._state.Mode = Mode
@@ -338,10 +341,13 @@ class Replica(da.DistProcess):
         self._state.replicaHistory = dict()
         self._state.resultCache = dict()
         self._state.slot = 0
+        self._state.shuttleNumber = 0
+        self._state.resultShuttleNumber = 0
         self._state.globalConfig = dict()
         self._state.noOfReplicas = 0
         self._state.ReplicaTIMEOUT = 0
         self._state.HeadTIMEOUT = 0
+        self._state.failuresDict = dict()
 
     def run(self):
         self.output('---------------------ENTERING Replica:run-----------------------')
@@ -351,16 +357,34 @@ class Replica(da.DistProcess):
         self._state.noOfReplicas = ((2 * self._state.globalConfig['t']) + 1)
         self._state.ReplicaTIMEOUT = self._state.globalConfig['nonhead_timeout']
         self._state.HeadTIMEOUT = self._state.globalConfig['head_timeout']
-        super()._label('_st_label_1417', block=False)
-        _st_label_1417 = 0
-        while (_st_label_1417 == 0):
-            _st_label_1417 += 1
+        (foundFailures, failures) = self.getFailures()
+        if (not (foundFailures == 'No Failures')):
+            failuresList = failures.split(';')
+            self.fTfAMapping(failuresList)
+        self.output(self._state.failuresDict)
+        super()._label('_st_label_1486', block=False)
+        _st_label_1486 = 0
+        while (_st_label_1486 == 0):
+            _st_label_1486 += 1
             if self._state.terminate:
-                _st_label_1417 += 1
+                _st_label_1486 += 1
             else:
-                super()._label('_st_label_1417', block=True)
-                _st_label_1417 -= 1
+                super()._label('_st_label_1486', block=True)
+                _st_label_1486 -= 1
         self.output('--------------------Something------------------------')
+
+    def getFailures(self):
+        try:
+            failureIndex = (('failures[0,' + str(self._state.i)) + ']')
+            return ('Yes Failures', self._state.globalConfig[failureIndex])
+        except:
+            return ('No Failures', None)
+
+    def fTfAMapping(self, failuresList):
+        for eachFailure in failuresList:
+            ft = (eachFailure.split(')')[0].strip() + ')')
+            fa = (eachFailure.split(')')[1].split(',')[1].strip() + ')')
+            self._state.failuresDict[ft] = fa
 
     def hashResult(self, r):
         self.output('---------------ENTERING hashResult ---------------------')
@@ -374,31 +398,55 @@ class Replica(da.DistProcess):
         self.output('---------------inside assignslot----')
         self.output(self._state.replicaHistory[s])
 
+    def checkHashResult(self, digest, rDigest):
+        self.output('---------------ENTERING checkHashResult ---------------------')
+        bDigest = bytes(digest, 'utf-8')
+        brDigest = bytes(rDigest, 'utf-8')
+        if sodium_memcmp(bDigest, brDigest):
+            return True
+        return False
+
     def createStatements(self, s, o, r):
         self.output('-----------------------createStatements---------------------------')
         orderStatement = bytes(str(((("'order';" + str(s)) + ';') + o.decode('utf-8'))), 'utf8')
         self.output(orderStatement)
         signedOrderStatement = signTheStatement(self._state.replica_signing_key, orderStatement)
-        self.output('-----------------------just heres---------------------------')
         (rDigest, encodedResult) = self.hashResult(r)
-        self.output('-----------------------heredmsks---------------------------')
         resultStatement = bytes(((((("'result';" + str(s)) + ';') + rDigest) + ';') + encodedResult), 'utf8')
         signedResultStatement = signTheStatement(self._state.replica_signing_key, resultStatement)
         return (signedOrderStatement, signedResultStatement)
 
-    def verifyOrderProofs(self, tempOrderProof):
-        self.output('-----------------------verifyOrderProofs---------------------------')
+    def checkForFailure(self, failureTrigger):
+        self.output('-----------------------checkForFailure---------------------------')
+        try:
+            failureAction = self._state.failuresDict[failureTrigger]
+            return ('foundFailure', failureAction)
+        except:
+            return ('notFound', None)
+
+    def checkOrderProofIntegerity(self, slot, verifiedClientStatement, tempOrderProof):
+        self.output('-----------------------checkOrderProofIntegerity---------------------------')
         numOfOP = len(tempOrderProof)
-        self._state.i = 0
+        self.output('verifiedClientStatement', verifiedClientStatement)
+        tempii = 0
         verified = ''
-        while (self._state.i < numOfOP):
-            temp_verify_key = decodeVerifyKey(self._state.replicas[self._state.i][1])
-            tempSignedOP = tempOrderProof[self._state.i]
+        while (tempii < numOfOP):
+            temp_verify_key = decodeVerifyKey(self._state.replicas[tempii][1])
+            tempSignedOP = tempOrderProof[tempii]
             try:
                 verified = verifyTheStatement(temp_verify_key, tempSignedOP)
+                tempOrderStatement = verified.decode('utf-8').split(';')
+                self.output(tempOrderStatement)
+                tempSlot = tempOrderStatement[1]
+                tempSignedStatement = tempOrderStatement[2]
+                self.output('tempSignedStatement', tempSignedStatement)
+                if ((not (str(slot) == tempSlot)) or (not (tempSignedStatement == verifiedClientStatement))):
+                    verified = 'False'
+                else:
+                    verified = 'True'
             except:
                 verified = 'False'
-            self._state.i += 1
+            tempii += 1
         return verified
 
     def verifyResultProofs(self, tempResultProof):
@@ -406,15 +454,43 @@ class Replica(da.DistProcess):
         numOfRP = len(tempResultProof)
         tempi = 0
         verified = ''
+        if (numOfRP == 0):
+            return 'False'
         while (tempi < numOfRP):
-            temp_verify_key = decodeVerifyKey(self._state.replicas[tempi][1])
-            tempSignedRP = tempResultProof[tempi]
             try:
+                temp_verify_key = decodeVerifyKey(self._state.replicas[tempi][1])
+                tempSignedRP = tempResultProof[tempi]
+                self.output(tempSignedRP)
                 verified = verifyTheStatement(temp_verify_key, tempSignedRP)
                 verified = 'True'
             except:
                 verified = 'False'
             tempi += 1
+        return verified
+
+    def checkResultProofIntegerity(self, tempResultProof, rDigest):
+        self.output('-----------------------checkResultProofIntegerity---------------------------')
+        numOfRP = len(tempResultProof)
+        self.output('-----------NUMBER OF ResultPRoooooooooofs', numOfRP)
+        tempii = 0
+        verified = ''
+        while (tempii < numOfRP):
+            temp_verify_key = decodeVerifyKey(self._state.replicas[tempii][1])
+            tempSignedRP = tempResultProof[tempii]
+            try:
+                verified = verifyTheStatement(temp_verify_key, tempSignedRP)
+                self.output(verified)
+                strVerified = verified.decode('utf8')
+                verifiedTuple = strVerified.split(';')
+                self.output('--------------------verifying Digest----------------', verifiedTuple[2])
+                self.output('--------------------originalDigest------------------', rDigest)
+                if self.checkHashResult(verifiedTuple[2], rDigest):
+                    verified = 'True'
+                else:
+                    verified = 'False'
+            except:
+                verified = 'False'
+            tempii += 1
         return verified
 
     def checkRequestIDInHistory(self, reqID):
@@ -468,7 +544,8 @@ class Replica(da.DistProcess):
 
     def parseTheUnsignedStatement(self, unSignedRequestStatement):
         self.output('-----------------------parseTheUnsignedStatement---------------------------')
-        inp = str(unSignedRequestStatement, 'utf-8')[:(- 1)]
+        inp = str(unSignedRequestStatement, 'utf-8')
+        inp = inp.split(')')[0]
         self.output(inp)
         opKeyVal = inp.split('(')
         operation = opKeyVal[0]
@@ -518,7 +595,31 @@ class Replica(da.DistProcess):
         function_launch = {'put': self.addToDictionary, 'get': self.getFrom, 'append': self.appendDictionary, 'slice': self.sliceDictionary}
         return function_launch[operation](key, val)
 
-    def _Replica_handler_1469(self, clientId, requestID, signedRequestStatement, operationCount, c):
+    def changeOperation(self):
+        return 'get'
+
+    def changeResult(self):
+        return 'OK'
+
+    def dropResultStatement(self, resultProofToTruncate):
+        self.output('-----------------------dropResultStatement---------------------------')
+        numOfRP = len(resultProofToTruncate)
+        verified = ''
+        temp_verify_key = decodeVerifyKey(self._state.replicas[0][1])
+        tempSignedRP = resultProofToTruncate[0]
+        try:
+            verified = verifyTheStatement(temp_verify_key, tempSignedRP)
+            resultProofToTruncate.pop(0)
+        except:
+            verified = 'False'
+        return resultProofToTruncate
+
+    def takeFailureActions(self, operation, key, val):
+        self.output('-----------------------executeOperation---------------------------')
+        function_launch = {'put': self.addToDictionary, 'get': self.getFrom, 'append': self.appendDictionary, 'slice': self.sliceDictionary}
+        return function_launch[operation](key, val)
+
+    def _Replica_handler_1606(self, messageNumber, clientId, requestID, signedRequestStatement, operationCount, c):
         self.output('---------------------ENTERING Replica:receive:signedRequestStatement-----------------------')
         self.output('---------------The signed statement with clientID---------------------')
         self.output(signedRequestStatement)
@@ -537,74 +638,123 @@ class Replica(da.DistProcess):
                 verified = 'Not verified'
             self.output(verified)
             (operation, key, value) = self.parseTheUnsignedStatement(verified)
+            self.output('-----------------------checking for failureType1---------------------------')
+            failureClientRequest = (((('client_request(' + str(clientId)) + ',') + str(messageNumber)) + ')')
+            (fStatus, getAction) = self.checkForFailure(failureClientRequest)
+            self.output(fStatus, getAction)
+            if (not (fStatus == 'notFound')):
+                if (getAction == 'change_operation()'):
+                    operation = self.changeOperation()
+                    key = 'x'
+                    verified = bytes("get('x')", 'utf-8')
+            self.output(operation, key)
             result = self.executeOperation(operation, key, value)
+            if (not (fStatus == 'notFound')):
+                if (getAction == 'change_result()'):
+                    result = self.changeResult()
             self.output(result)
+            self.output(verified)
             (signedOrderStatement, signedResultStatement) = self.createStatements(self._state.slot, verified, result)
             self.output('------------------------Signed Order Statement for union-----------------')
             self.output(signedOrderStatement)
             orderProof.append(signedOrderStatement)
             resultProof.append(signedResultStatement)
+            (fStatus, getAction) = self.checkForFailure(failureClientRequest)
+            if (not (fStatus == 'notFound')):
+                if (getAction == 'drop_result_stmt()'):
+                    resultProof = self.dropResultStatement(resultProof)
             shuttle = (orderProof, resultProof)
             self.appendToReplicaHistory(self._state.slot, verified, orderProof, requestID)
-            self._state.slot += 1
             self.output(shuttle)
             self.output(self._state.data)
             self.output('---------------sending shuttle to next replica-------------')
-            self.send((clientId, requestID, shuttle, 'initial', 'nonhead', operationCount), to=self._state.replicas[(self._state.i + 1)][0])
+            self.send((messageNumber, clientId, requestID, self._state.slot, signedRequestStatement, shuttle, 'initial', 'nonhead', operationCount, self._state.shuttleNumber), to=self._state.replicas[(self._state.i + 1)][0])
             self.output('----------------- I ended ----------------------')
+            self._state.slot += 1
+            self._state.shuttleNumber += 1
         elif self.checkRequestIDInHistory(requestID):
             self.output('------------------------------REDUNDANT REQUEST-------------------')
         else:
             self.output('Replica is not active')
-    _Replica_handler_1469._labels = None
-    _Replica_handler_1469._notlabels = None
+    _Replica_handler_1606._labels = None
+    _Replica_handler_1606._notlabels = None
 
-    def _Replica_handler_1645(self, clientId, requestID, shuttle, typeOfRequest, replicaType, operationCount, previousReplica):
+    def _Replica_handler_1882(self, messageNumber, clientId, requestID, tempSlot, signedRequestStatement, shuttle, typeOfRequest, replicaType, operationCount, shuttleNumber, previousReplica):
         self.output('---------------The  shuttle from previous replica--------------------')
         if ((self._state.i < self._state.noOfReplicas) and (self._state.Mode == 'ACTIVE')):
             tempOrderProof = shuttle[0]
             tempResultProof = shuttle[1]
             self.output('----------------OUTPUT TOTAL ORDER PROOFS------------')
-            self.output(tempOrderProof)
-            verified = self.verifyOrderProofs(tempOrderProof)
+            temp_verify_key = decodeVerifyKey(self._state.clients[clientId][1])
+            verifiedClientStatement = ''
+            try:
+                verifiedClientStatement = verifyTheStatement(temp_verify_key, signedRequestStatement)
+            except:
+                verifiedClientStatement = 'Not verified'
+            self.output('if verified client statement')
+            (operation, key, value) = self.parseTheUnsignedStatement(verifiedClientStatement)
+            checkedOrderProofs = self.checkOrderProofIntegerity(tempSlot, str(verifiedClientStatement, 'utf-8'), tempOrderProof)
+            self.output('checkedOrderProofs', checkedOrderProofs)
             resultsVerified = self.verifyResultProofs(tempResultProof)
-            if ((not (verified == 'False')) or (not (resultsVerified == 'False'))):
-                tempOrderStatement = verified.decode('utf-8').split(';')
-                self.output(tempOrderStatement)
-                tempSlot = tempOrderStatement[1]
-                tempSignedStatement = tempOrderStatement[2]
-                self.output(tempSlot)
-                self.output(tempSignedStatement)
-                inHistory = self.checkSlotInHistory(int(tempSlot), tempSignedStatement)
+            self.output(resultsVerified)
+            if ((not (checkedOrderProofs == 'False')) and (not (resultsVerified == 'False'))):
+                self.output('-----------------------checking for failureType1---------------------------')
+                failureShuttleRequest = (((('shuttle(' + str(clientId)) + ',') + str(shuttleNumber)) + ')')
+                (fStatus, getAction) = self.checkForFailure(failureShuttleRequest)
+                self.output(fStatus, getAction)
+                if (not (fStatus == 'notFound')):
+                    if (getAction == 'change_operation()'):
+                        operation = self.changeOperation()
+                        key = 'x'
+                        verifiedClientStatement = bytes("get('x')", 'utf-8')
+                self.output(operation, key)
+                self.output(verifiedClientStatement)
+                inHistory = self.checkSlotInHistory(int(tempSlot), verifiedClientStatement)
                 self.output(inHistory)
-                holes = self.checkForHoles(int(self._state.slot))
+                holes = self.checkForHoles(int(tempSlot))
                 self.output(holes)
                 if ((inHistory == 'false') and (holes == False)):
-                    (operation, key, value) = self.parseTheUnsignedStatement(bytes(tempSignedStatement, 'utf-8'))
                     result = self.executeOperation(operation, key, value)
+                    if (not (fStatus == 'notFound')):
+                        if (getAction == 'change_result()'):
+                            result = self.changeResult()
+                    self.output('result:  ', result)
                     self.output('------------DATA DICTIONARY----------')
                     self.output('Data', self._state.data)
-                    (tempSignedOrderStatement, tempSignedResultStatement) = self.createStatements(tempSlot, bytes(tempSignedStatement, 'utf-8'), result)
+                    (tempSignedOrderStatement, tempSignedResultStatement) = self.createStatements(tempSlot, verifiedClientStatement, result)
                     self.output('Signed Order Statement', tempSignedOrderStatement)
                     tempOrderProof.append(tempSignedOrderStatement)
                     tempResultProof.append(tempSignedResultStatement)
-                    self.appendToReplicaHistory(self._state.slot, verified, tempOrderProof, requestID)
+                    if (not (fStatus == 'notFound')):
+                        if (getAction == 'drop_result_stmt()'):
+                            tempResultProof = self.dropResultStatement(tempResultProof)
+                    self.output('length of result proof', len(tempResultProof))
+                    self.output('Replica No.', self._state.i)
+                    self.output('noOfReplicas', self._state.noOfReplicas)
+                    self.appendToReplicaHistory(tempSlot, verifiedClientStatement, tempOrderProof, requestID)
                     shuttle = (tempOrderProof, tempResultProof)
                     if (not (self._state.i == (self._state.noOfReplicas - 1))):
                         self.output(self._state.replicas[(self._state.i + 1)])
-                        self.send((clientId, requestID, shuttle, 'initial', 'nonhead', operationCount), to=self._state.replicas[(self._state.i + 1)][0])
+                        self.send((messageNumber, clientId, requestID, tempSlot, signedRequestStatement, shuttle, 'initial', 'nonhead', operationCount, shuttleNumber), to=self._state.replicas[(self._state.i + 1)][0])
                     elif (self._state.i == (self._state.noOfReplicas - 1)):
                         resultShuttle = (requestID, result, tempResultProof)
+                        self.output('-------------------SEND RESULT SHUTTLE TO CLIENT AND PREVIOSUS REPLICAS----------')
+                        self.output(self._state.i)
                         self.appendToResultCache(resultShuttle)
                         self.send(('result', resultShuttle), to=self._state.clients[clientId][0])
-                        self.send(('result', resultShuttle), to=self._state.replicas[(self._state.i - 1)][0])
+                        self.send(('result', resultShuttle, self._state.resultShuttleNumber, clientId), to=self._state.replicas[(self._state.i - 1)][0])
+                        self._state.resultShuttleNumber += 1
                     else:
                         self.output('------------------------JUST CHILL------------------------')
+                else:
+                    self.output('-----------------------SEND RECONFIGURATION REQUEST TO OLYMPUS----------------------')
+            else:
+                self.output('-----------------------SEND RECONFIGURATION REQUEST TO OLYMPUS----------------------')
         self.output('-------------------- I ended -------------------------')
-    _Replica_handler_1645._labels = None
-    _Replica_handler_1645._notlabels = None
+    _Replica_handler_1882._labels = None
+    _Replica_handler_1882._notlabels = None
 
-    def _Replica_handler_1908(self, clientId, requestID, signedRequestStatement, c):
+    def _Replica_handler_2268(self, clientId, requestID, signedRequestStatement, c):
         self.output('---------------------ENTERING Replica:receive:retransmission-----------------------')
         temp_verify_key = decodeVerifyKey(self._state.clients[clientId][1])
         verified = ''
@@ -621,36 +771,36 @@ class Replica(da.DistProcess):
                 if (resultFound == 'NoResult'):
                     if (not (self._state.i == 0)):
                         self.send(('forwardRequest', clientId, requestID, signedRequestStatement), to=self._state.replicas[0][0])
-                        super()._label('_st_label_2001', block=False)
-                        result = resultShuttle = None
+                        super()._label('_st_label_2361', block=False)
+                        resultShuttle = result = None
 
-                        def ExistentialOpExpr_2002():
-                            nonlocal result, resultShuttle
+                        def ExistentialOpExpr_2362():
+                            nonlocal resultShuttle, result
                             for (_, _, (result, resultShuttle)) in self._ReplicaReceivedEvent_3:
                                 if (int(resultShuttle[0]) == requestID):
                                     return True
                             return False
-                        _st_label_2001 = 0
+                        _st_label_2361 = 0
                         self._timer_start()
-                        while (_st_label_2001 == 0):
-                            _st_label_2001 += 1
-                            if ExistentialOpExpr_2002():
+                        while (_st_label_2361 == 0):
+                            _st_label_2361 += 1
+                            if ExistentialOpExpr_2362():
                                 self.output('received result')
                                 self.send(('result', resultShuttle), to=self._state.clients[clientId][0])
-                                _st_label_2001 += 1
+                                _st_label_2361 += 1
                             elif self._timer_expired:
                                 self.output('--------------------- Send Reconfiguration request to Olympus(Non head)--------------------------')
-                                _st_label_2001 += 1
+                                _st_label_2361 += 1
                             else:
-                                super()._label('_st_label_2001', block=True, timeout=self._state.ReplicaTIMEOUT)
-                                _st_label_2001 -= 1
+                                super()._label('_st_label_2361', block=True, timeout=self._state.ReplicaTIMEOUT)
+                                _st_label_2361 -= 1
                 elif (resultFound == 'Found'):
                     self.output('----------------------------Found Result Sending to client')
                     self.send(('result', resultShuttle), to=self._state.clients[clientId][0])
-    _Replica_handler_1908._labels = None
-    _Replica_handler_1908._notlabels = None
+    _Replica_handler_2268._labels = None
+    _Replica_handler_2268._notlabels = None
 
-    def _Replica_handler_2061(self, clientId, requestID, signedRequestStatement, p):
+    def _Replica_handler_2421(self, clientId, requestID, signedRequestStatement, p):
         self.output('---------------------ENTERING Replica:receive:forwardRequest-----------------------')
         temp_verify_key = decodeVerifyKey(self._state.clients[clientId][1])
         verified = ''
@@ -663,76 +813,104 @@ class Replica(da.DistProcess):
             self.output('-------------Result is----------', resultShuttle)
             if (resultFound == 'NoResult'):
                 if self.checkRequestIDInHistory(requestID):
-                    super()._label('_st_label_2128', block=False)
+                    super()._label('_st_label_2488', block=False)
                     result = resultShuttle = None
 
-                    def ExistentialOpExpr_2129():
+                    def ExistentialOpExpr_2489():
                         nonlocal result, resultShuttle
                         for (_, _, (result, resultShuttle)) in self._ReplicaReceivedEvent_5:
                             if (int(resultShuttle[0]) == requestID):
                                 return True
                         return False
-                    _st_label_2128 = 0
+                    _st_label_2488 = 0
                     self._timer_start()
-                    while (_st_label_2128 == 0):
-                        _st_label_2128 += 1
-                        if ExistentialOpExpr_2129():
+                    while (_st_label_2488 == 0):
+                        _st_label_2488 += 1
+                        if ExistentialOpExpr_2489():
                             self.output('received result')
                             self.send(('result', resultShuttle), to=self._state.clients[clientId][0])
-                            _st_label_2128 += 1
+                            _st_label_2488 += 1
                         elif self._timer_expired:
                             self.output('--------------------- Send Reconfiguration request to Olympus(head)--------------------------')
                             continue
-                            _st_label_2128 += 1
+                            _st_label_2488 += 1
                         else:
-                            super()._label('_st_label_2128', block=True, timeout=self._state.HeadTIMEOUT)
-                            _st_label_2128 -= 1
+                            super()._label('_st_label_2488', block=True, timeout=self._state.HeadTIMEOUT)
+                            _st_label_2488 -= 1
                 else:
                     self.output('--------------------- Start timer from scratch(head)--------------------------')
                     self.send(('initial', clientId, requestID, signedRequestStatement, 2), to=self._state.replicas[0][0])
-                    super()._label('_st_label_2187', block=False)
+                    super()._label('_st_label_2547', block=False)
                     result = resultShuttle = None
 
-                    def ExistentialOpExpr_2188():
+                    def ExistentialOpExpr_2548():
                         nonlocal result, resultShuttle
                         for (_, _, (result, resultShuttle)) in self._ReplicaReceivedEvent_5:
                             if (int(resultShuttle[0]) == requestID):
                                 return True
                         return False
-                    _st_label_2187 = 0
+                    _st_label_2547 = 0
                     self._timer_start()
-                    while (_st_label_2187 == 0):
-                        _st_label_2187 += 1
-                        if ExistentialOpExpr_2188():
+                    while (_st_label_2547 == 0):
+                        _st_label_2547 += 1
+                        if ExistentialOpExpr_2548():
                             self.output('received result')
                             self.send(('result', resultShuttle), to=self._state.clients[clientId][0])
-                            _st_label_2187 += 1
+                            _st_label_2547 += 1
                         elif self._timer_expired:
                             self.output('--------------------- Send Reconfiguration request to Olympus(head)--------------------------')
                             continue
-                            _st_label_2187 += 1
+                            _st_label_2547 += 1
                         else:
-                            super()._label('_st_label_2187', block=True, timeout=self._state.HeadTIMEOUT)
-                            _st_label_2187 -= 1
+                            super()._label('_st_label_2547', block=True, timeout=self._state.HeadTIMEOUT)
+                            _st_label_2547 -= 1
             elif (resultFound == 'Found'):
                 self.output('----------------------------Found Result Sending to client-------------------')
                 self.send(('result', resultShuttle), to=self._state.clients[clientId][0])
-    _Replica_handler_2061._labels = None
-    _Replica_handler_2061._notlabels = None
+    _Replica_handler_2421._labels = None
+    _Replica_handler_2421._notlabels = None
 
-    def _Replica_handler_2247(self, result, resultShuttle, nextReplica):
+    def _Replica_handler_2607(self, result, resultShuttle, resultShuttleNumber, clientId, nextReplica):
         self.output('-------------------- Received Result Shuttle from Next Replica -------------------------', level=20)
         self.output(result)
-        resultVerification = self.verifyResultProofs(resultShuttle[2])
-        if (resultVerification == 'True'):
-            self.appendToResultCache(resultShuttle)
+        self.output('-------- Current ClientId and resultShuttleNumber------', clientId, resultShuttleNumber)
+        self.output('-------- result------', resultShuttle[1])
+        self.output('-------- resultProof------', resultShuttle[2])
+        receivedResult = resultShuttle[1]
+        (rDigest, rEncodedMessage) = self.hashResult(receivedResult)
+        resultVerified = self.checkResultProofIntegerity(resultShuttle[2], rDigest)
+        if (not (resultVerified == 'False')):
+            self.output('-----------------------checking for failureType1---------------------------')
+            failureResultShuttle = (((('result_shuttle(' + str(clientId)) + ',') + str(resultShuttleNumber)) + ')')
+            self.output(failureResultShuttle)
+            (fStatus, getAction) = self.checkForFailure(failureResultShuttle)
+            self.output(fStatus, getAction)
+            if (not (fStatus == 'notFound')):
+                if (getAction == 'change_result()'):
+                    lst = list(resultShuttle)
+                    lst[1] = self.changeResult()
+                    resultShuttle = tuple(lst)
+            self.output(resultShuttle[1])
+            if (not (fStatus == 'notFound')):
+                if (getAction == 'drop_result_stmt()'):
+                    lst = list(resultShuttle)
+                    lst[2] = self.dropResultStatement(resultShuttle[2])
+                    resultShuttle = tuple(lst)
+            self.output(resultShuttle[2])
+            if (resultVerified == 'True'):
+                self.appendToResultCache(resultShuttle)
+            else:
+                self.output('--------------------- Proof of Misbehaviour---------------', level=40)
+            self.output(resultVerified)
+            if (not (self._state.i == 0)):
+                self.output(self._state.i)
+                self.send(('result', resultShuttle, resultShuttleNumber, clientId), to=self._state.replicas[(self._state.i - 1)][0])
         else:
-            self.output('--------------------- Proof of Misbehaviour---------------', level=40)
-        self.output(resultVerification)
-        if (not (self._state.i == 0)):
-            self.send(('result', resultShuttle), to=self._state.replicas[(self._state.i - 1)][0])
-    _Replica_handler_2247._labels = None
-    _Replica_handler_2247._notlabels = None
+            self.output('---------------------SEND RECONFIGURATION TO OLYMPUS---------------', level=40)
+            self.output('---------------------SEND RECONFIGURATION TO OLYMPUS---------------', level=40)
+            self.output('---------------------SEND RECONFIGURATION TO OLYMPUS---------------', level=40)
+    _Replica_handler_2607._labels = None
+    _Replica_handler_2607._notlabels = None
 
 class Node_(da.NodeProcess):
 
