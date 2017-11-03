@@ -1,0 +1,469 @@
+[2017-11-01 18:41:34,083] da.api<MainProcess>:INFO: Bootstrapping attempt failed due to BootstrapException('Unable to contact a peer node.',),  continuing as a master node (use '--master' to disable bootstrapping at startup).
+[2017-11-01 18:41:34,084] da.api<MainProcess>:INFO: <Node_:olympus> initialized at 127.0.0.1:(UdpTransport=15000, TcpTransport=15000).
+[2017-11-01 18:41:34,084] da.api<MainProcess>:INFO: Starting program <module 'ping' from 'C:\\Users\\SSDN-Dinesh\\Desktop\\SBU\\ASYNC\\BCR\\Asynchronous-Systems\\phase2\\ping.py'>...
+[2017-11-01 18:41:34,084] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-11-01 18:41:34,085] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-11-01 18:41:34,085] ping.Node_<Node_:olympus>:OUTPUT: ---------------ENTERING main---------------------
+[2017-11-01 18:41:34,340] ping.Olympus<Olympus:33002#olympus>:INFO: --------------- ENTERING Olymus:setup ---------------
+[2017-11-01 18:41:34,340] ping.Olympus<Olympus:33002#olympus>:OUTPUT: <Olympus:33002#olympus>
+[2017-11-01 18:41:34,340] ping.Olympus<Olympus:33002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup ---------------
+[2017-11-01 18:41:34,346] ping.Olympus<Olympus:33002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createKeys for clients and replicas---------------
+[2017-11-01 18:41:34,348] ping.Olympus<Olympus:33002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createClientProcesses---------------
+[2017-11-01 18:41:34,349] ping.Olympus<Olympus:33002#olympus>:INFO: Waiting to resolve name 'Client0'...
+[2017-11-01 18:42:09,320] da.common<MainProcess>:WARNING: Process name 'olympus#olympus' reassigned from ProcessId(uid=57de6fcc6065e487df001, seqno=1, pcls=Node_, name='olympus', nodename='olympus', hostname='127.0.0.1', transports=(15000, 15000)) to ProcessId(uid=57de6feec9a0c5d1f9001, seqno=1, pcls=Node_, name='olympus', nodename='olympus', hostname='127.0.0.1', transports=(32009, 11405)).
+[2017-11-01 18:42:09,325] da.api<MainProcess>:INFO: Bootstrapping attempt failed due to BootstrapException('Unable to contact a peer node.',),  continuing as a master node (use '--master' to disable bootstrapping at startup).
+[2017-11-01 18:42:09,325] da.api<MainProcess>:INFO: <Node_:olympus> initialized at 127.0.0.1:(UdpTransport=32009, TcpTransport=11405).
+[2017-11-01 18:42:09,326] da.api<MainProcess>:INFO: Starting program <module 'ping' from 'C:\\Users\\SSDN-Dinesh\\Desktop\\SBU\\ASYNC\\BCR\\Asynchronous-Systems\\phase2\\ping.py'>...
+[2017-11-01 18:42:09,326] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-11-01 18:42:09,327] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-11-01 18:42:09,328] ping.Node_<Node_:olympus>:OUTPUT: ---------------ENTERING main---------------------
+[2017-11-01 18:42:09,524] ping.Olympus<Olympus:fc002#olympus>:INFO: --------------- ENTERING Olymus:setup ---------------
+[2017-11-01 18:42:09,524] ping.Olympus<Olympus:fc002#olympus>:OUTPUT: <Olympus:fc002#olympus>
+[2017-11-01 18:42:09,525] ping.Olympus<Olympus:fc002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup ---------------
+[2017-11-01 18:42:09,525] ping.Olympus<Olympus:fc002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createKeys for clients and replicas---------------
+[2017-11-01 18:42:09,527] ping.Olympus<Olympus:fc002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createClientProcesses---------------
+[2017-11-01 18:42:09,528] ping.Olympus<Olympus:fc002#olympus>:INFO: Waiting to resolve name 'Client0'...
+[2017-11-01 19:07:24,793] da.api<MainProcess>:INFO: Bootstrapping attempt failed due to BootstrapException('Unable to contact a peer node.',),  continuing as a master node (use '--master' to disable bootstrapping at startup).
+[2017-11-01 19:07:24,794] da.api<MainProcess>:INFO: <Node_:olympus> initialized at 127.0.0.1:(UdpTransport=15000, TcpTransport=15000).
+[2017-11-01 19:07:24,794] da.api<MainProcess>:INFO: Starting program <module 'ping' from 'C:\\Users\\SSDN-Dinesh\\Desktop\\SBU\\ASYNC\\BCR\\Asynchronous-Systems\\phase2\\ping.py'>...
+[2017-11-01 19:07:24,794] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-11-01 19:07:24,795] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-11-01 19:07:24,796] ping.Node_<Node_:olympus>:OUTPUT: ---------------ENTERING main---------------------
+[2017-11-01 19:07:24,958] ping.Olympus<Olympus:e7002#olympus>:INFO: --------------- ENTERING Olymus:setup ---------------
+[2017-11-01 19:07:24,958] ping.Olympus<Olympus:e7002#olympus>:OUTPUT: <Olympus:e7002#olympus>
+[2017-11-01 19:07:24,958] ping.Olympus<Olympus:e7002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup ---------------
+[2017-11-01 19:07:24,959] ping.Olympus<Olympus:e7002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createKeys for clients and replicas---------------
+[2017-11-01 19:07:24,960] ping.Olympus<Olympus:e7002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createClientProcesses---------------
+[2017-11-01 19:07:24,961] ping.Olympus<Olympus:e7002#olympus>:INFO: Waiting to resolve name 'Client0'...
+[2017-11-01 19:07:50,637] da.api<MainProcess>:INFO: Bootstrapping attempt failed due to BootstrapException('Unable to contact a peer node.',),  continuing as a master node (use '--master' to disable bootstrapping at startup).
+[2017-11-01 19:07:50,638] da.api<MainProcess>:INFO: <Node_:olympus> initialized at 127.0.0.1:(UdpTransport=15000, TcpTransport=15000).
+[2017-11-01 19:07:50,638] da.api<MainProcess>:INFO: Starting program <module 'ping' from 'C:\\Users\\SSDN-Dinesh\\Desktop\\SBU\\ASYNC\\BCR\\Asynchronous-Systems\\phase2\\ping.py'>...
+[2017-11-01 19:07:50,640] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-11-01 19:07:50,641] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-11-01 19:07:50,642] ping.Node_<Node_:olympus>:OUTPUT: ---------------ENTERING main---------------------
+[2017-11-01 19:07:50,813] ping.Olympus<Olympus:39002#olympus>:INFO: --------------- ENTERING Olymus:setup ---------------
+[2017-11-01 19:07:50,813] ping.Olympus<Olympus:39002#olympus>:OUTPUT: <Olympus:39002#olympus>
+[2017-11-01 19:07:50,813] ping.Olympus<Olympus:39002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup ---------------
+[2017-11-01 19:07:50,814] ping.Olympus<Olympus:39002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createKeys for clients and replicas---------------
+[2017-11-01 19:07:50,815] ping.Olympus<Olympus:39002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createClientProcesses---------------
+[2017-11-01 19:07:50,816] ping.Olympus<Olympus:39002#olympus>:INFO: Waiting to resolve name 'Client0'...
+[2017-11-01 19:08:57,272] da.common<MainProcess>:WARNING: Process name 'olympus#olympus' reassigned from ProcessId(uid=57de75cffb34859092001, seqno=1, pcls=Node_, name='olympus', nodename='olympus', hostname='127.0.0.1', transports=(15000, 15000)) to ProcessId(uid=57de76110da1ec0e6d001, seqno=1, pcls=Node_, name='olympus', nodename='olympus', hostname='127.0.0.1', transports=(22400, 18790)).
+[2017-11-01 19:08:57,276] da.api<MainProcess>:INFO: Bootstrapping attempt failed due to BootstrapException('Unable to contact a peer node.',),  continuing as a master node (use '--master' to disable bootstrapping at startup).
+[2017-11-01 19:08:57,276] da.api<MainProcess>:INFO: <Node_:olympus> initialized at 127.0.0.1:(UdpTransport=22400, TcpTransport=18790).
+[2017-11-01 19:08:57,277] da.api<MainProcess>:INFO: Starting program <module 'ping' from 'C:\\Users\\SSDN-Dinesh\\Desktop\\SBU\\ASYNC\\BCR\\Asynchronous-Systems\\phase2\\ping.py'>...
+[2017-11-01 19:08:57,277] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-11-01 19:08:57,278] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-11-01 19:08:57,278] ping.Node_<Node_:olympus>:OUTPUT: ---------------ENTERING main---------------------
+[2017-11-01 19:08:57,544] ping.Olympus<Olympus:1d002#olympus>:INFO: --------------- ENTERING Olymus:setup ---------------
+[2017-11-01 19:08:57,544] ping.Olympus<Olympus:1d002#olympus>:OUTPUT: <Olympus:1d002#olympus>
+[2017-11-01 19:08:57,544] ping.Olympus<Olympus:1d002#olympus>:OUTPUT: Dinesh
+[2017-11-01 19:08:57,545] ping.Olympus<Olympus:1d002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup ---------------
+[2017-11-01 19:08:57,551] ping.Olympus<Olympus:1d002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createKeys for clients and replicas---------------
+[2017-11-01 19:08:57,552] ping.Olympus<Olympus:1d002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createClientProcesses---------------
+[2017-11-01 19:08:57,553] ping.Olympus<Olympus:1d002#olympus>:INFO: Waiting to resolve name 'Client0'...
+[2017-11-01 19:09:09,912] da.common<MainProcess>:WARNING: Process name 'olympus#olympus' reassigned from ProcessId(uid=57de76110da1ec0e6d001, seqno=1, pcls=Node_, name='olympus', nodename='olympus', hostname='127.0.0.1', transports=(22400, 18790)) to ProcessId(uid=57de761d65b2638d10001, seqno=1, pcls=Node_, name='olympus', nodename='olympus', hostname='127.0.0.1', transports=(17672, 16470)).
+[2017-11-01 19:09:09,916] da.api<MainProcess>:INFO: Bootstrapping attempt failed due to BootstrapException('Unable to contact a peer node.',),  continuing as a master node (use '--master' to disable bootstrapping at startup).
+[2017-11-01 19:09:09,916] da.api<MainProcess>:INFO: <Node_:olympus> initialized at 127.0.0.1:(UdpTransport=17672, TcpTransport=16470).
+[2017-11-01 19:09:09,916] da.api<MainProcess>:INFO: Starting program <module 'ping' from 'C:\\Users\\SSDN-Dinesh\\Desktop\\SBU\\ASYNC\\BCR\\Asynchronous-Systems\\phase2\\ping.py'>...
+[2017-11-01 19:09:09,917] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-11-01 19:09:09,918] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-11-01 19:09:09,918] ping.Node_<Node_:olympus>:OUTPUT: ---------------ENTERING main---------------------
+[2017-11-01 19:09:10,095] ping.Olympus<Olympus:33002#olympus>:INFO: --------------- ENTERING Olymus:setup ---------------
+[2017-11-01 19:09:10,096] ping.Olympus<Olympus:33002#olympus>:OUTPUT: <Olympus:33002#olympus>
+[2017-11-01 19:09:10,096] ping.Olympus<Olympus:33002#olympus>:OUTPUT: Dinesh
+[2017-11-01 19:09:10,096] ping.Olympus<Olympus:33002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup ---------------
+[2017-11-01 19:09:10,097] ping.Olympus<Olympus:33002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createKeys for clients and replicas---------------
+[2017-11-01 19:09:10,098] ping.Olympus<Olympus:33002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createClientProcesses---------------
+[2017-11-01 19:09:10,099] ping.Olympus<Olympus:33002#olympus>:INFO: Waiting to resolve name 'Client0'...
+[2017-11-01 19:09:26,509] da.api<MainProcess>:INFO: Bootstrapping attempt failed due to BootstrapException('Unable to contact a peer node.',),  continuing as a master node (use '--master' to disable bootstrapping at startup).
+[2017-11-01 19:09:26,509] da.api<MainProcess>:INFO: <Node_:olympus> initialized at 127.0.0.1:(UdpTransport=15000, TcpTransport=15000).
+[2017-11-01 19:09:26,509] da.api<MainProcess>:INFO: Starting program <module 'ping' from 'C:\\Users\\SSDN-Dinesh\\Desktop\\SBU\\ASYNC\\BCR\\Asynchronous-Systems\\phase2\\ping.py'>...
+[2017-11-01 19:09:26,510] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-11-01 19:09:26,510] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-11-01 19:09:26,511] ping.Node_<Node_:olympus>:OUTPUT: ---------------ENTERING main---------------------
+[2017-11-01 19:09:26,681] ping.Olympus<Olympus:bd002#olympus>:INFO: --------------- ENTERING Olymus:setup ---------------
+[2017-11-01 19:09:26,681] ping.Olympus<Olympus:bd002#olympus>:OUTPUT: <Olympus:bd002#olympus>
+[2017-11-01 19:09:26,681] ping.Olympus<Olympus:bd002#olympus>:OUTPUT: Dinesh
+[2017-11-01 19:09:26,682] ping.Olympus<Olympus:bd002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup ---------------
+[2017-11-01 19:09:26,682] ping.Olympus<Olympus:bd002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createKeys for clients and replicas---------------
+[2017-11-01 19:09:26,684] ping.Olympus<Olympus:bd002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createClientProcesses---------------
+[2017-11-01 19:09:26,684] ping.Olympus<Olympus:bd002#olympus>:INFO: Waiting to resolve name 'Client0'...
+[2017-11-01 19:10:32,749] da.api<MainProcess>:INFO: Bootstrapping attempt failed due to BootstrapException('Unable to contact a peer node.',),  continuing as a master node (use '--master' to disable bootstrapping at startup).
+[2017-11-01 19:10:32,749] da.api<MainProcess>:INFO: <Node_:olympus> initialized at 127.0.0.1:(UdpTransport=15000, TcpTransport=15000).
+[2017-11-01 19:10:32,750] da.api<MainProcess>:INFO: Starting program <module 'ping' from 'C:\\Users\\SSDN-Dinesh\\Desktop\\SBU\\ASYNC\\BCR\\Asynchronous-Systems\\phase2\\ping.py'>...
+[2017-11-01 19:10:32,750] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-11-01 19:10:32,751] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-11-01 19:10:32,751] ping.Node_<Node_:olympus>:OUTPUT: ---------------ENTERING main---------------------
+[2017-11-01 19:10:32,926] ping.Olympus<Olympus:8a002#olympus>:INFO: --------------- ENTERING Olymus:setup ---------------
+[2017-11-01 19:10:32,926] ping.Olympus<Olympus:8a002#olympus>:OUTPUT: <Olympus:8a002#olympus>
+[2017-11-01 19:10:32,926] ping.Olympus<Olympus:8a002#olympus>:OUTPUT: Dinesh
+[2017-11-01 19:10:32,927] ping.Olympus<Olympus:8a002#olympus>:ERROR: Exception during setup((17342465, ())): TypeError('helloClass() takes 0 positional arguments but 1 was given',)
+[2017-11-01 19:10:32,928] ping.Olympus<Olympus:8a002#olympus>:ERROR: `start` received before `setup`!
+[2017-11-01 19:10:32,929] da.api<MainProcess>:INFO: Main process terminated.
+[2017-11-01 19:11:22,539] da.api<MainProcess>:INFO: Bootstrapping attempt failed due to BootstrapException('Unable to contact a peer node.',),  continuing as a master node (use '--master' to disable bootstrapping at startup).
+[2017-11-01 19:11:22,539] da.api<MainProcess>:INFO: <Node_:olympus> initialized at 127.0.0.1:(UdpTransport=15000, TcpTransport=15000).
+[2017-11-01 19:11:22,539] da.api<MainProcess>:INFO: Starting program <module 'ping' from 'C:\\Users\\SSDN-Dinesh\\Desktop\\SBU\\ASYNC\\BCR\\Asynchronous-Systems\\phase2\\ping.py'>...
+[2017-11-01 19:11:22,540] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-11-01 19:11:22,541] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-11-01 19:11:22,541] ping.Node_<Node_:olympus>:OUTPUT: ---------------ENTERING main---------------------
+[2017-11-01 19:11:22,704] ping.Olympus<Olympus:7c002#olympus>:INFO: --------------- ENTERING Olymus:setup ---------------
+[2017-11-01 19:11:22,704] ping.Olympus<Olympus:7c002#olympus>:OUTPUT: <Olympus:7c002#olympus>
+[2017-11-01 19:11:22,704] ping.Olympus<Olympus:7c002#olympus>:OUTPUT: Dinesh
+[2017-11-01 19:11:22,705] ping.Olympus<Olympus:7c002#olympus>:OUTPUT: Hello Class
+[2017-11-01 19:11:22,705] ping.Olympus<Olympus:7c002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup ---------------
+[2017-11-01 19:11:22,706] ping.Olympus<Olympus:7c002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createKeys for clients and replicas---------------
+[2017-11-01 19:11:22,707] ping.Olympus<Olympus:7c002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createClientProcesses---------------
+[2017-11-01 19:11:22,707] ping.Olympus<Olympus:7c002#olympus>:INFO: Waiting to resolve name 'Client0'...
+[2017-11-01 19:12:08,956] da.api<MainProcess>:INFO: Bootstrapping attempt failed due to BootstrapException('Unable to contact a peer node.',),  continuing as a master node (use '--master' to disable bootstrapping at startup).
+[2017-11-01 19:12:08,957] da.api<MainProcess>:INFO: <Node_:olympus> initialized at 127.0.0.1:(UdpTransport=15000, TcpTransport=15000).
+[2017-11-01 19:12:08,957] da.api<MainProcess>:INFO: Starting program <module 'ping' from 'C:\\Users\\SSDN-Dinesh\\Desktop\\SBU\\ASYNC\\BCR\\Asynchronous-Systems\\phase2\\ping.py'>...
+[2017-11-01 19:12:08,958] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-11-01 19:12:08,959] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-11-01 19:12:08,959] ping.Node_<Node_:olympus>:OUTPUT: ---------------ENTERING main---------------------
+[2017-11-01 19:12:09,129] ping.Olympus<Olympus:f3002#olympus>:INFO: --------------- ENTERING Olymus:setup ---------------
+[2017-11-01 19:12:09,129] ping.Olympus<Olympus:f3002#olympus>:OUTPUT: <Olympus:f3002#olympus>
+[2017-11-01 19:12:09,130] ping.Olympus<Olympus:f3002#olympus>:OUTPUT: Dinesh
+[2017-11-01 19:12:09,130] ping.Olympus<Olympus:f3002#olympus>:OUTPUT: Hello Class
+[2017-11-01 19:12:09,130] ping.Olympus<Olympus:f3002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup ---------------
+[2017-11-01 19:12:09,131] ping.Olympus<Olympus:f3002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createKeys for clients and replicas---------------
+[2017-11-01 19:12:09,132] ping.Olympus<Olympus:f3002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createClientProcesses---------------
+[2017-11-01 19:12:09,132] ping.Olympus<Olympus:f3002#olympus>:INFO: Waiting to resolve name 'Client0'...
+[2017-11-01 19:13:20,095] da.api<MainProcess>:INFO: Bootstrapping attempt failed due to BootstrapException('Unable to contact a peer node.',),  continuing as a master node (use '--master' to disable bootstrapping at startup).
+[2017-11-01 19:13:20,095] da.api<MainProcess>:INFO: <Node_:olympus> initialized at 127.0.0.1:(UdpTransport=15000, TcpTransport=15000).
+[2017-11-01 19:13:20,095] da.api<MainProcess>:INFO: Starting program <module 'ping' from 'C:\\Users\\SSDN-Dinesh\\Desktop\\SBU\\ASYNC\\BCR\\Asynchronous-Systems\\phase2\\ping.py'>...
+[2017-11-01 19:13:20,096] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-11-01 19:13:20,096] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-11-01 19:13:20,097] ping.Node_<Node_:olympus>:OUTPUT: ---------------ENTERING main---------------------
+[2017-11-01 19:13:20,272] ping.Olympus<Olympus:b3002#olympus>:INFO: --------------- ENTERING Olymus:setup ---------------
+[2017-11-01 19:13:20,272] ping.Olympus<Olympus:b3002#olympus>:OUTPUT: <Olympus:b3002#olympus>
+[2017-11-01 19:13:20,272] ping.Olympus<Olympus:b3002#olympus>:OUTPUT: Dinesh
+[2017-11-01 19:13:20,272] ping.Olympus<Olympus:b3002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup ---------------
+[2017-11-01 19:13:20,273] ping.Olympus<Olympus:b3002#olympus>:OUTPUT: Hello Class
+[2017-11-01 19:13:20,273] ping.Olympus<Olympus:b3002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createKeys for clients and replicas---------------
+[2017-11-01 19:13:20,275] ping.Olympus<Olympus:b3002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createClientProcesses---------------
+[2017-11-01 19:13:20,275] ping.Olympus<Olympus:b3002#olympus>:INFO: Waiting to resolve name 'Client0'...
+[2017-11-01 19:18:20,762] da.api<MainProcess>:INFO: Bootstrapping attempt failed due to BootstrapException('Unable to contact a peer node.',),  continuing as a master node (use '--master' to disable bootstrapping at startup).
+[2017-11-01 19:18:20,762] da.api<MainProcess>:INFO: <Node_:olympus> initialized at 127.0.0.1:(UdpTransport=15000, TcpTransport=15000).
+[2017-11-01 19:18:20,763] da.api<MainProcess>:INFO: Starting program <module 'ping' from 'C:\\Users\\SSDN-Dinesh\\Desktop\\SBU\\ASYNC\\BCR\\Asynchronous-Systems\\phase2\\ping.py'>...
+[2017-11-01 19:18:20,763] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-11-01 19:18:20,764] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-11-01 19:18:20,765] ping.Node_<Node_:olympus>:OUTPUT: ---------------ENTERING main---------------------
+[2017-11-01 19:18:20,940] ping.Olympus<Olympus:92002#olympus>:INFO: --------------- ENTERING Olymus:setup ---------------
+[2017-11-01 19:18:20,941] ping.Olympus<Olympus:92002#olympus>:OUTPUT: <Olympus:92002#olympus>
+[2017-11-01 19:18:20,941] ping.Olympus<Olympus:92002#olympus>:OUTPUT: Dinesh
+[2017-11-01 19:18:20,941] ping.Olympus<Olympus:92002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup ---------------
+[2017-11-01 19:18:20,941] ping.Olympus<Olympus:92002#olympus>:OUTPUT: Hello Class
+[2017-11-01 19:18:20,942] ping.Olympus<Olympus:92002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createKeys for clients and replicas---------------
+[2017-11-01 19:18:20,943] ping.Olympus<Olympus:92002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createClientProcesses---------------
+[2017-11-01 19:18:20,944] ping.Olympus<Olympus:92002#olympus>:INFO: Waiting to resolve name 'Client0'...
+[2017-11-01 19:26:32,973] da.sim.Router<MainProcess>:INFO: Bootstrap succeeded using <UdpTransport(127.0.0.1:23177)>.
+[2017-11-01 19:26:32,974] da.api<MainProcess>:INFO: <Node_:olympus> initialized at 127.0.0.1:(UdpTransport=23177, TcpTransport=23736).
+[2017-11-01 19:26:32,974] da.api<MainProcess>:INFO: Starting program <module 'ping' from 'C:\\Users\\SSDN-Dinesh\\Desktop\\SBU\\ASYNC\\BCR\\Asynchronous-Systems\\phase2\\ping.py'>...
+[2017-11-01 19:26:32,975] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-11-01 19:26:32,976] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-11-01 19:26:32,976] ping.Node_<Node_:olympus>:OUTPUT: ---------------ENTERING main---------------------
+[2017-11-01 19:26:33,147] ping.Olympus<Olympus:ba002#olympus>:INFO: --------------- ENTERING Olymus:setup ---------------
+[2017-11-01 19:26:33,147] ping.Olympus<Olympus:ba002#olympus>:OUTPUT: <Olympus:ba002#olympus>
+[2017-11-01 19:26:33,147] ping.Olympus<Olympus:ba002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup ---------------
+[2017-11-01 19:26:33,148] ping.Olympus<Olympus:ba002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createKeys for clients and replicas---------------
+[2017-11-01 19:26:33,149] ping.Olympus<Olympus:ba002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createClientProcesses---------------
+[2017-11-01 19:26:33,150] ping.Olympus<Olympus:ba002#olympus>:INFO: Waiting to resolve name 'Client0'...
+[2017-11-01 19:26:33,322] ping.Olympus<Olympus:ba002#olympus>:INFO: Waiting to resolve name 'Client1'...
+[2017-11-01 19:26:33,523] ping.Olympus<Olympus:ba002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createKeys for clients and replicas---------------
+[2017-11-01 19:26:33,525] ping.Olympus<Olympus:ba002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createReplicaProcesses---------------
+[2017-11-01 19:26:33,525] ping.Olympus<Olympus:ba002#olympus>:INFO: Waiting to resolve name 'Replica0'...
+[2017-11-01 19:26:33,703] ping.Olympus<Olympus:ba002#olympus>:INFO: Waiting to resolve name 'Replica1'...
+[2017-11-01 19:26:33,874] ping.Olympus<Olympus:ba002#olympus>:INFO: Waiting to resolve name 'Replica2'...
+[2017-11-01 19:26:34,060] ping.Olympus<Olympus:ba002#olympus>:INFO: --------------- ENTERING olympus:receieve:requestConfiguration ---------------
+[2017-11-01 19:26:34,060] ping.Olympus<Olympus:ba002#olympus>:OUTPUT: <Client:47002#Client0>
+[2017-11-01 19:26:34,060] da.api<MainProcess>:INFO: Main process terminated.
+[2017-11-01 19:26:34,061] ping.Olympus<Olympus:ba002#olympus>:INFO: --------------- ENTERING olympus:receieve:requestConfiguration ---------------
+[2017-11-01 19:26:34,061] ping.Olympus<Olympus:ba002#olympus>:OUTPUT: <Client:52002#Client1>
+[2017-11-01 19:26:34,076] ping.Olympus<Olympus:ba002#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-11-01 19:26:34,079] ping.Olympus<Olympus:ba002#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-11-01 19:26:34,079] ping.Olympus<Olympus:ba002#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-11-01 19:26:34,080] ping.Olympus<Olympus:ba002#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- append movie wars
+[2017-11-01 19:26:34,087] ping.Olympus<Olympus:ba002#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 1
+[2017-11-01 19:26:34,089] ping.Olympus<Olympus:ba002#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-11-01 19:26:34,090] ping.Olympus<Olympus:ba002#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-11-01 19:26:34,090] ping.Olympus<Olympus:ba002#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put movie star
+[2017-11-01 19:26:44,112] ping.Olympus<Olympus:ba002#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- movie
+[2017-11-01 19:26:44,112] ping.Olympus<Olympus:ba002#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'star']
+[2017-11-01 19:26:44,118] ping.Olympus<Olympus:ba002#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- movie
+[2017-11-01 19:26:44,118] ping.Olympus<Olympus:ba002#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'star']
+[2017-11-01 19:26:44,120] ping.Olympus<Olympus:ba002#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-11-01 19:26:44,123] ping.Olympus<Olympus:ba002#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-11-01 19:26:44,123] ping.Olympus<Olympus:ba002#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-11-01 19:26:44,124] ping.Olympus<Olympus:ba002#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- get movie 
+[2017-11-01 19:26:44,125] ping.Olympus<Olympus:ba002#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- movie
+[2017-11-01 19:26:44,125] ping.Olympus<Olympus:ba002#olympus>:INFO: --------------- Sending globaData to client --------------- ['', 'star', '']
+[2017-11-01 19:26:44,131] ping.Olympus<Olympus:ba002#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- movie
+[2017-11-01 19:26:44,131] ping.Olympus<Olympus:ba002#olympus>:INFO: --------------- Sending globaData to client --------------- ['', 'star', '']
+[2017-11-01 19:26:44,133] ping.Olympus<Olympus:ba002#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 1
+[2017-11-01 19:26:44,136] ping.Olympus<Olympus:ba002#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-11-01 19:26:44,137] ping.Olympus<Olympus:ba002#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-11-01 19:26:44,137] ping.Olympus<Olympus:ba002#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- get movie 
+[2017-11-01 19:26:44,141] ping.Olympus<Olympus:ba002#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- movie
+[2017-11-01 19:26:44,142] ping.Olympus<Olympus:ba002#olympus>:INFO: --------------- Sending globaData to client --------------- ['', 'star', '']
+[2017-11-01 19:26:44,150] ping.Olympus<Olympus:ba002#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- movie
+[2017-11-01 19:26:44,150] ping.Olympus<Olympus:ba002#olympus>:INFO: --------------- Sending globaData to client --------------- ['', 'star', '']
+[2017-11-01 19:26:54,283] ping.Olympus<Olympus:ba002#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- movie
+[2017-11-01 19:26:54,302] ping.Olympus<Olympus:ba002#olympus>:INFO: --------------- Sending globaData to client --------------- ['', 'star', '']
+[2017-11-01 19:26:54,310] ping.Olympus<Olympus:ba002#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- movie
+[2017-11-01 19:26:54,311] ping.Olympus<Olympus:ba002#olympus>:INFO: --------------- Sending globaData to client --------------- ['', 'star', '']
+[2017-11-01 19:26:54,315] ping.Olympus<Olympus:ba002#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- movie
+[2017-11-01 19:26:54,315] ping.Olympus<Olympus:ba002#olympus>:INFO: --------------- Sending globaData to client --------------- ['', 'star', '']
+[2017-11-01 19:26:54,341] ping.Olympus<Olympus:ba002#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- movie
+[2017-11-01 19:26:54,341] ping.Olympus<Olympus:ba002#olympus>:INFO: --------------- Sending globaData to client --------------- ['', 'star', '']
+[2017-11-01 19:26:54,342] ping.Olympus<Olympus:ba002#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- movie
+[2017-11-01 19:26:54,343] ping.Olympus<Olympus:ba002#olympus>:INFO: --------------- Sending globaData to client --------------- ['', 'star', '']
+[2017-11-01 19:26:54,354] ping.Olympus<Olympus:ba002#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- movie
+[2017-11-01 19:26:54,354] ping.Olympus<Olympus:ba002#olympus>:INFO: --------------- Sending globaData to client --------------- ['', 'star', '']
+[2017-11-01 19:37:46,646] da.sim.Router<MainProcess>:INFO: Bootstrap succeeded using <UdpTransport(127.0.0.1:14002)>.
+[2017-11-01 19:37:46,646] da.api<MainProcess>:INFO: <Node_:olympus> initialized at 127.0.0.1:(UdpTransport=14002, TcpTransport=16196).
+[2017-11-01 19:37:46,647] da.api<MainProcess>:INFO: Starting program <module 'ping' from 'C:\\Users\\SSDN-Dinesh\\Desktop\\SBU\\ASYNC\\BCR\\Asynchronous-Systems\\phase2\\ping.py'>...
+[2017-11-01 19:37:46,647] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-11-01 19:37:46,648] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-11-01 19:37:46,648] ping.Node_<Node_:olympus>:OUTPUT: ---------------ENTERING main---------------------
+[2017-11-01 19:37:46,813] ping.Olympus<Olympus:19002#olympus>:INFO: --------------- ENTERING Olymus:setup ---------------
+[2017-11-01 19:37:46,813] ping.Olympus<Olympus:19002#olympus>:OUTPUT: <Olympus:19002#olympus>
+[2017-11-01 19:37:46,814] ping.Olympus<Olympus:19002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup ---------------
+[2017-11-01 19:37:46,814] ping.Olympus<Olympus:19002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createKeys for clients and replicas---------------
+[2017-11-01 19:37:46,816] ping.Olympus<Olympus:19002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createClientProcesses---------------
+[2017-11-01 19:37:46,816] ping.Olympus<Olympus:19002#olympus>:INFO: Waiting to resolve name 'Client0'...
+[2017-11-01 19:37:46,994] ping.Olympus<Olympus:19002#olympus>:INFO: Waiting to resolve name 'Client1'...
+[2017-11-01 19:37:47,168] ping.Olympus<Olympus:19002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createKeys for clients and replicas---------------
+[2017-11-01 19:37:47,170] ping.Olympus<Olympus:19002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createReplicaProcesses---------------
+[2017-11-01 19:37:47,171] ping.Olympus<Olympus:19002#olympus>:INFO: Waiting to resolve name 'Replica0'...
+[2017-11-01 19:37:47,353] ping.Olympus<Olympus:19002#olympus>:INFO: Waiting to resolve name 'Replica1'...
+[2017-11-01 19:37:47,535] ping.Olympus<Olympus:19002#olympus>:INFO: Waiting to resolve name 'Replica2'...
+[2017-11-01 19:37:47,720] ping.Olympus<Olympus:19002#olympus>:INFO: --------------- ENTERING olympus:receieve:requestConfiguration ---------------
+[2017-11-01 19:37:47,721] ping.Olympus<Olympus:19002#olympus>:OUTPUT: <Client:aa002#Client0>
+[2017-11-01 19:37:47,721] da.api<MainProcess>:INFO: Main process terminated.
+[2017-11-01 19:37:47,721] ping.Olympus<Olympus:19002#olympus>:INFO: --------------- ENTERING olympus:receieve:requestConfiguration ---------------
+[2017-11-01 19:37:47,721] ping.Olympus<Olympus:19002#olympus>:OUTPUT: <Client:16002#Client1>
+[2017-11-01 19:37:47,736] ping.Olympus<Olympus:19002#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-11-01 19:37:47,738] ping.Olympus<Olympus:19002#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-11-01 19:37:47,740] ping.Olympus<Olympus:19002#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-11-01 19:37:47,740] ping.Olympus<Olympus:19002#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- append movie wars
+[2017-11-01 19:37:47,750] ping.Olympus<Olympus:19002#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 1
+[2017-11-01 19:37:47,752] ping.Olympus<Olympus:19002#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-11-01 19:37:47,753] ping.Olympus<Olympus:19002#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-11-01 19:37:47,753] ping.Olympus<Olympus:19002#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put movie star
+[2017-11-01 19:37:57,758] ping.Olympus<Olympus:19002#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- movie
+[2017-11-01 19:37:57,760] ping.Olympus<Olympus:19002#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'star']
+[2017-11-01 19:37:57,762] ping.Olympus<Olympus:19002#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- movie
+[2017-11-01 19:37:57,763] ping.Olympus<Olympus:19002#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'star']
+[2017-11-01 19:37:57,764] ping.Olympus<Olympus:19002#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- movie
+[2017-11-01 19:37:57,764] ping.Olympus<Olympus:19002#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'star']
+[2017-11-01 19:37:57,767] ping.Olympus<Olympus:19002#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- movie
+[2017-11-01 19:37:57,767] ping.Olympus<Olympus:19002#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'star']
+[2017-11-01 19:37:57,771] ping.Olympus<Olympus:19002#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- movie
+[2017-11-01 19:37:57,772] ping.Olympus<Olympus:19002#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'star']
+[2017-11-01 19:37:57,775] ping.Olympus<Olympus:19002#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- movie
+[2017-11-01 19:37:57,776] ping.Olympus<Olympus:19002#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'star']
+[2017-11-01 19:37:57,790] ping.Olympus<Olympus:19002#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 1
+[2017-11-01 19:37:57,793] ping.Olympus<Olympus:19002#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-11-01 19:37:57,793] ping.Olympus<Olympus:19002#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-11-01 19:37:57,794] ping.Olympus<Olympus:19002#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- get movie 
+[2017-11-01 19:37:57,816] ping.Olympus<Olympus:19002#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-11-01 19:37:57,819] ping.Olympus<Olympus:19002#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-11-01 19:37:57,819] ping.Olympus<Olympus:19002#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-11-01 19:37:57,819] ping.Olympus<Olympus:19002#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- get movie 
+[2017-11-01 19:38:07,778] ping.Olympus<Olympus:19002#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- movie
+[2017-11-01 19:38:07,781] ping.Olympus<Olympus:19002#olympus>:INFO: --------------- Sending globaData to client --------------- ['', 'star', '']
+[2017-11-01 19:38:07,782] ping.Olympus<Olympus:19002#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- movie
+[2017-11-01 19:38:07,782] ping.Olympus<Olympus:19002#olympus>:INFO: --------------- Sending globaData to client --------------- ['', 'star', '']
+[2017-11-01 19:38:07,824] ping.Olympus<Olympus:19002#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- movie
+[2017-11-01 19:38:07,825] ping.Olympus<Olympus:19002#olympus>:INFO: --------------- Sending globaData to client --------------- ['', 'star', '']
+[2017-11-01 19:38:07,887] ping.Olympus<Olympus:19002#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- movie
+[2017-11-01 19:38:07,891] ping.Olympus<Olympus:19002#olympus>:INFO: --------------- Sending globaData to client --------------- ['', 'star', '']
+[2017-11-01 19:38:07,892] ping.Olympus<Olympus:19002#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- movie
+[2017-11-01 19:38:07,893] ping.Olympus<Olympus:19002#olympus>:INFO: --------------- Sending globaData to client --------------- ['', 'star', '']
+[2017-11-01 19:38:07,896] ping.Olympus<Olympus:19002#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- movie
+[2017-11-01 19:38:07,896] ping.Olympus<Olympus:19002#olympus>:INFO: --------------- Sending globaData to client --------------- ['', 'star', '']
+[2017-11-01 19:44:41,703] da.sim.Router<MainProcess>:INFO: Bootstrap succeeded using <UdpTransport(127.0.0.1:39475)>.
+[2017-11-01 19:44:41,704] da.api<MainProcess>:INFO: <Node_:olympus> initialized at 127.0.0.1:(UdpTransport=39475, TcpTransport=21744).
+[2017-11-01 19:44:41,704] da.api<MainProcess>:INFO: Starting program <module 'ping' from 'C:\\Users\\SSDN-Dinesh\\Desktop\\SBU\\ASYNC\\BCR\\Asynchronous-Systems\\phase2\\ping.py'>...
+[2017-11-01 19:44:41,704] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-11-01 19:44:41,705] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-11-01 19:44:41,705] ping.Node_<Node_:olympus>:OUTPUT: ---------------ENTERING main---------------------
+[2017-11-01 19:44:41,878] ping.Olympus<Olympus:be002#olympus>:INFO: --------------- ENTERING Olymus:setup ---------------
+[2017-11-01 19:44:41,879] ping.Olympus<Olympus:be002#olympus>:OUTPUT: <Olympus:be002#olympus>
+[2017-11-01 19:44:41,879] ping.Olympus<Olympus:be002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup ---------------
+[2017-11-01 19:44:41,879] ping.Olympus<Olympus:be002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createKeys for clients and replicas---------------
+[2017-11-01 19:44:41,881] ping.Olympus<Olympus:be002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createClientProcesses---------------
+[2017-11-01 19:44:41,881] ping.Olympus<Olympus:be002#olympus>:INFO: Waiting to resolve name 'Client0'...
+[2017-11-01 19:44:42,068] ping.Olympus<Olympus:be002#olympus>:INFO: Waiting to resolve name 'Client1'...
+[2017-11-01 19:44:42,248] ping.Olympus<Olympus:be002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createKeys for clients and replicas---------------
+[2017-11-01 19:44:42,250] ping.Olympus<Olympus:be002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createReplicaProcesses---------------
+[2017-11-01 19:44:42,250] ping.Olympus<Olympus:be002#olympus>:INFO: Waiting to resolve name 'Replica0'...
+[2017-11-01 19:44:42,420] ping.Olympus<Olympus:be002#olympus>:INFO: Waiting to resolve name 'Replica1'...
+[2017-11-01 19:44:42,592] ping.Olympus<Olympus:be002#olympus>:INFO: Waiting to resolve name 'Replica2'...
+[2017-11-01 19:44:42,795] ping.Olympus<Olympus:be002#olympus>:INFO: --------------- ENTERING olympus:receieve:requestConfiguration ---------------
+[2017-11-01 19:44:42,795] ping.Olympus<Olympus:be002#olympus>:OUTPUT: <Client:5d002#Client0>
+[2017-11-01 19:44:42,795] da.api<MainProcess>:INFO: Main process terminated.
+[2017-11-01 19:44:42,796] ping.Olympus<Olympus:be002#olympus>:INFO: --------------- ENTERING olympus:receieve:requestConfiguration ---------------
+[2017-11-01 19:44:42,796] ping.Olympus<Olympus:be002#olympus>:OUTPUT: <Client:61002#Client1>
+[2017-11-01 19:44:42,797] ping.Olympus<Olympus:be002#olympus>:OUTPUT: terminating
+[2017-11-01 19:44:56,062] da.sim.Router<MainProcess>:INFO: Bootstrap succeeded using <UdpTransport(127.0.0.1:14027)>.
+[2017-11-01 19:44:56,062] da.api<MainProcess>:INFO: <Node_:olympus> initialized at 127.0.0.1:(UdpTransport=14027, TcpTransport=20941).
+[2017-11-01 19:44:56,062] da.api<MainProcess>:INFO: Starting program <module 'ping' from 'C:\\Users\\SSDN-Dinesh\\Desktop\\SBU\\ASYNC\\BCR\\Asynchronous-Systems\\phase2\\ping.py'>...
+[2017-11-01 19:44:56,063] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-11-01 19:44:56,064] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-11-01 19:44:56,064] ping.Node_<Node_:olympus>:OUTPUT: ---------------ENTERING main---------------------
+[2017-11-01 19:44:56,230] ping.Olympus<Olympus:31002#olympus>:INFO: --------------- ENTERING Olymus:setup ---------------
+[2017-11-01 19:44:56,230] ping.Olympus<Olympus:31002#olympus>:OUTPUT: <Olympus:31002#olympus>
+[2017-11-01 19:44:56,230] ping.Olympus<Olympus:31002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup ---------------
+[2017-11-01 19:44:56,231] ping.Olympus<Olympus:31002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createKeys for clients and replicas---------------
+[2017-11-01 19:44:56,233] ping.Olympus<Olympus:31002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createClientProcesses---------------
+[2017-11-01 19:44:56,233] ping.Olympus<Olympus:31002#olympus>:INFO: Waiting to resolve name 'Client0'...
+[2017-11-01 19:44:56,402] ping.Olympus<Olympus:31002#olympus>:INFO: Waiting to resolve name 'Client1'...
+[2017-11-01 19:44:56,562] ping.Olympus<Olympus:31002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createKeys for clients and replicas---------------
+[2017-11-01 19:44:56,564] ping.Olympus<Olympus:31002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createReplicaProcesses---------------
+[2017-11-01 19:44:56,565] ping.Olympus<Olympus:31002#olympus>:INFO: Waiting to resolve name 'Replica0'...
+[2017-11-01 19:44:56,723] ping.Olympus<Olympus:31002#olympus>:INFO: Waiting to resolve name 'Replica1'...
+[2017-11-01 19:44:56,880] ping.Olympus<Olympus:31002#olympus>:INFO: Waiting to resolve name 'Replica2'...
+[2017-11-01 19:44:57,057] ping.Olympus<Olympus:31002#olympus>:INFO: --------------- ENTERING olympus:receieve:requestConfiguration ---------------
+[2017-11-01 19:44:57,058] ping.Olympus<Olympus:31002#olympus>:OUTPUT: <Client:5d003#Client0>
+[2017-11-01 19:44:57,058] da.api<MainProcess>:INFO: Main process terminated.
+[2017-11-01 19:44:57,058] ping.Olympus<Olympus:31002#olympus>:INFO: --------------- ENTERING olympus:receieve:requestConfiguration ---------------
+[2017-11-01 19:44:57,058] ping.Olympus<Olympus:31002#olympus>:OUTPUT: <Client:61003#Client1>
+[2017-11-01 19:44:57,059] ping.Olympus<Olympus:31002#olympus>:OUTPUT: terminating
+[2017-11-01 19:45:28,960] da.sim.Router<MainProcess>:INFO: Bootstrap succeeded using <UdpTransport(127.0.0.1:39715)>.
+[2017-11-01 19:45:28,960] da.api<MainProcess>:INFO: <Node_:olympus> initialized at 127.0.0.1:(UdpTransport=39715, TcpTransport=38156).
+[2017-11-01 19:45:28,960] da.api<MainProcess>:INFO: Starting program <module 'ping' from 'C:\\Users\\SSDN-Dinesh\\Desktop\\SBU\\ASYNC\\BCR\\Asynchronous-Systems\\phase2\\ping.py'>...
+[2017-11-01 19:45:28,961] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-11-01 19:45:28,962] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-11-01 19:45:28,962] ping.Node_<Node_:olympus>:OUTPUT: ---------------ENTERING main---------------------
+[2017-11-01 19:45:29,136] ping.Olympus<Olympus:c0002#olympus>:INFO: --------------- ENTERING Olymus:setup ---------------
+[2017-11-01 19:45:29,136] ping.Olympus<Olympus:c0002#olympus>:OUTPUT: <Olympus:c0002#olympus>
+[2017-11-01 19:45:29,136] ping.Olympus<Olympus:c0002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup ---------------
+[2017-11-01 19:45:29,137] ping.Olympus<Olympus:c0002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createKeys for clients and replicas---------------
+[2017-11-01 19:45:29,138] ping.Olympus<Olympus:c0002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createClientProcesses---------------
+[2017-11-01 19:45:29,139] ping.Olympus<Olympus:c0002#olympus>:INFO: Waiting to resolve name 'Client0'...
+[2017-11-01 19:45:29,302] ping.Olympus<Olympus:c0002#olympus>:INFO: Waiting to resolve name 'Client1'...
+[2017-11-01 19:45:29,464] ping.Olympus<Olympus:c0002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createKeys for clients and replicas---------------
+[2017-11-01 19:45:29,467] ping.Olympus<Olympus:c0002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createReplicaProcesses---------------
+[2017-11-01 19:45:29,467] ping.Olympus<Olympus:c0002#olympus>:INFO: Waiting to resolve name 'Replica0'...
+[2017-11-01 19:45:29,644] ping.Olympus<Olympus:c0002#olympus>:INFO: Waiting to resolve name 'Replica1'...
+[2017-11-01 19:45:29,822] ping.Olympus<Olympus:c0002#olympus>:INFO: Waiting to resolve name 'Replica2'...
+[2017-11-01 19:45:30,016] ping.Olympus<Olympus:c0002#olympus>:INFO: --------------- ENTERING olympus:receieve:requestConfiguration ---------------
+[2017-11-01 19:45:30,016] ping.Olympus<Olympus:c0002#olympus>:OUTPUT: <Client:5d004#Client0>
+[2017-11-01 19:45:30,016] da.api<MainProcess>:INFO: Main process terminated.
+[2017-11-01 19:45:30,017] ping.Olympus<Olympus:c0002#olympus>:INFO: --------------- ENTERING olympus:receieve:requestConfiguration ---------------
+[2017-11-01 19:45:30,017] ping.Olympus<Olympus:c0002#olympus>:OUTPUT: <Client:61004#Client1>
+[2017-11-01 19:52:07,387] da.sim.Router<MainProcess>:INFO: Bootstrap succeeded using <UdpTransport(127.0.0.1:15324)>.
+[2017-11-01 19:52:07,388] da.api<MainProcess>:INFO: <Node_:olympus> initialized at 127.0.0.1:(UdpTransport=15324, TcpTransport=19500).
+[2017-11-01 19:52:07,388] da.api<MainProcess>:INFO: Starting program <module 'ping' from 'C:\\Users\\SSDN-Dinesh\\Desktop\\SBU\\ASYNC\\BCR\\Asynchronous-Systems\\phase3\\ping.py'>...
+[2017-11-01 19:52:07,389] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-11-01 19:52:07,389] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-11-01 19:52:07,390] ping.Node_<Node_:olympus>:OUTPUT: ---------------ENTERING main---------------------
+[2017-11-01 19:52:07,557] ping.Olympus<Olympus:e3002#olympus>:INFO: --------------- ENTERING Olymus:setup ---------------
+[2017-11-01 19:52:07,557] ping.Olympus<Olympus:e3002#olympus>:OUTPUT: <Olympus:e3002#olympus>
+[2017-11-01 19:52:07,557] ping.Olympus<Olympus:e3002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup ---------------
+[2017-11-01 19:52:07,558] ping.Olympus<Olympus:e3002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createKeys for clients and replicas---------------
+[2017-11-01 19:52:07,560] ping.Olympus<Olympus:e3002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createClientProcesses---------------
+[2017-11-01 19:52:07,560] ping.Olympus<Olympus:e3002#olympus>:INFO: Waiting to resolve name 'Client0'...
+[2017-11-01 19:52:07,747] ping.Olympus<Olympus:e3002#olympus>:INFO: Waiting to resolve name 'Client1'...
+[2017-11-01 19:52:07,924] ping.Olympus<Olympus:e3002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createKeys for clients and replicas---------------
+[2017-11-01 19:52:07,926] ping.Olympus<Olympus:e3002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createReplicaProcesses---------------
+[2017-11-01 19:52:07,927] ping.Olympus<Olympus:e3002#olympus>:INFO: Waiting to resolve name 'Replica0'...
+[2017-11-01 19:52:08,098] ping.Olympus<Olympus:e3002#olympus>:INFO: Waiting to resolve name 'Replica1'...
+[2017-11-01 19:52:08,272] ping.Olympus<Olympus:e3002#olympus>:INFO: Waiting to resolve name 'Replica2'...
+[2017-11-01 19:52:08,476] ping.Olympus<Olympus:e3002#olympus>:INFO: --------------- ENTERING olympus:receieve:requestConfiguration ---------------
+[2017-11-01 19:52:08,476] da.api<MainProcess>:INFO: Main process terminated.
+[2017-11-01 19:52:08,477] ping.Olympus<Olympus:e3002#olympus>:OUTPUT: <Client:16002#Client0>
+[2017-11-01 19:52:08,478] ping.Olympus<Olympus:e3002#olympus>:INFO: --------------- ENTERING olympus:receieve:requestConfiguration ---------------
+[2017-11-01 19:52:08,478] ping.Olympus<Olympus:e3002#olympus>:OUTPUT: <Client:38002#Client1>
+[2017-11-01 19:58:00,316] da.sim.Router<MainProcess>:INFO: Bootstrap succeeded using <UdpTransport(127.0.0.1:28364)>.
+[2017-11-01 19:58:00,317] da.api<MainProcess>:INFO: <Node_:olympus> initialized at 127.0.0.1:(UdpTransport=28364, TcpTransport=23454).
+[2017-11-01 19:58:00,317] da.api<MainProcess>:INFO: Starting program <module 'ping' from 'C:\\Users\\SSDN-Dinesh\\Desktop\\SBU\\ASYNC\\BCR\\Asynchronous-Systems\\phase3\\ping.py'>...
+[2017-11-01 19:58:00,317] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-11-01 19:58:00,318] ping.Node_<Node_:olympus>:OUTPUT: ---------------ENTERING main---------------------
+[2017-11-01 19:58:00,318] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-11-01 19:58:00,492] ping.Olympus<Olympus:f1002#olympus>:INFO: --------------- ENTERING Olymus:setup ---------------
+[2017-11-01 19:58:00,492] ping.Olympus<Olympus:f1002#olympus>:OUTPUT: <Olympus:f1002#olympus>
+[2017-11-01 19:58:00,492] ping.Olympus<Olympus:f1002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup ---------------
+[2017-11-01 19:58:00,493] ping.Olympus<Olympus:f1002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createKeys for clients and replicas---------------
+[2017-11-01 19:58:00,494] ping.Olympus<Olympus:f1002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createClientProcesses---------------
+[2017-11-01 19:58:00,495] ping.Olympus<Olympus:f1002#olympus>:INFO: Waiting to resolve name 'Client0'...
+[2017-11-01 19:58:00,667] ping.Olympus<Olympus:f1002#olympus>:INFO: Waiting to resolve name 'Client1'...
+[2017-11-01 19:59:47,377] da.sim.Router<MainProcess>:INFO: Bootstrap succeeded using <UdpTransport(127.0.0.1:21861)>.
+[2017-11-01 19:59:47,377] da.api<MainProcess>:INFO: <Node_:olympus> initialized at 127.0.0.1:(UdpTransport=21861, TcpTransport=36139).
+[2017-11-01 19:59:47,377] da.api<MainProcess>:INFO: Starting program <module 'ping' from 'C:\\Users\\SSDN-Dinesh\\Desktop\\SBU\\ASYNC\\BCR\\Asynchronous-Systems\\phase3\\ping.py'>...
+[2017-11-01 19:59:47,377] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-11-01 19:59:47,378] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-11-01 19:59:47,379] ping.Node_<Node_:olympus>:OUTPUT: ---------------ENTERING main---------------------
+[2017-11-01 19:59:47,554] ping.Olympus<Olympus:65002#olympus>:INFO: --------------- ENTERING Olymus:setup ---------------
+[2017-11-01 19:59:47,554] ping.Olympus<Olympus:65002#olympus>:OUTPUT: <Olympus:65002#olympus>
+[2017-11-01 19:59:47,554] ping.Olympus<Olympus:65002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup ---------------
+[2017-11-01 19:59:47,555] ping.Olympus<Olympus:65002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createKeys for clients and replicas---------------
+[2017-11-01 19:59:47,556] ping.Olympus<Olympus:65002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createClientProcesses---------------
+[2017-11-01 19:59:47,556] ping.Olympus<Olympus:65002#olympus>:INFO: Waiting to resolve name 'Client0'...
+[2017-11-01 19:59:47,725] ping.Olympus<Olympus:65002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createKeys for clients and replicas---------------
+[2017-11-01 19:59:47,726] ping.Olympus<Olympus:65002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createReplicaProcesses---------------
+[2017-11-01 19:59:47,726] ping.Olympus<Olympus:65002#olympus>:INFO: Waiting to resolve name 'Replica0'...
+[2017-11-01 19:59:47,916] ping.Olympus<Olympus:65002#olympus>:INFO: --------------- ENTERING olympus:receieve:requestConfiguration ---------------
+[2017-11-01 19:59:47,916] ping.Olympus<Olympus:65002#olympus>:OUTPUT: <Client:67002#Client0>
+[2017-11-01 19:59:47,916] da.api<MainProcess>:INFO: Main process terminated.
+[2017-11-01 20:05:23,528] da.sim.Router<MainProcess>:INFO: Bootstrap succeeded using <UdpTransport(127.0.0.1:10243)>.
+[2017-11-01 20:05:23,529] da.api<MainProcess>:INFO: <Node_:olympus> initialized at 127.0.0.1:(UdpTransport=10243, TcpTransport=22106).
+[2017-11-01 20:05:23,529] da.api<MainProcess>:INFO: Starting program <module 'ping' from 'C:\\Users\\SSDN-Dinesh\\Desktop\\SBU\\ASYNC\\BCR\\Asynchronous-Systems\\phase3\\ping.py'>...
+[2017-11-01 20:05:23,529] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-11-01 20:05:23,530] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-11-01 20:05:23,531] ping.Node_<Node_:olympus>:OUTPUT: ---------------ENTERING main---------------------
+[2017-11-01 20:05:23,694] ping.Olympus<Olympus:a7002#olympus>:INFO: --------------- ENTERING Olymus:setup ---------------
+[2017-11-01 20:05:23,694] ping.Olympus<Olympus:a7002#olympus>:OUTPUT: <Olympus:a7002#olympus>
+[2017-11-01 20:05:23,695] ping.Olympus<Olympus:a7002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup ---------------
+[2017-11-01 20:05:23,695] ping.Olympus<Olympus:a7002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createKeys for clients and replicas---------------
+[2017-11-01 20:05:23,696] ping.Olympus<Olympus:a7002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createClientProcesses---------------
+[2017-11-01 20:05:23,697] ping.Olympus<Olympus:a7002#olympus>:INFO: Waiting to resolve name 'Client0'...
+[2017-11-01 20:05:23,878] ping.Olympus<Olympus:a7002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createKeys for clients and replicas---------------
+[2017-11-01 20:05:23,879] ping.Olympus<Olympus:a7002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createReplicaProcesses---------------
+[2017-11-01 20:05:23,879] ping.Olympus<Olympus:a7002#olympus>:INFO: Waiting to resolve name 'Replica0'...
+[2017-11-01 20:05:24,066] ping.Olympus<Olympus:a7002#olympus>:INFO: --------------- ENTERING olympus:receieve:requestConfiguration ---------------
+[2017-11-01 20:05:24,066] ping.Olympus<Olympus:a7002#olympus>:OUTPUT: <Client:39002#Client0>
+[2017-11-01 20:05:24,066] da.api<MainProcess>:INFO: Main process terminated.
+[2017-11-01 20:06:14,845] da.sim.Router<MainProcess>:INFO: Bootstrap succeeded using <UdpTransport(127.0.0.1:16933)>.
+[2017-11-01 20:06:14,845] da.api<MainProcess>:INFO: <Node_:olympus> initialized at 127.0.0.1:(UdpTransport=16933, TcpTransport=35740).
+[2017-11-01 20:06:14,845] da.api<MainProcess>:INFO: Starting program <module 'ping' from 'C:\\Users\\SSDN-Dinesh\\Desktop\\SBU\\ASYNC\\BCR\\Asynchronous-Systems\\phase3\\ping.py'>...
+[2017-11-01 20:06:14,845] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-11-01 20:06:14,846] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-11-01 20:06:14,847] ping.Node_<Node_:olympus>:OUTPUT: ---------------ENTERING main---------------------
+[2017-11-01 20:06:15,013] ping.Olympus<Olympus:ce002#olympus>:INFO: --------------- ENTERING Olymus:setup ---------------
+[2017-11-01 20:06:15,014] ping.Olympus<Olympus:ce002#olympus>:OUTPUT: <Olympus:ce002#olympus>
+[2017-11-01 20:06:15,014] ping.Olympus<Olympus:ce002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup ---------------
+[2017-11-01 20:06:15,015] ping.Olympus<Olympus:ce002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createKeys for clients and replicas---------------
+[2017-11-01 20:06:15,015] ping.Olympus<Olympus:ce002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createClientProcesses---------------
+[2017-11-01 20:06:15,016] ping.Olympus<Olympus:ce002#olympus>:INFO: Waiting to resolve name 'Client0'...
+[2017-11-01 20:06:15,238] ping.Olympus<Olympus:ce002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createKeys for clients and replicas---------------
+[2017-11-01 20:06:15,239] ping.Olympus<Olympus:ce002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createReplicaProcesses---------------
+[2017-11-01 20:06:15,239] ping.Olympus<Olympus:ce002#olympus>:INFO: Waiting to resolve name 'Replica0'...
+[2017-11-01 20:06:15,451] ping.Olympus<Olympus:ce002#olympus>:INFO: --------------- ENTERING olympus:receieve:requestConfiguration ---------------
+[2017-11-01 20:06:15,452] da.api<MainProcess>:INFO: Main process terminated.
+[2017-11-01 20:06:15,453] ping.Olympus<Olympus:ce002#olympus>:OUTPUT: <Client:d8002#Client0>
+[2017-11-01 20:08:47,844] da.sim.Router<MainProcess>:INFO: Bootstrap succeeded using <UdpTransport(127.0.0.1:25972)>.
+[2017-11-01 20:08:47,845] da.api<MainProcess>:INFO: <Node_:olympus> initialized at 127.0.0.1:(UdpTransport=25972, TcpTransport=11795).
+[2017-11-01 20:08:47,845] da.api<MainProcess>:INFO: Starting program <module 'ping' from 'C:\\Users\\SSDN-Dinesh\\Desktop\\SBU\\ASYNC\\BCR\\Asynchronous-Systems\\phase3\\ping.py'>...
+[2017-11-01 20:08:47,845] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-11-01 20:08:47,846] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-11-01 20:08:47,847] ping.Node_<Node_:olympus>:OUTPUT: ---------------ENTERING main---------------------
+[2017-11-01 20:08:48,017] ping.Olympus<Olympus:5e002#olympus>:INFO: --------------- ENTERING Olymus:setup ---------------
+[2017-11-01 20:08:48,018] ping.Olympus<Olympus:5e002#olympus>:OUTPUT: <Olympus:5e002#olympus>
+[2017-11-01 20:08:48,018] ping.Olympus<Olympus:5e002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup ---------------
+[2017-11-01 20:08:48,019] ping.Olympus<Olympus:5e002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createKeys for clients and replicas---------------
+[2017-11-01 20:08:48,020] ping.Olympus<Olympus:5e002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createClientProcesses---------------
+[2017-11-01 20:08:48,021] ping.Olympus<Olympus:5e002#olympus>:INFO: Waiting to resolve name 'Client0'...
+[2017-11-01 20:08:48,206] ping.Olympus<Olympus:5e002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createKeys for clients and replicas---------------
+[2017-11-01 20:08:48,207] ping.Olympus<Olympus:5e002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createReplicaProcesses---------------
+[2017-11-01 20:08:48,208] ping.Olympus<Olympus:5e002#olympus>:INFO: Waiting to resolve name 'Replica0'...
+[2017-11-01 20:08:48,399] ping.Olympus<Olympus:5e002#olympus>:INFO: --------------- ENTERING olympus:receieve:requestConfiguration ---------------
+[2017-11-01 20:08:48,399] ping.Olympus<Olympus:5e002#olympus>:OUTPUT: <Client:ae002#Client0>
+[2017-11-01 20:08:48,399] da.api<MainProcess>:INFO: Main process terminated.
+[2017-11-01 20:08:48,414] ping.Olympus<Olympus:5e002#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-11-01 20:08:48,418] ping.Olympus<Olympus:5e002#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-11-01 20:08:48,418] ping.Olympus<Olympus:5e002#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- append movie wars
+[2017-11-01 20:08:58,496] ping.Olympus<Olympus:5e002#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-11-01 20:08:58,504] ping.Olympus<Olympus:5e002#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-11-01 20:08:58,505] ping.Olympus<Olympus:5e002#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- get movie 
