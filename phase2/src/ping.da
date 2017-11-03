@@ -1,0 +1,1059 @@
+import sys
+import nacl.utils
+from random import *
+import random
+import nacl.encoding
+import nacl.hash
+from nacl.bindings.utils import sodium_memcmp
+import nacl.signing
+import logging
+
+def readConfigFile():
+    # output("---------------ENTERING readConfigFile ---------------------")
+    config = dict()
+    with open('config.csv','r') as f:  
+        for line in f:
+            if line[0] != '#':
+                (key,sep,val) = line.partition('=')
+                # if the line does not contain '=', it is invalid and hence ignored
+                if len(sep) != 0:
+                    val = val.strip()
+                    config[key.strip()] = int(val) if str.isdecimal(val) else val
+    return config
+
+def signTheStatement(signing_key,message):
+    return signing_key.sign(message)
+    output('-------------Signed the message---------------------------')
+
+def decodeVerifyKey(verify_key_hex):
+    return nacl.signing.VerifyKey(verify_key_hex, encoder=nacl.encoding.HexEncoder)
+
+def verifyTheStatement(verify_key,signed):    
+    return verify_key.verify(signed)       
+    
+class Olympus(process):
+    globalConfig = dict()
+    clients = []
+    replicas = []
+    def setup():
+        output("--------------- ENTERING Olymus:setup ---------------",level=20)
+        output(self)
+        self.terminate = False
+        self.client_signing_keys=dict()
+        self.client_verify_keys_hex= dict()
+        self.replica_signing_keys=dict()
+        self.replica_verify_keys_hex= dict()
+        self.globalData= dict()
+        initialSetup()
+
+    def run():        
+        await(terminate)
+        output('terminating')
+
+    def receive(msg=('requestConfiguration',), from_=p):
+        output("--------------- ENTERING olympus:receieve:requestConfiguration ---------------",level=20)        
+        output(p)
+        Configuration = replicas
+        send((Configuration,), to=p)
+
+    def receive(msg=('getGlobalData',key,ranDomID), from_=c):
+        output("--------------- ENTERING Olymus:getGlobalData for key ---------------",key,level=20)
+        output("---------------globalData ---------------------",globalData,level=10)
+        globalVal = []
+        output('---------------Dict content--------------------',globalData[key],level=10)
+        try:
+            globalVal = globalData[key]
+        except:
+            globalVal = None
+        output("---------------globalVal ---------------------",globalVal,level=10)
+        output("--------------- Sending globaData to client ---------------",globalVal,level=20)        
+        send(('dictionaryData',globalVal,ranDomID), to=c)        
+
+
+    def receive(msg=('headOperation',clientId,requestID,slot,signedRequestStatement),from_=r):
+        output("--------------- ENTERING Olymus:receives operation from head for client ---------------",clientId,level=20)        
+        temp_verify_key = decodeVerifyKey(client_verify_keys_hex[clientId])        
+        verified = ''
+        try:
+            verified = verifyTheStatement(temp_verify_key,signedRequestStatement)
+        except:
+            verified = 'Not verified'
+        output("---------------verified ---------------------",verified,level=10)
+        output("---------------globalData ---------------------",globalData,level=10)                
+        updateOwnDictionary(verified)
+         
+    
+    def updateOwnDictionary(requestStatement):
+        output("--------------- Olymus:headOperation:updateOwnDictionary ---------------",level=20)
+        operation,key,value = parseTheUnsignedStatement(requestStatement)
+        output("---------------operation,key,value ---------------------",operation,key,value,level=10)
+        result = executeOperation(operation,key,value)
+        output("---------------result---------------------",result,level=10)
+
+    def readGlobalConfigFile():
+        output("--------------- ENTERING Olymus:initialSetup:readGlobalConfigFile ---------------",level=20)
+        globalConfig = readConfigFile()
+
+
+    def initialSetup():
+        output("--------------- ENTERING Olymus:initialSetup ---------------",level=20)
+        globalConfig = readConfigFile()
+        noOfClients = globalConfig['num_client']
+        noOfReplicas = 2*globalConfig['t'] + 1
+        client_signing_keys, client_verify_keys_hex = createKeys(noOfClients)
+        clients = createClientProcesses(client_signing_keys)
+        replica_signing_keys, replica_verify_keys_hex = createKeys(noOfReplicas)
+        replicas = createReplicaProcesses(replica_signing_keys,clients,replica_verify_keys_hex)
+
+    def createKeys(number):
+        output("--------------- ENTERING Olymus:initialSetup:createKeys for clients and replicas---------------",level=20)        
+        signing_keys = dict()
+        verify_keys_hex = dict()
+        for i in range(number):
+            signing_key=nacl.signing.SigningKey.generate()
+            verify_key = signing_key.verify_key
+            verify_key_hex = verify_key.encode(encoder=nacl.encoding.HexEncoder)
+            signing_keys[i] = signing_key
+            verify_keys_hex[i] = verify_key_hex
+        return signing_keys,verify_keys_hex
+
+
+    def createClientProcesses(client_signing_keys):       
+        tempClients =[]
+        output("--------------- ENTERING Olymus:initialSetup:createClientProcesses---------------",level=20)
+        noOfClients = globalConfig['num_client']
+        hosts = globalConfig['hosts'].split(';')
+        client_hosts=globalConfig['client_hosts'].split(';')        
+        for i in range(noOfClients):
+            processAtNode = 'Client'+str(i)            
+            client = new(Client, at=processAtNode)
+            setup(client, (self,i,client_signing_keys[i],))
+            start(client)            
+            tempClients.insert(i,(client,client_verify_keys_hex[i]))        
+        return tempClients
+
+    def createReplicaProcesses(replica_signing_keys,clients,replica_verify_keys_hex):
+        output("--------------- ENTERING Olymus:initialSetup:createReplicaProcesses---------------",level=20)
+        tempReplicas =dict()
+        noOfReplicas = 2*globalConfig['t'] + 1
+        hosts = globalConfig['hosts'].split(';')
+        replica_hosts=globalConfig['replica_hosts'].split(';')
+
+        for i in range(noOfReplicas):
+            processAtNode = 'Replica'+str(i)            
+            replica = new(Replica,at=processAtNode)
+            tempReplicas[i] = (replica,replica_verify_keys_hex[i])            
+
+        for i in range(noOfReplicas):
+            setup(tempReplicas[i][0], (self,i,'ACTIVE',replica_signing_keys[i],clients,tempReplicas,))
+            start(tempReplicas[i][0])
+            
+        return tempReplicas
+
+    def parseTheUnsignedStatement(unSignedRequestStatement):
+        output("--------------- parseTheUnsignedStatement ---------------",level=20)
+        inp = str(unSignedRequestStatement,'utf-8')
+        inp = inp.split(')')[0]
+        output(inp,level=10)
+        opKeyVal = inp.split('(')
+        operation = opKeyVal[0]
+        keyVal = opKeyVal[1].split(',')
+        key = keyVal[0][1:-1]
+        value=''
+        if operation!='get':
+            value = keyVal[1][1:-1]
+        return  operation,key,value.strip()
+
+    def addToDictionary(key,val):
+        try:            
+            globalData[key]=['OK',val]
+            return 'OK'
+        except:
+            globalData[key]=['fail',val]
+            return 'Fail'
+
+    def getFrom(key,val):
+        try:
+            getVal = globalData[key][1]
+            if getVal != 'fail' and getVal != '' and getVal is not None:
+                globalData[key] = ['',getVal,'']
+            else:
+                globalData[key]=['','']    
+            return globalData[key]
+        except:
+            globalData[key]=['','fail']
+            return ''
+
+    def appendDictionary(key,val):
+        try:
+            valueExsist = globalData[key][1]
+            if valueExsist != 'fail' and valueExsist != '' and valueExsist is not None:
+                output('------valueExist-----',valueExsist,level=10)
+                newVal =valueExsist+val           
+                output('------newVal-----',newVal,level=10)
+                globalData[key] = ['OK',newVal]
+            else:
+                globalData[key]=['fail','fail']    
+            return 'OK'
+        except:
+            globalData[key]=['fail','fail']
+            return 'fail'
+
+    def sliceDictionary(key,val):
+        try:            
+            value = globalData[key][1]
+            if value != 'fail' and value != '' and value != ' ' and value is not None:
+                indices = val.split(':')            
+                globalData[key] = ['OK',value[int(indices[0]):int(indices[1])]]
+            else:
+                globalData[key]=['fail','fail']  
+            return 'OK'
+        except:
+            globalData[key]=['fail','']
+            return 'fail'
+
+    def executeOperation(operation,key,val):
+        output("--------------- Olymus:headOperation:executeOperation ---------------",operation,key,val,level=20)
+        function_launch = {
+            'put': addToDictionary,
+            'get': getFrom,
+            'append': appendDictionary,
+            'slice': sliceDictionary
+        }
+
+        return function_launch[operation](key, val)    
+        
+
+class Client(process):     
+
+    def setup(p,clientID,client_signing_key,): 
+        self.terminate = False
+        self.replicas = dict()
+        self.TIMEOUT = 0
+        self.globalConfig = dict()
+        self.noOfReplicas =0
+        self.data = dict()
+    
+    def run():
+        output("--------------- ENTERING Client:run ---------------",level=20)
+        output("--------------- Requesting Configuration from Olympus---------------",level=20)
+        send(('requestConfiguration',), to=p)
+        globalConfig = readConfigFile()
+        TIMEOUT = globalConfig['client_timeout']
+        noOfReplicas = 2*globalConfig['t'] + 1        
+        await(terminate)        
+        
+    def hashResult(r):
+        output("--------------- Creating hash digest for result ---------------",level=20)        
+        HASHER = nacl.hash.sha256
+        digest = HASHER(bytes(r,'utf-8'), encoder=nacl.encoding.HexEncoder)
+        encodedMessage = nacl.encoding.HexEncoder.encode(bytes(r,'utf-8'))
+        return digest.decode("utf-8"),encodedMessage.decode("utf-8")
+
+    def checkHashResult(digest,rDigest):
+        output("--------------- Checking hash digests for results ---------------",level=20)       
+        bDigest=bytes(digest,'utf-8')
+        brDigest = bytes(rDigest,'utf-8')
+        if sodium_memcmp(bDigest, brDigest):
+            return True
+        return False
+
+    def receive(msg=(Configuration,), from_=p):
+        output("--------------- Received Configuration from Olympus --------------",level=20)
+        replicas = Configuration
+        operations = getOperations()    
+        output("--------------- Operations for Client --------------",operations,level=20)
+        messageNumber = 0
+        for noi in range(len(operations)):            
+            requestID = returnRandomNumber()            
+            output("--------------- Sending Request No: % :: Request Id: % --------------",noi,requestID,level=20)            
+            sendRequest(messageNumber,requestID,operations[noi],Configuration[0],'initial')
+            output("--------------- Waiting for Result --------------",noi,requestID,level=20)            
+            if await(some(received(('result',resultShuttle,)), has=(int(resultShuttle[0]) == requestID))):                
+                # output("--------------- Received Result for Request no: % and Request Id: % --------------",noi,requestID,level=20)            
+                messageNumber+=1
+                continue
+            elif timeout(TIMEOUT):
+                output("--------------- TIMEOUT --------------",noi,requestID,level=20)
+                output("--------------- Sending Retransmission Request for Request No: % :: Request Id: % --------------",noi,requestID,level=20)                            
+                sendRequest(messageNumber,requestID,operations[noi],Configuration,'retransmission')
+                messageNumber+=1
+                continue
+                
+        # send(('Received Configuration',), to=p)
+
+    def receive(msg=('result',resultShuttle),from_=tail):
+        output("--------------- Received Result Shuttle --------------",level=20)
+        output('result for request ID:',resultShuttle[0],level=10)
+        val,globalVal=checkExpectedResult(resultShuttle[0])
+        receivedResult = resultShuttle[1]        
+        rDigest,rEncodedMessage = hashResult(receivedResult)
+        resultVerified = verifyResultProofs(resultShuttle[2],rDigest)
+        output("--------------- Result Proof Verification check: % --------------",resultVerified,level=20)        
+        output("--------------- Client Dictionary Result: % --------------",val,level=20)        
+        output("--------------- Global Dictionary Result: % --------------",globalVal,level=20)   
+        output("--------------- Result From Replica: % --------------",receivedResult,level=20)      
+        if val==receivedResult or globalVal[0]==receivedResult or globalVal[1]==receivedResult:
+            output("---------------  RESULT IS ACCEPTED --------------",level=20)
+        else:
+            output("--------------- (RESULT IS REJECTED) --------------",level=20)
+
+    def checkExpectedResult(reqID):
+        output("--------------- Checking result against expected result --------------",level=20)        
+        res,val,key = data[reqID]
+        output("--------------- Result in Client Dictionary: --------------",res,level=20)
+        globalVal = ''        
+        ranDomID = returnRandomNumber()                        
+        output("--------------- Get Data in global dictionary from olympus for Key: % with ID --------------",key,ranDomID,level=20)
+        send(('getGlobalData',key,ranDomID), to=p)        
+        globalRes = ''
+        globalResult=''             
+        if await(some(received(('dictionaryData',globalResult,randID)), has=(randID == ranDomID))):        
+            output("--------------- Received Data from global dictionary: % for key: % --------------",globalResult,key,level=20)        
+            globalRes = globalResult         
+        return res,globalRes
+
+    def getOperations():
+        output("--------------- Generating Workload for client --------------",level=20)        
+        cWorkLoad = globalConfig['workload['+str(self.clientID)+']']
+        if 'pseudorandom' in cWorkLoad:
+            seedAndNoOfRequests = cWorkLoad[:-1].split('(')[1].split(',')
+            return generatePseudoRandomRequests(int(seedAndNoOfRequests[0]), int(seedAndNoOfRequests[1]))
+        else:
+            return cWorkLoad.split(';')
+
+
+
+    def sendRequest(messageNumber,requestID,operation,receiver,typeOfRequest):
+        requestStatement = bytes(str(operation.strip()),'utf8')
+        output("--------------- Signing the request statement: --------------",requestStatement,level=20)                
+        signedRequestStatement = signTheStatement(client_signing_key,requestStatement)        
+        if typeOfRequest=='initial':
+            output("--------------- Sending request to head --------------",level=20)            
+            send((typeOfRequest,messageNumber,clientID,requestID,signedRequestStatement,1), to=receiver[0])
+            updateOwnDictionary(requestID,operation)            
+        elif typeOfRequest == 'retransmission':
+            for replicaNo in range(noOfReplicas):
+                output("--------------- Sending Retransmission request to all replicas --------------",level=20)            
+                send((typeOfRequest,messageNumber,clientID,requestID,signedRequestStatement), to=receiver[replicaNo][0])
+        
+
+    def updateOwnDictionary(requestID,op):                
+        operation,key,value = parseTheUnsignedStatement(bytes(str(op.strip()),'utf8'))
+        output("--------------- Client updates its dictionary with: --------------",operation,key,value,level=20)        
+        result = executeOperation(operation,requestID,value,key)
+        output("--------------- Result upon updating dictionary: --------------",result,level=20)                
+
+    def generatePseudoRandomRequests(rSeed,noOfRequests):
+        output("--------------- Generating Pseudo Random Requests for Client --------------",level=20)
+        listofRequest = ["put('movie','star')","append('movie',' wars')","get('movie')","put('jedi','luke skywalker')","slice('jedi','0:4')","get('jedi')"]
+        random.seed(rSeed)
+        requests = random.sample(listofRequest,k=noOfRequests)        
+        return requests
+
+    def returnRandomNumber():
+        return randint(1, 10000)
+
+    def verifyResultProofs(tempResultProof,rDigest):
+        output("--------------- Verifying result and signature of result statements --------------",level=20)        
+        numOfRP = len(tempResultProof)
+        i=0
+        verified = ''
+        countOfCorrectResults = 0
+        while i < numOfRP:
+            temp_verify_key = decodeVerifyKey(replicas[i][1])
+            tempSignedRP = tempResultProof[i]
+            try:
+                verified = verifyTheStatement(temp_verify_key,tempSignedRP)                
+                strVerified = verified.decode('utf8')
+                verifiedTuple = strVerified.split(';')
+                if checkHashResult(verifiedTuple[2],rDigest):
+                    verified = 'True'
+                    countOfCorrectResults += 1
+                else:
+                    verified = 'False'
+            except:
+                verified = 'False'          
+            i+=1
+
+            quorumSize = globalConfig['t'] + 1
+            output("---------------Quorum Size--------------",quorumSize,level=20)
+            output("---------------No. of countOfCorrectResults--------------",countOfCorrectResults,level=20)                
+            if countOfCorrectResults>=quorumSize:
+                verified = 'True'
+            else:
+                verified = 'False'          
+        return verified
+
+    def parseTheUnsignedStatement(unSignedRequestStatement):
+        output("--------------- Parsing the unsigned statement --------------",level=20)        
+        inp = str(unSignedRequestStatement,'utf-8')
+        inp = inp.split(')')[0]
+        output(inp,level=10)
+        opKeyVal = inp.split('(')
+        operation = opKeyVal[0]
+        keyVal = opKeyVal[1].split(',')
+        key = keyVal[0][1:-1]
+        value=''
+        if operation!='get':
+            value = keyVal[1][1:-1]
+        return  operation,key,value.strip()
+
+    def addToDictionary(reqID,val,key):
+        try:            
+            data[reqID]=['OK',val,key]
+            return 'OK'
+        except:
+            data[reqID]=['fail',val,key]
+            return 'fail'
+
+    def getFrom(reqID,val,key):
+        try:
+            output('reqID',reqID,level=10)            
+            getreqID = [k for k,v in data.items() if key in v][-1]
+            getVal = data[getreqID][1]
+            output('getVal',getVal,level=10)
+            data[reqID] = [getVal,getVal,key]
+            return data[reqID][0]
+        except:
+            output('entered exception',level=10)
+            data[reqID] = ['','',key]
+            return ''
+
+    def appendDictionary(reqID,val,key):
+        try:
+            getreqID = [k for k,v in data.items() if key in v][-1]
+            output('-----getreqID----',getreqID,level=10)
+            getVal = data[getreqID][1]
+            newVal = getVal+val
+            output('-----newVal----',newVal,level=10)
+            data[reqID] = ['OK',newVal,key]
+            return 'OK'
+        except:
+            data[reqID] = ['fail','',key]
+            return 'fail'
+
+    def sliceDictionary(reqID,val,key):
+        try:            
+            value = data[reqID][1]
+            indices = val.split(':')
+            data[reqID] = ['OK',value[int(indices[0]):int(indices[1])],key]
+            return 'OK'
+        except:
+            data[reqID] = ['fail','',key]
+            return 'fail'
+
+    def executeOperation(operation,reqID,val,key):
+        output("--------------- Executing Operation to updata client dictionary with: --------------",operation,reqID,val,key,level=20)
+        function_launch = {
+            'put': addToDictionary,
+            'get': getFrom,
+            'append': appendDictionary,
+            'slice': sliceDictionary
+        }
+
+        return function_launch[operation](reqID, val,key)
+
+class Replica(process):        
+    
+    def setup(p,i,Mode,replica_signing_key,clients,replicas):
+        self.terminate = False
+        self.data = dict()        
+        self.replicaHistory = dict()
+        self.resultCache = dict()
+        self.slot = 0
+        self.shuttleNumber = 0
+        self.resultShuttleNumber =0
+        self.globalConfig = dict()
+        self.noOfReplicas =0
+        self.ReplicaTIMEOUT = 0
+        self.HeadTIMEOUT = 0
+        self.failuresDict = dict()
+        self.forwardRequestMessageNo = 0
+
+    def run():
+        output("--------------- Entering Replica Run: --------------",level=20)
+        globalConfig = readConfigFile()
+        noOfReplicas = 2*globalConfig['t'] + 1
+        ReplicaTIMEOUT = globalConfig['nonhead_timeout']
+        HeadTIMEOUT = globalConfig['head_timeout']
+        foundFailures,failures = getFailures()
+
+        if foundFailures != 'No Failures':
+            failuresList = failures.split(';')
+            fTfAMapping(failuresList)
+
+        output("--------------- Failures for Replica: --------------",foundFailures,level=20)    
+        output(failuresDict,level=20)
+        await(terminate)       
+        
+
+    def getFailures():
+        output("--------------- Getting Failures for Replica : --------------",level=20)    
+        try:     
+            failureIndex = 'failures[0,'+str(i)+']'
+            return 'Failures', globalConfig[failureIndex]
+        except:
+            return 'No Failures', None
+         
+
+    def fTfAMapping(failuresList):
+        output("--------------- Creating Failure Trigger and Failure Action Mapping: --------------",level=20)
+        for eachFailure in failuresList:
+            ft = eachFailure.split(')')[0].strip()+')'
+            fa = eachFailure.split(')')[1].split(',')[1].strip()+')'
+            failuresDict[ft] = fa
+
+    def hashResult(r):
+        output("--------------- Creating hash digest for result ---------------",level=20)       
+        HASHER = nacl.hash.sha256
+        digest = HASHER(bytes(r,'utf-8'), encoder=nacl.encoding.HexEncoder)
+        encodedMessage = nacl.encoding.HexEncoder.encode(bytes(r,'utf-8'))
+        return digest.decode("utf-8"),encodedMessage.decode("utf-8")
+    #output("--------------- Checking hash digests for results ---------------",level=20)
+
+    def receive(msg=('initial',messageNumber,clientId,requestID,signedRequestStatement,operationCount), from_=c):
+        output('--------------------- Head:receives:signedRequestStatement from client -----------------------',level=20)
+        output('--------------------- Received Request message number:['+str(messageNumber)+' ; client Id: ['+str(clientId)+'] ; request Id: ['+str(requestID)+']-----------------------',level=20)
+        orderProof=list()
+        resultProof=list()
+        temp_verify_key = decodeVerifyKey(clients[clientId][1])        
+        unSignedRequestStatement = ''
+        operation = ''
+        if Mode == 'ACTIVE' and not checkRequestIDInHistory(requestID):            
+            verified = ''
+            try:
+                verified = verifyTheStatement(temp_verify_key,signedRequestStatement)
+            except:
+                verified = 'Not verified'
+
+            output('--------------------- Unsigned Statement from client -----------------------',verified,level=20)
+            operation,key,value = parseTheUnsignedStatement(verified)            
+            output('--------------------- Checking for failures -----------------------',level=20)
+            failureClientRequest = 'client_request('+str(clientId)+','+str(messageNumber)+')'
+            fStatus,getAction = checkForFailure(failureClientRequest)
+            output('--------------------- Failure Check:['+str(fStatus)+'] Failure action:'+str(getAction)+'-----------------------',level=20)
+            if fStatus != 'notFound':
+                if getAction == 'change_operation()':
+                        operation  = changeOperation()
+                        key = 'x'
+                        verified = bytes("get('x')",'utf-8')
+                        output('---------------------Changed Operation:['+str(operation)+'] Key:'+key+'-----------------------',level=20)
+            
+
+            result = executeOperation(operation,key,value)
+            
+            output('--------------------- Failure Check:['+str(fStatus)+'] Failure action:'+str(getAction)+'-----------------------',level=20)
+            if fStatus != 'notFound':
+                if getAction == 'change_result()':
+                    result  = changeResult()
+                    output('---------------------Changed result:',result,level=20)
+
+            output('--------------------- Signing the statement:',verified,level=20)
+            signedOrderStatement,signedResultStatement = createStatements(slot,verified,result)            
+            orderProof.append(signedOrderStatement)
+            resultProof.append(signedResultStatement)            
+
+            output('--------------------- Failure Check:['+str(fStatus)+'] Failure action:'+str(getAction)+'-----------------------',level=20)
+            if fStatus != 'notFound':                
+                if getAction == 'drop_result_stmt()':
+                    resultProof  = dropResultStatement(resultProof)
+
+            output('--------------------- Data in Client Dictionary ',data,level=20)
+            output('--------------------- Creating Shuttle -----------------------',level=20)
+            shuttle = (orderProof,resultProof)                 
+            appendToReplicaHistory(slot,verified,orderProof,requestID)                        
+            
+            output('--------------------- Sending Statement to Olympus coming from client: ',clientId,level=20)            
+            send(('headOperation',clientId,requestID,slot,signedRequestStatement), to=p)            
+            
+            output('--------------------- Sending Statement:: message number'+str(messageNumber)+' from client: '+str(clientId)+' to Next Replica -----------------------',level=20)
+            send((messageNumber,clientId,requestID,slot,signedRequestStatement,shuttle,'initial','nonhead',operationCount,shuttleNumber), to=replicas[i+1][0])            
+            output('------------------------------------------------------------',level=20)
+            slot+=1
+            shuttleNumber += 1
+
+        elif checkRequestIDInHistory(requestID):
+            output('---------------------NO EXECUTION: Request already found in History -----------------------',level=20)
+        else:
+            output('---------------------NO EXECUTION: Replica is not Active-----------------------',level=20)
+        
+    
+        
+
+    def receive(msg=(messageNumber,clientId,requestID,tempSlot,signedRequestStatement,shuttle,typeOfRequest,replicaType,operationCount,shuttleNumber),from_=previousReplica):
+        output('--------------------- Replica:receives:signedRequestStatement from previous replica -----------------------',level=20)
+        output('--------------------- Received Request message number:['+str(messageNumber)+' ; client Id: ['+str(clientId)+'] ; request Id: ['+str(requestID)+']-----------------------',level=20)
+        if i<noOfReplicas and Mode == 'ACTIVE':            
+            tempOrderProof = shuttle[0]
+            tempResultProof = shuttle[1]
+            temp_verify_key = decodeVerifyKey(clients[clientId][1])
+            verifiedClientStatement = ''
+            try:
+                verifiedClientStatement = verifyTheStatement(temp_verify_key,signedRequestStatement)
+            except:
+                verifiedClientStatement = 'Not verified'
+            
+            output('--------------------- Unsigned Statement from client -----------------------',verifiedClientStatement,level=20)
+            operation,key,value = parseTheUnsignedStatement(verifiedClientStatement)
+            checkedOrderProofs = checkOrderProofIntegerity(tempSlot,str(verifiedClientStatement,'utf-8'),tempOrderProof)
+            output('--------------------- Verifying Order Proofs -----------------------',checkedOrderProofs,level=20)
+            resultsVerified = verifyResultProofs(tempResultProof)
+            output('--------------------- Verifying Result Proofs -----------------------',resultsVerified,level=20)
+            #shuttle(c, m)            
+            if checkedOrderProofs != 'False' and resultsVerified != 'False': 
+                output('--------------------- Checking for failures -----------------------',level=20)
+                failureShuttleRequest = 'shuttle('+str(clientId)+','+str(shuttleNumber)+')'
+                fStatus,getAction = checkForFailure(failureShuttleRequest)
+                output('--------------------- Failure Check:['+str(fStatus)+'] Failure action:'+str(getAction)+'-----------------------',level=20)
+                if fStatus != 'notFound':
+                    if getAction == 'change_operation()':
+                        operation  = changeOperation()
+                        key = 'x'
+                        verifiedClientStatement = bytes("get('x')",'utf-8')
+                        output('--------------------- Changed Operation:['+str(operation)+'] Key:'+key+'-----------------------',level=20)
+                        output('--------------------- Changed Verified Client Statement: '+str(verifiedClientStatement)+'--------------------',level=20)               
+
+                inHistory = checkSlotInHistory(int(tempSlot),verifiedClientStatement)                
+                holes = checkForHoles(int(tempSlot))
+                output('--------------------- Slot Consistency: '+str(inHistory)+' Holes Found: '+str(holes)+'--------------------',level=20)
+                if inHistory =='false' and holes == False:              
+                    
+                    result = executeOperation(operation,key,value)
+                    output('--------------------- Failure Check:['+str(fStatus)+'] Failure action:'+str(getAction)+'-----------------------',level=20)
+                    if fStatus != 'notFound':
+                        if getAction == 'change_result()':
+                            result  = changeResult()
+                            output('---------------------Changed result:['+result+'] -----------------------',level=20)
+
+                    
+                    tempSignedOrderStatement,tempSignedResultStatement = createStatements(tempSlot,verifiedClientStatement,result)                    
+                    tempOrderProof.append(tempSignedOrderStatement)
+                    tempResultProof.append(tempSignedResultStatement)
+
+                    output('--------------------- Failure Check:['+str(fStatus)+'] Failure action:'+str(getAction)+'-----------------------',level=20)
+                    if fStatus != 'notFound':                
+                        if getAction == 'drop_result_stmt()':
+                            tempResultProof  = dropResultStatement(tempResultProof)
+
+                    output('--------------------- Data in Client Dictionary ',data,level=20)
+                    appendToReplicaHistory(tempSlot,verifiedClientStatement,tempOrderProof,requestID)
+
+                    output('--------------------- Creating Shuttle -----------------------',level=20)
+                    shuttle = (tempOrderProof,tempResultProof)
+                    if i != noOfReplicas-1:                          
+                        output('--------------------- Sending Statement:: message number'+str(messageNumber)+' from client: '+str(clientId)+' to Next Replica -----------------------',level=20)
+                        send((messageNumber,clientId,requestID,tempSlot,signedRequestStatement,shuttle,'initial','nonhead',operationCount,shuttleNumber), to=replicas[i+1][0])
+                    elif i == noOfReplicas-1:
+                        # make and send result shuttle to predecessor
+                        output('--------------------- Creating Result Shuttle: -----------------------',level=20)
+                        resultShuttle = (requestID,result,tempResultProof)
+                        # if operationCount==2:
+                        #     appendToResultCache(resultShuttle)
+                        #     # send(('result',resultShuttle), to=clients[clientId][0])
+                        #     send(('result',resultShuttle), to=replicas[i-1][0])
+                        # signedResultShuttle =
+                        appendToResultCache(resultShuttle)
+                        output('--------------------- Sending ResultShuttle: No:['+str(resultShuttleNumber)+'] to Previous Replica: ['+str(i-1)+'] -----------------------',level=20)
+                        output('--------------------- Sending ResultShuttle: No:['+str(resultShuttleNumber)+'] to Client: ['+str(clientId)+'] -----------------------',level=20)
+                        send(('result',resultShuttle), to=clients[clientId][0])
+                        send(('result',resultShuttle,resultShuttleNumber,clientId), to=replicas[i-1][0])
+                        resultShuttleNumber += 1
+                    else:
+                        output('-------------------------------------------------------')
+                else:
+                    output('--------------------- SEND RECONFIGURATION REQUEST TO OLYMPUS -----------------------',level=20)                    
+            else:
+                output('--------------------- SEND RECONFIGURATION REQUEST TO OLYMPUS -----------------------',level=20)
+        else:
+            output('--------------------- NO EXECUTION: Replica is not Active -----------------------',level=20)
+
+                
+            
+    def receive(msg=('retransmission',messageNumber,clientId,requestID,signedRequestStatement,), from_=c):
+        output('--------------------- Replica:receives:retransmission from Client -----------------------',level=20)
+        output('--------------------- Request client Id: ['+str(clientId)+'] ; request Id: ['+str(requestID)+']-----------------------',level=20)
+        temp_verify_key = decodeVerifyKey(clients[clientId][1])
+        verified = ''
+        try:
+            verified = verifyTheStatement(temp_verify_key,signedRequestStatement)
+        except:
+            verified = 'Not verified'
+
+        output('--------------------- Unsigned Statement from client '+str(verified)+'-----------------------',level=20)
+        if verified !='Not Verified':
+            if Mode == 'IMMUTABLE':
+                output('--------------------- IMMUTABLE REPLICA: Send Error Statement to ClientId: ['+str(clientId)+']-----------------------',level=20)
+                send(('errorStatement',), to=clients[clientId][0])
+            else:
+                resultFound,resultShuttle = getResultFromResultCache(requestID)
+                output('---------------------'+resultFound+' in Result Cache-----------------------',level=20)
+                if resultFound == 'NoResult':
+                    if i!=0:
+                        output('--------------------- Sending forward-request to head coming from client Id: ['+str(clientId)+'] ; with request Id: ['+str(requestID)+']-----------------------',level=20)
+                        send(('forwardRequest',clientId,requestID,signedRequestStatement,), to=replicas[0][0])
+                        output('--------------------- Waiting for result shuttle to arrive-----------------------',level=20)
+                        if await(some(received((result,resultShuttle,)), has=(int(resultShuttle[0]) == requestID))):
+                            output('--------------------- Received Result Shuttle: Sending Shuttle to Client ['+str(clientId)+']-----------------------',level=20)
+                            send(('result',resultShuttle), to=clients[clientId][0])                
+                        elif timeout(ReplicaTIMEOUT):
+                            output('--------------------- Send Reconfiguration request to Olympus-----------------------',level=20)                    
+                elif resultFound=='Found':
+                    output('--------------------- Result Found:Sending ResultShuttle:to Client: ['+str(clientId)+'] -----------------------',level=20)
+                    send(('result',resultShuttle), to=clients[clientId][0])
+
+    def receive(msg=('forwardRequest',clientId,requestID,signedRequestStatement,), from_=p):
+        output('--------------------- Replica:receives:forwardRequest from Previous Replica -----------------------',level=20)
+        output('--------------------- Request client Id: ['+str(clientId)+'] ; request Id: ['+str(requestID)+']-----------------------',level=20)
+        forwardRequestMessageNo += 1
+        temp_verify_key = decodeVerifyKey(clients[clientId][1])
+        verified = ''
+        try:
+            verified = verifyTheStatement(temp_verify_key,signedRequestStatement)
+        except:
+            verified = 'Not verified'
+
+        output('--------------------- Unsigned Statement from client '+str(verified)+'-----------------------',level=20)    
+        if verified !='Not Verified':            
+            resultFound,resultShuttle = getResultFromResultCache(requestID)
+            output('---------------------'+resultFound+' in Result Cache-----------------------',level=20)
+            if resultFound == 'NoResult':
+                if checkRequestIDInHistory(requestID):
+                    output('--------------------- Waiting for result shuttle to arrive-----------------------',level=20)                    
+                    if await(some(received((result,resultShuttle,)), has=(int(resultShuttle[0]) == requestID))):
+                        failureResultShuttle = 'forwarded_request('+str(clientId)+','+str(forwardRequestMessageNo)+')'            
+                        fStatus,getAction = checkForFailure(failureResultShuttle)
+                        output('--------------------- Failure Check:['+str(fStatus)+'] Failure action:'+str(getAction)+'-----------------------',level=20)
+                        if fStatus != 'notFound':
+                            if getAction == 'change_result()':                    
+                                lst = list(resultShuttle)
+                                lst[1] = changeResult()
+                                resultShuttle = tuple(lst) 
+                                output('--------------------- Changed result:['+str(resultShuttle[1])+'] -----------------------',level=20)
+
+                        output('--------------------- Failure Check:['+str(fStatus)+'] Failure action:'+str(getAction)+'-----------------------',level=20)
+                        if fStatus != 'notFound':                
+                            if getAction == 'drop_result_stmt()':
+                                lst = list(resultShuttle)
+                                lst[2] = dropResultStatement(resultShuttle[2])
+                                resultShuttle = tuple(lst)                           
+                        output('--------------------- Received Result Shuttle: Sending Shuttle to Client ['+clientId+']-----------------------',level=20)                                                    
+                        send(('result',resultShuttle), to=clients[clientId][0])
+                            
+                    elif timeout(HeadTIMEOUT):
+                        output('--------------------- Send Reconfiguration request to Olympus-----------------------',level=20)
+                        
+                        continue
+                else:                    
+                    output('--------------------- Start the Operation from scrath for client Id: ['+str(clientId)+'] ; with request Id: ['+str(requestID)+']-----------------------',level=20)
+                    # send(('forwardRequest',messageNumber,clientId,requestID,signedRequestStatement,2), to=replicas[0][0])
+                    output('--------------------- Waiting for result shuttle to arrive-----------------------',level=20)   
+                    if await(some(received((result,resultShuttle,)), has=(int(resultShuttle[0]) == requestID))):                            
+                            output('--------------------- Received Result Shuttle: Sending Shuttle to Client ['+str(clientId)+']-----------------------',level=20)
+                            failureResultShuttle = 'forwarded_request('+str(clientId)+','+str(forwardRequestMessageNo)+')'            
+                            fStatus,getAction = checkForFailure(failureResultShuttle)
+                            output('--------------------- Failure Check:['+str(fStatus)+'] Failure action:'+str(getAction)+'-----------------------',level=20)
+                            if fStatus != 'notFound':
+                                if getAction == 'change_result()':                    
+                                    lst = list(resultShuttle)
+                                    lst[1] = changeResult()
+                                    resultShuttle = tuple(lst) 
+                                    output('--------------------- Changed result:['+str(resultShuttle[1])+'] -----------------------',level=20)
+
+                            output('--------------------- Failure Check:['+str(fStatus)+'] Failure action:'+str(getAction)+'-----------------------',level=20)
+                            if fStatus != 'notFound':                
+                                if getAction == 'drop_result_stmt()':
+                                    lst = list(resultShuttle)
+                                    lst[2] = dropResultStatement(resultShuttle[2])
+                                    resultShuttle = tuple(lst)                           
+                            send(('result',resultShuttle), to=clients[clientId][0])
+
+                            
+                    elif timeout(HeadTIMEOUT):
+                        output('--------------------- Send Reconfiguration request to Olympus-----------------------',level=20)
+
+            elif resultFound=='Found':
+                output('--------------------- Result Found:Sending ResultShuttle:to Client: ['+str(clientId)+'] -----------------------',level=20)
+                failureResultShuttle = 'forwarded_request('+str(clientId)+','+str(forwardRequestMessageNo)+')'            
+                fStatus,getAction = checkForFailure(failureResultShuttle)
+                output('--------------------- Failure Check:['+str(fStatus)+'] Failure action:'+str(getAction)+'-----------------------',level=20)
+                if fStatus != 'notFound':
+                    if getAction == 'change_result()':                    
+                        lst = list(resultShuttle)
+                        lst[1] = changeResult()
+                        resultShuttle = tuple(lst) 
+                        output('--------------------- Changed result:['+str(resultShuttle[1])+'] -----------------------',level=20)
+
+                output('--------------------- Failure Check:['+str(fStatus)+'] Failure action:'+str(getAction)+'-----------------------',level=20)
+                if fStatus != 'notFound':                
+                    if getAction == 'drop_result_stmt()':
+                        lst = list(resultShuttle)
+                        lst[2] = dropResultStatement(resultShuttle[2])
+                        resultShuttle = tuple(lst)                           
+                send(('result',resultShuttle), to=clients[clientId][0])
+            
+
+
+    def receive(msg=('result',resultShuttle,resultShuttleNumber,clientId),from_=nextReplica):
+        output('-------------------- Received Result Shuttle from Next Replica -------------------------',level=20)
+        
+        # resultVerification = verifyResultProofs(resultShuttle[2])
+        output('--------------------- Received Result Shuttle: Result Shuttle No.'+str(resultShuttleNumber)+' for Client ['+str(clientId)+']-----------------------',level=20)
+
+        receivedResult = resultShuttle[1]
+        output('receivedResult',receivedResult)
+        rDigest,rEncodedMessage = hashResult(receivedResult)
+        resultVerified = checkResultProofIntegerity(resultShuttle[2],rDigest)
+        if resultVerified != 'False':
+            
+            failureResultShuttle = 'result_shuttle('+str(clientId)+','+str(resultShuttleNumber)+')'            
+            fStatus,getAction = checkForFailure(failureResultShuttle)
+            output('--------------------- Failure Check:['+str(fStatus)+'] Failure action:'+str(getAction)+'-----------------------',level=20)
+            if fStatus != 'notFound':
+                if getAction == 'change_result()':                    
+                    lst = list(resultShuttle)
+                    lst[1] = changeResult()
+                    resultShuttle = tuple(lst) 
+                    output('--------------------- Changed result:['+str(resultShuttle[1])+'] -----------------------',level=20)
+
+            output('--------------------- Failure Check:['+str(fStatus)+'] Failure action:'+str(getAction)+'-----------------------',level=20)
+            if fStatus != 'notFound':                
+                if getAction == 'drop_result_stmt()':
+                    lst = list(resultShuttle)
+                    lst[2] = dropResultStatement(resultShuttle[2])
+                    resultShuttle = tuple(lst)                                
+
+            if resultVerified == 'True':
+                appendToResultCache(resultShuttle)
+            else:
+                output('--------------------- Send Reconfiguration request to Olympus---------------',level=40)
+            
+            #Verify Result Proofs
+            if i!=0:
+                output('--------------------- Sending ResultShuttle: No:['+str(resultShuttleNumber)+'] to Previous Replica: ['+str(i-1)+'] -----------------------',level=20)
+                send(('result',resultShuttle,resultShuttleNumber,clientId), to=replicas[i-1][0])
+        else:
+            output('---------------------Send Reconfiguration request to Olympus---------------',level=40)           
+        #validate the result shuttle
+    
+    def checkHashResult(digest,rDigest):
+        output("--------------- Checking hash digests for results ---------------",level=20)
+        bDigest=bytes(digest,'utf-8')
+        brDigest = bytes(rDigest,'utf-8')
+        if sodium_memcmp(bDigest, brDigest):
+            return True
+        return False
+
+    def createStatements(s,o,r):
+        output("--- Create Signed Order Statement and Result Statement with: slot: "+str(s)+", operation: "+str(o)+", result"+str(r)+"--------------",level=20)                
+        orderStatement = bytes(str('\'order\';'+str(s)+';'+o.decode("utf-8")),'utf8')  
+
+        signedOrderStatement = signTheStatement(replica_signing_key,orderStatement)                    
+        rDigest,encodedResult = hashResult(r)                      
+        resultStatement = bytes('\'result\';'+str(s)+';'+rDigest+';'+encodedResult,'utf8')        
+        signedResultStatement = signTheStatement(replica_signing_key,resultStatement)        
+        return signedOrderStatement,signedResultStatement
+
+    def checkForFailure(failureTrigger):
+        output("--------------- Get Failure Action --------------",level=20)        
+        try:
+            failureAction = failuresDict[failureTrigger]
+            return 'foundFailure',failureAction
+        except:
+            return 'notFound',None
+
+    def checkOrderProofIntegerity(slot,verifiedClientStatement,tempOrderProof):
+        output("--------------- Check for Result Proof Integrity:[Result-Statements:Signatures] and Result--------------",level=20)        
+        numOfOP = len(tempOrderProof)        
+        tempii=0
+        verified = ''
+        while tempii < numOfOP:
+            temp_verify_key = decodeVerifyKey(replicas[tempii][1])            
+            tempSignedOP = tempOrderProof[tempii]
+            try:
+                verified = verifyTheStatement(temp_verify_key,tempSignedOP)
+                tempOrderStatement = verified.decode('utf-8').split(';')
+                tempSlot = tempOrderStatement[1] 
+                tempSignedStatement = tempOrderStatement[2]
+                if (str(slot) != tempSlot) or (tempSignedStatement != verifiedClientStatement):
+                    verified = 'False'
+                else:
+                    verified = 'True'
+            except:
+                verified = 'False'
+                break
+            tempii+=1
+        return verified
+
+    def verifyResultProofs(tempResultProof):
+        output("--------------- Verifying:[Result-Statements:Signatures] --------------",level=20)        
+        numOfRP = len(tempResultProof)
+        tempi=0
+        verified = ''
+        if numOfRP == 0:
+            return 'False'
+        while tempi < numOfRP:           
+            try:
+                temp_verify_key = decodeVerifyKey(replicas[tempi][1])
+                tempSignedRP = tempResultProof[tempi]                
+                verified = verifyTheStatement(temp_verify_key,tempSignedRP)
+                verified ='True'
+            except:
+                verified = 'False'
+                break          
+            tempi+=1
+        return verified
+    
+    def checkResultProofIntegerity(tempResultProof,rDigest):
+        output("--------------- Check for Result Proof Integrity:[Result-Statements:Signatures] and Result--------------",level=20)       
+        numOfRP = len(tempResultProof)
+        tempii=0
+        verified = ''
+        while tempii < numOfRP:
+            temp_verify_key = decodeVerifyKey(replicas[tempii][1])
+            tempSignedRP = tempResultProof[tempii]
+            try:
+                verified = verifyTheStatement(temp_verify_key,tempSignedRP)                
+                strVerified = verified.decode('utf8')
+                verifiedTuple = strVerified.split(';')
+                if checkHashResult(verifiedTuple[2],rDigest):
+                    verified = 'True'
+                else:
+                    verified = 'False'
+                    break
+            except:
+                verified = 'False' 
+                break         
+            tempii+=1
+        return verified    
+
+    def checkRequestIDInHistory(reqID):
+        output('--------------------- Check for Request Id: '+str(reqID)+' in history-----------------------',level=20)
+        return reqID in [x for v in replicaHistory.values() for x in v]
+
+    def checkSlotInHistory(slot,operation):
+        inHistory = 'false'
+        output("--------------- Check for <Slot,Operation> Integrity--------------",level=20)
+        try:
+            op = replicaHistory[slot][0]
+            output('op',op)
+            if operation ==  op:
+                inHistory = 'validOperation'
+            elif operation != op:
+                inHistory = 'invalidOperation'
+        except:
+            pass
+        return inHistory
+
+    def checkForHoles(slot):
+        output("--------------- Check for holes in Replica history --------------",level=20)
+        holes = False
+        if slot == 0:
+            return holes
+        try:
+            op = replicaHistory[slot-1]         
+        except:
+            holes = True
+        return holes    
+
+    def unionOrderProofs(orderProof,signedOS):
+        output("--------------- Making union of order statements: Order Proof --------------",level=20)
+        return orderProof.append(signedOS)
+
+    def unionResultProofs(resultProof,signedRS):
+        output("--------------- Making union of result statements: Result Proof --------------",level=20)
+        return resultProof.append(signedRS)
+
+    def appendToReplicaHistory(s,o,orderProof,reqID):
+        output("-------------------------- Append to Replica History slot:"+str(s)+" operation:"+str(o)+" request Id:"+str(reqID)+" --------------",level=20)
+        replicaHistory[s] = (o.decode('utf-8'),orderProof,reqID)
+
+    def appendToResultCache(resultSh):
+        output("--------------- Append Result to Result Cache --------------",level=20)
+        resultCache[resultSh[0]] = (resultSh[1],resultSh[2])
+
+    def getResultFromResultCache(requestID):
+        output("--------------- Get Result From Result Cache --------------",level=20)        
+        try:
+            tempResult = resultCache[requestID]
+            return 'Found',(requestID,tempResult[0],tempResult[1])
+        except KeyError:
+            return 'NoResult',None
+
+    def changeOperation():
+    	return 'get'
+    def changeResult():
+    	return 'OK'
+    def dropResultStatement(resultProofToTruncate):
+        output("--------------- Dropping Heads Result Statement --------------",level=20)        
+        numOfRP = len(resultProofToTruncate)        
+        verified = ''        
+        temp_verify_key = decodeVerifyKey(replicas[0][1])
+        tempSignedRP = resultProofToTruncate[0]
+        try:
+            verified = verifyTheStatement(temp_verify_key,tempSignedRP)            
+            resultProofToTruncate.pop(0)
+        except:
+            verified = 'False'    
+        return resultProofToTruncate
+
+    '''Functions to handle operation Statements'''
+    def parseTheUnsignedStatement(unSignedRequestStatement):
+        output("--------------- Parsing the unsigned statement --------------",level=20)        
+        inp = str(unSignedRequestStatement,'utf-8')
+        inp = inp.split(')')[0]        
+        opKeyVal = inp.split('(')
+        operation = opKeyVal[0]
+        keyVal = opKeyVal[1].split(',')
+        key = keyVal[0][1:-1]
+        value=''
+        if operation!='get':
+            value = keyVal[1][1:-1]
+        return  operation,key,value.strip()
+
+    def addToDictionary(key,val):
+        try:
+            data[key]=val
+            return 'OK'
+        except:
+            return 'Fail'
+
+    def getFrom(key,val):
+        try:
+            return data[key]
+        except:
+            return ''
+
+    def appendDictionary(key,val):
+        try:
+            valueExsist = data[key]
+            data[key] = valueExsist+val
+            return 'OK'
+        except:
+            return 'fail'
+
+    def sliceDictionary(key,val):
+        try:            
+            value = data[key]
+            indices = val.split(':')            
+            data[key] = value[int(indices[0]):int(indices[1])]
+            return 'OK'
+        except:
+            return 'fail'
+
+    def executeOperation(operation,key,val):
+        output("--------------- Executing Operation to updata client dictionary with: --------------",level=20)
+        
+        function_launch = {
+            'put': addToDictionary,
+            'get': getFrom,
+            'append': appendDictionary,
+            'slice': sliceDictionary
+        }
+        
+        return(function_launch[operation](str(key), str(val)))
+
+def main():
+    output("---------------ENTERING main---------------------")
+    olympus = new(Olympus,args=(),at='olympus')    
+    start(olympus)

@@ -1,0 +1,56 @@
+[2017-10-22 21:26:55,207] da.sim.Router<MainProcess>:INFO: Bootstrap succeeded using <UdpTransport(127.0.0.1:35893)>.
+[2017-10-22 21:26:55,207] da.api<MainProcess>:INFO: <Node_:Client1> initialized at 127.0.0.1:(UdpTransport=35893, TcpTransport=35283).
+[2017-10-22 21:26:55,207] da.api<MainProcess>:INFO: Starting program <module 'ping' from 'C:\\Users\\SSDN-Dinesh\\Desktop\\SBU\\ASYNC\\BCR\\Asynchronous-Systems\\phase2\\ping.py'>...
+[2017-10-22 21:26:55,207] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-10-22 21:26:55,208] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-10-22 21:27:04,759] ping.Client<Client:f5002#Client1>:INFO: --------------- ENTERING Client:run ---------------
+[2017-10-22 21:27:04,760] ping.Client<Client:f5002#Client1>:INFO: --------------- Requesting Configuration from Olympus---------------
+[2017-10-22 21:27:05,285] ping.Client<Client:f5002#Client1>:INFO: --------------- Received Configuration from Olympus --------------
+[2017-10-22 21:27:05,285] ping.Client<Client:f5002#Client1>:INFO: --------------- Generating Workload for client --------------
+[2017-10-22 21:27:05,285] ping.Client<Client:f5002#Client1>:INFO: --------------- Operations for Client -------------- ["put('movie','war')", " get('movie')"]
+[2017-10-22 21:27:05,285] ping.Client<Client:f5002#Client1>:INFO: --------------- Sending Request No: % :: Request Id: % -------------- 0 7189
+[2017-10-22 21:27:05,285] ping.Client<Client:f5002#Client1>:INFO: --------------- Signing the request statement: -------------- b"put('movie','war')"
+[2017-10-22 21:27:05,286] ping.Client<Client:f5002#Client1>:INFO: --------------- Sending request to head --------------
+[2017-10-22 21:27:05,287] ping.Client<Client:f5002#Client1>:INFO: --------------- Parsing the unsigned statement --------------
+[2017-10-22 21:27:05,287] ping.Client<Client:f5002#Client1>:INFO: --------------- Client updates its dictionary with: -------------- put movie war
+[2017-10-22 21:27:05,287] ping.Client<Client:f5002#Client1>:INFO: --------------- Executing Operation to updata client dictionary with: -------------- put 7189 war movie
+[2017-10-22 21:27:05,287] ping.Client<Client:f5002#Client1>:INFO: --------------- Result upon updating dictionary: -------------- OK
+[2017-10-22 21:27:05,287] ping.Client<Client:f5002#Client1>:INFO: --------------- Waiting for Result -------------- 0 7189
+[2017-10-22 21:27:05,354] ping.Client<Client:f5002#Client1>:INFO: --------------- Received Result Shuttle --------------
+[2017-10-22 21:27:05,355] ping.Client<Client:f5002#Client1>:INFO: --------------- Checking result against expected result --------------
+[2017-10-22 21:27:05,355] ping.Client<Client:f5002#Client1>:INFO: --------------- Result in Client Dictionary: -------------- OK
+[2017-10-22 21:27:05,355] ping.Client<Client:f5002#Client1>:INFO: --------------- Get Data in global dictionary from olympus for Key: % with ID -------------- movie 1943
+[2017-10-22 21:27:05,357] ping.Client<Client:f5002#Client1>:INFO: --------------- Received Data from global dictionary: % for key: % -------------- ['OK', 'war'] movie
+[2017-10-22 21:27:05,357] ping.Client<Client:f5002#Client1>:INFO: --------------- Creating hash digest for result ---------------
+[2017-10-22 21:27:05,357] ping.Client<Client:f5002#Client1>:INFO: --------------- Verifying result and signature of result statements --------------
+[2017-10-22 21:27:05,360] ping.Client<Client:f5002#Client1>:INFO: --------------- Checking hash digests for results ---------------
+[2017-10-22 21:27:05,364] ping.Client<Client:f5002#Client1>:INFO: --------------- Checking hash digests for results ---------------
+[2017-10-22 21:27:05,367] ping.Client<Client:f5002#Client1>:INFO: --------------- Checking hash digests for results ---------------
+[2017-10-22 21:27:05,367] ping.Client<Client:f5002#Client1>:INFO: --------------- Result Proof Verification check: % -------------- True
+[2017-10-22 21:27:05,367] ping.Client<Client:f5002#Client1>:INFO: --------------- Client Dictionary Result: % -------------- OK
+[2017-10-22 21:27:05,368] ping.Client<Client:f5002#Client1>:INFO: --------------- Global Dictionary Result: % -------------- ['OK', 'war']
+[2017-10-22 21:27:05,368] ping.Client<Client:f5002#Client1>:INFO: --------------- Result From Replica: % -------------- OK
+[2017-10-22 21:27:05,368] ping.Client<Client:f5002#Client1>:INFO: --------------- CLIENT ACCEPTS THE RESULT --------------
+[2017-10-22 21:27:05,368] ping.Client<Client:f5002#Client1>:INFO: --------------- Sending Request No: % :: Request Id: % -------------- 1 7749
+[2017-10-22 21:27:05,368] ping.Client<Client:f5002#Client1>:INFO: --------------- Signing the request statement: -------------- b"get('movie')"
+[2017-10-22 21:27:05,369] ping.Client<Client:f5002#Client1>:INFO: --------------- Sending request to head --------------
+[2017-10-22 21:27:05,370] ping.Client<Client:f5002#Client1>:INFO: --------------- Parsing the unsigned statement --------------
+[2017-10-22 21:27:05,370] ping.Client<Client:f5002#Client1>:INFO: --------------- Client updates its dictionary with: -------------- get movie 
+[2017-10-22 21:27:05,370] ping.Client<Client:f5002#Client1>:INFO: --------------- Executing Operation to updata client dictionary with: -------------- get 7749  movie
+[2017-10-22 21:27:05,370] ping.Client<Client:f5002#Client1>:INFO: --------------- Result upon updating dictionary: -------------- war
+[2017-10-22 21:27:05,370] ping.Client<Client:f5002#Client1>:INFO: --------------- Waiting for Result -------------- 1 7749
+[2017-10-22 21:27:05,431] ping.Client<Client:f5002#Client1>:INFO: --------------- Received Result Shuttle --------------
+[2017-10-22 21:27:05,431] ping.Client<Client:f5002#Client1>:INFO: --------------- Checking result against expected result --------------
+[2017-10-22 21:27:05,432] ping.Client<Client:f5002#Client1>:INFO: --------------- Result in Client Dictionary: -------------- war
+[2017-10-22 21:27:05,432] ping.Client<Client:f5002#Client1>:INFO: --------------- Get Data in global dictionary from olympus for Key: % with ID -------------- movie 967
+[2017-10-22 21:27:05,433] ping.Client<Client:f5002#Client1>:INFO: --------------- Received Data from global dictionary: % for key: % -------------- ['OK', 'warstar', 'OK'] movie
+[2017-10-22 21:27:05,434] ping.Client<Client:f5002#Client1>:INFO: --------------- Creating hash digest for result ---------------
+[2017-10-22 21:27:05,434] ping.Client<Client:f5002#Client1>:INFO: --------------- Verifying result and signature of result statements --------------
+[2017-10-22 21:27:05,437] ping.Client<Client:f5002#Client1>:INFO: --------------- Checking hash digests for results ---------------
+[2017-10-22 21:27:05,439] ping.Client<Client:f5002#Client1>:INFO: --------------- Checking hash digests for results ---------------
+[2017-10-22 21:27:05,442] ping.Client<Client:f5002#Client1>:INFO: --------------- Checking hash digests for results ---------------
+[2017-10-22 21:27:05,443] ping.Client<Client:f5002#Client1>:INFO: --------------- Result Proof Verification check: % -------------- True
+[2017-10-22 21:27:05,443] ping.Client<Client:f5002#Client1>:INFO: --------------- Client Dictionary Result: % -------------- war
+[2017-10-22 21:27:05,443] ping.Client<Client:f5002#Client1>:INFO: --------------- Global Dictionary Result: % -------------- ['OK', 'warstar', 'OK']
+[2017-10-22 21:27:05,443] ping.Client<Client:f5002#Client1>:INFO: --------------- Result From Replica: % -------------- warstar
+[2017-10-22 21:27:05,443] ping.Client<Client:f5002#Client1>:INFO: --------------- CLIENT ACCEPTS THE RESULT --------------

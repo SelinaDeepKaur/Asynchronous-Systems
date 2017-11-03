@@ -1,0 +1,52 @@
+[2017-10-22 22:41:57,773] da.api<MainProcess>:INFO: Bootstrapping attempt failed due to BootstrapException('Unable to contact a peer node.',),  continuing as a master node (use '--master' to disable bootstrapping at startup).
+[2017-10-22 22:41:57,774] da.api<MainProcess>:INFO: <Node_:Client0> initialized at 127.0.0.1:(UdpTransport=15000, TcpTransport=15000).
+[2017-10-22 22:41:57,774] da.api<MainProcess>:INFO: Starting program <module 'ping' from 'C:\\Users\\SSDN-Dinesh\\Desktop\\SBU\\ASYNC\\BCR\\Asynchronous-Systems\\phase2\\ping.py'>...
+[2017-10-22 22:41:57,774] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-10-22 22:41:57,775] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-10-22 22:42:09,005] ping.Client<Client:f3002#Client0>:INFO: --------------- ENTERING Client:run ---------------
+[2017-10-22 22:42:09,005] ping.Client<Client:f3002#Client0>:INFO: --------------- Requesting Configuration from Olympus---------------
+[2017-10-22 22:42:09,692] ping.Client<Client:f3002#Client0>:INFO: --------------- Received Configuration from Olympus --------------
+[2017-10-22 22:42:09,692] ping.Client<Client:f3002#Client0>:INFO: --------------- Generating Workload for client --------------
+[2017-10-22 22:42:09,692] ping.Client<Client:f3002#Client0>:INFO: --------------- Operations for Client -------------- ["put('movie','star')", " append('movie','star')", " get('movie')"]
+[2017-10-22 22:42:09,692] ping.Client<Client:f3002#Client0>:INFO: --------------- Sending Request No: % :: Request Id: % -------------- 0 6108
+[2017-10-22 22:42:09,692] ping.Client<Client:f3002#Client0>:INFO: --------------- Signing the request statement: -------------- b"put('movie','star')"
+[2017-10-22 22:42:09,693] ping.Client<Client:f3002#Client0>:INFO: --------------- Sending request to head --------------
+[2017-10-22 22:42:09,694] ping.Client<Client:f3002#Client0>:INFO: --------------- Parsing the unsigned statement --------------
+[2017-10-22 22:42:09,694] ping.Client<Client:f3002#Client0>:INFO: --------------- Client updates its dictionary with: -------------- put movie star
+[2017-10-22 22:42:09,694] ping.Client<Client:f3002#Client0>:INFO: --------------- Executing Operation to updata client dictionary with: -------------- put 6108 star movie
+[2017-10-22 22:42:09,694] ping.Client<Client:f3002#Client0>:INFO: --------------- Result upon updating dictionary: -------------- OK
+[2017-10-22 22:42:09,694] ping.Client<Client:f3002#Client0>:INFO: --------------- Waiting for Result -------------- 0 6108
+[2017-10-22 22:42:19,694] ping.Client<Client:f3002#Client0>:INFO: --------------- TIMEOUT -------------- 0 6108
+[2017-10-22 22:42:19,694] ping.Client<Client:f3002#Client0>:INFO: --------------- Sending Retransmission Request for Request No: % :: Request Id: % -------------- 0 6108
+[2017-10-22 22:42:19,694] ping.Client<Client:f3002#Client0>:INFO: --------------- Signing the request statement: -------------- b"put('movie','star')"
+[2017-10-22 22:42:19,695] ping.Client<Client:f3002#Client0>:INFO: --------------- Sending Retransmission request to all replicas --------------
+[2017-10-22 22:42:19,695] ping.Client<Client:f3002#Client0>:INFO: --------------- Sending Retransmission request to all replicas --------------
+[2017-10-22 22:42:19,696] ping.Client<Client:f3002#Client0>:INFO: --------------- Sending Retransmission request to all replicas --------------
+[2017-10-22 22:42:19,697] ping.Client<Client:f3002#Client0>:INFO: --------------- Sending Request No: % :: Request Id: % -------------- 1 9331
+[2017-10-22 22:42:19,697] ping.Client<Client:f3002#Client0>:INFO: --------------- Signing the request statement: -------------- b"append('movie','star')"
+[2017-10-22 22:42:19,698] ping.Client<Client:f3002#Client0>:INFO: --------------- Sending request to head --------------
+[2017-10-22 22:42:19,699] ping.Client<Client:f3002#Client0>:INFO: --------------- Parsing the unsigned statement --------------
+[2017-10-22 22:42:19,699] ping.Client<Client:f3002#Client0>:INFO: --------------- Client updates its dictionary with: -------------- append movie star
+[2017-10-22 22:42:19,699] ping.Client<Client:f3002#Client0>:INFO: --------------- Executing Operation to updata client dictionary with: -------------- append 9331 star movie
+[2017-10-22 22:42:19,699] ping.Client<Client:f3002#Client0>:INFO: --------------- Result upon updating dictionary: -------------- OK
+[2017-10-22 22:42:19,699] ping.Client<Client:f3002#Client0>:INFO: --------------- Waiting for Result -------------- 1 9331
+[2017-10-22 22:42:29,700] ping.Client<Client:f3002#Client0>:INFO: --------------- TIMEOUT -------------- 1 9331
+[2017-10-22 22:42:29,700] ping.Client<Client:f3002#Client0>:INFO: --------------- Sending Retransmission Request for Request No: % :: Request Id: % -------------- 1 9331
+[2017-10-22 22:42:29,700] ping.Client<Client:f3002#Client0>:INFO: --------------- Signing the request statement: -------------- b"append('movie','star')"
+[2017-10-22 22:42:29,701] ping.Client<Client:f3002#Client0>:INFO: --------------- Sending Retransmission request to all replicas --------------
+[2017-10-22 22:42:29,701] ping.Client<Client:f3002#Client0>:INFO: --------------- Sending Retransmission request to all replicas --------------
+[2017-10-22 22:42:29,701] ping.Client<Client:f3002#Client0>:INFO: --------------- Sending Retransmission request to all replicas --------------
+[2017-10-22 22:42:29,703] ping.Client<Client:f3002#Client0>:INFO: --------------- Sending Request No: % :: Request Id: % -------------- 2 1888
+[2017-10-22 22:42:29,703] ping.Client<Client:f3002#Client0>:INFO: --------------- Signing the request statement: -------------- b"get('movie')"
+[2017-10-22 22:42:29,705] ping.Client<Client:f3002#Client0>:INFO: --------------- Sending request to head --------------
+[2017-10-22 22:42:29,705] ping.Client<Client:f3002#Client0>:INFO: --------------- Parsing the unsigned statement --------------
+[2017-10-22 22:42:29,705] ping.Client<Client:f3002#Client0>:INFO: --------------- Client updates its dictionary with: -------------- get movie 
+[2017-10-22 22:42:29,706] ping.Client<Client:f3002#Client0>:INFO: --------------- Executing Operation to updata client dictionary with: -------------- get 1888  movie
+[2017-10-22 22:42:29,706] ping.Client<Client:f3002#Client0>:INFO: --------------- Result upon updating dictionary: -------------- starstar
+[2017-10-22 22:42:29,706] ping.Client<Client:f3002#Client0>:INFO: --------------- Waiting for Result -------------- 2 1888
+[2017-10-22 22:42:39,706] ping.Client<Client:f3002#Client0>:INFO: --------------- TIMEOUT -------------- 2 1888
+[2017-10-22 22:42:39,706] ping.Client<Client:f3002#Client0>:INFO: --------------- Sending Retransmission Request for Request No: % :: Request Id: % -------------- 2 1888
+[2017-10-22 22:42:39,706] ping.Client<Client:f3002#Client0>:INFO: --------------- Signing the request statement: -------------- b"get('movie')"
+[2017-10-22 22:42:39,707] ping.Client<Client:f3002#Client0>:INFO: --------------- Sending Retransmission request to all replicas --------------
+[2017-10-22 22:42:39,707] ping.Client<Client:f3002#Client0>:INFO: --------------- Sending Retransmission request to all replicas --------------
+[2017-10-22 22:42:39,708] ping.Client<Client:f3002#Client0>:INFO: --------------- Sending Retransmission request to all replicas --------------

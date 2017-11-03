@@ -1,0 +1,794 @@
+[2017-10-22 23:53:57,222] da.sim.Router<MainProcess>:INFO: Bootstrap succeeded using <UdpTransport(127.0.0.1:15782)>.
+[2017-10-22 23:53:57,223] da.api<MainProcess>:INFO: <Node_:olympus> initialized at 127.0.0.1:(UdpTransport=15782, TcpTransport=12332).
+[2017-10-22 23:53:57,223] da.api<MainProcess>:INFO: Starting program <module 'ping' from '/Users/selinadeepkaur/Desktop/Byzantine/ping.py'>...
+[2017-10-22 23:53:57,223] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-10-22 23:53:57,223] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-10-22 23:53:57,224] ping.Node_<Node_:olympus>:OUTPUT: ---------------ENTERING main---------------------
+[2017-10-22 23:53:57,256] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- ENTERING Olymus:setup ---------------
+[2017-10-22 23:53:57,257] ping.Olympus<Olympus:1b802#olympus>:OUTPUT: <Olympus:1b802#olympus>
+[2017-10-22 23:53:57,258] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- ENTERING Olymus:initialSetup ---------------
+[2017-10-22 23:53:57,259] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createKeys for clients and replicas---------------
+[2017-10-22 23:53:57,262] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createClientProcesses---------------
+[2017-10-22 23:53:57,666] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createKeys for clients and replicas---------------
+[2017-10-22 23:53:57,667] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createReplicaProcesses---------------
+[2017-10-22 23:53:57,803] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- ENTERING olympus:receieve:requestConfiguration ---------------
+[2017-10-22 23:53:57,803] ping.Olympus<Olympus:1b802#olympus>:OUTPUT: <Client:bdc02#Client0>
+[2017-10-22 23:53:57,803] da.api<MainProcess>:INFO: Main process terminated.
+[2017-10-22 23:53:57,804] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- ENTERING olympus:receieve:requestConfiguration ---------------
+[2017-10-22 23:53:57,804] ping.Olympus<Olympus:1b802#olympus>:OUTPUT: <Client:91402#Client1>
+[2017-10-22 23:53:57,805] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- ENTERING olympus:receieve:requestConfiguration ---------------
+[2017-10-22 23:53:57,805] ping.Olympus<Olympus:1b802#olympus>:OUTPUT: <Client:4f002#Client2>
+[2017-10-22 23:53:57,806] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- ENTERING olympus:receieve:requestConfiguration ---------------
+[2017-10-22 23:53:57,806] ping.Olympus<Olympus:1b802#olympus>:OUTPUT: <Client:3a402#Client3>
+[2017-10-22 23:53:57,806] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- ENTERING olympus:receieve:requestConfiguration ---------------
+[2017-10-22 23:53:57,807] ping.Olympus<Olympus:1b802#olympus>:OUTPUT: <Client:96c02#Client4>
+[2017-10-22 23:53:57,807] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- ENTERING olympus:receieve:requestConfiguration ---------------
+[2017-10-22 23:53:57,808] ping.Olympus<Olympus:1b802#olympus>:OUTPUT: <Client:29002#Client5>
+[2017-10-22 23:53:57,809] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- ENTERING olympus:receieve:requestConfiguration ---------------
+[2017-10-22 23:53:57,809] ping.Olympus<Olympus:1b802#olympus>:OUTPUT: <Client:cb802#Client6>
+[2017-10-22 23:53:57,810] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- ENTERING olympus:receieve:requestConfiguration ---------------
+[2017-10-22 23:53:57,810] ping.Olympus<Olympus:1b802#olympus>:OUTPUT: <Client:63c02#Client7>
+[2017-10-22 23:53:57,810] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- ENTERING olympus:receieve:requestConfiguration ---------------
+[2017-10-22 23:53:57,811] ping.Olympus<Olympus:1b802#olympus>:OUTPUT: <Client:33002#Client8>
+[2017-10-22 23:53:57,812] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- ENTERING olympus:receieve:requestConfiguration ---------------
+[2017-10-22 23:53:57,812] ping.Olympus<Olympus:1b802#olympus>:OUTPUT: <Client:69c02#Client9>
+[2017-10-22 23:53:57,832] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 1
+[2017-10-22 23:53:57,832] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-22 23:53:57,833] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-22 23:53:57,833] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put movie star
+[2017-10-22 23:53:57,838] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 3
+[2017-10-22 23:53:57,839] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-22 23:53:57,840] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-22 23:53:57,841] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- append movie star
+[2017-10-22 23:53:57,847] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 4
+[2017-10-22 23:53:57,848] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-22 23:53:57,848] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-22 23:53:57,848] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put apple pie
+[2017-10-22 23:53:57,854] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 2
+[2017-10-22 23:53:57,854] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-22 23:53:57,855] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-22 23:53:57,855] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put movie war
+[2017-10-22 23:53:57,868] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 5
+[2017-10-22 23:53:57,869] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-22 23:53:57,869] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-22 23:53:57,870] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put mango jam
+[2017-10-22 23:53:57,870] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 7
+[2017-10-22 23:53:57,871] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-22 23:53:57,871] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-22 23:53:57,871] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put apple shake
+[2017-10-22 23:53:57,871] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- movie
+[2017-10-22 23:53:57,872] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'war']
+[2017-10-22 23:53:57,886] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- movie
+[2017-10-22 23:53:57,886] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'war']
+[2017-10-22 23:53:57,899] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 6
+[2017-10-22 23:53:57,899] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-22 23:53:57,900] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-22 23:53:57,900] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put banana juice
+[2017-10-22 23:53:57,901] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- apple
+[2017-10-22 23:53:57,902] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'shake']
+[2017-10-22 23:53:57,918] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- movie
+[2017-10-22 23:53:57,918] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'war']
+[2017-10-22 23:53:57,921] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 8
+[2017-10-22 23:53:57,922] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-22 23:53:57,922] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-22 23:53:57,923] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- slice apple 0:2
+[2017-10-22 23:53:57,930] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- mango
+[2017-10-22 23:53:57,930] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'jam']
+[2017-10-22 23:53:57,932] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 9
+[2017-10-22 23:53:57,933] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-22 23:53:57,933] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-22 23:53:57,933] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put color orange
+[2017-10-22 23:53:57,942] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 1
+[2017-10-22 23:53:57,942] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-22 23:53:57,942] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-22 23:53:57,942] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- get movie 
+[2017-10-22 23:53:57,945] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- apple
+[2017-10-22 23:53:57,946] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'sh']
+[2017-10-22 23:53:57,957] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 2
+[2017-10-22 23:53:57,958] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-22 23:53:57,958] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-22 23:53:57,958] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- get movie 
+[2017-10-22 23:53:57,962] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- banana
+[2017-10-22 23:53:57,962] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'juice']
+[2017-10-22 23:53:57,983] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- apple
+[2017-10-22 23:53:57,983] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'sh']
+[2017-10-22 23:53:58,008] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- color
+[2017-10-22 23:53:58,008] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'orange']
+[2017-10-22 23:53:58,022] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- movie
+[2017-10-22 23:53:58,022] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'war', 'OK']
+[2017-10-22 23:53:58,035] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- movie
+[2017-10-22 23:53:58,035] ping.Olympus<Olympus:1b802#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'war', 'OK']
+[2017-10-23 00:02:40,431] da.sim.Router<MainProcess>:INFO: Bootstrap succeeded using <UdpTransport(127.0.0.1:29629)>.
+[2017-10-23 00:02:40,431] da.api<MainProcess>:INFO: <Node_:olympus> initialized at 127.0.0.1:(UdpTransport=29629, TcpTransport=25884).
+[2017-10-23 00:02:40,432] da.api<MainProcess>:INFO: Starting program <module 'ping' from '/Users/selinadeepkaur/Desktop/Byzantine/ping.py'>...
+[2017-10-23 00:02:40,432] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-10-23 00:02:40,432] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-10-23 00:02:40,433] ping.Node_<Node_:olympus>:OUTPUT: ---------------ENTERING main---------------------
+[2017-10-23 00:02:40,467] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:setup ---------------
+[2017-10-23 00:02:40,468] ping.Olympus<Olympus:91402#olympus>:OUTPUT: <Olympus:91402#olympus>
+[2017-10-23 00:02:40,468] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:initialSetup ---------------
+[2017-10-23 00:02:40,469] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createKeys for clients and replicas---------------
+[2017-10-23 00:02:40,472] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createClientProcesses---------------
+[2017-10-23 00:02:40,874] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createKeys for clients and replicas---------------
+[2017-10-23 00:02:40,874] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createReplicaProcesses---------------
+[2017-10-23 00:02:41,011] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING olympus:receieve:requestConfiguration ---------------
+[2017-10-23 00:02:41,012] da.api<MainProcess>:INFO: Main process terminated.
+[2017-10-23 00:02:41,011] ping.Olympus<Olympus:91402#olympus>:OUTPUT: <Client:b1402#Client0>
+[2017-10-23 00:02:41,012] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING olympus:receieve:requestConfiguration ---------------
+[2017-10-23 00:02:41,012] ping.Olympus<Olympus:91402#olympus>:OUTPUT: <Client:e4c02#Client1>
+[2017-10-23 00:02:41,013] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING olympus:receieve:requestConfiguration ---------------
+[2017-10-23 00:02:41,013] ping.Olympus<Olympus:91402#olympus>:OUTPUT: <Client:fac02#Client2>
+[2017-10-23 00:02:41,014] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING olympus:receieve:requestConfiguration ---------------
+[2017-10-23 00:02:41,014] ping.Olympus<Olympus:91402#olympus>:OUTPUT: <Client:a4002#Client3>
+[2017-10-23 00:02:41,015] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING olympus:receieve:requestConfiguration ---------------
+[2017-10-23 00:02:41,015] ping.Olympus<Olympus:91402#olympus>:OUTPUT: <Client:6a002#Client4>
+[2017-10-23 00:02:41,016] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING olympus:receieve:requestConfiguration ---------------
+[2017-10-23 00:02:41,016] ping.Olympus<Olympus:91402#olympus>:OUTPUT: <Client:47402#Client5>
+[2017-10-23 00:02:41,017] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING olympus:receieve:requestConfiguration ---------------
+[2017-10-23 00:02:41,017] ping.Olympus<Olympus:91402#olympus>:OUTPUT: <Client:a5c02#Client6>
+[2017-10-23 00:02:41,018] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING olympus:receieve:requestConfiguration ---------------
+[2017-10-23 00:02:41,018] ping.Olympus<Olympus:91402#olympus>:OUTPUT: <Client:21c02#Client7>
+[2017-10-23 00:02:41,019] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING olympus:receieve:requestConfiguration ---------------
+[2017-10-23 00:02:41,019] ping.Olympus<Olympus:91402#olympus>:OUTPUT: <Client:a9c02#Client8>
+[2017-10-23 00:02:41,020] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING olympus:receieve:requestConfiguration ---------------
+[2017-10-23 00:02:41,021] ping.Olympus<Olympus:91402#olympus>:OUTPUT: <Client:96802#Client9>
+[2017-10-23 00:02:41,035] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 1
+[2017-10-23 00:02:41,036] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:41,037] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:41,037] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put movie star
+[2017-10-23 00:02:41,047] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 2
+[2017-10-23 00:02:41,047] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:41,048] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:41,048] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put movie war
+[2017-10-23 00:02:41,053] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 3
+[2017-10-23 00:02:41,053] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:41,053] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:41,054] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- append movie star
+[2017-10-23 00:02:41,064] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- movie
+[2017-10-23 00:02:41,064] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'warstar']
+[2017-10-23 00:02:41,077] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 6
+[2017-10-23 00:02:41,078] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:41,078] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:41,078] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put banana juice
+[2017-10-23 00:02:41,079] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- movie
+[2017-10-23 00:02:41,079] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'warstar']
+[2017-10-23 00:02:41,091] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 5
+[2017-10-23 00:02:41,092] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:41,092] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:41,092] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put mango jam
+[2017-10-23 00:02:41,093] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- movie
+[2017-10-23 00:02:41,093] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'warstar']
+[2017-10-23 00:02:41,106] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 4
+[2017-10-23 00:02:41,107] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:41,107] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:41,107] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put apple pie
+[2017-10-23 00:02:41,113] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- banana
+[2017-10-23 00:02:41,113] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'juice']
+[2017-10-23 00:02:41,119] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 8
+[2017-10-23 00:02:41,120] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:41,120] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:41,120] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- slice apple 0:2
+[2017-10-23 00:02:41,130] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- mango
+[2017-10-23 00:02:41,131] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'jam']
+[2017-10-23 00:02:41,133] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 7
+[2017-10-23 00:02:41,133] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:41,133] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:41,134] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put apple shake
+[2017-10-23 00:02:41,140] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:41,141] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:41,141] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:41,141] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put mango jam
+[2017-10-23 00:02:41,142] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- apple
+[2017-10-23 00:02:41,142] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'shake']
+[2017-10-23 00:02:41,149] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- apple
+[2017-10-23 00:02:41,150] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'shake']
+[2017-10-23 00:02:41,157] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 9
+[2017-10-23 00:02:41,157] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:41,158] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:41,158] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put color orange
+[2017-10-23 00:02:41,163] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- apple
+[2017-10-23 00:02:41,163] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'shake']
+[2017-10-23 00:02:41,166] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 1
+[2017-10-23 00:02:41,167] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:41,167] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:41,167] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- get movie 
+[2017-10-23 00:02:41,175] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 2
+[2017-10-23 00:02:41,176] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:41,176] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:41,176] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- get movie 
+[2017-10-23 00:02:41,179] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- mango
+[2017-10-23 00:02:41,179] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'jam']
+[2017-10-23 00:02:41,198] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- color
+[2017-10-23 00:02:41,198] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'orange']
+[2017-10-23 00:02:41,219] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:41,220] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:41,220] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:41,220] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- append colo green
+[2017-10-23 00:02:41,230] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- movie
+[2017-10-23 00:02:41,231] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'warstar', 'OK']
+[2017-10-23 00:02:41,244] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- movie
+[2017-10-23 00:02:41,244] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'warstar', 'OK']
+[2017-10-23 00:02:41,266] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- colo
+[2017-10-23 00:02:41,268] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['fail', 'fail']
+[2017-10-23 00:02:41,284] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:41,285] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:41,285] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:41,285] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- get movie 
+[2017-10-23 00:02:41,302] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- movie
+[2017-10-23 00:02:41,303] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'warstar', 'OK']
+[2017-10-23 00:02:41,313] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:41,313] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:41,313] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:41,314] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put color orange
+[2017-10-23 00:02:41,331] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- color
+[2017-10-23 00:02:41,332] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'orange']
+[2017-10-23 00:02:41,343] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:41,344] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:41,344] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:41,345] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put banana juice
+[2017-10-23 00:02:41,358] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- banana
+[2017-10-23 00:02:41,358] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'juice']
+[2017-10-23 00:02:41,371] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:41,372] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:41,372] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:41,373] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put jedi luke skywalker
+[2017-10-23 00:02:41,388] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- jedi
+[2017-10-23 00:02:41,388] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'luke skywalker']
+[2017-10-23 00:02:41,400] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:41,401] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:41,402] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:41,402] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put mango jam
+[2017-10-23 00:02:41,419] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- mango
+[2017-10-23 00:02:41,419] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'jam']
+[2017-10-23 00:02:41,429] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:41,430] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:41,430] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:41,430] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put color green
+[2017-10-23 00:02:41,444] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- color
+[2017-10-23 00:02:41,444] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'green']
+[2017-10-23 00:02:41,454] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:41,454] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:41,454] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:41,454] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put movie star
+[2017-10-23 00:02:41,470] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- movie
+[2017-10-23 00:02:41,471] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'star']
+[2017-10-23 00:02:41,483] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:41,484] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:41,484] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:41,484] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- get mango 
+[2017-10-23 00:02:41,499] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- mango
+[2017-10-23 00:02:41,499] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'jam', 'OK']
+[2017-10-23 00:02:41,511] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:41,511] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:41,511] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:41,512] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- slice apple 0:2
+[2017-10-23 00:02:41,525] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- apple
+[2017-10-23 00:02:41,526] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'sh']
+[2017-10-23 00:02:41,536] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:41,536] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:41,536] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:41,537] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- get apple 
+[2017-10-23 00:02:41,552] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- apple
+[2017-10-23 00:02:41,552] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'sh', 'OK']
+[2017-10-23 00:02:41,564] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:41,565] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:41,565] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:41,566] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- get color 
+[2017-10-23 00:02:41,581] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- color
+[2017-10-23 00:02:41,582] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'green', 'OK']
+[2017-10-23 00:02:41,592] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:41,593] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:41,593] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:41,593] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- get mango 
+[2017-10-23 00:02:41,608] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- mango
+[2017-10-23 00:02:41,609] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'jam', 'OK']
+[2017-10-23 00:02:41,620] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:41,620] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:41,620] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:41,621] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- append movie wars
+[2017-10-23 00:02:41,636] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- movie
+[2017-10-23 00:02:41,636] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'starwars']
+[2017-10-23 00:02:41,651] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:41,652] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:41,652] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:41,652] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put mango jam
+[2017-10-23 00:02:41,669] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- mango
+[2017-10-23 00:02:41,669] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'jam']
+[2017-10-23 00:02:41,682] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:41,682] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:41,683] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:41,683] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- get apple 
+[2017-10-23 00:02:41,697] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- apple
+[2017-10-23 00:02:41,697] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'sh', 'OK']
+[2017-10-23 00:02:41,710] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:41,711] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:41,711] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:41,712] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- slice jedi 0:4
+[2017-10-23 00:02:41,726] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- jedi
+[2017-10-23 00:02:41,726] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'luke']
+[2017-10-23 00:02:41,738] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:41,738] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:41,739] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:41,739] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- append banana pie
+[2017-10-23 00:02:41,752] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- banana
+[2017-10-23 00:02:41,753] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'juicepie']
+[2017-10-23 00:02:41,765] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:41,766] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:41,766] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:41,766] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- slice apple 0:2
+[2017-10-23 00:02:41,782] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- apple
+[2017-10-23 00:02:41,783] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'sh']
+[2017-10-23 00:02:41,794] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:41,795] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:41,795] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:41,795] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- get mango 
+[2017-10-23 00:02:41,809] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- mango
+[2017-10-23 00:02:41,809] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'jam', 'OK']
+[2017-10-23 00:02:41,819] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:41,820] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:41,820] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:41,820] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put banana shake
+[2017-10-23 00:02:41,834] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- banana
+[2017-10-23 00:02:41,834] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'shake']
+[2017-10-23 00:02:41,847] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:41,848] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:41,848] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:41,848] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put color yellow
+[2017-10-23 00:02:41,863] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- color
+[2017-10-23 00:02:41,863] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'yellow']
+[2017-10-23 00:02:41,875] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:41,876] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:41,876] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:41,876] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put banana juice
+[2017-10-23 00:02:41,893] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- banana
+[2017-10-23 00:02:41,893] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'juice']
+[2017-10-23 00:02:41,904] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:41,905] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:41,905] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:41,905] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- append movie wars
+[2017-10-23 00:02:41,924] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- movie
+[2017-10-23 00:02:41,925] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'starwarswars']
+[2017-10-23 00:02:41,935] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:41,935] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:41,936] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:41,936] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put apple shake
+[2017-10-23 00:02:41,953] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- apple
+[2017-10-23 00:02:41,954] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'shake']
+[2017-10-23 00:02:41,965] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:41,965] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:41,965] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:41,966] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put apple shake
+[2017-10-23 00:02:41,983] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- apple
+[2017-10-23 00:02:41,983] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'shake']
+[2017-10-23 00:02:41,995] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:41,995] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:41,996] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:41,996] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- get mango 
+[2017-10-23 00:02:42,012] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- mango
+[2017-10-23 00:02:42,012] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'jam', 'OK']
+[2017-10-23 00:02:42,024] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:42,025] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:42,025] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:42,025] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- slice color 0:3
+[2017-10-23 00:02:42,041] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- color
+[2017-10-23 00:02:42,041] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'yel']
+[2017-10-23 00:02:42,053] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:42,054] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:42,054] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:42,054] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put color yellow
+[2017-10-23 00:02:42,068] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- color
+[2017-10-23 00:02:42,068] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'yellow']
+[2017-10-23 00:02:42,080] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:42,080] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:42,081] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:42,081] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- get banana 
+[2017-10-23 00:02:42,096] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- banana
+[2017-10-23 00:02:42,096] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'juice', 'OK']
+[2017-10-23 00:02:42,106] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:42,107] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:42,108] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:42,109] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- slice apple 0:2
+[2017-10-23 00:02:42,126] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- apple
+[2017-10-23 00:02:42,126] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'sh']
+[2017-10-23 00:02:42,140] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:42,141] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:42,141] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:42,141] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- get apple 
+[2017-10-23 00:02:42,158] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- apple
+[2017-10-23 00:02:42,159] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'sh', 'OK']
+[2017-10-23 00:02:42,171] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:42,172] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:42,172] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:42,172] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- get apple 
+[2017-10-23 00:02:42,189] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- apple
+[2017-10-23 00:02:42,189] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'sh', 'OK']
+[2017-10-23 00:02:42,202] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:42,202] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:42,202] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:42,203] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- get jedi 
+[2017-10-23 00:02:42,217] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- jedi
+[2017-10-23 00:02:42,219] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'luke', 'OK']
+[2017-10-23 00:02:42,230] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:42,230] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:42,231] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:42,231] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put banana shake
+[2017-10-23 00:02:42,248] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- banana
+[2017-10-23 00:02:42,249] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'shake']
+[2017-10-23 00:02:42,261] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:42,261] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:42,262] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:42,262] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put movie star
+[2017-10-23 00:02:42,280] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- movie
+[2017-10-23 00:02:42,280] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'star']
+[2017-10-23 00:02:42,293] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:42,293] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:42,294] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:42,294] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- slice jedi 0:4
+[2017-10-23 00:02:42,306] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- jedi
+[2017-10-23 00:02:42,306] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'luke']
+[2017-10-23 00:02:42,320] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:42,321] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:42,321] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:42,321] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- append banana pie
+[2017-10-23 00:02:42,337] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- banana
+[2017-10-23 00:02:42,337] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'shakepie']
+[2017-10-23 00:02:42,351] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:42,352] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:42,352] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:42,352] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- append apple juice
+[2017-10-23 00:02:42,366] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- apple
+[2017-10-23 00:02:42,366] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'shjuice']
+[2017-10-23 00:02:42,380] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:42,380] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:42,380] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:42,381] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put mango pudding
+[2017-10-23 00:02:42,400] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- mango
+[2017-10-23 00:02:42,400] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'pudding']
+[2017-10-23 00:02:42,411] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:42,411] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:42,411] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:42,412] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put color orange
+[2017-10-23 00:02:42,423] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- color
+[2017-10-23 00:02:42,423] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'orange']
+[2017-10-23 00:02:42,439] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:42,439] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:42,440] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:42,440] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put banana shake
+[2017-10-23 00:02:42,456] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- banana
+[2017-10-23 00:02:42,456] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'shake']
+[2017-10-23 00:02:42,469] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:42,469] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:42,469] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:42,470] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- append apple juice
+[2017-10-23 00:02:42,486] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- apple
+[2017-10-23 00:02:42,486] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'shjuicejuice']
+[2017-10-23 00:02:42,497] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:42,499] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:42,499] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:42,499] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- append colo green
+[2017-10-23 00:02:42,515] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- colo
+[2017-10-23 00:02:42,516] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['fail', 'fail']
+[2017-10-23 00:02:42,528] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:42,529] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:42,529] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:42,530] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put apple shake
+[2017-10-23 00:02:42,546] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- apple
+[2017-10-23 00:02:42,546] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'shake']
+[2017-10-23 00:02:42,559] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:42,559] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:42,560] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:42,560] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put banana juice
+[2017-10-23 00:02:42,579] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- banana
+[2017-10-23 00:02:42,579] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'juice']
+[2017-10-23 00:02:42,590] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:42,591] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:42,591] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:42,591] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- get banana 
+[2017-10-23 00:02:42,606] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- banana
+[2017-10-23 00:02:42,607] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'juice', 'OK']
+[2017-10-23 00:02:42,620] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:42,621] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:42,621] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:42,621] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put color orange
+[2017-10-23 00:02:42,638] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- color
+[2017-10-23 00:02:42,638] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'orange']
+[2017-10-23 00:02:42,650] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:42,651] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:42,651] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:42,651] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- get color 
+[2017-10-23 00:02:42,667] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- color
+[2017-10-23 00:02:42,668] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'orange', 'OK']
+[2017-10-23 00:02:42,681] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:42,682] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:42,682] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:42,682] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- slice color 0:3
+[2017-10-23 00:02:42,698] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- color
+[2017-10-23 00:02:42,698] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'ora']
+[2017-10-23 00:02:42,712] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:42,713] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:42,713] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:42,713] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put mango pudding
+[2017-10-23 00:02:42,729] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- mango
+[2017-10-23 00:02:42,729] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'pudding']
+[2017-10-23 00:02:42,742] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:42,743] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:42,743] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:42,743] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- append apple juice
+[2017-10-23 00:02:42,761] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- apple
+[2017-10-23 00:02:42,761] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'shakejuice']
+[2017-10-23 00:02:42,774] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:42,775] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:42,775] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:42,775] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- get movie 
+[2017-10-23 00:02:42,792] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- movie
+[2017-10-23 00:02:42,792] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'star', 'OK']
+[2017-10-23 00:02:42,805] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:42,806] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:42,806] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:42,806] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- get apple 
+[2017-10-23 00:02:42,819] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- apple
+[2017-10-23 00:02:42,820] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'shakejuice', 'OK']
+[2017-10-23 00:02:42,835] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:42,835] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:42,836] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:42,836] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put apple shake
+[2017-10-23 00:02:42,853] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- apple
+[2017-10-23 00:02:42,853] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'shake']
+[2017-10-23 00:02:42,864] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:42,864] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:42,865] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:42,865] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put apple pie
+[2017-10-23 00:02:42,882] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- apple
+[2017-10-23 00:02:42,882] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'pie']
+[2017-10-23 00:02:42,897] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:42,897] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:42,897] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:42,898] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put apple pie
+[2017-10-23 00:02:42,914] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- apple
+[2017-10-23 00:02:42,914] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'pie']
+[2017-10-23 00:02:42,927] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:42,927] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:42,928] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:42,928] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put color green
+[2017-10-23 00:02:42,945] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- color
+[2017-10-23 00:02:42,946] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'green']
+[2017-10-23 00:02:42,958] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:42,958] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:42,958] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:42,959] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put jedi luke skywalker
+[2017-10-23 00:02:42,975] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- jedi
+[2017-10-23 00:02:42,976] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'luke skywalker']
+[2017-10-23 00:02:42,989] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:42,989] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:42,990] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:42,990] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- slice color 0:3
+[2017-10-23 00:02:43,003] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- color
+[2017-10-23 00:02:43,004] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'gre']
+[2017-10-23 00:02:43,018] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:43,018] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:43,018] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:43,018] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put apple pie
+[2017-10-23 00:02:43,035] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- apple
+[2017-10-23 00:02:43,035] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'pie']
+[2017-10-23 00:02:43,046] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:43,047] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:43,048] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:43,048] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- get jedi 
+[2017-10-23 00:02:43,064] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- jedi
+[2017-10-23 00:02:43,064] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'luke skywalker', 'OK']
+[2017-10-23 00:02:43,077] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:43,077] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:43,077] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:43,078] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- get jedi 
+[2017-10-23 00:02:43,096] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- jedi
+[2017-10-23 00:02:43,096] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'luke skywalker', 'OK']
+[2017-10-23 00:02:43,109] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:43,110] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:43,110] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:43,110] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put color green
+[2017-10-23 00:02:43,129] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- color
+[2017-10-23 00:02:43,129] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'green']
+[2017-10-23 00:02:43,139] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:43,139] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:43,139] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:43,140] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put jedi luke skywalker
+[2017-10-23 00:02:43,154] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- jedi
+[2017-10-23 00:02:43,155] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'luke skywalker']
+[2017-10-23 00:02:43,170] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:43,171] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:43,171] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:43,171] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- append banana pie
+[2017-10-23 00:02:43,186] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- banana
+[2017-10-23 00:02:43,187] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'juicepie']
+[2017-10-23 00:02:43,199] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:43,199] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:43,200] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:43,200] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put color orange
+[2017-10-23 00:02:43,217] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- color
+[2017-10-23 00:02:43,217] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'orange']
+[2017-10-23 00:02:43,229] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:43,230] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:43,230] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:43,231] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- get banana 
+[2017-10-23 00:02:43,247] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- banana
+[2017-10-23 00:02:43,247] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'juicepie', 'OK']
+[2017-10-23 00:02:43,259] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:43,260] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:43,260] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:43,260] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- get movie 
+[2017-10-23 00:02:43,273] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- movie
+[2017-10-23 00:02:43,274] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'star', 'OK']
+[2017-10-23 00:02:43,289] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:43,289] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:43,290] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:43,290] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put apple pie
+[2017-10-23 00:02:43,306] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- apple
+[2017-10-23 00:02:43,306] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'pie']
+[2017-10-23 00:02:43,317] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:43,318] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:43,318] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:43,318] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- append movie wars
+[2017-10-23 00:02:43,335] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- movie
+[2017-10-23 00:02:43,335] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'starwars']
+[2017-10-23 00:02:43,346] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:43,347] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:43,347] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:43,348] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put mango pudding
+[2017-10-23 00:02:43,365] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- mango
+[2017-10-23 00:02:43,365] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'pudding']
+[2017-10-23 00:02:43,377] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:43,378] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:43,378] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:43,378] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- get color 
+[2017-10-23 00:02:43,398] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- color
+[2017-10-23 00:02:43,398] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'orange', 'OK']
+[2017-10-23 00:02:43,410] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:43,410] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:43,411] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:43,411] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put movie star
+[2017-10-23 00:02:43,423] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- movie
+[2017-10-23 00:02:43,423] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'star']
+[2017-10-23 00:02:43,437] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:43,438] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:43,438] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:43,438] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put mango jam
+[2017-10-23 00:02:43,455] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- mango
+[2017-10-23 00:02:43,456] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'jam']
+[2017-10-23 00:02:43,469] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:43,469] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:43,470] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:43,470] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put banana juice
+[2017-10-23 00:02:43,488] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- banana
+[2017-10-23 00:02:43,488] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'juice']
+[2017-10-23 00:02:43,499] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:43,499] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:43,500] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:43,500] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put movie star
+[2017-10-23 00:02:43,514] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- movie
+[2017-10-23 00:02:43,514] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'star']
+[2017-10-23 00:02:43,528] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:43,529] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:43,529] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:43,530] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- get jedi 
+[2017-10-23 00:02:43,546] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- jedi
+[2017-10-23 00:02:43,546] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'luke skywalker', 'OK']
+[2017-10-23 00:02:43,558] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:43,559] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:43,559] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:43,559] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put color yellow
+[2017-10-23 00:02:43,577] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- color
+[2017-10-23 00:02:43,578] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'yellow']
+[2017-10-23 00:02:43,591] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:43,592] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:43,592] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:43,592] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put jedi luke skywalker
+[2017-10-23 00:02:43,605] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- jedi
+[2017-10-23 00:02:43,605] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'luke skywalker']
+[2017-10-23 00:02:43,619] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:43,620] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:43,620] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:43,620] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- get movie 
+[2017-10-23 00:02:43,637] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- movie
+[2017-10-23 00:02:43,638] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'star', 'OK']
+[2017-10-23 00:02:43,650] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:43,650] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:43,650] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:43,650] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- slice jedi 0:4
+[2017-10-23 00:02:43,667] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- jedi
+[2017-10-23 00:02:43,668] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'luke']
+[2017-10-23 00:02:43,682] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:43,682] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:43,683] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:43,683] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put color red
+[2017-10-23 00:02:43,700] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- color
+[2017-10-23 00:02:43,700] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'red']
+[2017-10-23 00:02:43,713] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:43,713] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:43,714] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:43,714] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- get apple 
+[2017-10-23 00:02:43,729] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- apple
+[2017-10-23 00:02:43,729] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'pie', 'OK']
+[2017-10-23 00:02:43,739] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:43,740] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:43,740] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:43,740] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- append banana pie
+[2017-10-23 00:02:43,758] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- banana
+[2017-10-23 00:02:43,759] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'juicepie']
+[2017-10-23 00:02:43,772] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:43,772] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:43,773] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:43,773] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put color red
+[2017-10-23 00:02:43,789] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- color
+[2017-10-23 00:02:43,790] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'red']
+[2017-10-23 00:02:43,800] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:43,801] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:43,801] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:43,801] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- append movie wars
+[2017-10-23 00:02:43,819] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- movie
+[2017-10-23 00:02:43,819] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'starwars']
+[2017-10-23 00:02:43,830] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:43,831] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:43,831] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:43,831] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put color green
+[2017-10-23 00:02:43,842] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- color
+[2017-10-23 00:02:43,843] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'green']
+[2017-10-23 00:02:43,855] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:43,856] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:43,856] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:43,856] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put color red
+[2017-10-23 00:02:43,873] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- color
+[2017-10-23 00:02:43,873] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'red']
+[2017-10-23 00:02:43,888] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:43,888] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:43,889] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:43,889] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put color yellow
+[2017-10-23 00:02:43,906] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- color
+[2017-10-23 00:02:43,907] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'yellow']
+[2017-10-23 00:02:43,919] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:43,920] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:43,920] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:43,920] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- append colo green
+[2017-10-23 00:02:43,937] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- colo
+[2017-10-23 00:02:43,937] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['fail', 'fail']
+[2017-10-23 00:02:43,952] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:43,953] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:43,953] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:43,953] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put banana shake
+[2017-10-23 00:02:43,972] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- banana
+[2017-10-23 00:02:43,972] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'shake']
+[2017-10-23 00:02:43,984] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:43,985] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:43,985] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:43,985] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- get apple 
+[2017-10-23 00:02:44,001] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- apple
+[2017-10-23 00:02:44,001] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'pie', 'OK']
+[2017-10-23 00:02:44,013] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:44,014] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:44,014] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:44,014] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put mango pudding
+[2017-10-23 00:02:44,031] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- mango
+[2017-10-23 00:02:44,031] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'pudding']
+[2017-10-23 00:02:44,045] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:44,046] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:44,046] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:44,046] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- slice apple 0:2
+[2017-10-23 00:02:44,065] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- apple
+[2017-10-23 00:02:44,065] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'pi']
+[2017-10-23 00:02:44,077] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:44,077] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:44,078] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:44,078] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- append colo green
+[2017-10-23 00:02:44,097] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- colo
+[2017-10-23 00:02:44,098] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['fail', 'fail']
+[2017-10-23 00:02:44,108] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:44,109] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:44,109] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:44,109] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put color red
+[2017-10-23 00:02:44,125] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- color
+[2017-10-23 00:02:44,125] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'red']
+[2017-10-23 00:02:44,138] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client --------------- 0
+[2017-10-23 00:02:44,138] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary ---------------
+[2017-10-23 00:02:44,139] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- parseTheUnsignedStatement ---------------
+[2017-10-23 00:02:44,139] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- append apple juice
+[2017-10-23 00:02:44,157] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key --------------- apple
+[2017-10-23 00:02:44,158] ping.Olympus<Olympus:91402#olympus>:INFO: --------------- Sending globaData to client --------------- ['OK', 'pijuice']

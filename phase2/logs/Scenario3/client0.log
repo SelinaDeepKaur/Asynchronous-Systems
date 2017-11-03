@@ -1,0 +1,97 @@
+[2017-10-22 23:17:40,575] da.api<MainProcess>:INFO: Bootstrapping attempt failed due to BootstrapException('Unable to contact a peer node.',),  continuing as a master node (use '--master' to disable bootstrapping at startup).
+[2017-10-22 23:17:40,575] da.api<MainProcess>:INFO: <Node_:Client0> initialized at 127.0.0.1:(UdpTransport=15000, TcpTransport=15000).
+[2017-10-22 23:17:40,575] da.api<MainProcess>:INFO: Starting program <module 'ping' from 'C:\\Users\\SSDN-Dinesh\\Desktop\\SBU\\ASYNC\\BCR\\Asynchronous-Systems\\phase2\\ping.py'>...
+[2017-10-22 23:17:40,576] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-10-22 23:17:40,577] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-10-22 23:17:49,765] ping.Client<Client:74002#Client0>:INFO: --------------- ENTERING Client:run ---------------
+[2017-10-22 23:17:49,765] ping.Client<Client:74002#Client0>:INFO: --------------- Requesting Configuration from Olympus---------------
+[2017-10-22 23:17:50,280] ping.Client<Client:74002#Client0>:INFO: --------------- Received Configuration from Olympus --------------
+[2017-10-22 23:17:50,281] ping.Client<Client:74002#Client0>:INFO: --------------- Generating Workload for client --------------
+[2017-10-22 23:17:50,281] ping.Client<Client:74002#Client0>:INFO: --------------- Operations for Client -------------- ["put('movie','star')", " get('movie')", " append('movie','star')"]
+[2017-10-22 23:17:50,281] ping.Client<Client:74002#Client0>:INFO: --------------- Sending Request No: % :: Request Id: % -------------- 0 8308
+[2017-10-22 23:17:50,281] ping.Client<Client:74002#Client0>:INFO: --------------- Signing the request statement: -------------- b"put('movie','star')"
+[2017-10-22 23:17:50,282] ping.Client<Client:74002#Client0>:INFO: --------------- Sending request to head --------------
+[2017-10-22 23:17:50,282] ping.Client<Client:74002#Client0>:INFO: --------------- Parsing the unsigned statement --------------
+[2017-10-22 23:17:50,283] ping.Client<Client:74002#Client0>:INFO: --------------- Client updates its dictionary with: -------------- put movie star
+[2017-10-22 23:17:50,283] ping.Client<Client:74002#Client0>:INFO: --------------- Executing Operation to updata client dictionary with: -------------- put 8308 star movie
+[2017-10-22 23:17:50,283] ping.Client<Client:74002#Client0>:INFO: --------------- Result upon updating dictionary: -------------- OK
+[2017-10-22 23:17:50,283] ping.Client<Client:74002#Client0>:INFO: --------------- Waiting for Result -------------- 0 8308
+[2017-10-22 23:17:50,320] ping.Client<Client:74002#Client0>:INFO: --------------- Received Result Shuttle --------------
+[2017-10-22 23:17:50,321] ping.Client<Client:74002#Client0>:INFO: --------------- Checking result against expected result --------------
+[2017-10-22 23:17:50,321] ping.Client<Client:74002#Client0>:INFO: --------------- Result in Client Dictionary: -------------- OK
+[2017-10-22 23:17:50,321] ping.Client<Client:74002#Client0>:INFO: --------------- Get Data in global dictionary from olympus for Key: % with ID -------------- movie 1823
+[2017-10-22 23:17:50,323] ping.Client<Client:74002#Client0>:INFO: --------------- Received Data from global dictionary: % for key: % -------------- ['OK', 'star'] movie
+[2017-10-22 23:17:50,323] ping.Client<Client:74002#Client0>:INFO: --------------- Creating hash digest for result ---------------
+[2017-10-22 23:17:50,324] ping.Client<Client:74002#Client0>:INFO: --------------- Verifying result and signature of result statements --------------
+[2017-10-22 23:17:50,327] ping.Client<Client:74002#Client0>:INFO: --------------- Checking hash digests for results ---------------
+[2017-10-22 23:17:50,327] ping.Client<Client:74002#Client0>:INFO: ---------------Quorum Size-------------- 2
+[2017-10-22 23:17:50,328] ping.Client<Client:74002#Client0>:INFO: ---------------No. of countOfCorrectResults-------------- 1
+[2017-10-22 23:17:50,330] ping.Client<Client:74002#Client0>:INFO: --------------- Checking hash digests for results ---------------
+[2017-10-22 23:17:50,330] ping.Client<Client:74002#Client0>:INFO: ---------------Quorum Size-------------- 2
+[2017-10-22 23:17:50,331] ping.Client<Client:74002#Client0>:INFO: ---------------No. of countOfCorrectResults-------------- 2
+[2017-10-22 23:17:50,333] ping.Client<Client:74002#Client0>:INFO: --------------- Checking hash digests for results ---------------
+[2017-10-22 23:17:50,333] ping.Client<Client:74002#Client0>:INFO: ---------------Quorum Size-------------- 2
+[2017-10-22 23:17:50,333] ping.Client<Client:74002#Client0>:INFO: ---------------No. of countOfCorrectResults-------------- 3
+[2017-10-22 23:17:50,333] ping.Client<Client:74002#Client0>:INFO: --------------- Result Proof Verification check: % -------------- True
+[2017-10-22 23:17:50,333] ping.Client<Client:74002#Client0>:INFO: --------------- Client Dictionary Result: % -------------- OK
+[2017-10-22 23:17:50,333] ping.Client<Client:74002#Client0>:INFO: --------------- Global Dictionary Result: % -------------- ['OK', 'star']
+[2017-10-22 23:17:50,334] ping.Client<Client:74002#Client0>:INFO: --------------- Result From Replica: % -------------- OK
+[2017-10-22 23:17:50,334] ping.Client<Client:74002#Client0>:INFO: --------------- CLIENT ACCEPTS THE RESULT --------------
+[2017-10-22 23:17:50,334] ping.Client<Client:74002#Client0>:INFO: --------------- Sending Request No: % :: Request Id: % -------------- 1 5319
+[2017-10-22 23:17:50,334] ping.Client<Client:74002#Client0>:INFO: --------------- Signing the request statement: -------------- b"get('movie')"
+[2017-10-22 23:17:50,335] ping.Client<Client:74002#Client0>:INFO: --------------- Sending request to head --------------
+[2017-10-22 23:17:50,335] ping.Client<Client:74002#Client0>:INFO: --------------- Parsing the unsigned statement --------------
+[2017-10-22 23:17:50,335] ping.Client<Client:74002#Client0>:INFO: --------------- Client updates its dictionary with: -------------- get movie 
+[2017-10-22 23:17:50,335] ping.Client<Client:74002#Client0>:INFO: --------------- Executing Operation to updata client dictionary with: -------------- get 5319  movie
+[2017-10-22 23:17:50,335] ping.Client<Client:74002#Client0>:INFO: --------------- Result upon updating dictionary: -------------- star
+[2017-10-22 23:17:50,335] ping.Client<Client:74002#Client0>:INFO: --------------- Waiting for Result -------------- 1 5319
+[2017-10-22 23:17:50,381] ping.Client<Client:74002#Client0>:INFO: --------------- Received Result Shuttle --------------
+[2017-10-22 23:17:50,381] ping.Client<Client:74002#Client0>:INFO: --------------- Checking result against expected result --------------
+[2017-10-22 23:17:50,381] ping.Client<Client:74002#Client0>:INFO: --------------- Result in Client Dictionary: -------------- star
+[2017-10-22 23:17:50,381] ping.Client<Client:74002#Client0>:INFO: --------------- Get Data in global dictionary from olympus for Key: % with ID -------------- movie 7872
+[2017-10-22 23:17:50,384] ping.Client<Client:74002#Client0>:INFO: --------------- Received Data from global dictionary: % for key: % -------------- ['', 'star', ''] movie
+[2017-10-22 23:17:50,384] ping.Client<Client:74002#Client0>:INFO: --------------- Creating hash digest for result ---------------
+[2017-10-22 23:17:50,385] ping.Client<Client:74002#Client0>:INFO: --------------- Verifying result and signature of result statements --------------
+[2017-10-22 23:17:50,387] ping.Client<Client:74002#Client0>:INFO: --------------- Checking hash digests for results ---------------
+[2017-10-22 23:17:50,388] ping.Client<Client:74002#Client0>:INFO: ---------------Quorum Size-------------- 2
+[2017-10-22 23:17:50,388] ping.Client<Client:74002#Client0>:INFO: ---------------No. of countOfCorrectResults-------------- 0
+[2017-10-22 23:17:50,390] ping.Client<Client:74002#Client0>:INFO: --------------- Checking hash digests for results ---------------
+[2017-10-22 23:17:50,390] ping.Client<Client:74002#Client0>:INFO: ---------------Quorum Size-------------- 2
+[2017-10-22 23:17:50,390] ping.Client<Client:74002#Client0>:INFO: ---------------No. of countOfCorrectResults-------------- 0
+[2017-10-22 23:17:50,393] ping.Client<Client:74002#Client0>:INFO: --------------- Checking hash digests for results ---------------
+[2017-10-22 23:17:50,393] ping.Client<Client:74002#Client0>:INFO: ---------------Quorum Size-------------- 2
+[2017-10-22 23:17:50,393] ping.Client<Client:74002#Client0>:INFO: ---------------No. of countOfCorrectResults-------------- 1
+[2017-10-22 23:17:50,393] ping.Client<Client:74002#Client0>:INFO: --------------- Result Proof Verification check: % -------------- False
+[2017-10-22 23:17:50,393] ping.Client<Client:74002#Client0>:INFO: --------------- Client Dictionary Result: % -------------- star
+[2017-10-22 23:17:50,393] ping.Client<Client:74002#Client0>:INFO: --------------- Global Dictionary Result: % -------------- ['', 'star', '']
+[2017-10-22 23:17:50,394] ping.Client<Client:74002#Client0>:INFO: --------------- Result From Replica: % -------------- OK
+[2017-10-22 23:17:50,394] ping.Client<Client:74002#Client0>:INFO: --------------- (NOT THE EXPECTED RESULT) --------------
+[2017-10-22 23:17:50,394] ping.Client<Client:74002#Client0>:INFO: --------------- Sending Request No: % :: Request Id: % -------------- 2 589
+[2017-10-22 23:17:50,394] ping.Client<Client:74002#Client0>:INFO: --------------- Signing the request statement: -------------- b"append('movie','star')"
+[2017-10-22 23:17:50,395] ping.Client<Client:74002#Client0>:INFO: --------------- Sending request to head --------------
+[2017-10-22 23:17:50,395] ping.Client<Client:74002#Client0>:INFO: --------------- Parsing the unsigned statement --------------
+[2017-10-22 23:17:50,395] ping.Client<Client:74002#Client0>:INFO: --------------- Client updates its dictionary with: -------------- append movie star
+[2017-10-22 23:17:50,396] ping.Client<Client:74002#Client0>:INFO: --------------- Executing Operation to updata client dictionary with: -------------- append 589 star movie
+[2017-10-22 23:17:50,396] ping.Client<Client:74002#Client0>:INFO: --------------- Result upon updating dictionary: -------------- OK
+[2017-10-22 23:17:50,396] ping.Client<Client:74002#Client0>:INFO: --------------- Waiting for Result -------------- 2 589
+[2017-10-22 23:17:50,433] ping.Client<Client:74002#Client0>:INFO: --------------- Received Result Shuttle --------------
+[2017-10-22 23:17:50,433] ping.Client<Client:74002#Client0>:INFO: --------------- Checking result against expected result --------------
+[2017-10-22 23:17:50,433] ping.Client<Client:74002#Client0>:INFO: --------------- Result in Client Dictionary: -------------- OK
+[2017-10-22 23:17:50,434] ping.Client<Client:74002#Client0>:INFO: --------------- Get Data in global dictionary from olympus for Key: % with ID -------------- movie 6918
+[2017-10-22 23:17:50,435] ping.Client<Client:74002#Client0>:INFO: --------------- Received Data from global dictionary: % for key: % -------------- ['OK', 'starstar'] movie
+[2017-10-22 23:17:50,435] ping.Client<Client:74002#Client0>:INFO: --------------- Creating hash digest for result ---------------
+[2017-10-22 23:17:50,435] ping.Client<Client:74002#Client0>:INFO: --------------- Verifying result and signature of result statements --------------
+[2017-10-22 23:17:50,438] ping.Client<Client:74002#Client0>:INFO: --------------- Checking hash digests for results ---------------
+[2017-10-22 23:17:50,438] ping.Client<Client:74002#Client0>:INFO: ---------------Quorum Size-------------- 2
+[2017-10-22 23:17:50,438] ping.Client<Client:74002#Client0>:INFO: ---------------No. of countOfCorrectResults-------------- 1
+[2017-10-22 23:17:50,441] ping.Client<Client:74002#Client0>:INFO: --------------- Checking hash digests for results ---------------
+[2017-10-22 23:17:50,441] ping.Client<Client:74002#Client0>:INFO: ---------------Quorum Size-------------- 2
+[2017-10-22 23:17:50,441] ping.Client<Client:74002#Client0>:INFO: ---------------No. of countOfCorrectResults-------------- 2
+[2017-10-22 23:17:50,444] ping.Client<Client:74002#Client0>:INFO: --------------- Checking hash digests for results ---------------
+[2017-10-22 23:17:50,445] ping.Client<Client:74002#Client0>:INFO: ---------------Quorum Size-------------- 2
+[2017-10-22 23:17:50,445] ping.Client<Client:74002#Client0>:INFO: ---------------No. of countOfCorrectResults-------------- 3
+[2017-10-22 23:17:50,445] ping.Client<Client:74002#Client0>:INFO: --------------- Result Proof Verification check: % -------------- True
+[2017-10-22 23:17:50,446] ping.Client<Client:74002#Client0>:INFO: --------------- Client Dictionary Result: % -------------- OK
+[2017-10-22 23:17:50,446] ping.Client<Client:74002#Client0>:INFO: --------------- Global Dictionary Result: % -------------- ['OK', 'starstar']
+[2017-10-22 23:17:50,446] ping.Client<Client:74002#Client0>:INFO: --------------- Result From Replica: % -------------- OK
+[2017-10-22 23:17:50,446] ping.Client<Client:74002#Client0>:INFO: --------------- CLIENT ACCEPTS THE RESULT --------------

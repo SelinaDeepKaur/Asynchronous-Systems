@@ -1,0 +1,67 @@
+[2017-10-22 23:53:44,201] da.sim.Router<MainProcess>:INFO: Bootstrap succeeded using <UdpTransport(127.0.0.1:31135)>.
+[2017-10-22 23:53:44,202] da.api<MainProcess>:INFO: <Node_:Client9> initialized at 127.0.0.1:(UdpTransport=31135, TcpTransport=33665).
+[2017-10-22 23:53:44,202] da.api<MainProcess>:INFO: Starting program <module 'ping' from '/Users/selinadeepkaur/Desktop/Byzantine/ping.py'>...
+[2017-10-22 23:53:44,202] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-10-22 23:53:44,202] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-10-22 23:53:57,666] ping.Client<Client:69c02#Client9>:INFO: --------------- ENTERING Client:run ---------------
+[2017-10-22 23:53:57,667] ping.Client<Client:69c02#Client9>:INFO: --------------- Requesting Configuration from Olympus---------------
+[2017-10-22 23:53:57,823] ping.Client<Client:69c02#Client9>:INFO: --------------- Received Configuration from Olympus --------------
+[2017-10-22 23:53:57,823] ping.Client<Client:69c02#Client9>:INFO: --------------- Generating Workload for client --------------
+[2017-10-22 23:53:57,824] ping.Client<Client:69c02#Client9>:INFO: --------------- Operations for Client -------------- ['put(‘color’,’orange’)']
+[2017-10-22 23:53:57,824] ping.Client<Client:69c02#Client9>:INFO: --------------- Sending Request No: % :: Request Id: % -------------- 0 1807
+[2017-10-22 23:53:57,827] ping.Client<Client:69c02#Client9>:INFO: --------------- Signing the request statement: -------------- b'put(\xe2\x80\x98color\xe2\x80\x99,\xe2\x80\x99orange\xe2\x80\x99)'
+[2017-10-22 23:53:57,828] ping.Client<Client:69c02#Client9>:INFO: --------------- Sending request to head --------------
+[2017-10-22 23:53:57,830] ping.Client<Client:69c02#Client9>:INFO: --------------- Parsing the unsigned statement --------------
+[2017-10-22 23:53:57,830] ping.Client<Client:69c02#Client9>:INFO: --------------- Client updates its dictionary with: -------------- put color orange
+[2017-10-22 23:53:57,830] ping.Client<Client:69c02#Client9>:INFO: --------------- Executing Operation to updata client dictionary with: -------------- put 1807 orange color
+[2017-10-22 23:53:57,830] ping.Client<Client:69c02#Client9>:INFO: --------------- Result upon updating dictionary: -------------- OK
+[2017-10-22 23:53:57,831] ping.Client<Client:69c02#Client9>:INFO: --------------- Waiting for Result -------------- 0 1807
+[2017-10-22 23:53:58,006] ping.Client<Client:69c02#Client9>:INFO: --------------- Received Result Shuttle --------------
+[2017-10-22 23:53:58,006] ping.Client<Client:69c02#Client9>:INFO: --------------- Checking result against expected result --------------
+[2017-10-22 23:53:58,006] ping.Client<Client:69c02#Client9>:INFO: --------------- Result in Client Dictionary: -------------- OK
+[2017-10-22 23:53:58,007] ping.Client<Client:69c02#Client9>:INFO: --------------- Get Data in global dictionary from olympus for Key: % with ID -------------- color 9394
+[2017-10-22 23:53:58,009] ping.Client<Client:69c02#Client9>:INFO: --------------- Received Data from global dictionary: % for key: % -------------- ['OK', 'orange'] color
+[2017-10-22 23:53:58,009] ping.Client<Client:69c02#Client9>:INFO: --------------- Creating hash digest for result ---------------
+[2017-10-22 23:53:58,010] ping.Client<Client:69c02#Client9>:INFO: --------------- Verifying result and signature of result statements --------------
+[2017-10-22 23:53:58,010] ping.Client<Client:69c02#Client9>:INFO: --------------- Checking hash digests for results ---------------
+[2017-10-22 23:53:58,011] ping.Client<Client:69c02#Client9>:INFO: --------------- Checking hash digests for results ---------------
+[2017-10-22 23:53:58,012] ping.Client<Client:69c02#Client9>:INFO: --------------- Checking hash digests for results ---------------
+[2017-10-22 23:53:58,012] ping.Client<Client:69c02#Client9>:INFO: --------------- Result Proof Verification check: % -------------- True
+[2017-10-22 23:53:58,013] ping.Client<Client:69c02#Client9>:INFO: --------------- Client Dictionary Result: % -------------- OK
+[2017-10-22 23:53:58,013] ping.Client<Client:69c02#Client9>:INFO: --------------- Global Dictionary Result: % -------------- ['OK', 'orange']
+[2017-10-22 23:53:58,013] ping.Client<Client:69c02#Client9>:INFO: --------------- Result From Replica: % -------------- OK
+[2017-10-22 23:53:58,013] ping.Client<Client:69c02#Client9>:INFO: --------------- CLIENT ACCEPTS THE RESULT --------------
+[2017-10-23 00:01:03,044] da.api<MainProcess>:WARNING: Received keyboard interrupt. 
+[2017-10-23 00:02:30,878] da.sim.Router<MainProcess>:INFO: Bootstrap succeeded using <UdpTransport(127.0.0.1:33837)>.
+[2017-10-23 00:02:30,878] da.api<MainProcess>:INFO: <Node_:Client9> initialized at 127.0.0.1:(UdpTransport=33837, TcpTransport=11331).
+[2017-10-23 00:02:30,878] da.api<MainProcess>:INFO: Starting program <module 'ping' from '/Users/selinadeepkaur/Desktop/Byzantine/ping.py'>...
+[2017-10-23 00:02:30,879] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-10-23 00:02:30,879] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-10-23 00:02:40,873] ping.Client<Client:96802#Client9>:INFO: --------------- ENTERING Client:run ---------------
+[2017-10-23 00:02:40,874] ping.Client<Client:96802#Client9>:INFO: --------------- Requesting Configuration from Olympus---------------
+[2017-10-23 00:02:41,027] ping.Client<Client:96802#Client9>:INFO: --------------- Received Configuration from Olympus --------------
+[2017-10-23 00:02:41,031] ping.Client<Client:96802#Client9>:INFO: --------------- Generating Workload for client --------------
+[2017-10-23 00:02:41,033] ping.Client<Client:96802#Client9>:INFO: --------------- Operations for Client -------------- ['put(‘color’,’orange’)']
+[2017-10-23 00:02:41,034] ping.Client<Client:96802#Client9>:INFO: --------------- Sending Request No: % :: Request Id: % -------------- 0 5182
+[2017-10-23 00:02:41,034] ping.Client<Client:96802#Client9>:INFO: --------------- Signing the request statement: -------------- b'put(\xe2\x80\x98color\xe2\x80\x99,\xe2\x80\x99orange\xe2\x80\x99)'
+[2017-10-23 00:02:41,035] ping.Client<Client:96802#Client9>:INFO: --------------- Sending request to head --------------
+[2017-10-23 00:02:41,036] ping.Client<Client:96802#Client9>:INFO: --------------- Parsing the unsigned statement --------------
+[2017-10-23 00:02:41,040] ping.Client<Client:96802#Client9>:INFO: --------------- Client updates its dictionary with: -------------- put color orange
+[2017-10-23 00:02:41,041] ping.Client<Client:96802#Client9>:INFO: --------------- Executing Operation to updata client dictionary with: -------------- put 5182 orange color
+[2017-10-23 00:02:41,041] ping.Client<Client:96802#Client9>:INFO: --------------- Result upon updating dictionary: -------------- OK
+[2017-10-23 00:02:41,042] ping.Client<Client:96802#Client9>:INFO: --------------- Waiting for Result -------------- 0 5182
+[2017-10-23 00:02:41,197] ping.Client<Client:96802#Client9>:INFO: --------------- Received Result Shuttle --------------
+[2017-10-23 00:02:41,197] ping.Client<Client:96802#Client9>:INFO: --------------- Checking result against expected result --------------
+[2017-10-23 00:02:41,197] ping.Client<Client:96802#Client9>:INFO: --------------- Result in Client Dictionary: -------------- OK
+[2017-10-23 00:02:41,197] ping.Client<Client:96802#Client9>:INFO: --------------- Get Data in global dictionary from olympus for Key: % with ID -------------- color 2263
+[2017-10-23 00:02:41,199] ping.Client<Client:96802#Client9>:INFO: --------------- Received Data from global dictionary: % for key: % -------------- ['OK', 'orange'] color
+[2017-10-23 00:02:41,199] ping.Client<Client:96802#Client9>:INFO: --------------- Creating hash digest for result ---------------
+[2017-10-23 00:02:41,200] ping.Client<Client:96802#Client9>:INFO: --------------- Verifying result and signature of result statements --------------
+[2017-10-23 00:02:41,200] ping.Client<Client:96802#Client9>:INFO: --------------- Checking hash digests for results ---------------
+[2017-10-23 00:02:41,201] ping.Client<Client:96802#Client9>:INFO: --------------- Checking hash digests for results ---------------
+[2017-10-23 00:02:41,201] ping.Client<Client:96802#Client9>:INFO: --------------- Checking hash digests for results ---------------
+[2017-10-23 00:02:41,202] ping.Client<Client:96802#Client9>:INFO: --------------- Result Proof Verification check: % -------------- True
+[2017-10-23 00:02:41,202] ping.Client<Client:96802#Client9>:INFO: --------------- Client Dictionary Result: % -------------- OK
+[2017-10-23 00:02:41,202] ping.Client<Client:96802#Client9>:INFO: --------------- Global Dictionary Result: % -------------- ['OK', 'orange']
+[2017-10-23 00:02:41,202] ping.Client<Client:96802#Client9>:INFO: --------------- Result From Replica: % -------------- OK
+[2017-10-23 00:02:41,202] ping.Client<Client:96802#Client9>:INFO: --------------- CLIENT ACCEPTS THE RESULT --------------

@@ -1,0 +1,67 @@
+[2017-10-22 23:53:40,274] da.sim.Router<MainProcess>:INFO: Bootstrap succeeded using <UdpTransport(127.0.0.1:18267)>.
+[2017-10-22 23:53:40,275] da.api<MainProcess>:INFO: <Node_:Client7> initialized at 127.0.0.1:(UdpTransport=18267, TcpTransport=26797).
+[2017-10-22 23:53:40,275] da.api<MainProcess>:INFO: Starting program <module 'ping' from '/Users/selinadeepkaur/Desktop/Byzantine/ping.py'>...
+[2017-10-22 23:53:40,276] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-10-22 23:53:40,277] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-10-22 23:53:57,588] ping.Client<Client:63c02#Client7>:INFO: --------------- ENTERING Client:run ---------------
+[2017-10-22 23:53:57,589] ping.Client<Client:63c02#Client7>:INFO: --------------- Requesting Configuration from Olympus---------------
+[2017-10-22 23:53:57,819] ping.Client<Client:63c02#Client7>:INFO: --------------- Received Configuration from Olympus --------------
+[2017-10-22 23:53:57,819] ping.Client<Client:63c02#Client7>:INFO: --------------- Generating Workload for client --------------
+[2017-10-22 23:53:57,820] ping.Client<Client:63c02#Client7>:INFO: --------------- Operations for Client -------------- ['put(‘apple’,’shake’)']
+[2017-10-22 23:53:57,820] ping.Client<Client:63c02#Client7>:INFO: --------------- Sending Request No: % :: Request Id: % -------------- 0 933
+[2017-10-22 23:53:57,820] ping.Client<Client:63c02#Client7>:INFO: --------------- Signing the request statement: -------------- b'put(\xe2\x80\x98apple\xe2\x80\x99,\xe2\x80\x99shake\xe2\x80\x99)'
+[2017-10-22 23:53:57,821] ping.Client<Client:63c02#Client7>:INFO: --------------- Sending request to head --------------
+[2017-10-22 23:53:57,822] ping.Client<Client:63c02#Client7>:INFO: --------------- Parsing the unsigned statement --------------
+[2017-10-22 23:53:57,823] ping.Client<Client:63c02#Client7>:INFO: --------------- Client updates its dictionary with: -------------- put apple shake
+[2017-10-22 23:53:57,823] ping.Client<Client:63c02#Client7>:INFO: --------------- Executing Operation to updata client dictionary with: -------------- put 933 shake apple
+[2017-10-22 23:53:57,824] ping.Client<Client:63c02#Client7>:INFO: --------------- Result upon updating dictionary: -------------- OK
+[2017-10-22 23:53:57,824] ping.Client<Client:63c02#Client7>:INFO: --------------- Waiting for Result -------------- 0 933
+[2017-10-22 23:53:57,944] ping.Client<Client:63c02#Client7>:INFO: --------------- Received Result Shuttle --------------
+[2017-10-22 23:53:57,944] ping.Client<Client:63c02#Client7>:INFO: --------------- Checking result against expected result --------------
+[2017-10-22 23:53:57,944] ping.Client<Client:63c02#Client7>:INFO: --------------- Result in Client Dictionary: -------------- OK
+[2017-10-22 23:53:57,945] ping.Client<Client:63c02#Client7>:INFO: --------------- Get Data in global dictionary from olympus for Key: % with ID -------------- apple 5383
+[2017-10-22 23:53:57,946] ping.Client<Client:63c02#Client7>:INFO: --------------- Received Data from global dictionary: % for key: % -------------- ['OK', 'sh'] apple
+[2017-10-22 23:53:57,947] ping.Client<Client:63c02#Client7>:INFO: --------------- Creating hash digest for result ---------------
+[2017-10-22 23:53:57,947] ping.Client<Client:63c02#Client7>:INFO: --------------- Verifying result and signature of result statements --------------
+[2017-10-22 23:53:57,947] ping.Client<Client:63c02#Client7>:INFO: --------------- Checking hash digests for results ---------------
+[2017-10-22 23:53:57,948] ping.Client<Client:63c02#Client7>:INFO: --------------- Checking hash digests for results ---------------
+[2017-10-22 23:53:57,948] ping.Client<Client:63c02#Client7>:INFO: --------------- Checking hash digests for results ---------------
+[2017-10-22 23:53:57,949] ping.Client<Client:63c02#Client7>:INFO: --------------- Result Proof Verification check: % -------------- True
+[2017-10-22 23:53:57,949] ping.Client<Client:63c02#Client7>:INFO: --------------- Client Dictionary Result: % -------------- OK
+[2017-10-22 23:53:57,949] ping.Client<Client:63c02#Client7>:INFO: --------------- Global Dictionary Result: % -------------- ['OK', 'sh']
+[2017-10-22 23:53:57,949] ping.Client<Client:63c02#Client7>:INFO: --------------- Result From Replica: % -------------- OK
+[2017-10-22 23:53:57,950] ping.Client<Client:63c02#Client7>:INFO: --------------- CLIENT ACCEPTS THE RESULT --------------
+[2017-10-22 23:59:52,720] da.api<MainProcess>:WARNING: Received keyboard interrupt. 
+[2017-10-23 00:01:48,694] da.api<MainProcess>:INFO: Bootstrapping attempt failed due to BootstrapException('Unable to contact a peer node.',),  continuing as a master node (use '--master' to disable bootstrapping at startup).
+[2017-10-23 00:01:48,694] da.api<MainProcess>:INFO: <Node_:Client7> initialized at 127.0.0.1:(UdpTransport=15000, TcpTransport=15000).
+[2017-10-23 00:01:48,694] da.api<MainProcess>:INFO: Starting program <module 'ping' from '/Users/selinadeepkaur/Desktop/Byzantine/ping.py'>...
+[2017-10-23 00:01:48,694] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-10-23 00:01:48,695] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-10-23 00:02:40,788] ping.Client<Client:21c02#Client7>:INFO: --------------- ENTERING Client:run ---------------
+[2017-10-23 00:02:40,789] ping.Client<Client:21c02#Client7>:INFO: --------------- Requesting Configuration from Olympus---------------
+[2017-10-23 00:02:41,028] ping.Client<Client:21c02#Client7>:INFO: --------------- Received Configuration from Olympus --------------
+[2017-10-23 00:02:41,028] ping.Client<Client:21c02#Client7>:INFO: --------------- Generating Workload for client --------------
+[2017-10-23 00:02:41,028] ping.Client<Client:21c02#Client7>:INFO: --------------- Operations for Client -------------- ['put(‘apple’,’shake’)']
+[2017-10-23 00:02:41,029] ping.Client<Client:21c02#Client7>:INFO: --------------- Sending Request No: % :: Request Id: % -------------- 0 6928
+[2017-10-23 00:02:41,029] ping.Client<Client:21c02#Client7>:INFO: --------------- Signing the request statement: -------------- b'put(\xe2\x80\x98apple\xe2\x80\x99,\xe2\x80\x99shake\xe2\x80\x99)'
+[2017-10-23 00:02:41,030] ping.Client<Client:21c02#Client7>:INFO: --------------- Sending request to head --------------
+[2017-10-23 00:02:41,031] ping.Client<Client:21c02#Client7>:INFO: --------------- Parsing the unsigned statement --------------
+[2017-10-23 00:02:41,032] ping.Client<Client:21c02#Client7>:INFO: --------------- Client updates its dictionary with: -------------- put apple shake
+[2017-10-23 00:02:41,032] ping.Client<Client:21c02#Client7>:INFO: --------------- Executing Operation to updata client dictionary with: -------------- put 6928 shake apple
+[2017-10-23 00:02:41,033] ping.Client<Client:21c02#Client7>:INFO: --------------- Result upon updating dictionary: -------------- OK
+[2017-10-23 00:02:41,033] ping.Client<Client:21c02#Client7>:INFO: --------------- Waiting for Result -------------- 0 6928
+[2017-10-23 00:02:41,161] ping.Client<Client:21c02#Client7>:INFO: --------------- Received Result Shuttle --------------
+[2017-10-23 00:02:41,161] ping.Client<Client:21c02#Client7>:INFO: --------------- Checking result against expected result --------------
+[2017-10-23 00:02:41,162] ping.Client<Client:21c02#Client7>:INFO: --------------- Result in Client Dictionary: -------------- OK
+[2017-10-23 00:02:41,162] ping.Client<Client:21c02#Client7>:INFO: --------------- Get Data in global dictionary from olympus for Key: % with ID -------------- apple 5613
+[2017-10-23 00:02:41,164] ping.Client<Client:21c02#Client7>:INFO: --------------- Received Data from global dictionary: % for key: % -------------- ['OK', 'shake'] apple
+[2017-10-23 00:02:41,164] ping.Client<Client:21c02#Client7>:INFO: --------------- Creating hash digest for result ---------------
+[2017-10-23 00:02:41,164] ping.Client<Client:21c02#Client7>:INFO: --------------- Verifying result and signature of result statements --------------
+[2017-10-23 00:02:41,165] ping.Client<Client:21c02#Client7>:INFO: --------------- Checking hash digests for results ---------------
+[2017-10-23 00:02:41,165] ping.Client<Client:21c02#Client7>:INFO: --------------- Checking hash digests for results ---------------
+[2017-10-23 00:02:41,166] ping.Client<Client:21c02#Client7>:INFO: --------------- Checking hash digests for results ---------------
+[2017-10-23 00:02:41,166] ping.Client<Client:21c02#Client7>:INFO: --------------- Result Proof Verification check: % -------------- True
+[2017-10-23 00:02:41,166] ping.Client<Client:21c02#Client7>:INFO: --------------- Client Dictionary Result: % -------------- OK
+[2017-10-23 00:02:41,166] ping.Client<Client:21c02#Client7>:INFO: --------------- Global Dictionary Result: % -------------- ['OK', 'shake']
+[2017-10-23 00:02:41,166] ping.Client<Client:21c02#Client7>:INFO: --------------- Result From Replica: % -------------- OK
+[2017-10-23 00:02:41,167] ping.Client<Client:21c02#Client7>:INFO: --------------- CLIENT ACCEPTS THE RESULT --------------

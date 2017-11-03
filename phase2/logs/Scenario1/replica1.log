@@ -1,0 +1,184 @@
+[2017-10-22 21:26:59,984] da.sim.Router<MainProcess>:INFO: Bootstrap succeeded using <UdpTransport(127.0.0.1:34629)>.
+[2017-10-22 21:26:59,984] da.api<MainProcess>:INFO: <Node_:Replica1> initialized at 127.0.0.1:(UdpTransport=34629, TcpTransport=22293).
+[2017-10-22 21:26:59,985] da.api<MainProcess>:INFO: Starting program <module 'ping' from 'C:\\Users\\SSDN-Dinesh\\Desktop\\SBU\\ASYNC\\BCR\\Asynchronous-Systems\\phase2\\ping.py'>...
+[2017-10-22 21:26:59,985] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-10-22 21:26:59,986] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-10-22 21:27:05,278] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Entering Replica Run: --------------
+[2017-10-22 21:27:05,278] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Getting Failures for Replica : --------------
+[2017-10-22 21:27:05,278] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Failures for Replica: -------------- No Failures
+[2017-10-22 21:27:05,279] ping.Replica<Replica:26002#Replica1>:INFO: {}
+[2017-10-22 21:27:05,296] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Replica:receives:signedRequestStatement from previous replica -----------------------
+[2017-10-22 21:27:05,296] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Received Request message number:[0 ; client Id: [0] ; request Id: [7008]-----------------------
+[2017-10-22 21:27:05,299] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Unsigned Statement from client ----------------------- b"put('movie','star')"
+[2017-10-22 21:27:05,299] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Parsing the unsigned statement --------------
+[2017-10-22 21:27:05,299] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Check for Result Proof Integrity:[Result-Statements:Signatures] and Result--------------
+[2017-10-22 21:27:05,302] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Verifying Order Proofs ----------------------- True
+[2017-10-22 21:27:05,302] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Verifying:[Result-Statements:Signatures] --------------
+[2017-10-22 21:27:05,304] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Verifying Result Proofs ----------------------- True
+[2017-10-22 21:27:05,305] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Checking for failures -----------------------
+[2017-10-22 21:27:05,305] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Get Failure Action --------------
+[2017-10-22 21:27:05,305] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Failure Check:[notFound] Failure action:None-----------------------
+[2017-10-22 21:27:05,305] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Check for <Slot,Operation> Integrity--------------
+[2017-10-22 21:27:05,305] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Check for holes in Replica history --------------
+[2017-10-22 21:27:05,305] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Slot Consistency: false Holes Found: False--------------------
+[2017-10-22 21:27:05,305] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Executing Operation to updata client dictionary with: --------------
+[2017-10-22 21:27:05,305] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Failure Check:[notFound] Failure action:None-----------------------
+[2017-10-22 21:27:05,306] ping.Replica<Replica:26002#Replica1>:INFO: --- Create Signed Order Statement and Result Statement with: slot: 0, operation: b"put('movie','star')", resultOK--------------
+[2017-10-22 21:27:05,307] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Creating hash digest for result ---------------
+[2017-10-22 21:27:05,308] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Failure Check:[notFound] Failure action:None-----------------------
+[2017-10-22 21:27:05,308] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Data in Client Dictionary  {'movie': 'star'}
+[2017-10-22 21:27:05,308] ping.Replica<Replica:26002#Replica1>:INFO: -------------------------- Append to Replica History slot:0 operation:b"put('movie','star')" request Id:7008 --------------
+[2017-10-22 21:27:05,308] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Creating Shuttle -----------------------
+[2017-10-22 21:27:05,309] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Sending Statement:: message number0 from client: 0 to Next Replica -----------------------
+[2017-10-22 21:27:05,310] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Replica:receives:signedRequestStatement from previous replica -----------------------
+[2017-10-22 21:27:05,310] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Received Request message number:[0 ; client Id: [1] ; request Id: [7189]-----------------------
+[2017-10-22 21:27:05,313] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Unsigned Statement from client ----------------------- b"put('movie','war')"
+[2017-10-22 21:27:05,313] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Parsing the unsigned statement --------------
+[2017-10-22 21:27:05,313] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Check for Result Proof Integrity:[Result-Statements:Signatures] and Result--------------
+[2017-10-22 21:27:05,316] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Verifying Order Proofs ----------------------- True
+[2017-10-22 21:27:05,316] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Verifying:[Result-Statements:Signatures] --------------
+[2017-10-22 21:27:05,319] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Verifying Result Proofs ----------------------- True
+[2017-10-22 21:27:05,319] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Checking for failures -----------------------
+[2017-10-22 21:27:05,319] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Get Failure Action --------------
+[2017-10-22 21:27:05,320] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Failure Check:[notFound] Failure action:None-----------------------
+[2017-10-22 21:27:05,320] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Check for <Slot,Operation> Integrity--------------
+[2017-10-22 21:27:05,320] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Check for holes in Replica history --------------
+[2017-10-22 21:27:05,320] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Slot Consistency: false Holes Found: False--------------------
+[2017-10-22 21:27:05,320] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Executing Operation to updata client dictionary with: --------------
+[2017-10-22 21:27:05,321] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Failure Check:[notFound] Failure action:None-----------------------
+[2017-10-22 21:27:05,321] ping.Replica<Replica:26002#Replica1>:INFO: --- Create Signed Order Statement and Result Statement with: slot: 1, operation: b"put('movie','war')", resultOK--------------
+[2017-10-22 21:27:05,322] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Creating hash digest for result ---------------
+[2017-10-22 21:27:05,323] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Failure Check:[notFound] Failure action:None-----------------------
+[2017-10-22 21:27:05,324] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Data in Client Dictionary  {'movie': 'war'}
+[2017-10-22 21:27:05,324] ping.Replica<Replica:26002#Replica1>:INFO: -------------------------- Append to Replica History slot:1 operation:b"put('movie','war')" request Id:7189 --------------
+[2017-10-22 21:27:05,324] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Creating Shuttle -----------------------
+[2017-10-22 21:27:05,324] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Sending Statement:: message number0 from client: 1 to Next Replica -----------------------
+[2017-10-22 21:27:05,332] ping.Replica<Replica:26002#Replica1>:INFO: -------------------- Received Result Shuttle from Next Replica -------------------------
+[2017-10-22 21:27:05,332] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Received Result Shuttle: Result Shuttle No.0 for Client [0]-----------------------
+[2017-10-22 21:27:05,332] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Creating hash digest for result ---------------
+[2017-10-22 21:27:05,332] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Check for Result Proof Integrity:[Result-Statements:Signatures] and Result--------------
+[2017-10-22 21:27:05,341] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Checking hash digests for results ---------------
+[2017-10-22 21:27:05,344] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Checking hash digests for results ---------------
+[2017-10-22 21:27:05,348] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Checking hash digests for results ---------------
+[2017-10-22 21:27:05,348] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Get Failure Action --------------
+[2017-10-22 21:27:05,349] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Failure Check:[notFound] Failure action:None-----------------------
+[2017-10-22 21:27:05,349] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Failure Check:[notFound] Failure action:None-----------------------
+[2017-10-22 21:27:05,349] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Append Result to Result Cache --------------
+[2017-10-22 21:27:05,349] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Sending ResultShuttle: No:[0] to Previous Replica: [0] -----------------------
+[2017-10-22 21:27:05,355] ping.Replica<Replica:26002#Replica1>:INFO: -------------------- Received Result Shuttle from Next Replica -------------------------
+[2017-10-22 21:27:05,355] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Received Result Shuttle: Result Shuttle No.1 for Client [1]-----------------------
+[2017-10-22 21:27:05,355] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Creating hash digest for result ---------------
+[2017-10-22 21:27:05,355] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Check for Result Proof Integrity:[Result-Statements:Signatures] and Result--------------
+[2017-10-22 21:27:05,358] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Checking hash digests for results ---------------
+[2017-10-22 21:27:05,361] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Checking hash digests for results ---------------
+[2017-10-22 21:27:05,364] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Checking hash digests for results ---------------
+[2017-10-22 21:27:05,365] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Get Failure Action --------------
+[2017-10-22 21:27:05,365] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Failure Check:[notFound] Failure action:None-----------------------
+[2017-10-22 21:27:05,365] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Failure Check:[notFound] Failure action:None-----------------------
+[2017-10-22 21:27:05,365] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Append Result to Result Cache --------------
+[2017-10-22 21:27:05,365] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Sending ResultShuttle: No:[1] to Previous Replica: [0] -----------------------
+[2017-10-22 21:27:05,366] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Replica:receives:signedRequestStatement from previous replica -----------------------
+[2017-10-22 21:27:05,366] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Received Request message number:[1 ; client Id: [0] ; request Id: [3951]-----------------------
+[2017-10-22 21:27:05,369] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Unsigned Statement from client ----------------------- b"append('movie','star')"
+[2017-10-22 21:27:05,369] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Parsing the unsigned statement --------------
+[2017-10-22 21:27:05,370] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Check for Result Proof Integrity:[Result-Statements:Signatures] and Result--------------
+[2017-10-22 21:27:05,372] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Verifying Order Proofs ----------------------- True
+[2017-10-22 21:27:05,373] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Verifying:[Result-Statements:Signatures] --------------
+[2017-10-22 21:27:05,375] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Verifying Result Proofs ----------------------- True
+[2017-10-22 21:27:05,376] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Checking for failures -----------------------
+[2017-10-22 21:27:05,376] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Get Failure Action --------------
+[2017-10-22 21:27:05,376] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Failure Check:[notFound] Failure action:None-----------------------
+[2017-10-22 21:27:05,376] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Check for <Slot,Operation> Integrity--------------
+[2017-10-22 21:27:05,376] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Check for holes in Replica history --------------
+[2017-10-22 21:27:05,376] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Slot Consistency: false Holes Found: False--------------------
+[2017-10-22 21:27:05,377] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Executing Operation to updata client dictionary with: --------------
+[2017-10-22 21:27:05,377] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Failure Check:[notFound] Failure action:None-----------------------
+[2017-10-22 21:27:05,377] ping.Replica<Replica:26002#Replica1>:INFO: --- Create Signed Order Statement and Result Statement with: slot: 2, operation: b"append('movie','star')", resultOK--------------
+[2017-10-22 21:27:05,378] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Creating hash digest for result ---------------
+[2017-10-22 21:27:05,378] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Failure Check:[notFound] Failure action:None-----------------------
+[2017-10-22 21:27:05,378] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Data in Client Dictionary  {'movie': 'warstar'}
+[2017-10-22 21:27:05,379] ping.Replica<Replica:26002#Replica1>:INFO: -------------------------- Append to Replica History slot:2 operation:b"append('movie','star')" request Id:3951 --------------
+[2017-10-22 21:27:05,379] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Creating Shuttle -----------------------
+[2017-10-22 21:27:05,379] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Sending Statement:: message number1 from client: 0 to Next Replica -----------------------
+[2017-10-22 21:27:05,391] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Replica:receives:signedRequestStatement from previous replica -----------------------
+[2017-10-22 21:27:05,391] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Received Request message number:[1 ; client Id: [1] ; request Id: [7749]-----------------------
+[2017-10-22 21:27:05,394] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Unsigned Statement from client ----------------------- b"get('movie')"
+[2017-10-22 21:27:05,394] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Parsing the unsigned statement --------------
+[2017-10-22 21:27:05,394] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Check for Result Proof Integrity:[Result-Statements:Signatures] and Result--------------
+[2017-10-22 21:27:05,396] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Verifying Order Proofs ----------------------- True
+[2017-10-22 21:27:05,396] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Verifying:[Result-Statements:Signatures] --------------
+[2017-10-22 21:27:05,399] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Verifying Result Proofs ----------------------- True
+[2017-10-22 21:27:05,399] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Checking for failures -----------------------
+[2017-10-22 21:27:05,400] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Get Failure Action --------------
+[2017-10-22 21:27:05,400] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Failure Check:[notFound] Failure action:None-----------------------
+[2017-10-22 21:27:05,400] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Check for <Slot,Operation> Integrity--------------
+[2017-10-22 21:27:05,400] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Check for holes in Replica history --------------
+[2017-10-22 21:27:05,400] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Slot Consistency: false Holes Found: False--------------------
+[2017-10-22 21:27:05,400] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Executing Operation to updata client dictionary with: --------------
+[2017-10-22 21:27:05,401] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Failure Check:[notFound] Failure action:None-----------------------
+[2017-10-22 21:27:05,401] ping.Replica<Replica:26002#Replica1>:INFO: --- Create Signed Order Statement and Result Statement with: slot: 3, operation: b"get('movie')", resultwarstar--------------
+[2017-10-22 21:27:05,402] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Creating hash digest for result ---------------
+[2017-10-22 21:27:05,402] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Failure Check:[notFound] Failure action:None-----------------------
+[2017-10-22 21:27:05,402] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Data in Client Dictionary  {'movie': 'warstar'}
+[2017-10-22 21:27:05,403] ping.Replica<Replica:26002#Replica1>:INFO: -------------------------- Append to Replica History slot:3 operation:b"get('movie')" request Id:7749 --------------
+[2017-10-22 21:27:05,403] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Creating Shuttle -----------------------
+[2017-10-22 21:27:05,403] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Sending Statement:: message number1 from client: 1 to Next Replica -----------------------
+[2017-10-22 21:27:05,404] ping.Replica<Replica:26002#Replica1>:INFO: -------------------- Received Result Shuttle from Next Replica -------------------------
+[2017-10-22 21:27:05,404] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Received Result Shuttle: Result Shuttle No.2 for Client [0]-----------------------
+[2017-10-22 21:27:05,404] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Creating hash digest for result ---------------
+[2017-10-22 21:27:05,404] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Check for Result Proof Integrity:[Result-Statements:Signatures] and Result--------------
+[2017-10-22 21:27:05,407] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Checking hash digests for results ---------------
+[2017-10-22 21:27:05,411] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Checking hash digests for results ---------------
+[2017-10-22 21:27:05,414] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Checking hash digests for results ---------------
+[2017-10-22 21:27:05,414] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Get Failure Action --------------
+[2017-10-22 21:27:05,415] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Failure Check:[notFound] Failure action:None-----------------------
+[2017-10-22 21:27:05,415] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Failure Check:[notFound] Failure action:None-----------------------
+[2017-10-22 21:27:05,415] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Append Result to Result Cache --------------
+[2017-10-22 21:27:05,415] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Sending ResultShuttle: No:[2] to Previous Replica: [0] -----------------------
+[2017-10-22 21:27:05,423] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Replica:receives:signedRequestStatement from previous replica -----------------------
+[2017-10-22 21:27:05,424] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Received Request message number:[2 ; client Id: [0] ; request Id: [2625]-----------------------
+[2017-10-22 21:27:05,427] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Unsigned Statement from client ----------------------- b"get('movie')"
+[2017-10-22 21:27:05,427] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Parsing the unsigned statement --------------
+[2017-10-22 21:27:05,427] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Check for Result Proof Integrity:[Result-Statements:Signatures] and Result--------------
+[2017-10-22 21:27:05,430] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Verifying Order Proofs ----------------------- True
+[2017-10-22 21:27:05,430] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Verifying:[Result-Statements:Signatures] --------------
+[2017-10-22 21:27:05,433] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Verifying Result Proofs ----------------------- True
+[2017-10-22 21:27:05,434] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Checking for failures -----------------------
+[2017-10-22 21:27:05,434] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Get Failure Action --------------
+[2017-10-22 21:27:05,434] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Failure Check:[notFound] Failure action:None-----------------------
+[2017-10-22 21:27:05,434] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Check for <Slot,Operation> Integrity--------------
+[2017-10-22 21:27:05,434] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Check for holes in Replica history --------------
+[2017-10-22 21:27:05,435] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Slot Consistency: false Holes Found: False--------------------
+[2017-10-22 21:27:05,435] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Executing Operation to updata client dictionary with: --------------
+[2017-10-22 21:27:05,435] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Failure Check:[notFound] Failure action:None-----------------------
+[2017-10-22 21:27:05,435] ping.Replica<Replica:26002#Replica1>:INFO: --- Create Signed Order Statement and Result Statement with: slot: 4, operation: b"get('movie')", resultwarstar--------------
+[2017-10-22 21:27:05,436] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Creating hash digest for result ---------------
+[2017-10-22 21:27:05,437] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Failure Check:[notFound] Failure action:None-----------------------
+[2017-10-22 21:27:05,437] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Data in Client Dictionary  {'movie': 'warstar'}
+[2017-10-22 21:27:05,437] ping.Replica<Replica:26002#Replica1>:INFO: -------------------------- Append to Replica History slot:4 operation:b"get('movie')" request Id:2625 --------------
+[2017-10-22 21:27:05,437] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Creating Shuttle -----------------------
+[2017-10-22 21:27:05,437] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Sending Statement:: message number2 from client: 0 to Next Replica -----------------------
+[2017-10-22 21:27:05,439] ping.Replica<Replica:26002#Replica1>:INFO: -------------------- Received Result Shuttle from Next Replica -------------------------
+[2017-10-22 21:27:05,439] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Received Result Shuttle: Result Shuttle No.3 for Client [1]-----------------------
+[2017-10-22 21:27:05,439] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Creating hash digest for result ---------------
+[2017-10-22 21:27:05,439] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Check for Result Proof Integrity:[Result-Statements:Signatures] and Result--------------
+[2017-10-22 21:27:05,443] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Checking hash digests for results ---------------
+[2017-10-22 21:27:05,449] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Checking hash digests for results ---------------
+[2017-10-22 21:27:05,452] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Checking hash digests for results ---------------
+[2017-10-22 21:27:05,452] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Get Failure Action --------------
+[2017-10-22 21:27:05,452] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Failure Check:[notFound] Failure action:None-----------------------
+[2017-10-22 21:27:05,452] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Failure Check:[notFound] Failure action:None-----------------------
+[2017-10-22 21:27:05,452] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Append Result to Result Cache --------------
+[2017-10-22 21:27:05,453] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Sending ResultShuttle: No:[3] to Previous Replica: [0] -----------------------
+[2017-10-22 21:27:05,458] ping.Replica<Replica:26002#Replica1>:INFO: -------------------- Received Result Shuttle from Next Replica -------------------------
+[2017-10-22 21:27:05,459] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Received Result Shuttle: Result Shuttle No.4 for Client [0]-----------------------
+[2017-10-22 21:27:05,459] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Creating hash digest for result ---------------
+[2017-10-22 21:27:05,459] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Check for Result Proof Integrity:[Result-Statements:Signatures] and Result--------------
+[2017-10-22 21:27:05,464] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Checking hash digests for results ---------------
+[2017-10-22 21:27:05,467] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Checking hash digests for results ---------------
+[2017-10-22 21:27:05,469] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Checking hash digests for results ---------------
+[2017-10-22 21:27:05,469] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Get Failure Action --------------
+[2017-10-22 21:27:05,470] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Failure Check:[notFound] Failure action:None-----------------------
+[2017-10-22 21:27:05,470] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Failure Check:[notFound] Failure action:None-----------------------
+[2017-10-22 21:27:05,470] ping.Replica<Replica:26002#Replica1>:INFO: --------------- Append Result to Result Cache --------------
+[2017-10-22 21:27:05,470] ping.Replica<Replica:26002#Replica1>:INFO: --------------------- Sending ResultShuttle: No:[4] to Previous Replica: [0] -----------------------

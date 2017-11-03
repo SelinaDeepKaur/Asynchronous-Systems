@@ -1,0 +1,49 @@
+[2017-10-22 22:42:06,307] da.sim.Router<MainProcess>:INFO: Bootstrap succeeded using <UdpTransport(127.0.0.1:39476)>.
+[2017-10-22 22:42:06,308] da.api<MainProcess>:INFO: <Node_:Replica2> initialized at 127.0.0.1:(UdpTransport=39476, TcpTransport=37289).
+[2017-10-22 22:42:06,308] da.api<MainProcess>:INFO: Starting program <module 'ping' from 'C:\\Users\\SSDN-Dinesh\\Desktop\\SBU\\ASYNC\\BCR\\Asynchronous-Systems\\phase2\\ping.py'>...
+[2017-10-22 22:42:06,308] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-10-22 22:42:06,309] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-10-22 22:42:09,688] ping.Replica<Replica:f5002#Replica2>:INFO: --------------- Entering Replica Run: --------------
+[2017-10-22 22:42:09,689] ping.Replica<Replica:f5002#Replica2>:INFO: --------------- Getting Failures for Replica : --------------
+[2017-10-22 22:42:09,689] ping.Replica<Replica:f5002#Replica2>:INFO: --------------- Failures for Replica: -------------- No Failures
+[2017-10-22 22:42:09,689] ping.Replica<Replica:f5002#Replica2>:INFO: {}
+[2017-10-22 22:42:19,697] ping.Replica<Replica:f5002#Replica2>:INFO: --------------------- Replica:receives:retransmission from Client -----------------------
+[2017-10-22 22:42:19,697] ping.Replica<Replica:f5002#Replica2>:INFO: --------------------- Request client Id: [0] ; request Id: [6108]-----------------------
+[2017-10-22 22:42:19,700] ping.Replica<Replica:f5002#Replica2>:INFO: --------------------- Unsigned Statement from client b"put('movie','star')"-----------------------
+[2017-10-22 22:42:19,700] ping.Replica<Replica:f5002#Replica2>:INFO: --------------- Get Result From Result Cache --------------
+[2017-10-22 22:42:19,701] ping.Replica<Replica:f5002#Replica2>:INFO: ---------------------NoResult in Result Cache-----------------------
+[2017-10-22 22:42:19,701] ping.Replica<Replica:f5002#Replica2>:INFO: --------------------- Sending forward-request to head coming from client Id: [0] ; with request Id: [6108]-----------------------
+[2017-10-22 22:42:19,701] ping.Replica<Replica:f5002#Replica2>:INFO: --------------------- Waiting for result shuttle to arrive-----------------------
+[2017-10-22 22:42:19,704] ping.Replica<Replica:f5002#Replica2>:INFO: --------------------- Replica:receives:retransmission from Client -----------------------
+[2017-10-22 22:42:19,704] ping.Replica<Replica:f5002#Replica2>:INFO: --------------------- Request client Id: [1] ; request Id: [1022]-----------------------
+[2017-10-22 22:42:19,707] ping.Replica<Replica:f5002#Replica2>:INFO: --------------------- Unsigned Statement from client b"put('movie','war')"-----------------------
+[2017-10-22 22:42:19,707] ping.Replica<Replica:f5002#Replica2>:INFO: --------------- Get Result From Result Cache --------------
+[2017-10-22 22:42:19,707] ping.Replica<Replica:f5002#Replica2>:INFO: ---------------------NoResult in Result Cache-----------------------
+[2017-10-22 22:42:19,707] ping.Replica<Replica:f5002#Replica2>:INFO: --------------------- Sending forward-request to head coming from client Id: [1] ; with request Id: [1022]-----------------------
+[2017-10-22 22:42:19,708] ping.Replica<Replica:f5002#Replica2>:INFO: --------------------- Waiting for result shuttle to arrive-----------------------
+[2017-10-22 22:42:29,702] ping.Replica<Replica:f5002#Replica2>:INFO: --------------------- Replica:receives:retransmission from Client -----------------------
+[2017-10-22 22:42:29,703] ping.Replica<Replica:f5002#Replica2>:INFO: --------------------- Request client Id: [0] ; request Id: [9331]-----------------------
+[2017-10-22 22:42:29,706] ping.Replica<Replica:f5002#Replica2>:INFO: --------------------- Unsigned Statement from client b"append('movie','star')"-----------------------
+[2017-10-22 22:42:29,706] ping.Replica<Replica:f5002#Replica2>:INFO: --------------- Get Result From Result Cache --------------
+[2017-10-22 22:42:29,706] ping.Replica<Replica:f5002#Replica2>:INFO: ---------------------NoResult in Result Cache-----------------------
+[2017-10-22 22:42:29,706] ping.Replica<Replica:f5002#Replica2>:INFO: --------------------- Sending forward-request to head coming from client Id: [0] ; with request Id: [9331]-----------------------
+[2017-10-22 22:42:29,707] ping.Replica<Replica:f5002#Replica2>:INFO: --------------------- Waiting for result shuttle to arrive-----------------------
+[2017-10-22 22:42:29,711] ping.Replica<Replica:f5002#Replica2>:INFO: --------------------- Replica:receives:retransmission from Client -----------------------
+[2017-10-22 22:42:29,711] ping.Replica<Replica:f5002#Replica2>:INFO: --------------------- Request client Id: [1] ; request Id: [9445]-----------------------
+[2017-10-22 22:42:29,714] ping.Replica<Replica:f5002#Replica2>:INFO: --------------------- Unsigned Statement from client b"get('movie')"-----------------------
+[2017-10-22 22:42:29,714] ping.Replica<Replica:f5002#Replica2>:INFO: --------------- Get Result From Result Cache --------------
+[2017-10-22 22:42:29,714] ping.Replica<Replica:f5002#Replica2>:INFO: ---------------------NoResult in Result Cache-----------------------
+[2017-10-22 22:42:29,714] ping.Replica<Replica:f5002#Replica2>:INFO: --------------------- Sending forward-request to head coming from client Id: [1] ; with request Id: [9445]-----------------------
+[2017-10-22 22:42:29,715] ping.Replica<Replica:f5002#Replica2>:INFO: --------------------- Waiting for result shuttle to arrive-----------------------
+[2017-10-22 22:42:39,709] ping.Replica<Replica:f5002#Replica2>:INFO: --------------------- Replica:receives:retransmission from Client -----------------------
+[2017-10-22 22:42:39,709] ping.Replica<Replica:f5002#Replica2>:INFO: --------------------- Request client Id: [0] ; request Id: [1888]-----------------------
+[2017-10-22 22:42:39,712] ping.Replica<Replica:f5002#Replica2>:INFO: --------------------- Unsigned Statement from client b"get('movie')"-----------------------
+[2017-10-22 22:42:39,712] ping.Replica<Replica:f5002#Replica2>:INFO: --------------- Get Result From Result Cache --------------
+[2017-10-22 22:42:39,712] ping.Replica<Replica:f5002#Replica2>:INFO: ---------------------NoResult in Result Cache-----------------------
+[2017-10-22 22:42:39,712] ping.Replica<Replica:f5002#Replica2>:INFO: --------------------- Sending forward-request to head coming from client Id: [0] ; with request Id: [1888]-----------------------
+[2017-10-22 22:42:39,713] ping.Replica<Replica:f5002#Replica2>:INFO: --------------------- Waiting for result shuttle to arrive-----------------------
+[2017-10-22 22:42:49,714] ping.Replica<Replica:f5002#Replica2>:INFO: --------------------- Send Reconfiguration request to Olympus-----------------------
+[2017-10-22 22:42:49,714] ping.Replica<Replica:f5002#Replica2>:INFO: --------------------- Send Reconfiguration request to Olympus-----------------------
+[2017-10-22 22:42:49,714] ping.Replica<Replica:f5002#Replica2>:INFO: --------------------- Send Reconfiguration request to Olympus-----------------------
+[2017-10-22 22:42:49,714] ping.Replica<Replica:f5002#Replica2>:INFO: --------------------- Send Reconfiguration request to Olympus-----------------------
+[2017-10-22 22:42:49,714] ping.Replica<Replica:f5002#Replica2>:INFO: --------------------- Send Reconfiguration request to Olympus-----------------------

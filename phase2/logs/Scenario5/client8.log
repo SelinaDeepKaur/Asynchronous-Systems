@@ -1,0 +1,67 @@
+[2017-10-22 23:53:42,593] da.sim.Router<MainProcess>:INFO: Bootstrap succeeded using <UdpTransport(127.0.0.1:35019)>.
+[2017-10-22 23:53:42,593] da.api<MainProcess>:INFO: <Node_:Client8> initialized at 127.0.0.1:(UdpTransport=35019, TcpTransport=37309).
+[2017-10-22 23:53:42,594] da.api<MainProcess>:INFO: Starting program <module 'ping' from '/Users/selinadeepkaur/Desktop/Byzantine/ping.py'>...
+[2017-10-22 23:53:42,594] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-10-22 23:53:42,594] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-10-22 23:53:57,626] ping.Client<Client:33002#Client8>:INFO: --------------- ENTERING Client:run ---------------
+[2017-10-22 23:53:57,626] ping.Client<Client:33002#Client8>:INFO: --------------- Requesting Configuration from Olympus---------------
+[2017-10-22 23:53:57,819] ping.Client<Client:33002#Client8>:INFO: --------------- Received Configuration from Olympus --------------
+[2017-10-22 23:53:57,820] ping.Client<Client:33002#Client8>:INFO: --------------- Generating Workload for client --------------
+[2017-10-22 23:53:57,820] ping.Client<Client:33002#Client8>:INFO: --------------- Operations for Client -------------- ['slice(‘apple’,’0:2’)']
+[2017-10-22 23:53:57,820] ping.Client<Client:33002#Client8>:INFO: --------------- Sending Request No: % :: Request Id: % -------------- 0 2427
+[2017-10-22 23:53:57,820] ping.Client<Client:33002#Client8>:INFO: --------------- Signing the request statement: -------------- b'slice(\xe2\x80\x98apple\xe2\x80\x99,\xe2\x80\x990:2\xe2\x80\x99)'
+[2017-10-22 23:53:57,823] ping.Client<Client:33002#Client8>:INFO: --------------- Sending request to head --------------
+[2017-10-22 23:53:57,826] ping.Client<Client:33002#Client8>:INFO: --------------- Parsing the unsigned statement --------------
+[2017-10-22 23:53:57,827] ping.Client<Client:33002#Client8>:INFO: --------------- Client updates its dictionary with: -------------- slice apple 0:2
+[2017-10-22 23:53:57,828] ping.Client<Client:33002#Client8>:INFO: --------------- Executing Operation to updata client dictionary with: -------------- slice 2427 0:2 apple
+[2017-10-22 23:53:57,828] ping.Client<Client:33002#Client8>:INFO: --------------- Result upon updating dictionary: -------------- fail
+[2017-10-22 23:53:57,829] ping.Client<Client:33002#Client8>:INFO: --------------- Waiting for Result -------------- 0 2427
+[2017-10-22 23:53:57,981] ping.Client<Client:33002#Client8>:INFO: --------------- Received Result Shuttle --------------
+[2017-10-22 23:53:57,981] ping.Client<Client:33002#Client8>:INFO: --------------- Checking result against expected result --------------
+[2017-10-22 23:53:57,982] ping.Client<Client:33002#Client8>:INFO: --------------- Result in Client Dictionary: -------------- fail
+[2017-10-22 23:53:57,982] ping.Client<Client:33002#Client8>:INFO: --------------- Get Data in global dictionary from olympus for Key: % with ID -------------- apple 4025
+[2017-10-22 23:53:57,984] ping.Client<Client:33002#Client8>:INFO: --------------- Received Data from global dictionary: % for key: % -------------- ['OK', 'sh'] apple
+[2017-10-22 23:53:57,984] ping.Client<Client:33002#Client8>:INFO: --------------- Creating hash digest for result ---------------
+[2017-10-22 23:53:57,984] ping.Client<Client:33002#Client8>:INFO: --------------- Verifying result and signature of result statements --------------
+[2017-10-22 23:53:57,985] ping.Client<Client:33002#Client8>:INFO: --------------- Checking hash digests for results ---------------
+[2017-10-22 23:53:57,986] ping.Client<Client:33002#Client8>:INFO: --------------- Checking hash digests for results ---------------
+[2017-10-22 23:53:57,986] ping.Client<Client:33002#Client8>:INFO: --------------- Checking hash digests for results ---------------
+[2017-10-22 23:53:57,986] ping.Client<Client:33002#Client8>:INFO: --------------- Result Proof Verification check: % -------------- True
+[2017-10-22 23:53:57,987] ping.Client<Client:33002#Client8>:INFO: --------------- Client Dictionary Result: % -------------- fail
+[2017-10-22 23:53:57,987] ping.Client<Client:33002#Client8>:INFO: --------------- Global Dictionary Result: % -------------- ['OK', 'sh']
+[2017-10-22 23:53:57,987] ping.Client<Client:33002#Client8>:INFO: --------------- Result From Replica: % -------------- OK
+[2017-10-22 23:53:57,987] ping.Client<Client:33002#Client8>:INFO: --------------- CLIENT ACCEPTS THE RESULT --------------
+[2017-10-22 23:59:58,092] da.api<MainProcess>:WARNING: Received keyboard interrupt. 
+[2017-10-23 00:02:08,434] da.sim.Router<MainProcess>:INFO: Bootstrap succeeded using <UdpTransport(127.0.0.1:11787)>.
+[2017-10-23 00:02:08,434] da.api<MainProcess>:INFO: <Node_:Client8> initialized at 127.0.0.1:(UdpTransport=11787, TcpTransport=21993).
+[2017-10-23 00:02:08,435] da.api<MainProcess>:INFO: Starting program <module 'ping' from '/Users/selinadeepkaur/Desktop/Byzantine/ping.py'>...
+[2017-10-23 00:02:08,436] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-10-23 00:02:08,436] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-10-23 00:02:40,831] ping.Client<Client:a9c02#Client8>:INFO: --------------- ENTERING Client:run ---------------
+[2017-10-23 00:02:40,832] ping.Client<Client:a9c02#Client8>:INFO: --------------- Requesting Configuration from Olympus---------------
+[2017-10-23 00:02:41,025] ping.Client<Client:a9c02#Client8>:INFO: --------------- Received Configuration from Olympus --------------
+[2017-10-23 00:02:41,026] ping.Client<Client:a9c02#Client8>:INFO: --------------- Generating Workload for client --------------
+[2017-10-23 00:02:41,027] ping.Client<Client:a9c02#Client8>:INFO: --------------- Operations for Client -------------- ['slice(‘apple’,’0:2’)']
+[2017-10-23 00:02:41,027] ping.Client<Client:a9c02#Client8>:INFO: --------------- Sending Request No: % :: Request Id: % -------------- 0 5730
+[2017-10-23 00:02:41,028] ping.Client<Client:a9c02#Client8>:INFO: --------------- Signing the request statement: -------------- b'slice(\xe2\x80\x98apple\xe2\x80\x99,\xe2\x80\x990:2\xe2\x80\x99)'
+[2017-10-23 00:02:41,028] ping.Client<Client:a9c02#Client8>:INFO: --------------- Sending request to head --------------
+[2017-10-23 00:02:41,029] ping.Client<Client:a9c02#Client8>:INFO: --------------- Parsing the unsigned statement --------------
+[2017-10-23 00:02:41,029] ping.Client<Client:a9c02#Client8>:INFO: --------------- Client updates its dictionary with: -------------- slice apple 0:2
+[2017-10-23 00:02:41,030] ping.Client<Client:a9c02#Client8>:INFO: --------------- Executing Operation to updata client dictionary with: -------------- slice 5730 0:2 apple
+[2017-10-23 00:02:41,030] ping.Client<Client:a9c02#Client8>:INFO: --------------- Result upon updating dictionary: -------------- fail
+[2017-10-23 00:02:41,032] ping.Client<Client:a9c02#Client8>:INFO: --------------- Waiting for Result -------------- 0 5730
+[2017-10-23 00:02:41,148] ping.Client<Client:a9c02#Client8>:INFO: --------------- Received Result Shuttle --------------
+[2017-10-23 00:02:41,148] ping.Client<Client:a9c02#Client8>:INFO: --------------- Checking result against expected result --------------
+[2017-10-23 00:02:41,148] ping.Client<Client:a9c02#Client8>:INFO: --------------- Result in Client Dictionary: -------------- fail
+[2017-10-23 00:02:41,149] ping.Client<Client:a9c02#Client8>:INFO: --------------- Get Data in global dictionary from olympus for Key: % with ID -------------- apple 5913
+[2017-10-23 00:02:41,150] ping.Client<Client:a9c02#Client8>:INFO: --------------- Received Data from global dictionary: % for key: % -------------- ['OK', 'shake'] apple
+[2017-10-23 00:02:41,151] ping.Client<Client:a9c02#Client8>:INFO: --------------- Creating hash digest for result ---------------
+[2017-10-23 00:02:41,151] ping.Client<Client:a9c02#Client8>:INFO: --------------- Verifying result and signature of result statements --------------
+[2017-10-23 00:02:41,151] ping.Client<Client:a9c02#Client8>:INFO: --------------- Checking hash digests for results ---------------
+[2017-10-23 00:02:41,152] ping.Client<Client:a9c02#Client8>:INFO: --------------- Checking hash digests for results ---------------
+[2017-10-23 00:02:41,152] ping.Client<Client:a9c02#Client8>:INFO: --------------- Checking hash digests for results ---------------
+[2017-10-23 00:02:41,152] ping.Client<Client:a9c02#Client8>:INFO: --------------- Result Proof Verification check: % -------------- True
+[2017-10-23 00:02:41,153] ping.Client<Client:a9c02#Client8>:INFO: --------------- Client Dictionary Result: % -------------- fail
+[2017-10-23 00:02:41,153] ping.Client<Client:a9c02#Client8>:INFO: --------------- Global Dictionary Result: % -------------- ['OK', 'shake']
+[2017-10-23 00:02:41,153] ping.Client<Client:a9c02#Client8>:INFO: --------------- Result From Replica: % -------------- OK
+[2017-10-23 00:02:41,153] ping.Client<Client:a9c02#Client8>:INFO: --------------- CLIENT ACCEPTS THE RESULT --------------

@@ -1,0 +1,77 @@
+[2017-10-22 23:53:12,742] da.sim.Router<MainProcess>:INFO: Bootstrap succeeded using <UdpTransport(127.0.0.1:24302)>.
+[2017-10-22 23:53:12,742] da.api<MainProcess>:INFO: <Node_:Client3> initialized at 127.0.0.1:(UdpTransport=24302, TcpTransport=23669).
+[2017-10-22 23:53:12,743] da.api<MainProcess>:INFO: Starting program <module 'ping' from '/Users/selinadeepkaur/Desktop/Byzantine/ping.py'>...
+[2017-10-22 23:53:12,743] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-10-22 23:53:12,743] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-10-22 23:53:57,432] ping.Client<Client:3a402#Client3>:INFO: --------------- ENTERING Client:run ---------------
+[2017-10-22 23:53:57,432] ping.Client<Client:3a402#Client3>:INFO: --------------- Requesting Configuration from Olympus---------------
+[2017-10-22 23:53:57,808] ping.Client<Client:3a402#Client3>:INFO: --------------- Received Configuration from Olympus --------------
+[2017-10-22 23:53:57,809] ping.Client<Client:3a402#Client3>:INFO: --------------- Generating Workload for client --------------
+[2017-10-22 23:53:57,809] ping.Client<Client:3a402#Client3>:INFO: --------------- Operations for Client -------------- ["append('movie','star')", '']
+[2017-10-22 23:53:57,810] ping.Client<Client:3a402#Client3>:INFO: --------------- Sending Request No: % :: Request Id: % -------------- 0 5286
+[2017-10-22 23:53:57,810] ping.Client<Client:3a402#Client3>:INFO: --------------- Signing the request statement: -------------- b"append('movie','star')"
+[2017-10-22 23:53:57,811] ping.Client<Client:3a402#Client3>:INFO: --------------- Sending request to head --------------
+[2017-10-22 23:53:57,812] ping.Client<Client:3a402#Client3>:INFO: --------------- Parsing the unsigned statement --------------
+[2017-10-22 23:53:57,812] ping.Client<Client:3a402#Client3>:INFO: --------------- Client updates its dictionary with: -------------- append movie star
+[2017-10-22 23:53:57,813] ping.Client<Client:3a402#Client3>:INFO: --------------- Executing Operation to updata client dictionary with: -------------- append 5286 star movie
+[2017-10-22 23:53:57,813] ping.Client<Client:3a402#Client3>:INFO: --------------- Result upon updating dictionary: -------------- fail
+[2017-10-22 23:53:57,813] ping.Client<Client:3a402#Client3>:INFO: --------------- Waiting for Result -------------- 0 5286
+[2017-10-22 23:53:57,884] ping.Client<Client:3a402#Client3>:INFO: --------------- Received Result Shuttle --------------
+[2017-10-22 23:53:57,885] ping.Client<Client:3a402#Client3>:INFO: --------------- Checking result against expected result --------------
+[2017-10-22 23:53:57,885] ping.Client<Client:3a402#Client3>:INFO: --------------- Result in Client Dictionary: -------------- fail
+[2017-10-22 23:53:57,885] ping.Client<Client:3a402#Client3>:INFO: --------------- Get Data in global dictionary from olympus for Key: % with ID -------------- movie 3955
+[2017-10-22 23:53:57,887] ping.Client<Client:3a402#Client3>:INFO: --------------- Received Data from global dictionary: % for key: % -------------- ['OK', 'war'] movie
+[2017-10-22 23:53:57,887] ping.Client<Client:3a402#Client3>:INFO: --------------- Creating hash digest for result ---------------
+[2017-10-22 23:53:57,888] ping.Client<Client:3a402#Client3>:INFO: --------------- Verifying result and signature of result statements --------------
+[2017-10-22 23:53:57,888] ping.Client<Client:3a402#Client3>:INFO: --------------- Checking hash digests for results ---------------
+[2017-10-22 23:53:57,889] ping.Client<Client:3a402#Client3>:INFO: --------------- Checking hash digests for results ---------------
+[2017-10-22 23:53:57,889] ping.Client<Client:3a402#Client3>:INFO: --------------- Checking hash digests for results ---------------
+[2017-10-22 23:53:57,889] ping.Client<Client:3a402#Client3>:INFO: --------------- Result Proof Verification check: % -------------- True
+[2017-10-22 23:53:57,890] ping.Client<Client:3a402#Client3>:INFO: --------------- Client Dictionary Result: % -------------- fail
+[2017-10-22 23:53:57,890] ping.Client<Client:3a402#Client3>:INFO: --------------- Global Dictionary Result: % -------------- ['OK', 'war']
+[2017-10-22 23:53:57,890] ping.Client<Client:3a402#Client3>:INFO: --------------- Result From Replica: % -------------- OK
+[2017-10-22 23:53:57,891] ping.Client<Client:3a402#Client3>:INFO: --------------- CLIENT ACCEPTS THE RESULT --------------
+[2017-10-22 23:53:57,894] ping.Client<Client:3a402#Client3>:INFO: --------------- Sending Request No: % :: Request Id: % -------------- 1 6917
+[2017-10-22 23:53:57,894] ping.Client<Client:3a402#Client3>:INFO: --------------- Signing the request statement: -------------- b''
+[2017-10-22 23:53:57,897] ping.Client<Client:3a402#Client3>:INFO: --------------- Sending request to head --------------
+[2017-10-22 23:53:57,897] ping.Client<Client:3a402#Client3>:INFO: --------------- Parsing the unsigned statement --------------
+[2017-10-22 23:53:57,898] ping.Client<Client:3a402#Client3>:ERROR: IndexError('list index out of range',) when calling handler '_Client_handler_1360' with '{'p': <Olympus:1b802#olympus>, 'Configuration': {0: ({<Replica:36802#Replica0>}, b'0a8ad0b15c1626cf4be26d1326a81f9c9fb4c09befb3e9cda0d97c51f512f763'), 1: ({<Replica:59802#Replica1>}, b'27191d7c88915aecdfc05e86ed14cb5f7dc84cd9b1593e812fb9bc76bf5f195b'), 2: ({<Replica:e8c02#Replica2>}, b'c8be0a72296392ec6215fd1644e59d0241364e6c8cc67ecb38352fdabe671f9d')}}': list index out of range
+[2017-10-23 00:01:14,918] da.api<MainProcess>:WARNING: Received keyboard interrupt. 
+[2017-10-23 00:02:21,339] da.sim.Router<MainProcess>:INFO: Bootstrap succeeded using <UdpTransport(127.0.0.1:33175)>.
+[2017-10-23 00:02:21,339] da.api<MainProcess>:INFO: <Node_:Client3> initialized at 127.0.0.1:(UdpTransport=33175, TcpTransport=31205).
+[2017-10-23 00:02:21,340] da.api<MainProcess>:INFO: Starting program <module 'ping' from '/Users/selinadeepkaur/Desktop/Byzantine/ping.py'>...
+[2017-10-23 00:02:21,340] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-10-23 00:02:21,340] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-10-23 00:02:40,632] ping.Client<Client:a4002#Client3>:INFO: --------------- ENTERING Client:run ---------------
+[2017-10-23 00:02:40,633] ping.Client<Client:a4002#Client3>:INFO: --------------- Requesting Configuration from Olympus---------------
+[2017-10-23 00:02:41,017] ping.Client<Client:a4002#Client3>:INFO: --------------- Received Configuration from Olympus --------------
+[2017-10-23 00:02:41,018] ping.Client<Client:a4002#Client3>:INFO: --------------- Generating Workload for client --------------
+[2017-10-23 00:02:41,018] ping.Client<Client:a4002#Client3>:INFO: --------------- Operations for Client -------------- ["append('movie','star')", '']
+[2017-10-23 00:02:41,018] ping.Client<Client:a4002#Client3>:INFO: --------------- Sending Request No: % :: Request Id: % -------------- 0 9746
+[2017-10-23 00:02:41,019] ping.Client<Client:a4002#Client3>:INFO: --------------- Signing the request statement: -------------- b"append('movie','star')"
+[2017-10-23 00:02:41,023] ping.Client<Client:a4002#Client3>:INFO: --------------- Sending request to head --------------
+[2017-10-23 00:02:41,024] ping.Client<Client:a4002#Client3>:INFO: --------------- Parsing the unsigned statement --------------
+[2017-10-23 00:02:41,024] ping.Client<Client:a4002#Client3>:INFO: --------------- Client updates its dictionary with: -------------- append movie star
+[2017-10-23 00:02:41,025] ping.Client<Client:a4002#Client3>:INFO: --------------- Executing Operation to updata client dictionary with: -------------- append 9746 star movie
+[2017-10-23 00:02:41,025] ping.Client<Client:a4002#Client3>:INFO: --------------- Result upon updating dictionary: -------------- fail
+[2017-10-23 00:02:41,025] ping.Client<Client:a4002#Client3>:INFO: --------------- Waiting for Result -------------- 0 9746
+[2017-10-23 00:02:41,090] ping.Client<Client:a4002#Client3>:INFO: --------------- Received Result Shuttle --------------
+[2017-10-23 00:02:41,091] ping.Client<Client:a4002#Client3>:INFO: --------------- Checking result against expected result --------------
+[2017-10-23 00:02:41,091] ping.Client<Client:a4002#Client3>:INFO: --------------- Result in Client Dictionary: -------------- fail
+[2017-10-23 00:02:41,091] ping.Client<Client:a4002#Client3>:INFO: --------------- Get Data in global dictionary from olympus for Key: % with ID -------------- movie 8725
+[2017-10-23 00:02:41,094] ping.Client<Client:a4002#Client3>:INFO: --------------- Received Data from global dictionary: % for key: % -------------- ['OK', 'warstar'] movie
+[2017-10-23 00:02:41,094] ping.Client<Client:a4002#Client3>:INFO: --------------- Creating hash digest for result ---------------
+[2017-10-23 00:02:41,095] ping.Client<Client:a4002#Client3>:INFO: --------------- Verifying result and signature of result statements --------------
+[2017-10-23 00:02:41,095] ping.Client<Client:a4002#Client3>:INFO: --------------- Checking hash digests for results ---------------
+[2017-10-23 00:02:41,096] ping.Client<Client:a4002#Client3>:INFO: --------------- Checking hash digests for results ---------------
+[2017-10-23 00:02:41,096] ping.Client<Client:a4002#Client3>:INFO: --------------- Checking hash digests for results ---------------
+[2017-10-23 00:02:41,096] ping.Client<Client:a4002#Client3>:INFO: --------------- Result Proof Verification check: % -------------- True
+[2017-10-23 00:02:41,097] ping.Client<Client:a4002#Client3>:INFO: --------------- Client Dictionary Result: % -------------- fail
+[2017-10-23 00:02:41,097] ping.Client<Client:a4002#Client3>:INFO: --------------- Global Dictionary Result: % -------------- ['OK', 'warstar']
+[2017-10-23 00:02:41,097] ping.Client<Client:a4002#Client3>:INFO: --------------- Result From Replica: % -------------- OK
+[2017-10-23 00:02:41,097] ping.Client<Client:a4002#Client3>:INFO: --------------- CLIENT ACCEPTS THE RESULT --------------
+[2017-10-23 00:02:41,097] ping.Client<Client:a4002#Client3>:INFO: --------------- Sending Request No: % :: Request Id: % -------------- 1 9088
+[2017-10-23 00:02:41,098] ping.Client<Client:a4002#Client3>:INFO: --------------- Signing the request statement: -------------- b''
+[2017-10-23 00:02:41,098] ping.Client<Client:a4002#Client3>:INFO: --------------- Sending request to head --------------
+[2017-10-23 00:02:41,099] ping.Client<Client:a4002#Client3>:INFO: --------------- Parsing the unsigned statement --------------
+[2017-10-23 00:02:41,099] ping.Client<Client:a4002#Client3>:ERROR: IndexError('list index out of range',) when calling handler '_Client_handler_1360' with '{'p': <Olympus:91402#olympus>, 'Configuration': {0: ({<Replica:b3802#Replica0>}, b'cf4956503aaba53cc3d1826657b6e33f4f7aa3b2277c70c82f5d2a19c3574615'), 1: ({<Replica:e6002#Replica1>}, b'7fc4b548c4ad191a5c0ba2d6c6ca58ca01e6d3dd734b37ac5788a81a502db757'), 2: ({<Replica:b8002#Replica2>}, b'd7eb2004baa7d1e5747ae659233012d635749d403d341a126611bdbb751e8b88')}}': list index out of range
