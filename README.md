@@ -1,7 +1,7 @@
 # Asynchronous-Systems
 Byzantine Chain Replication
 
-PLATFORM :  
+PLATFORM : 
 Python version : 3.6.3
 DistAlgo : 1.0.9
 Hosts : Laptops without VM
