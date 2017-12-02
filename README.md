@@ -27,27 +27,35 @@ python -m da -n olympus -f --logdir ./ --logfilename olympus.log --logfilelevel 
 REPLICA
 
 python -m da -n Replica0 -D -f --logdir ./ --logfilename replica0.log --logfilelevel info --message-buffer-size 6400000 ByzantineFaultTolerantProtocol.da
+
 python -m da -n Replica1 -D -f --logdir ./ --logfilename replica1.log --logfilelevel info --message-buffer-size 6400000 ByzantineFaultTolerantProtocol.da
+
 python -m da -n Replica2 -D -f --logdir ./ --logfilename replica2.log --logfilelevel info --message-buffer-size 6400000 ByzantineFaultTolerantProtocol.da
 
 CLIENT
 
 python -m da -n Client0 -D -f --logdir ./ --logfilename client0.log --logfilelevel info ByzantineFaultTolerantProtocol.da
+
 python -m da -n Client1 -D -f --logdir ./ --logfilename client1.log --logfilelevel info ByzantineFaultTolerantProtocol.da
-python -m da -n Client2 -D -f --logdir ./ --logfilename client2.log --logfilelevel info .daByzantineFaultTolerantProtocol
+
+python -m da -n Client2 -D -f --logdir ./ --logfilename client2.log --logfilelevel info ByzantineFaultTolerantProtocol.da
 
 To run on multi host:
 
 REPLICA
 
 python -m da -H 172.24.21.17 -R 172.24.18.144 -n Replica0 -D -f --logdir ./ --logfilename replica0.log --logfilelevel info --message-buffer-size 6400000 ByzantineFaultTolerantProtocol.da
+
 python -m da -H 172.24.21.17 -R 172.24.18.144 -n Replica1 -D -f --logdir ./ --logfilename replica1.log --logfilelevel info --message-buffer-size 6400000 ByzantineFaultTolerantProtocol.da
+
 python -m da -H 172.24.21.17 -R 172.24.18.144 -n Replica2 -D -f --logdir ./ --logfilename replica2.log --logfilelevel info --message-buffer-size 6400000 ByzantineFaultTolerantProtocol.da
 
 CLIENT
 
 python -m da -H 172.24.18.144 -n Client0 -D -f --logdir ./ --logfilename client0.log --logfilelevel info ByzantineFaultTolerantProtocol.da
+
 python -m da -H 172.24.18.144 -n Client1 -D -f --logdir ./ --logfilename client1.log --logfilelevel info ByzantineFaultTolerantProtocol.da
+
 python -m da -H 172.24.18.144 -n Client2 -D -f --logdir ./ --logfilename client2.log --logfilelevel info ByzantineFaultTolerantProtocol.da
 
 OLYMPUS
