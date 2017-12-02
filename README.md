@@ -139,19 +139,25 @@ CODE SIZE :
 (1a) Algorithm (LOC) :1785
        Other (LOC) :654
        Total (LOC) :2334	
+       
 (1b) We used CLOC (https://github.com/AlDanial/cloc) to count the number of blanks lines.
-       Then we used the find feature of sublime to calculate the number of comments (lines beginning with #) in it.
+        Then we used the find feature of sublime to calculate the number of comments (lines beginning with #) in it.
         To calculate other functionalities: - We searched for keyword ‘output’ the total of which was 430.
         To calculate fault injections: - We searched for keyword fstatus,getAction, to calculate fault-triggers:- 105+ we searched for key word if fstatus != ‘not found’ to calculate fault actions:- 119 bringing total to 224
+        
 (2) Algorithm code (LOC):1785
      Other functionality interleaved with it (LOC) : 529
 
 LANGUAGE FEATURE USAGE :
 
 Numbers of list comprehensions : 27
+
 Dictionary comprehensions : 34
+
 Set comprehensions : 0 
+
 Aggregations : 0
+
 Quantifications :8
 
 
