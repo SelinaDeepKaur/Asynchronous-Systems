@@ -54,7 +54,7 @@ OLYMPUS
 
 python -m da -H 172.24.18.144 -n olympus -f --logdir ./ --logfilename olympus.log --logfilelevel info ByzantineFaultTolerantProtocol.da
 
-Here, I’m running 3 replicas on host - 172.24.21.17 (giving 172.24.18.144 as peer node)
+Here, I’m ran 3 replicas on host - 172.24.21.17 (giving 172.24.18.144 as peer node)
 olympus and 3 clients on another host - 172.24.18.144 (giving 172.24.21.17 as peer node)
 
 
@@ -81,25 +81,37 @@ CONTRIBUTIONS :
 CLIENT
 
 Ask Olympus whether configuration changed (periodically or as needed) - Selina
-Check that dictionary contains expected content at end of test case
+
+Check that dictionary contains expected content at end of test case -Dinesh
 
 OLYMPUS
 
 Upon reconfiguration-request, send wedge requests - Selina
+
 Validate wedged messages - Dinesh
+
 Compute initial running state (incl. replica catch-up) - Dinesh
+
 Create keys and create and setup processes for new replicas - Selina
 
 REPLICA
 
 Head: send reconfiguration-request if timeout waiting for result shuttle - Dinesh & Selina
-Non-head: send reconfiguration-request if timeout waiting for result shuttle after forwarding request to head 
+
+Non-head: send reconfiguration-request if timeout waiting for result shuttle after forwarding request to head - Selina
+
 Detect provable misbehavior and send reconfiguration-request - Dinesh
+
 Head: periodically initiate checkpoint, send checkpoint shuttle - Dinesh
+
 Non-head: add signed checkpoint proof, send updated checkpoint shuttle - Dinesh
+
 Handle completed checkpoint shuttle: validate completed checkpoint proof, delete history prefix, forward completed checkpoint proof - Dinesh
+
 Handle catch-up message, execute operations, send caught-up message - Selina
+
 Fault-injection: additional triggers for phase 3 - Selina 
+
 Fault-injection: additional failures for phase 3 - Selina
 
 MULTI-HOST EXECUTION 
