@@ -2,6 +2,7 @@
 Byzantine Chain Replication
 
 PLATFORM : 
+
 Python version : 3.6.3
 DistAlgo : 1.0.9
 Hosts : Laptops without VM
@@ -9,12 +10,14 @@ OS : MAC/Windows
 Platform for multiple hosts : Olympus and Clients - Windows, Replicas - MAC
 
 INSTRUCTIONS : 
+
 We have included 5 scenarios of test cases in separate folders.
 1. Place ByzantineFaultTolerantProtocol.da file inside each folder
 2. Each folder already has csv file needed to test the scenario
 3. Open cmd in folder location and give the following commands
 
 To run on single host:
+
 OLYMPUS
 python -m da -n olympus -f --logdir ./ --logfilename olympus.log --logfilelevel info ByzantineFaultTolerantProtocol.da
 
@@ -29,6 +32,7 @@ python -m da -n Client1 -D -f --logdir ./ --logfilename client1.log --logfilelev
 python -m da -n Client2 -D -f --logdir ./ --logfilename client2.log --logfilelevel info .daByzantineFaultTolerantProtocol
 
 To run on multi host:
+
 REPLICA
 python -m da -H 172.24.21.17 -R 172.24.18.144 -n Replica0 -D -f --logdir ./ --logfilename replica0.log --logfilelevel info --message-buffer-size 6400000 ByzantineFaultTolerantProtocol.da
 python -m da -H 172.24.21.17 -R 172.24.18.144 -n Replica1 -D -f --logdir ./ --logfilename replica1.log --logfilelevel info --message-buffer-size 6400000 ByzantineFaultTolerantProtocol.da
@@ -46,6 +50,7 @@ Here, I’m running 3 replicas on host - 172.24.21.17 (giving 172.24.18.144 as p
 olympus and 3 clients on another host - 172.24.18.144 (giving 172.24.21.17 as peer node)
 
 WORKLOAD GENERATION :
+
 We have written this function ‘generatePseudoRandomRequests’ which generates the Pseudo Random workload for us. Based on the noOfRequests it picks up the specified number of requests from a set of requests stored in ‘listofRequest’ variable.
 
 def generatePseudoRandomRequests(rSeed,noOfRequests):
@@ -60,6 +65,7 @@ The code picks up the same set of 5 requests from the list of requests everytime
 The  we return the requests stored in the ‘request’ variable to the client. It then sequentially sends those requests to replicas.
 
 CONTRIBUTIONS :
+
 CLIENT
 Ask Olympus whether configuration changed (periodically or as needed) - Selina
 Check that dictionary contains expected content at end of test case
@@ -96,6 +102,7 @@ README and testing.txt - Selina
 MAIN FILES : our main file ping.da in ./src/ contains all the code for olympus client and replica
 
 CODE SIZE :
+
 (1a) Algorithm (LOC) :1785
        Other (LOC) :654
        Total (LOC) :2334	
