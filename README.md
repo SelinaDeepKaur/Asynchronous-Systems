@@ -13,7 +13,7 @@ Platform for multiple hosts : Olympus and Clients - Windows, Replicas - MAC
 
 INSTRUCTIONS : 
 
-We have included 5 scenarios of test cases in separate folders.
+We have included various scenarios of test cases in separate folders.
 1. Place ByzantineFaultTolerantProtocol.da file inside each folder
 2. Each folder already has csv file needed to test the scenario
 3. Open cmd in folder location and give the following commands
