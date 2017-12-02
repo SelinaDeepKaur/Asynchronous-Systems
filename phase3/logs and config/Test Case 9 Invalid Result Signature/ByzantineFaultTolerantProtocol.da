@@ -1,0 +1,2330 @@
+import sys
+import nacl.utils
+from random import *
+import random
+import nacl.encoding
+import nacl.hash
+from nacl.bindings.utils import sodium_memcmp
+import nacl.signing
+import logging
+import time
+import json
+import os
+import itertools
+import copy
+
+def readConfigFile():
+    # output("---------------ENTERING readConfigFile ---------------------")
+    config = dict()
+    with open('config.csv','r') as f:  
+        for line in f:
+            if line[0] != '#':
+                (key,sep,val) = line.partition('=')
+                # if the line does not contain '=', it is invalid and hence ignored
+                if len(sep) != 0:
+                    val = val.strip()
+                    config[key.strip()] = int(val) if str.isdecimal(val) else val
+    return config
+
+class Utils():
+    def helloClass(self):
+        return 'Hello Class'
+    
+    def signTheStatement(self,signing_key,message):
+        return signing_key.sign(message)
+        # output('-------------Signed the message---------------------------')
+
+    def decodeVerifyKey(self,verify_key_hex):
+        return nacl.signing.VerifyKey(verify_key_hex, encoder=nacl.encoding.HexEncoder)
+
+    def verifyTheStatement(self,verify_key,signed):    
+        return verify_key.verify(signed)
+     
+    def hashResult(self,r):
+        # output("--------------- Creating hash digest for result ---------------",level=20)        
+        HASHER = nacl.hash.sha256
+        digest = HASHER(bytes(r,'utf-8'), encoder=nacl.encoding.HexEncoder)
+        encodedMessage = nacl.encoding.HexEncoder.encode(bytes(r,'utf-8'))
+        return digest.decode("utf-8"),encodedMessage.decode("utf-8")
+    
+    def hashDictionary(self,runningState):
+        msg=json.dumps(runningState)
+        utilities = Utils()
+        return utilities.hashResult(msg)
+
+    def checkHashResult(self,digest,rDigest):
+        # output("--------------- Checking hash digests for results ---------------",level=20)       
+        bDigest=bytes(digest,'utf-8')
+        brDigest = bytes(rDigest,'utf-8')
+        if sodium_memcmp(bDigest, brDigest):
+            return True
+        return False
+    
+    def parseTheUnsignedStatement(self,unSignedRequestStatement):
+        print('--------Reached here----------------')               
+        inp = str(unSignedRequestStatement,'utf-8')
+        inp = inp.split(')')[0]        
+        opKeyVal = inp.split('(')
+        operation = opKeyVal[0]
+        keyVal = opKeyVal[1].split(',')
+        key = keyVal[0][1:-1]
+        value=''
+        if operation!='get':
+            value = keyVal[1][1:-1]
+        return  operation,key,value.strip()     
+
+    def checkOrderProofIntegerity(self,slot,verifiedClientStatement,tempOrderProof,replicas):
+        print("--------------- Check for Order Proof Integrity:[Order-Statements:Signatures] and Result--------------")        
+        numOfOP = len(tempOrderProof)        
+        tempii=0
+        verified = ''
+        utilities = Utils()
+        while tempii < numOfOP:
+            temp_verify_key = utilities.decodeVerifyKey(replicas[tempii][1])            
+            tempSignedOP = tempOrderProof[tempii]
+            try:
+                verified = utilities.verifyTheStatement(temp_verify_key,tempSignedOP)
+                tempOrderStatement = verified.decode('utf-8').split(';')
+                tempSlot = tempOrderStatement[1] 
+                tempSignedStatement = tempOrderStatement[2]
+                if (str(slot) != tempSlot) or (tempSignedStatement != verifiedClientStatement):
+                    verified = 'False'
+                else:
+                    verified = 'True'
+            except:
+                verified = 'False'
+                break
+            tempii+=1
+        return verified
+    
+class Olympus(process):
+    globalConfig = dict()
+    # clients = []
+    # replicas = []
+    def setup():
+        output("--------------- ENTERING Olymus:setup ---------------",level=20)
+        output(self)
+        self.utilities = Utils()       
+        self.terminate = False
+        self.clients = []
+        self.clientList = []
+        self.replicas = []
+        self.client_signing_keys=dict()
+        self.client_verify_keys_hex= dict()
+        self.replica_signing_keys=dict()
+        self.replica_verify_keys_hex= dict()
+        self.globalData= dict()
+
+        self.wedgedMessagesCount =0
+        self.wedgedMessageSet = list()
+        self.replicaHistorySet = dict()
+        self.caughtUpMessageSet = list()        
+        self.checkPointProof = list()
+        self.checkPointFlagCount = 0
+        self.catchUpMessageCount =0
+        self.newRunningState = None
+        self.ch=None
+        self.LH = dict()
+        self.currentQuorum = 0
+        self.getRunningStateFrom = 0
+        self.setOfQuorums = None
+        self.replicasReplied = list()
+        self.allWedgedStatements = dict()
+        self.configurationNumber = 0
+        self.resultStatementSet = dict()
+        self.finalResultShuttle = dict()
+        self.wedgeRequestNo = 0
+        self.catchUpNo = 0
+        self.getRunningStateNo = 0 
+        self.inReconfig = False
+        self.executeReconfig = False
+        self.checkUpMessageFlag = False
+        self.oldCheckPoint = 0
+        self.newCheckPoint = 0
+        self.receivedRunningState = False
+        self.start_time = time.time()
+        initialSetup()
+
+    def run():        
+        output('---in run---',clientList)
+        start_time = time.time()
+        output('---start_time---',start_time)
+        await(each(ck in clientList, has=received(('Done',), from_=ck)))
+        end_time = time.time()
+        output('---out run---',clientList)
+        output('---end_time---',end_time)        
+        output("elapsed time (seconds): ", end_time - start_time)                
+        await(terminate)
+        output('terminating')
+
+    def receive(msg=('requestConfiguration',), from_=cl):
+        output("**********************************************************************************",level=20)
+        output("--------------- ENTERING olympus:receieve:requestConfiguration ---------------",level=20)        
+        Configuration = replicas
+        # output('Configuration: ',Configuration)
+        send(('Configuration',Configuration,configurationNumber), to=cl)
+    
+    def receive(msg=('Done',), from_=cl):
+        end_time = time.time()
+        # output('---out run---',clientList)
+        # output('---end_time---',end_time)        
+        output("elapsed time (seconds): ", end_time - start_time)                
+
+    def receive(msg=('requestNewConfiguration',), from_=p):
+        output("--------------- ENTERING olympus:receieve:requestNewConfiguration ---------------",level=20)        
+        Configuration = replicas
+        # output('Configuration: ',Configuration)
+        send(('NewConfiguration',Configuration,configurationNumber), to=p)
+    
+    def receive(msg=('getGlobalData',key,ranDomID), from_=c):
+        output("**********************************************************************************",level=20)
+        output("--------------- ENTERING Olymus:getGlobalData for key:",key,level=20)
+        # output("---------------globalData ---------------------",globalData,level=10)
+        globalVal = []
+        # output('---------------Dict cosntent--------------------',globalData[key],level=10)
+        try:
+            globalVal = globalData[key]
+        except:
+            globalVal = None
+        # output("---------------globalVal ---------------------",globalVal,level=10)
+        output("--------------- Sending globaData to client:",globalVal,level=20)        
+        send(('dictionaryData',globalVal,ranDomID), to=c)        
+
+    def receive(msg=('headOperation',clientId,requestID,slot,signedRequestStatement),from_=r):
+        output("**********************************************************************************",level=20)
+        output("--------------- ENTERING Olymus:receives operation from head for client:",clientId,level=20)        
+        temp_verify_key = utilities.decodeVerifyKey(client_verify_keys_hex[clientId])        
+        verified = ''
+        try:
+            verified = utilities.verifyTheStatement(temp_verify_key,signedRequestStatement)
+            updateOwnDictionary(verified)            
+        except:
+            verified = 'Not verified'
+        # output("---------------verified ---------------------",verified,level=10)
+        # output("---------------globalData ---------------------",globalData,level=10)                
+    
+    def receive(msg=('reconfigurationRequest',),from_=r):
+        output("**********************************************************************************",level=20)
+        output("---------------7777001 ENTERING Received Request ReConfiguration:  ---------------",level=20)        
+        # i,wedgedMessage
+        if inReconfig==False:
+            inReconfig=True            
+            # UnsignedWedgeMessage,verifiedSignature = checkWedgedMessageSignature(i,wedgedMessage)
+            # output("---------------Verified Signature: ",verifiedSignature)
+            # if(verifiedSignature):
+            sendWedgedRequestToAll()
+            # else: pass
+        else:
+            output("--------------- Already in Reconfiguration ---------------",level=40)        
+            
+    def sendWedgedRequestToAll():
+        executeReconfig = False
+        checkUpMessageFlag = False        
+        output("---------------7777002 Send Wedged Requests to all replicas --------------",level=20)                        
+        noOfReplicas = 2*globalConfig['t'] + 1
+        replicaNo = 0 
+        while replicaNo<noOfReplicas:
+            output("--------------- Send Wedged Requests to replica: "+str(replicaNo)+" --------------",level=20)
+            send(("sendWedgedRequest",wedgeRequestNo), to=replicas[replicaNo][0])
+            replicaNo+=1                
+            
+    def sendWedgedRequestToQuorum():
+        output("---------------7777002 Send Wedged Requests to quorum of replicas --------------",level=20)
+        wedgedMessageSet = list()
+        wedgedMessagesCount = 0
+        wedgeRequestNo+=1
+        kquorum = setOfQuorums[currentQuorum]
+        lenOfQuorum = len(kquorum)        
+        output('---------------Current Quorum',kquorum)
+        replicaNo = 0 
+        while replicaNo<lenOfQuorum:
+            output("--------------- Send Wedged Requests to replica: "+str(kquorum[replicaNo])+" --------------",level=20)
+            try:            
+                send(("sendWedgedRequest",wedgeRequestNo), to=replicas[kquorum[replicaNo]][0])
+                replicaNo+=1                
+            except: 
+                output('----- REahed here----- yes or no------')
+                break
+                currentQuorum+=1
+                sendWedgedRequestToQuorum()
+
+    def receive(msg=('wedgedMessage',i,wedgedMessage,checkPointFlag,oldCheckPoint,curCheckPoint),from_=r):
+        output("**********************************************************************************",level=20)
+        output("---------------7777003 Receieved Wedged Requests from replica: "+str(i)+" --------------",level=20)
+        checkPointProofFlag = checkPointFlag
+               
+        UnsignedWedgeMessage,verifiedSignature = checkWedgedMessageSignature(i,wedgedMessage)        
+        UnsignedWedgeMessage = eval(UnsignedWedgeMessage)
+        quorum = globalConfig['t'] + 1
+        # output('UnsignedWedgeMessage',UnsignedWedgeMessage)        
+        output("---------------Verified Signature: ",verifiedSignature)
+        if(verifiedSignature):            
+            replicasReplied.append(i)
+            allWedgedStatements[i] = [UnsignedWedgeMessage,checkPointFlag,oldCheckPoint,curCheckPoint]
+        else:
+            output("---------------Signature Not Verified for Replica",i,level=40)            
+            # currentQuorum += 1
+            # sendWedgedRequestToQuorum()
+        if(len(replicasReplied)>=quorum):
+            # await(some(received(("NewConfiguration",NewConfiguration,configNo))))
+            i=0
+            if await(received(('wedgedMessage',i,wedgedMessage,checkPointFlag,oldCheckPoint,curCheckPoint))):                
+                output("--------------- Awaiting for more wedged messages --------------",level=20)               
+            elif timeout(1):
+                if executeReconfig == False and inReconfig:                    
+                    makeCombinatiosOfQuorum()
+                else:
+                    return None
+           
+    def makeCombinatiosOfQuorum():
+        output("**********************************************************************************",level=20)
+        output("--------------- Making Combinations of Quorum --------------",level=20)
+        executeReconfig = True
+        setOfQuorums = None
+        setOfQuorums = list(itertools.combinations(replicasReplied,globalConfig['t'] + 1))
+        replicasReplied = list()        
+        output("--------------- Set of quorums: ",setOfQuorums,level=20)                                
+        selectAQuorum()
+
+    def selectAQuorum():
+        output("**********************************************************************************",level=20)
+        output("--------------- Selecting Quorum: ",currentQuorum,level=20)
+        output("--------------- Current Quorum contains: ",setOfQuorums[currentQuorum],level=20)
+        wedgedMessageSet = list()
+        wedgedMessagesCount = 0
+        catchUpMessageCount =0
+        getRunningStateFrom = 0
+        caughtUpMessageSet = list()
+
+        wedgeRequestNo+=1
+        curQuorum = setOfQuorums[currentQuorum]
+        for mm in curQuorum:
+            # wedgedMessagesCount += 1
+            if oldCheckPoint<allWedgedStatements[mm][2]:
+                oldCheckPoint=allWedgedStatements[mm][2]
+            if newCheckPoint>allWedgedStatements[mm][3]:
+                newCheckPoint=allWedgedStatements[mm][3]
+            wedgedMessageSet.append(allWedgedStatements[mm][0])
+            replicaHistorySet[mm] = (allWedgedStatements[mm][0][0],allWedgedStatements[mm][2])
+            if(allWedgedStatements[mm][1] is not None):
+                checkPointFlagCount += 1
+        
+        executeReConfiguration(oldCheckPoint,newCheckPoint)       
+        # len(listof(p, received(('Ping',), from_=p))) == total_pings)
+        # if await(wedgedMessagesCount==quorum):            
+        # if await(received(('wedgedMessage',i,wedgedMessage,checkPointFlag,oldCheckPoint,curCheckPoint,),)):
+        #     if wedgedMessagesCount==quorum:
+        #         output("--------------- Receieved Wedged Requests from quorum of replicas --------------",level=20)            
+        #         executeReConfiguration(wedgedMessage,oldCheckPoint,curCheckPoint,checkPointFlag)
+        # elif timeout(5):
+        #     output("---------------Timeout send to another quorum--------------",level=40)            
+        #     currentQuorum += 1
+        #     sendWedgedRequestToQuorum()
+    
+    def receive(msg=('caught_up',i,hashedRunningState,lastClientRequests),from_=r):
+        output("**********************************************************************************",level=20)
+        output("---------------7777005 Receieved caught_up from replica: "+str(i)+" --------------",level=20)
+        # checkPointProofFlag = checkPointFlag
+        UnsignedCaughtUpMessage,verifiedSignature = checkWedgedMessageSignature(i,hashedRunningState)
+        UnsignedCaughtUpMessage = eval(UnsignedCaughtUpMessage)
+        # UnsignedCaughtUpMessage = dict(UnsignedCaughtUpMessage)
+        # UnsignedResultStatement,verifiedResultStatement = checkResultStatementSignature(i,lastClientRequests)
+        # output('lastClientRequests: ',lastClientRequests)
+        output("---------------Verified Signature: ",verifiedSignature)
+        if(verifiedSignature):
+            catchUpMessageCount+= 1
+            caughtUpMessageSet.append(UnsignedCaughtUpMessage)
+            for cliendId,value in lastClientRequests.items():            
+                try:
+                    resultStatementSet[cliendId].append(value)
+                except:
+                    resultStatementSet[cliendId] = [value]
+                
+            quorum = globalConfig['t'] + 1
+            
+            if await(catchUpMessageCount==quorum):
+                output("--------------- Receieved caught_ups from quorum of replicas --------------",level=20)
+                # getRunningStateFrom = currentQuorum        
+                if checkUpMessageFlag == False and inReconfig:        
+                    if(checkCaughtUpMessages()):
+                        output('--------- I gave 1:')
+                        getRunningStates()   
+                    else:
+                        output("---------------Caught up message hashes: Not Verified--------------",level=40)
+                        currentQuorum += 1
+                        sendWedgedRequestToAll()
+                        # sendWedgedRequestToQuorum()
+                        # selectAQuorum()          
+                else:
+                    return None
+            elif timeout(1):
+                if inReconfig:
+                    output("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",level=20)               
+                    currentQuorum += 1
+                    sendWedgedRequestToAll()
+                    # selectAQuorum()
+                else: return None
+          
+            # if(catchUpMessageCount==quorum):
+            #     output("--------------- Receieved caught_ups from quorum of replicas --------------",level=20)
+            #     # getRunningStateFrom = currentQuorum                
+            #     if(checkCaughtUpMessages()):
+            #         getRunningStates()
+            #     else:
+            #         output("---------------Caught up message hashes: Not Verified--------------",level=40)
+            #         currentQuorum += 1
+            #         selectAQuorum()                 
+        else:
+            output("---------------Signature Not Verified Send Caught up Another--------------",level=40)
+            currentQuorum += 1
+            selectAQuorum()
+            # sendCatchUpMessageToQuorum()
+    
+    def receive(msg=('running_state',i,hashedRunningState),from_=r):
+        output("---------------7777007 Receieved running_state from replica : "+str(i)+" --------------",level=20)
+        # checkPointProofFlag = checkPointFlag
+        UnsignedRunningState,verifiedSignature = checkWedgedMessageSignature(i,hashedRunningState)
+        UnsignedRunningState = eval(UnsignedRunningState)
+        receivedRunningState = True
+        output("---------------Verified Signature: ",verifiedSignature)
+        if(verifiedSignature):
+            rDigest,encodedResult = utilities.hashDictionary(UnsignedRunningState)
+            output('ch: ',ch)
+            output('rDigest: ',rDigest)
+            if(utilities.checkHashResult(ch[0],rDigest)):
+                newRunningState = UnsignedRunningState
+                createNewConfiguration()                
+                checkForConsistentResultStatements()
+                reinitializeDictionary()                
+                sendResultsToClient()
+                reinitializeVariables()
+            else:
+                output('--------------- Hash Mismatch Ask running state from different replica in quorum----------',level=40)
+                receivedRunningState = False
+                output('--------- I gave 2:')
+                getRunningStates()    
+        else:
+            output("---------------Signature Not Verified Send Caught up Another--------------",level=40)
+            receivedRunningState = False
+            output('--------- I gave 3:')
+            getRunningStates()    
+    
+    def checkResultStatementSignature(i,lastClientRequests):
+        output("--------------- ENTERING Check Result Statements ---------------",level=20)               
+        temp_verify_key = utilities.decodeVerifyKey(replicas[i][1])
+        try:
+            verified = utilities.verifyTheStatement(temp_verify_key,lastClientRequests)
+            return json.loads(verified.decode('utf8')),True
+        except:
+            verified = 'Not verified'
+            return None,False
+
+    def executeReConfiguration(oldCheckPoint,newCheckPoint):
+        output("**********************************************************************************",level=20)
+        output("---------------7777002a ENTERING Execute Reconfiguration ---------------",level=20)
+        output("--------------- Old Check Point: ",oldCheckPoint,level=20)
+        output("--------------- Current Check Point: ",newCheckPoint,level=20) 
+        output("--------------- Check Point Flag: ",newCheckPoint,level=20)              
+       
+        if(checkConsistentHistories(oldCheckPoint,newCheckPoint)==False or checkValidHistory()==False):
+            output("---------------Histories Inconsitent Send Wedged Request to Another Quorum--------------",level=40)
+            currentQuorum += 1            
+            selectAQuorum()            
+        else:            
+            if validateCheckPointProof()==False:
+                output("---------------Checkpoints not verified: Send Wedged Request to Another Quorum--------------",level=40)                
+                currentQuorum += 1            
+                selectAQuorum()
+            else:
+                output("---------------Histories and Checkpoints Verified --------------",level=20)
+                assignCheckPointProof()
+                LH = calculateLongestHistory(oldCheckPoint,newCheckPoint)            
+                if(checkPointFlagCount>0):
+                    catchUpReplicas()        
+    
+    def checkConsistentHistories(oldCheckPoint,curCheckPoint):
+        output("**********************************************************************************",level=20)
+        output("--------------- ENTERING Check Consistent Histories ---------------",level=20)               
+        i=0
+        consistent=True      
+        for s in range(oldCheckPoint,curCheckPoint):
+            ii = 0
+            output("--------------- Checking History in slot: ",s,level=20)
+            while(ii<len(wedgedMessageSet)-1):
+                output("--------------- Checking History for Replica: ",ii,level=20)                
+                try:
+                    curMessageOperation = wedgedMessageSet[ii][0][str(s)][0]
+                    nextMessageOperation = wedgedMessageSet[ii+1][0][str(s)][0]
+                    # output("--------------- curMessageOperation: ",curMessageOperation,level=20)
+                    # output("--------------- nextMessageOperation: ",nextMessageOperation,level=20)
+                except:
+                    ii+=1
+                    continue
+                if curMessageOperation == nextMessageOperation:
+                    ii+=1                    
+                    continue
+                else:
+                    consistent = False             
+                    break
+        return consistent
+    
+    def checkWedgedMessageSignature(i,wedgedMessage):
+        # output("--------------- ENTERING Check Wedged Message Signature ---------------",level=20)               
+        temp_verify_key = utilities.decodeVerifyKey(replicas[i][1])
+        try:
+            verified = utilities.verifyTheStatement(temp_verify_key,wedgedMessage)
+            # output('------------------------ VERIFIED SIGNED --------------------------')
+            # output("---------------",json.loads(verified.decode('utf8')),level=20)
+            # return json.loads(verified.decode('utf8')),True
+            return verified.decode('utf8'),True
+        except:
+            verified = 'Not verified'
+            # output('------------------------ NOT VERIFIED --------------------------')
+            return None,False
+    
+    def calculateLongestHistory(oldCheckPoint,curCheckPoint):
+        output("**********************************************************************************",level=20)
+        output("--------------- ENTERING Calculate Longest History ---------------",level=20)               
+        longestHistory = dict()
+        hashedLongestHistory = None    
+        for wedgedMessage in wedgedMessageSet:
+            # output('------------------ wedgedMessage: ',wedgedMessage[0])          
+            if(len(wedgedMessage[0])>len(longestHistory)):                 
+                longestHistory = wedgedMessage[0].copy()
+            else:
+                continue
+        # for s in range(oldCheckPoint,curCheckPoint):
+        #     longestOrderProofLength = 0
+        #     for wedgedMessage in wedgedMessageSet:
+        #         # noOfOrderProofs = len(wedgedMessage[s][1])
+        #         # replicaHistory[s] = (o.decode('utf-8'),orderProof,reqID)
+        #         newOrderProofLength = len(wedgedMessage[s][1])
+        #         if(newOrderProofLength>longestOrderProofLength):                 
+        #             longestHistory[s] = wedgedMessage[s]
+        #             longestOrderProofLength = newOrderProofLength
+        #         else:
+        #             continue
+        # hashedLongestHistory = utilities.hashDictionary(longestHistory)
+        output("--------------- Length of Longest History: ",len(longestHistory),level=20)               
+        return longestHistory
+    
+    def checkValidHistory():
+        output("**********************************************************************************",level=20)
+        output("--------------- ENTERING Check Valid History ---------------",level=20)               
+        validHistory = True
+        for singleWedgedMessage in wedgedMessageSet:
+            singleWedgedMessage = singleWedgedMessage[0]
+            # output("--------------- singleWedgedMessage",singleWedgedMessage,level=20)               
+            # appendToReplicaHistory(verified,orderProof,requestID,signedRequestStatement,clientId)
+            for tslot,eachWedgedMessage in singleWedgedMessage.items():
+                # output('tslot-1',tslot-1)
+                # output('oldCheckPoint',oldCheckPoint)
+                if tslot != 0 and tslot-1!=oldCheckPoint:
+                    # output('vvtslot',tslot)
+                    try:
+                        kk = singleWedgedMessage[tslot-1]
+                    except:
+                        validHistory = False
+                        output('---------------Holes Found in History VERIFIED HISTORY',validHistory,level=40)
+                        return validHistory    
+
+                temp_verify_key = utilities.decodeVerifyKey(clients[eachWedgedMessage[4]][1])
+                verifiedClientStatement = ''
+                try:
+                    verifiedClientStatement = utilities.verifyTheStatement(temp_verify_key,eachWedgedMessage[3])
+                except:
+                    verifiedClientStatement = 'Not verified'
+                
+                # output('--------------------- Unsigned Statement from client -----------------------',verifiedClientStatement,level=20)
+                checkedOrderProofs = utilities.checkOrderProofIntegerity(tslot,str(verifiedClientStatement,'utf-8'),eachWedgedMessage[1],replicas)
+                if checkedOrderProofs == 'False':
+                    validHistory = False
+                    output('---------------VERIFIED HISTORY',validHistory,level=40)
+                    return validHistory
+                else: continue
+        output('---------------VERIFIED HISTORY',validHistory,level=20)
+        return validHistory
+    
+    def validateCheckPointProof():
+        validCheckPoint = True
+        noOfReplicas = 2*globalConfig['t'] + 1
+        for singleWedgedMessage in wedgedMessageSet:
+            singleWedgedMessage = singleWedgedMessage[1]
+            if singleWedgedMessage is None:
+                # output('---------------No Checkpoint found-----------------',level=40)
+                validCheckPoint = True
+                continue                
+            # output("--------------- singleWedgedMessage",singleWedgedMessage,level=20)               
+            # appendToReplicaHistory(verified,orderProof,requestID,signedRequestStatement,clientId)
+            # signedCheckpointStatement = createCheckPointStatements(rDigest,encodedResult)
+            for eachCheckPointProof in singleWedgedMessage:
+                # output("--------------- 777702 eachCheckPointProof",eachCheckPointProof,level=20)
+                verifiedClientStatement = ''
+                if len(eachCheckPointProof) != noOfReplicas:
+                    validCheckPoint = False
+                    output('---------------Length of Checkpoint Statements is less then no of replicas-----------------',level=40)
+                    return validCheckPoint            
+                checkedCheckPointProofs = checkPointProofIntegrity(eachCheckPointProof,replicas)
+                if checkedCheckPointProofs == False:
+                    validCheckPoint = False
+                    output('---------------Verfied Checkpoint',validCheckPoint,level=40)
+                    return validCheckPoint
+                else: continue
+        output('---------------Verified Checkpoint',validCheckPoint,level=20)
+        return validCheckPoint
+    
+    def checkPointProofIntegrity(completeCheckPointShuttle,replicas):
+        # output("--------------- Check for CheckPoint Proof Integrity:[CheckPoint statements:Signatures] and Result--------------",level=20)       
+        numOfRP = len(completeCheckPointShuttle)
+        # noOfReplicas = 2*globalConfig['t'] + 1
+        output('---------------Number of CheckPoint Proofs',numOfRP,level=20)
+        # output('completeCheckPointShuttle:  ',completeCheckPointShuttle)
+        tempii=0
+        verified = None
+        utilities = Utils()
+        # if numOfRP != noOfReplicas:
+        #     verified = False
+        #     output('---------------Incomplete Checkpoint Statements-----------------',level=40)
+        while tempii < numOfRP-1:
+            output('tempii:  ',tempii)
+            temp_verify_key = utilities.decodeVerifyKey(replicas[tempii][1])
+            tempSignedCheckPointStatement = completeCheckPointShuttle[tempii]
+            ntemp_verify_key = utilities.decodeVerifyKey(replicas[tempii+1][1])
+            ntempSignedCheckPointStatement = completeCheckPointShuttle[tempii+1]            
+            try:
+                verified = utilities.verifyTheStatement(temp_verify_key,tempSignedCheckPointStatement)                
+                # output('vCheckPoint',verified)
+                nverified = utilities.verifyTheStatement(ntemp_verify_key,ntempSignedCheckPointStatement)                
+                # output('vCheckPoint',nverified)
+                strVerified = verified.decode('utf8')
+                # output('sCheckPoint',strVerified)
+                nstrVerified = verified.decode('utf8')
+                # output('sCheckPoint',nstrVerified)
+                verifiedTuple = strVerified.split(';')
+                # output('rec: ',verifiedTuple[1])
+                nverifiedTuple = nstrVerified.split(';')
+                # output('rec: ',nverifiedTuple[1])
+                if utilities.checkHashResult(verifiedTuple[1],nverifiedTuple[1]):
+                    verified = True
+                else:
+                    verified = False
+                    break
+            except:
+                verified = False
+                break         
+            tempii+=1
+        return verified   
+    
+    def assignCheckPointProof():
+        output("--------------- ENTERING Assign Checkpoint proof ---------------",level=20)       
+        quorum = globalConfig['t'] + 1
+        if checkPointFlagCount < quorum and checkPointProof is not None:
+            ''' 
+            if Replica has sent a checkpoint proof at line 127 but is not sent by t+1 replicas then take the previous valid
+            checkpoint of the replica(Replica.checkPointProof-)
+            '''
+            pass
+        elif checkPointFlagCount >= quorum:
+            ''' 
+            if Replica has sent a checkpoint proof at line 127 and is sent by more than t+1 replicas then take the
+            Replica.chekpointProof as checkPointProof 
+            '''
+            pass
+            # checkPointProof = wedgedMessage[1]
+        else:
+            '''
+            if t+1 replicas doesnt reply to wedged request then send wedged request to another quorum of replicas
+            '''
+            currentQuorum += 1
+            sendWedgedRequestToQuorum()
+
+    def calculateDeltaHistory(replicaNumber):
+        output("--------------- Calculate Replica Delta History for Replica: "+str(replicaNumber)+"--------------",level=20)
+        tempReplicaHistory = replicaHistorySet[replicaNumber][0]
+        tempCurCheckPoint = replicaHistorySet[replicaNumber][1]
+        output('-------------- Length of Current Replica History: ',len(tempReplicaHistory),level=20)
+        output('-------------- Last CheckPoint of Replica: ',tempCurCheckPoint,level=20)
+        output('-------------- Length of Longest History: ',len(LH),level=20)
+        # output('LH: ',LH)
+        deltaKeys = [z for z in LH.keys() if z not in tempReplicaHistory.keys() and int(z)>int(tempCurCheckPoint)]
+        output('********************************')
+        deltaHistory = dict()
+        ii = 0
+        while(ii<len(deltaKeys)):
+            deltaHistory[deltaKeys[ii]] = LH[deltaKeys[ii]] 
+            ii+=1       
+        #dict - 3,4
+        #LH - 0,1,2,3,4,5,6,7
+        #CP - 2
+        output('-------------- Length of Delta History: ',len(deltaHistory),level=20)
+        return deltaHistory
+
+    def catchUpReplicas():
+        sendCatchUpMessageToQuorum()
+
+    def sendCatchUpMessageToQuorum():
+        output("--------------- Send CatchUp Requests to quorum of replicas  --------------",level=20)
+        catchUpNo +=1        
+        catchUpMessageCount = 0
+        caughtUpMessageSet = list()
+        kquorum = setOfQuorums[currentQuorum]
+        output("--------------- Current Quorum: ",setOfQuorums[currentQuorum],level=20)        
+        lenOfQuorum = len(kquorum)
+        replicaNo = 0 
+        while replicaNo<lenOfQuorum:
+            output("--------------- Send CatchUp Requests to replica : "+str(kquorum[replicaNo])+"  --------------",level=20)
+            deltaHistory = calculateDeltaHistory(kquorum[replicaNo])
+            # output("----------- delta history",deltaHistory)  
+            send(("catchUp_Message",deltaHistory,catchUpNo), to=replicas[kquorum[replicaNo]][0])
+            replicaNo+=1
+        
+    def checkCaughtUpMessages():
+        checkUpMessageFlag = True
+        output("---------------77777010 ENTERING Check Caught Up Messages ---------------",level=20)              
+        i=0
+        verified=True
+        ch = None
+        output("---------------Length of Caught Up Message Set",len(caughtUpMessageSet))
+        # output("caughtUpMessageSet",caughtUpMessageSet)
+        while(i<len(caughtUpMessageSet)-1):
+            if (utilities.checkHashResult(caughtUpMessageSet[i][1],caughtUpMessageSet[i+1][1])):
+                ch = caughtUpMessageSet[i]
+            else:
+                verified=False
+                break
+            i+=1
+        return verified
+    
+    def getRunningStates():
+        # output('77777777777777777777777777777777777777777777777777',level=20)
+        getRunningStateFrom+=1        
+        getRunningStateOf = setOfQuorums[currentQuorum][getRunningStateFrom-1]               
+        output("--------------- Send Get Running State To Replica:"+str(getRunningStateOf) +" --------------",level=20)
+        getRunningStateNo+=1
+        send(("get_running_state",getRunningStateNo), to=replicas[getRunningStateOf][0])
+        i=0
+        hashedRunningState = None
+        # if await(received(('running_state',i,hashedRunningState))):
+        if await(receivedRunningState):   
+            output("--------------- Receieved running state from replica: ",level=20)   
+            receivedRunningState = True             
+        elif timeout(2):
+            # output('9999999999999999999999999999999999999999999999999999',level=20)
+            output("--------------- Replica not replying ---------------",level=20)
+            output('receivedRunningState',receivedRunningState)
+            output('inReconfig',inReconfig)
+            if receivedRunningState == False and inReconfig:
+                output('--------- I gave 4:')
+                getRunningStates()                      
+            else:
+                return None
+                
+        # sendGetRunningStateToQuorum()            
+    
+    def createInitHistMessage():
+        output("--------------- CREATING INIHIST MESSAGE --------------",level=20)
+        return (LH,newRunningState)
+
+    def createNewConfiguration():        
+        #Increment the configuration count
+        output("--------------- CREATING NEW CONFIGUTAION --------------",level=20)
+        killProcesses()
+        configurationNumber += 1
+        createNewReplicas()        
+        sendNewConfigurationToReplicas()
+        sendInithistStatements()
+        
+
+    def killProcesses():
+        output("--------------- KILLING EXSISTING PROCESSES --------------",level=20)
+        noOfReplicas = 2*globalConfig['t'] + 1
+        for replicaNo in range(noOfReplicas):
+            send(("KillProcess"), to=replicas[replicaNo][0])
+    
+    def sendNewConfigurationToReplicas():
+        output("--------------- Send New Configuration to Olympus --------------",level=20)
+        noOfReplicas = 2*globalConfig['t'] + 1
+        inithist = createInitHistMessage()
+        for replicaNo in range(noOfReplicas):                        
+            send(('new_configuration',configurationNumber), to=replicas[replicaNo][0])            
+
+    def sendInithistStatements():    
+        output("--------------- SEND INITHIST STATEMENTS --------------",level=20)
+        noOfReplicas = 2*globalConfig['t'] + 1
+        inithist = createInitHistMessage()
+        for replicaNo in range(noOfReplicas):            
+            send(("inithistStatement",inithist), to=replicas[replicaNo][0])
+            # send(('new_configuration',configurationNumber), to=replicas[replicaNo][0])            
+    
+    def checkForConsistentResultStatements():
+        output("--------------- Check For Consistent ResultStatements --------------",level=20)
+        noOfClients = globalConfig['num_client']
+        verified = None
+        for eachClient in range(noOfClients):
+            try:
+                resultStatements = resultStatementSet[eachClient]
+                output("--------------- Last Result Statement for Client",eachClient,level=20)
+                i = 0
+                tlongestResultProof = []
+                treqID = None
+                tresult = None
+                while(i<len(resultStatements)-1):
+                    verifiedTupleA = resultStatements[i][2].split(';')
+                    verifiedTupleB = resultStatements[i+1][2].split(';')
+                    # output('verifiedTupleA: ',verifiedTupleA[3])
+                    # output('verifiedTupleB: ',verifiedTupleB[3])
+                    # output('aa',utilities.checkHashResult(verifiedTupleA[2],verifiedTupleB[2]))
+                    # output('bb',utilities.checkHashResult(verifiedTupleA[3],verifiedTupleB[3]))
+                    if (utilities.checkHashResult(verifiedTupleA[3],verifiedTupleB[3])):
+                        # output('--------Reached Here------')
+                        verified = True
+                        treqID = resultStatements[i][0]                        
+                        tresult = resultStatements[i][1]
+                        output('--------------- Request ID',treqID,level=20)
+                        # output('--------------- Result',tresult,level=20)
+                        # output('resultStatements[i][2]',resultStatements[i][3])
+                        # output('resultStatements[i][2]',resultStatements[i][3])
+                        # output('len(longestResultProof)',len(tlongestResultProof))
+                        # output('len(resultStatements[i][2])',len(resultStatements[i][3]))
+                        # output('len(resultStatements[i][2])',len(resultStatements[i+1][3]))
+                        if len(tlongestResultProof)<len(resultStatements[i][3]):
+                            # output('--------Reached Here------')
+                            tlongestResultProof = resultStatements[i][3]
+                        if len(tlongestResultProof)<len(resultStatements[i+1][3]):
+                            # output('--------Reached Here------')
+                            tlongestResultProof = resultStatements[i+1][3]                        
+                    else:
+                        verified = False
+                        break
+                    i+=1
+                if (verified):
+                    output("--------------- CREATING RESULT SHUTTLE FOR CLIENT:",eachClient,level=20)
+                    finalResultShuttle[eachClient]=(treqID,tresult,tlongestResultProof)
+                else:
+                    continue
+            except:
+                continue
+        # return verified
+    
+    def sendResultsToClient():
+        output("--------------- Send Results To Clients  --------------",level=20)
+        # output("--------------- finalResultShuttle",finalResultShuttle,level=20)                
+        for clientId,resultShuttle in finalResultShuttle.items():
+            send(('NewConfiguration',replicas,configurationNumber), to=clients[clientId][0])
+            send(('result',resultShuttle), to=clients[clientId][0])
+            
+    def reinitializeVariables():
+        self.wedgedMessagesCount =0
+        self.wedgedMessageSet = list()
+        self.replicaHistorySet = dict()
+        self.caughtUpMessageSet = list()        
+        self.checkPointProof = list()
+        self.checkPointFlagCount = 0
+        self.catchUpMessageCount =0
+        self.newRunningState = None
+        self.ch=None
+        self.LH = dict()
+        self.currentQuorum = 0
+        self.getRunningStateFrom = 0
+        self.resultStatementSet = dict()
+        self.finalResultShuttle = dict() 
+        self.inReconfig=False
+        self.executeReconfig = False       
+        self.checkUpMessageFlag = False
+        self.receivedRunningState = False       
+
+    def updateOwnDictionary(requestStatement):
+        output("--------------- Olymus:headOperation:updateOwnDictionary ",level=20)
+        operation,key,value = utilities.parseTheUnsignedStatement(requestStatement)
+        output("---------------Operation,Key,Value",operation,key,value,level=10)
+        result = executeOperation(operation,key,value)
+        output("---------------RESULT: ",result,level=10)
+
+    def readGlobalConfigFile():
+        output("--------------- ENTERING Olymus:initialSetup:readGlobalConfigFile ---------------",level=20)
+        globalConfig = readConfigFile()
+
+    def initialSetup():
+        output("--------------- ENTERING Olymus:initialSetup ---------------",level=20)        
+        globalConfig = readConfigFile()
+        noOfClients = globalConfig['num_client']
+        # noOfReplicas = 2*globalConfig['t'] + 1
+        client_signing_keys, client_verify_keys_hex = createKeys(noOfClients)
+        clients = createClientProcesses(client_signing_keys)
+        createNewReplicas()
+        # replica_signing_keys, replica_verify_keys_hex = createKeys(noOfReplicas)
+        # replicas = createReplicaProcesses(replica_signing_keys,clients,replica_verify_keys_hex)
+    
+    def createNewReplicas():        
+        noOfReplicas = 2*globalConfig['t'] + 1
+        replica_signing_keys, replica_verify_keys_hex = createKeys(noOfReplicas)
+        replicas = createReplicaProcesses(replica_signing_keys,clients,replica_verify_keys_hex)
+        sendNewConfigurationToReplicas()        
+        
+        # output("--------------- Set Of Quorums",setOfQuorums,level=20)        
+
+    def createKeys(number):
+        output("--------------- ENTERING Olymus:initialSetup:createKeys for clients and replicas---------------",level=20)        
+        signing_keys = dict()
+        verify_keys_hex = dict()
+        for i in range(number):
+            signing_key=nacl.signing.SigningKey.generate()
+            verify_key = signing_key.verify_key
+            verify_key_hex = verify_key.encode(encoder=nacl.encoding.HexEncoder)
+            signing_keys[i] = signing_key
+            verify_keys_hex[i] = verify_key_hex
+        return signing_keys,verify_keys_hex
+
+    def createClientProcesses(client_signing_keys):       
+        tempClients =[]
+        output("--------------- ENTERING Olymus:initialSetup:createClientProcesses---------------",level=20)
+        noOfClients = globalConfig['num_client']
+        # hosts = globalConfig['hosts'].split(';')
+        # client_hosts=globalConfig['client_hosts'].split(';')        
+        for i in range(noOfClients):
+            processAtNode = 'Client'+str(i)            
+            client = new(Client, at=processAtNode)
+            clientList.append(client)
+            setup(client, (self,i,client_signing_keys[i],))
+            start(client)            
+            tempClients.insert(i,(client,client_verify_keys_hex[i]))        
+        return tempClients
+
+    def createReplicaProcesses(replica_signing_keys,clients,replica_verify_keys_hex):
+        output("--------------- ENTERING Olymus:initialSetup:createReplicaProcesses---------------",level=20)
+        tempReplicas =dict()
+        noOfReplicas = 2*globalConfig['t'] + 1
+        # hosts = globalConfig['hosts'].split(';')
+        # replica_hosts=globalConfig['replica_hosts'].split(';')
+
+        for i in range(noOfReplicas):
+            processAtNode = 'Replica'+str(i)            
+            replica = new(Replica,at=processAtNode)
+            tempReplicas[i] = (replica,replica_verify_keys_hex[i])            
+
+        for i in range(noOfReplicas):
+            setup(tempReplicas[i][0], (self,i,'IMMUTABLE',replica_signing_keys[i],clients,tempReplicas,configurationNumber,))
+            start(tempReplicas[i][0])
+            
+        return tempReplicas
+    
+    def addToDictionary(key,val):
+        try:            
+            globalData[key]=['OK',val]
+            return 'OK'
+        except:
+            globalData[key]=['fail',val]
+            return 'Fail'
+
+    def getFrom(key,val):
+        try:
+            getVal = globalData[key][1]
+            if getVal != 'fail' and getVal != '' and getVal is not None:
+                globalData[key] = ['',getVal,'']
+            else:
+                globalData[key]=['','']    
+            return globalData[key]
+        except:
+            globalData[key]=['','fail']
+            return ''
+
+    def appendDictionary(key,val):
+        try:
+            valueExsist = globalData[key][1]
+            if valueExsist != 'fail' and valueExsist != '' and valueExsist is not None:
+                output('------valueExist-----',valueExsist,level=10)
+                newVal =valueExsist+val           
+                output('------newVal-----',newVal,level=10)
+                globalData[key] = ['OK',newVal]
+            else:
+                globalData[key]=['fail','fail']    
+            return 'OK'
+        except:
+            globalData[key]=['fail','fail']
+            return 'fail'
+
+    def sliceDictionary(key,val):
+        try:            
+            value = globalData[key][1]
+            if value != 'fail' and value != '' and value != ' ' and value is not None:
+                indices = val.split(':')            
+                globalData[key] = ['OK',value[int(indices[0]):int(indices[1])]]
+            else:
+                globalData[key]=['fail','fail']  
+            return 'OK'
+        except:
+            globalData[key]=['fail','']
+            return 'fail'
+
+    def reinitializeDictionary():
+        output('-----------REINITIALIZE DICTIONARY-------------')
+        output('---new running state---',newRunningState)
+        globalData.clear()
+        output('globalData',globalData)
+        for key,val in newRunningState.items():
+            globalData[key] =['OK',val]
+        output('globalData',globalData)
+
+    def executeOperation(operation,key,val):
+        output("--------------- Olymus:headOperation:executeOperation ---------------",operation,key,val,level=20)
+        function_launch = {
+            'put': addToDictionary,
+            'get': getFrom,
+            'append': appendDictionary,
+            'slice': sliceDictionary
+        }
+
+        return function_launch[operation](key, val)    
+        
+class Client(process):     
+
+    def setup(p,clientID,client_signing_key,): 
+        self.terminate = False
+        self.utilities = Utils()
+        self.replicas = dict()
+        self.TIMEOUT = 0
+        self.globalConfig = dict()
+        self.noOfReplicas =0
+        self.data = dict()
+        self.configurationNumber = 0
+        self.resultsReceived = 0
+        self.operations = None
+        self.messageNumber = 0
+        self.errorReceived = False
+        
+    def run():
+        output("--------------- ENTERING Client:run ---------------",level=20)
+        output("--------------- Requesting Configuration from Olympus---------------",level=20)
+        start_time = time.time()
+        send(('requestConfiguration',), to=p)
+        globalConfig = readConfigFile()
+        TIMEOUT = globalConfig['client_timeout']
+        noOfReplicas = 2*globalConfig['t'] + 1
+        operations = getOperations()
+        # time.sleep(10)
+        send(('requestNewConfiguration',), to=p)
+        
+
+        await(terminate)        
+        
+    def receive(msg=('Configuration',Configuration,configNo), from_=p):
+        # output("--------------- Received Configuration from Olympus --------------",level=20)
+        configurationNumber = configNo
+        replicas = Configuration
+        # operations = getOperations()    
+        output("--------------- Operations for Client: ",operations,level=20)
+        for noi in range(len(operations)):                        
+            requestID = int(str(clientID) + str(noi) + str(returnRandomNumber()))
+            send(('requestNewConfiguration',), to=p)            
+            await(some(received(("NewConfiguration",NewConfiguration,configNo))))            
+            # output("--------------- Configuration: ",replicas,level=20)            
+            output("--------------- Sending Request No: % :: Request Id: % : ",noi,requestID,level=20)            
+            sendRequest(requestID,operations[noi],replicas[0],'initial')
+            output("--------------- Waiting for Result: ",noi,requestID,level=20)            
+            # if await(some(received(('result',resultShuttle,)), has=(int(resultShuttle[0]) == requestID))):                
+            #     # output("--------------- Received Result for Request no: % and Request Id: % --------------",noi,requestID,level=20)            
+            #     messageNumber+=1
+            # elif timeout(TIMEOUT):
+            notReceived = True
+            while (notReceived):
+                # await(len(listof(p, received(('Ping',), from_=p))) == total_pings)
+                # if await(len(listof(q, received(('result',resultShuttle,), from_=q)))==len(operations)):                              
+                if await(some(received(('result',resultShuttle,)), has=(int(resultShuttle[0]) == requestID))):
+                    if resultsReceived < len(operations): 
+                        resultsReceived +=1
+                        notReceived = False
+                        send(('requestNewConfiguration',), to=p)            
+                        await(some(received(("NewConfiguration",NewConfiguration,configNo))))            
+                elif timeout(TIMEOUT):
+                    output("--------------- TIMEOUT: ",noi,requestID,level=20)
+                    output("--------------- Sending Retransmission Request for Request No: % :: Request Id: %: ",noi,requestID,level=20)  
+                    send(('requestNewConfiguration',), to=p)            
+                    await(some(received(("NewConfiguration",NewConfiguration,configNo))))                     
+                    time.sleep(1)
+                    sendRequest(requestID,operations[noi],replicas,'retransmission')
+                    if errorReceived:
+                        output("--------------- Received Error from Replica, Ask for new configuration --------------",level=20)
+                        errorReceived = False
+                        send(('requestNewConfiguration',), to=p)            
+                        await(some(received(("NewConfiguration",NewConfiguration,configNo)))) 
+        output('DONEEEEEE')
+        send(('Done',), to=p)
+                                
+                
+        # send(('Received Configuration',), to=p)
+    
+    def receive(msg=('errorStatement',)):
+        errorReceived = True
+
+    def receive(msg=("NewConfiguration",NewConfiguration,configNo), from_=p):
+        if configurationNumber == configNo:
+            output("--------------- Received Same Configuration from Olympus --------------",level=20)
+        else:
+            replicas = NewConfiguration
+            messageNumber = 0
+            output("--------------- Received New Configuration from Olympus --------------",level=20)
+        # time.sleep(10)
+        # send(('requestNewConfiguration',), to=p)
+    
+    def receive(msg=('result',resultShuttle),from_=tail):
+        if(resultsReceived<=len(operations)):
+            output("--------------- Received Result Shuttle for request ID:",resultShuttle[0],level=20)            
+            val,globalVal=checkExpectedResult(resultShuttle[0])
+            receivedResult = resultShuttle[1]        
+            rDigest,rEncodedMessage = utilities.hashResult(receivedResult)
+            resultVerified = verifyResultProofs(resultShuttle[2],rDigest)
+            output("--------------- Result Proof Verification check: %: ",resultVerified,level=20)        
+            if resultVerified == 'False':
+                output("--------------- Send Recnofiguration to Olympus --------------",level=20)
+                send(('reconfigurationRequest',), to=p)
+            output("--------------- Client Dictionary Result: % : ",val,level=20)        
+            output("--------------- Global Dictionary Result: % : ",globalVal,level=20)   
+            output("--------------- Result From Replica: %: ",receivedResult,level=20)      
+            if val==receivedResult or globalVal[0]==receivedResult or globalVal[1]==receivedResult:
+                output("---------------  RESULT IS ACCEPTED --------------",level=20)
+            else:
+                output("--------------- RESULT IS REJECTED --------------",level=20)
+
+    def checkExpectedResult(reqID):
+        output("--------------- Checking result against expected result --------------",level=20)        
+        res,val,key = data[reqID]
+        output("--------------- Result in Client Dictionary: ",res,level=20)
+        globalVal = ''        
+        ranDomID = returnRandomNumber()                        
+        # output("--------------- Get Data in global dictionary from olympus for Key: % with ID: ",key,ranDomID,level=20)
+        send(('getGlobalData',key,ranDomID), to=p)        
+        globalRes = ''
+        globalResult=''             
+        if await(some(received(('dictionaryData',globalResult,randID)), has=(randID == ranDomID))):        
+            # output("--------------- Received Data from global dictionary: % for key: % ",globalResult,key,level=20)        
+            globalRes = globalResult         
+        return res,globalRes
+
+    def getOperations():
+        output("--------------- Generating Workload for client --------------",level=20)        
+        cWorkLoad = globalConfig['workload['+str(self.clientID)+']']
+        if 'pseudorandom' in cWorkLoad:
+            seedAndNoOfRequests = cWorkLoad[:-1].split('(')[1].split(',')
+            return generatePseudoRandomRequests(int(seedAndNoOfRequests[0]), int(seedAndNoOfRequests[1]))
+        else:
+            return cWorkLoad.split(';')
+
+    def sendRequest(requestID,operation,receiver,typeOfRequest):
+        messageNumber+=1        
+        requestStatement = bytes(str(operation.strip()),'utf8')
+        output("--------------- Signing the request statement: ",requestStatement,level=20)                
+        signedRequestStatement = utilities.signTheStatement(client_signing_key,requestStatement)        
+        if typeOfRequest=='initial':
+            output("--------------- Sending request to head --------------",level=20)            
+            send((typeOfRequest,messageNumber,clientID,requestID,signedRequestStatement,1), to=receiver[0])
+            updateOwnDictionary(requestID,operation)            
+        elif typeOfRequest == 'retransmission':
+            for replicaNo in range(noOfReplicas):
+                output("--------------- Sending Retransmission request to all replicas --------------",level=20)            
+                send((typeOfRequest,messageNumber,clientID,requestID,signedRequestStatement), to=receiver[replicaNo][0])
+
+    def updateOwnDictionary(requestID,op):                
+        operation,key,value = utilities.parseTheUnsignedStatement(bytes(str(op.strip()),'utf8'))
+        output("--------------- Client updates its dictionary with: ",operation,key,value,level=20)        
+        result = executeOperation(operation,requestID,value,key)
+        output("--------------- Result upon updating dictionary: ",result,level=20)                
+
+    def generatePseudoRandomRequests(rSeed,noOfRequests):
+        output("--------------- Generating Pseudo Random Requests for Client --------------",level=20)
+        listofRequest = ["put('movie','star')","append('movie',' wars')","get('movie')","put('jedi','luke skywalker')","slice('jedi','0:4')","get('jedi')","put(‘apple’,’pie’)","put(‘mango’,’pudding’)","get(‘apple’)","put(‘mango’,’jam’)","get(‘mango’)","put(‘apple’,’shake’)","get(‘apple’)","slice(‘apple’,’0:2’)","put(‘banana’,’shake’)","put(‘banana’,’juice’)","get(‘banana’)","put(‘color’,’red’)","put(‘color’,’green’)","put(‘color’,’yellow’)","get(‘color’)","slice(‘color’,’0:3’)","put(‘color’,’orange’)","append(‘apple’,’juice’)","append(‘color,’green’)","append(‘banana’,’pie’)","put('movie','star')","append('movie',' wars')","get('movie')","put('jedi','luke skywalker')","slice('jedi','0:4')","get('jedi')","put(‘apple’,’pie’)","put(‘mango’,’pudding’)","get(‘apple’)","put(‘mango’,’jam’)","get(‘mango’)","put(‘apple’,’shake’)","get(‘apple’)","slice(‘apple’,’0:2’)","put(‘banana’,’shake’)","put(‘banana’,’juice’)","get(‘banana’)","put(‘color’,’red’)","put(‘color’,’green’)","put(‘color’,’yellow’)","get(‘color’)","slice(‘color’,’0:3’)","put(‘color’,’orange’)","append(‘apple’,’juice’)","append(‘color,’green’)","append(‘banana’,’pie’)","put('movie','star')","append('movie',' wars')","get('movie')","put('jedi','luke skywalker')","slice('jedi','0:4')","get('jedi')","put(‘apple’,’pie’)","put(‘mango’,’pudding’)","get(‘apple’)","put(‘mango’,’jam’)","get(‘mango’)","put(‘apple’,’shake’)","get(‘apple’)","slice(‘apple’,’0:2’)","put(‘banana’,’shake’)","put(‘banana’,’juice’)","get(‘banana’)","put(‘color’,’red’)","put(‘color’,’green’)","put(‘color’,’yellow’)","get(‘color’)","slice(‘color’,’0:3’)","put(‘color’,’orange’)","append(‘apple’,’juice’)","append(‘color,’green’)","append(‘banana’,’pie’)","put('movie','star')","append('movie',' wars')","get('movie')","put('jedi','luke skywalker')","slice('jedi','0:4')","get('jedi')","put(‘apple’,’pie’)","put(‘mango’,’pudding’)","get(‘apple’)","put(‘mango’,’jam’)","get(‘mango’)","put(‘apple’,’shake’)","get(‘apple’)","slice(‘apple’,’0:2’)","put(‘banana’,’shake’)","put(‘banana’,’juice’)","get(‘banana’)","put(‘color’,’red’)","put(‘color’,’green’)","put(‘color’,’yellow’)","get(‘color’)","slice(‘color’,’0:3’)","put(‘color’,’orange’)","append(‘apple’,’juice’)","append(‘color,’green’)","append(‘banana’,’pie’)","put('movie','star')","append('movie',' wars')","get('movie')","put('jedi','luke skywalker')","slice('jedi','0:4')","get('jedi')","put(‘apple’,’pie’)","put(‘mango’,’pudding’)","get(‘apple’)","put(‘mango’,’jam’)","get(‘mango’)","put(‘apple’,’shake’)","get(‘apple’)","slice(‘apple’,’0:2’)","put(‘banana’,’shake’)","put(‘banana’,’juice’)","get(‘banana’)","put(‘color’,’red’)","put(‘color’,’green’)","put(‘color’,’yellow’)","get(‘color’)","slice(‘color’,’0:3’)","put(‘color’,’orange’)","append(‘apple’,’juice’)","append(‘color,’green’)","append(‘banana’,’pie’)","put('movie','star')","append('movie',' wars')","get('movie')","put('jedi','luke skywalker')","slice('jedi','0:4')","get('jedi')","put(‘apple’,’pie’)","put(‘mango’,’pudding’)","get(‘apple’)","put(‘mango’,’jam’)","get(‘mango’)","put(‘apple’,’shake’)","get(‘apple’)","slice(‘apple’,’0:2’)","put(‘banana’,’shake’)","put(‘banana’,’juice’)","get(‘banana’)","put(‘color’,’red’)","put(‘color’,’green’)","put(‘color’,’yellow’)","get(‘color’)","slice(‘color’,’0:3’)","put(‘color’,’orange’)","append(‘apple’,’juice’)","append(‘color,’green’)","append(‘banana’,’pie’)","put('movie','star')","append('movie',' wars')","get('movie')","put('jedi','luke skywalker')","slice('jedi','0:4')","get('jedi')","put(‘apple’,’pie’)","put(‘mango’,’pudding’)","get(‘apple’)","put(‘mango’,’jam’)","get(‘mango’)","put(‘apple’,’shake’)","get(‘apple’)","slice(‘apple’,’0:2’)","put(‘banana’,’shake’)","put(‘banana’,’juice’)","get(‘banana’)","put(‘color’,’red’)","put(‘color’,’green’)","put(‘color’,’yellow’)","get(‘color’)","slice(‘color’,’0:3’)","put(‘color’,’orange’)","append(‘apple’,’juice’)","append(‘color,’green’)","append(‘banana’,’pie’)","put('movie','star')","append('movie',' wars')","get('movie')","put('jedi','luke skywalker')","slice('jedi','0:4')","get('jedi')","put(‘apple’,’pie’)","put(‘mango’,’pudding’)","get(‘apple’)","put(‘mango’,’jam’)","get(‘mango’)","put(‘apple’,’shake’)","get(‘apple’)","slice(‘apple’,’0:2’)","put(‘banana’,’shake’)","put(‘banana’,’juice’)","get(‘banana’)","put(‘color’,’red’)","put(‘color’,’green’)","put(‘color’,’yellow’)","get(‘color’)","slice(‘color’,’0:3’)","put(‘color’,’orange’)","append(‘apple’,’juice’)","append(‘color,’green’)","append(‘banana’,’pie’)","put('movie','star')","append('movie',' wars')","get('movie')","put('jedi','luke skywalker')","slice('jedi','0:4')","get('jedi')","put(‘apple’,’pie’)","put(‘mango’,’pudding’)","get(‘apple’)","put(‘mango’,’jam’)","get(‘mango’)","put(‘apple’,’shake’)","get(‘apple’)","slice(‘apple’,’0:2’)","put(‘banana’,’shake’)","put(‘banana’,’juice’)","get(‘banana’)","put(‘color’,’red’)","put(‘color’,’green’)","put(‘color’,’yellow’)","get(‘color’)","slice(‘color’,’0:3’)","put(‘color’,’orange’)","append(‘apple’,’juice’)","append(‘color,’green’)","append(‘banana’,’pie’)","put('movie','star')","append('movie',' wars')","get('movie')","put('jedi','luke skywalker')","slice('jedi','0:4')","get('jedi')","put(‘apple’,’pie’)","put(‘mango’,’pudding’)","get(‘apple’)","put(‘mango’,’jam’)","get(‘mango’)","put(‘apple’,’shake’)","get(‘apple’)","slice(‘apple’,’0:2’)","put(‘banana’,’shake’)","put(‘banana’,’juice’)","get(‘banana’)","put(‘color’,’red’)","put(‘color’,’green’)","put(‘color’,’yellow’)","get(‘color’)","slice(‘color’,’0:3’)","put(‘color’,’orange’)","append(‘apple’,’juice’)","append(‘color,’green’)","append(‘banana’,’pie’)","put('movie','star')","append('movie',' wars')","get('movie')","put('jedi','luke skywalker')","slice('jedi','0:4')","get('jedi')","put(‘apple’,’pie’)","put(‘mango’,’pudding’)","get(‘apple’)","put(‘mango’,’jam’)","get(‘mango’)","put(‘apple’,’shake’)","get(‘apple’)","slice(‘apple’,’0:2’)","put(‘banana’,’shake’)","put(‘banana’,’juice’)","get(‘banana’)","put(‘color’,’red’)","put(‘color’,’green’)","put(‘color’,’yellow’)","get(‘color’)","slice(‘color’,’0:3’)","put(‘color’,’orange’)","append(‘apple’,’juice’)","append(‘color,’green’)","append(‘banana’,’pie’)","put('movie','star')","append('movie',' wars')","get('movie')","put('jedi','luke skywalker')","slice('jedi','0:4')","get('jedi')","put(‘apple’,’pie’)","put(‘mango’,’pudding’)","get(‘apple’)","put(‘mango’,’jam’)","get(‘mango’)","put(‘apple’,’shake’)","get(‘apple’)","slice(‘apple’,’0:2’)","put(‘banana’,’shake’)","put(‘banana’,’juice’)","get(‘banana’)","put(‘color’,’red’)","put(‘color’,’green’)","put(‘color’,’yellow’)","get(‘color’)","slice(‘color’,’0:3’)","put(‘color’,’orange’)","append(‘apple’,’juice’)","append(‘color,’green’)","append(‘banana’,’pie’)"]
+        random.seed(rSeed)
+        requests = random.sample(listofRequest,k=noOfRequests)        
+        return requests
+
+    def returnRandomNumber():
+        return randint(1, 10000)
+
+    def verifyResultProofs(tempResultProof,rDigest):
+        output("--------------- Verifying result and signature of result statements --------------",level=20)        
+        numOfRP = len(tempResultProof)
+        i=0
+        verified = ''
+        countOfCorrectResults = 0
+        while i < numOfRP:
+            temp_verify_key = utilities.decodeVerifyKey(replicas[i][1])
+            tempSignedRP = tempResultProof[i]
+            try:
+                verified = utilities.verifyTheStatement(temp_verify_key,tempSignedRP)                
+                strVerified = verified.decode('utf8')
+                verifiedTuple = strVerified.split(';')
+                if utilities.checkHashResult(verifiedTuple[2],rDigest):
+                    verified = 'True'
+                    countOfCorrectResults += 1
+                else:
+                    verified = 'False'
+            except:
+                verified = 'False'          
+            i+=1
+
+        quorumSize = globalConfig['t'] + 1
+        output("---------------Quorum Size: ",quorumSize,level=20)
+        output("---------------No. of countOfCorrectResults: ",countOfCorrectResults,level=20)                
+        if countOfCorrectResults>=quorumSize:
+            verified = 'True'
+        else:
+            verified = 'False'          
+        return verified
+
+    def addToDictionary(reqID,val,key):
+        try:            
+            data[reqID]=['OK',val,key]
+            return 'OK'
+        except:
+            data[reqID]=['fail',val,key]
+            return 'fail'
+
+    def getFrom(reqID,val,key):
+        try:
+            output('reqID',reqID,level=10)            
+            getreqID = [k for k,v in data.items() if key in v][-1]
+            getVal = data[getreqID][1]
+            output('getVal',getVal,level=10)
+            data[reqID] = [getVal,getVal,key]
+            return data[reqID][0]
+        except:
+            output('entered exception',level=10)
+            data[reqID] = ['','',key]
+            return ''
+
+    def appendDictionary(reqID,val,key):
+        try:
+            getreqID = [k for k,v in data.items() if key in v][-1]
+            output('-----getreqID----',getreqID,level=10)
+            getVal = data[getreqID][1]
+            newVal = getVal+val
+            output('-----newVal----',newVal,level=10)
+            data[reqID] = ['OK',newVal,key]
+            return 'OK'
+        except:
+            data[reqID] = ['fail','',key]
+            return 'fail'
+
+    def sliceDictionary(reqID,val,key):
+        try:            
+            value = data[reqID][1]
+            indices = val.split(':')
+            data[reqID] = ['OK',value[int(indices[0]):int(indices[1])],key]
+            return 'OK'
+        except:
+            data[reqID] = ['fail','',key]
+            return 'fail'
+
+    def executeOperation(operation,reqID,val,key):
+        output("--------------- Executing Operation to updata client dictionary with: ",operation,reqID,val,key,level=20)
+        function_launch = {
+            'put': addToDictionary,
+            'get': getFrom,
+            'append': appendDictionary,
+            'slice': sliceDictionary
+        }
+
+        return function_launch[operation](reqID, val,key)
+
+class Replica(process):        
+    
+    def setup(p,i,Mode,replica_signing_key,clients,replicas,configurationNumber):
+        self.terminate = False
+        self.utilities = Utils()
+        self.data = dict()   
+        self.checkPointData = dict()     
+        self.replicaHistory = dict()
+        self.resultCache = dict()
+        self.slot = 0
+        self.shuttleNumber = 0
+        self.resultShuttleNumber =0
+        self.globalConfig = dict()
+        self.noOfReplicas =0
+        self.ReplicaTIMEOUT = 0
+        self.HeadTIMEOUT = 0
+        self.failuresDict = dict()
+        self.forwardRequestMessageNo = 0
+
+        self.hashedRunningState = None
+        self.runningState = None
+        self.checkPointProof = list()
+        self.checkPointInterval = 2
+        self.checkPointHistory = dict()
+        self.oldCheckPoint = 0
+        self.curCheckPoint = checkPointInterval
+        self.checkPointFlag = False
+        self.lastClientRequests = dict()
+        self.checkPointShuttleNo = 0
+        self.completeCheckPointShuttleNo =0
+        self.t=0
+        self.ignore=False
+
+    def run():
+        output('--------------------- Configuration Number: ',configurationNumber) 
+        output("--------------------- Entering Replica Run: --------------",level=20)
+        globalConfig = readConfigFile()
+        noOfReplicas = 2*globalConfig['t'] + 1
+        t=globalConfig['t']
+        ReplicaTIMEOUT = globalConfig['nonhead_timeout']
+        HeadTIMEOUT = globalConfig['head_timeout']
+        try:
+            checkPointInterval = globalConfig['checkpt_interval']
+        except:
+            pass
+        #sleeptime = globalConfig['sleeptime']
+        foundFailures,failures = getFailures()
+
+        if foundFailures != 'No Failures':
+            failuresList = failures.split(';')
+            fTfAMapping(failuresList)
+
+        output("---------------------555501 Failures for Replica: ",foundFailures,level=20)    
+        output(failuresDict,level=20)
+        await(terminate)       
+        
+    def getFailures():
+        # output("--------------- Getting Failures for Replica : --------------",level=20)    
+        try:    
+            failureIndex = 'failures['+str(configurationNumber)+','+str(i)+']'
+            return 'Failures', globalConfig[failureIndex]
+        except:
+            return 'No Failures', None
+         
+    def fTfAMapping(failuresList):
+        output("--------------- Creating Failure Trigger and Failure Action Mapping: --------------",level=20)
+        for eachFailure in failuresList:
+            ft = eachFailure.split(')')[0].strip()+')'
+            fa = eachFailure.split(')')[1].split(',')[1].strip()+')'
+            # failuresDict[ft] = fa
+            curFaList = list()
+            try:
+                curFaList = failuresDict[ft]
+            except:
+                pass
+            curFaList.append(fa)
+            failuresDict[ft] = curFaList
+
+    def receive(msg=('initial',messageNumber,clientId,requestID,signedRequestStatement,operationCount), from_=c):
+        # output('---------------------555520 Head:receives:signedRequestStatement from client -----------------------',level=20)
+        output('************************************************************************************************',level=20)
+        output('---------------------Received Request message no:['+str(messageNumber)+' ; client Id: ['+str(clientId)+'] ; request Id: ['+str(requestID)+']',level=20)
+        
+        if Mode != 'IMMUTABLE':
+            changeOrderSig=False
+            changeResultSig=False
+            failureClientRequest = 'client_request('+str(clientId)+','+str(messageNumber)+')'
+            fStatus,getAction = checkForFailure(failureClientRequest)
+            if getAction is not None:                
+                try:
+                    sleeptime = [xy[6:8] for xy in getAction if 'sleep' in xy]                
+                except:
+                    sleeptime = None
+            if fStatus != 'notFound':
+                if 'crash()' in getAction:crash()
+                if len(sleeptime) != 0:sleep(int(sleeptime[0]))
+                # if 'sleep()' in getAction:sleep(sleeptime)
+                if 'drop()' in getAction:return None        
+                if 'increment_slot()' in getAction:slot+=1
+                if 'extra_op()' in getAction:extra_op()
+                if 'invalid_order_sig()' in getAction:changeOrderSig=True
+                if 'invalid_result_sig()' in getAction:changeResultSig=True         
+
+        
+            orderProof=list()
+            resultProof=list()
+            
+            temp_verify_key = utilities.decodeVerifyKey(clients[clientId][1])        
+            unSignedRequestStatement = ''
+            operation = ''
+            if Mode == 'ACTIVE' and not checkRequestIDInHistory(requestID):            
+                verified = ''
+                try:
+                    verified = utilities.verifyTheStatement(temp_verify_key,signedRequestStatement)
+                except:
+                    verified = 'Not verified'                
+                    # time.sleep(5)
+
+                output('--------------------- Unsigned Statement from client: ',verified,level=20)
+                operation,key,value = utilities.parseTheUnsignedStatement(verified)            
+                # output('---------------------555509 Checking for failures -----------------------',level=20)
+                
+                output('---------------------555509 Failure Check:['+str(fStatus)+'] Failure action:'+str(getAction)+'-----------------------',level=20)
+                if fStatus != 'notFound':
+                    if 'change_operation()' in getAction:
+                            operation  = changeOperation()
+                            key = 'x'
+                            verified = bytes("get('x')",'utf-8')
+                            output('---------------------Changed Operation:['+str(operation)+'] Key:'+key+'-----------------------',level=20)
+                
+
+                result = executeOperation(operation,key,value)
+                
+                output('---------------------555509 Failure Check:['+str(fStatus)+'] Failure action:'+str(getAction)+'-----------------------',level=20)
+                if fStatus != 'notFound':
+                    if 'change_result()' in getAction:
+                        result  = changeResult()
+                        output('---------------------Changed result:',result,level=20)
+
+                # output('--------------------- Signing the statement:',verified,level=20)
+                signedOrderStatement,signedResultStatement = createStatements(slot,verified,result,changeOrderSig,changeResultSig)            
+                orderProof.append(signedOrderStatement)
+                resultProof.append(signedResultStatement)
+                
+                rDigest,encodedResult = utilities.hashResult(result)                
+                teResultStmnt = '\'result\';'+str(slot)+';'+rDigest+';'+encodedResult        
+
+                appendToLastClientRequest(clientId,requestID,result,teResultStmnt,resultProof)
+
+                output('---------------------555509 Failure Check:['+str(fStatus)+'] Failure action:'+str(getAction)+'-----------------------',level=20)
+                if fStatus != 'notFound':                
+                    if 'drop_result_stmt()' in getAction:
+                        resultProof  = dropResultStatement(resultProof)
+
+                output('--------------------- Data in Replica Dictionary ',data,level=20)
+                # output('--------------------- Creating Shuttle -----------------------',level=20)
+                shuttle = (orderProof,resultProof)                 
+                appendToReplicaHistory(slot,verified,orderProof,requestID,signedRequestStatement,clientId)                        
+                
+                output('--------------------- Sending Statement to Olympus coming from client: ',clientId,level=20)            
+                send(('headOperation',clientId,requestID,slot,signedRequestStatement), to=p)            
+                
+                output('--------------------- Sending Statement:: message number'+str(messageNumber)+' from client: '+str(clientId)+' to Next Replica -----------------------',level=20)
+                send((messageNumber,clientId,requestID,slot,signedRequestStatement,shuttle,'initial','nonhead',operationCount,shuttleNumber), to=replicas[i+1][0])            
+                output('------------------------------------------------------------',level=20)
+                if slot==curCheckPoint:
+                    checkPointShuttleNo+=1
+                    checkPointData = data.copy()
+                    doCheckPointing(checkPointData)                
+                    checkPointShuttle = checkPointProof
+                    output('--------------------- 555510 Sending CheckPoint Shuttle To Next Replica-----------------',level=20)
+                    send(('checkPointShuttle',checkPointShuttle,curCheckPoint,checkPointShuttleNo), to=replicas[i+1][0])
+                slot+=1
+                shuttleNumber += 1
+
+            elif checkRequestIDInHistory(requestID):
+                output('---------------------NO EXECUTION: Request already found in History -----------------------',level=20)
+            else:
+                output('---------------------NO EXECUTION: Replica is not Active-----------------------',level=20)
+        else:
+            output('--------------------- Replica:IMMUTABLE, will not respond to the request from client-----------------------',level=20)
+
+    def receive(msg=(messageNumber,clientId,requestID,tempSlot,signedRequestStatement,shuttle,typeOfRequest,replicaType,operationCount,shuttleNumber),from_=previousReplica):
+        output('************************************************************************************************',level=20)
+        output('---------------------555520 Replica:receives:signedRequestStatement from previous replica -----------------------',level=20)
+        if Mode != 'IMMUTABLE':
+            changeOrderSig=False
+            changeResultSig=False
+            failureShuttleRequest = 'shuttle('+str(clientId)+','+str(messageNumber)+')'
+            fStatus,getAction = checkForFailure(failureShuttleRequest)
+            if getAction is not None:            
+                try:
+                    sleeptime = [xy[6:8] for xy in getAction if 'sleep' in xy]                
+                except:
+                    sleeptime = None
+            if fStatus != 'notFound':
+                if 'crash()' in getAction:crash()
+                if len(sleeptime) != 0:sleep(int(sleeptime[0]))
+                if 'increment_slot()' in getAction:slot+=1
+                if 'drop()' in getAction:return None        
+                if 'extra_op()' in getAction:extra_op()
+                if 'invalid_order_sig()' in getAction:changeOrderSig=True
+                if 'invalid_result_sig()' in getAction:changeResultSig=True
+        
+            output('---------------------555520 Received Request message number:['+str(messageNumber)+' ; client Id: ['+str(clientId)+'] ; request Id: ['+str(requestID)+']',level=20)
+            if i<noOfReplicas and Mode == 'ACTIVE':            
+                tempOrderProof = shuttle[0]
+                tempResultProof = shuttle[1]
+                temp_verify_key = utilities.decodeVerifyKey(clients[clientId][1])
+                verifiedClientStatement = ''
+                try:
+                    verifiedClientStatement = utilities.verifyTheStatement(temp_verify_key,signedRequestStatement)
+                except:
+                    verifiedClientStatement = 'Not verified'
+                
+                output('--------------------- Unsigned Statement from client: ',verifiedClientStatement,level=20)
+                operation,key,value = utilities.parseTheUnsignedStatement(verifiedClientStatement)
+                checkedOrderProofs = checkOrderProofIntegerity(tempSlot,str(verifiedClientStatement,'utf-8'),tempOrderProof)
+                output('--------------------- Verifying Order Proofs: ',checkedOrderProofs,level=20)
+                resultsVerified = verifyResultProofs(tempResultProof)
+                output('--------------------- Verifying Result Proofs: ',resultsVerified,level=20)
+                #shuttle(c, m)            
+                if checkedOrderProofs != 'False' and resultsVerified != 'False': 
+                    output('--------------------- Checking for failures -----------------------',level=20)
+                    
+                    output('--------------------- 555509 Failure Check:['+str(fStatus)+'] Failure action:'+str(getAction)+'-----------------------',level=20)
+                    if fStatus != 'notFound':
+                        if 'change_operation()' in getAction:
+                            operation  = changeOperation()
+                            key = 'x'
+                            verifiedClientStatement = bytes("get('x')",'utf-8')
+                            output('--------------------- 555509 Changed Operation:['+str(operation)+'] Key:'+key+'-----------------------',level=20)
+                            output('--------------------- Changed Verified Client Statement: '+str(verifiedClientStatement)+'--------------------',level=20)               
+
+                    inHistory = checkSlotInHistory(int(tempSlot),verifiedClientStatement)                
+                    holes = checkForHoles(int(tempSlot))
+                    output('--------------------- Slot Consistency: '+str(inHistory)+' Holes Found: '+str(holes)+'--------------------',level=20)
+                    if inHistory =='false' and holes == False:              
+                        
+                        result = executeOperation(operation,key,value)
+                        output('---------------------555509 Failure Check:['+str(fStatus)+'] Failure action:'+str(getAction)+'-----------------------',level=20)
+                        if fStatus != 'notFound':
+                            if 'change_result()' in getAction:
+                                result  = changeResult()
+                                output('--------------------- 555509 Changed result:['+result+'] -----------------------',level=20)
+
+                        
+                        tempSignedOrderStatement,tempSignedResultStatement = createStatements(tempSlot,verifiedClientStatement,result,changeOrderSig,changeResultSig)                    
+                        tempOrderProof.append(tempSignedOrderStatement)
+                        tempResultProof.append(tempSignedResultStatement)
+
+                        output('--------------------- 555509 Failure Check:['+str(fStatus)+'] Failure action:'+str(getAction)+'-----------------------',level=20)
+                        if fStatus != 'notFound':                
+                            if 'drop_result_stmt()' in getAction:
+                                tempResultProof  = dropResultStatement(tempResultProof)
+
+                        output('--------------------- Data in Client Dictionary ',data,level=20)
+                        appendToReplicaHistory(tempSlot,verifiedClientStatement,tempOrderProof,requestID,signedRequestStatement,clientId)
+
+                        # output('--------------------- Creating Shuttle -----------------------',level=20)
+                        shuttle = (tempOrderProof,tempResultProof)
+                        
+                        rDigest,encodedResult = utilities.hashResult(result)                
+                        teResultStmnt = '\'result\';'+str(slot)+';'+rDigest+';'+encodedResult
+
+                        appendToLastClientRequest(clientId,requestID,result,teResultStmnt,tempResultProof)
+
+                        if i != noOfReplicas-1:                          
+                            output('---------------------555521 Sending Statement:: message number'+str(messageNumber)+' from client: '+str(clientId)+' to Next Replica -----------------------',level=20)
+                            send((messageNumber,clientId,requestID,tempSlot,signedRequestStatement,shuttle,'initial','nonhead',operationCount,shuttleNumber), to=replicas[i+1][0])
+                        elif i == noOfReplicas-1:
+                            # make and send result shuttle to predecessor
+                            output('--------------------- Creating Result Shuttle: -----------------------',level=20)
+                            resultShuttle = (requestID,result,tempResultProof)
+                            # if operationCount==2:
+                            #     appendToResultCache(resultShuttle)
+                            #     # send(('result',resultShuttle), to=clients[clientId][0])
+                            #     send(('result',resultShuttle), to=replicas[i-1][0])
+                            # signedResultShuttle =
+                            appendToResultCache(resultShuttle)
+                            output('---------------------555522 Sending ResultShuttle: No:['+str(messageNumber)+'] to Previous Replica: ['+str(i-1)+'] -----------------------',level=20)
+                            output('---------------------555522 Sending ResultShuttle: No:['+str(messageNumber)+'] to Client: ['+str(clientId)+'] -----------------------',level=20)                            
+                            send(('result',resultShuttle), to=clients[clientId][0])
+                            send(('result',resultShuttle,messageNumber,clientId), to=replicas[i-1][0])
+                            resultShuttleNumber += 1
+                        else:
+                            output('************************************************************************************************',level=20)                            
+                    else:
+                        output('--------------------- SEND RECONFIGURATION REQUEST TO OLYMPUS -----------------------',level=40)
+                        sendReconfigurationRequestToOlympus()                                       
+                else:
+                    output('--------------------- SEND RECONFIGURATION REQUEST TO OLYMPUS -----------------------',level=40)
+                    sendReconfigurationRequestToOlympus()
+                    
+            else:
+                output('--------------------- NO EXECUTION: Replica is not Active -----------------------',level=20)
+        else:
+            output('--------------------- Replica:IMMUTABLE, will not forward the request from previous replica to the next -----------------------',level=20)           
+           
+    def receive(msg=('retransmission',messageNumber,clientId,requestID,signedRequestStatement,), from_=c):
+        output('************************************************************************************************',level=20)        
+        output('---------------------555530 Replica:receives:retransmission from Client -----------------------',level=20)
+        if Mode != 'IMMUTABLE':
+            output('--------------------- Request client Id: ['+str(clientId)+'] ; request Id: ['+str(requestID)+']-----------------------',level=20)
+            temp_verify_key = utilities.decodeVerifyKey(clients[clientId][1])
+            verified = ''
+            try:
+                verified = utilities.verifyTheStatement(temp_verify_key,signedRequestStatement)
+            except:
+                verified = 'Not verified'   
+
+            output('--------------------- Unsigned Statement from client ',str(verified),level=20)
+            if verified !='Not Verified':
+                if Mode == 'IMMUTABLE':
+                    output('--------------------- IMMUTABLE REPLICA: Send Error Statement to ClientId: ['+str(clientId)+']-----------------------',level=20)
+                    send(('errorStatement',), to=clients[clientId][0])
+                else:
+                    resultFound,resultShuttle = getResultFromResultCache(requestID)
+                    output('---------------------'+resultFound+' in Result Cache-----------------------',level=20)
+                    if resultFound == 'NoResult':
+                        if i!=0:
+                            output('---------------------555531 Sending forward-request to head coming from client Id: ['+str(clientId)+'] ; with request Id: ['+str(requestID)+']-----------------------',level=20)
+                            send(('forwardRequest',messageNumber,clientId,requestID,signedRequestStatement,), to=replicas[0][0])
+                            output('--------------------- Waiting for result shuttle to arrive-----------------------',level=20)
+                            # if await(some(received((result,tresultShuttle,)), has=(int(tresultShuttle[0]) == requestID))):
+                            if i != noOfReplicas-1:
+                                if await(some(received(('result',tresultShuttle,resultShuttleNumber,clientId)), has=(int(tresultShuttle[0]) == requestID))):                            
+                                    output('--------------------- Received Result Shuttle: Sending Shuttle to Client ['+str(clientId)+']-----------------------',level=20)
+                                    send(('result',tresultShuttle), to=clients[clientId][0])                
+                                elif timeout(ReplicaTIMEOUT):                            
+                                    output('---------------------555532 Send Reconfiguration request to Olympus-----------------------',level=40) 
+                                    sendReconfigurationRequestToOlympus()
+                                                   
+                    elif resultFound=='Found':
+                        output('---------------------555533 Result Found:Sending ResultShuttle:to Client: ['+str(clientId)+'] -----------------------',level=20)
+                        send(('result',resultShuttle), to=clients[clientId][0])
+        else:
+            output('---------------------555534 Replica:IMMUTABLE, Sending Error statement to client -----------------------',level=20)
+            send(('errorStatement',), to=clients[clientId][0])
+
+    def receive(msg=('forwardRequest',messageNumber,clientId,requestID,signedRequestStatement,), from_=p):
+        output('************************************************************************************************',level=20)        
+        output('---------------------555535 Replica:receives:forwardRequest from Previous Replica -----------------------',level=20)
+        if Mode != 'IMMUTABLE':
+            
+            failureResultShuttle = 'forwarded_request('+str(clientId)+','+str(forwardRequestMessageNo)+')'            
+            fStatus,getAction = checkForFailure(failureResultShuttle)
+            output('---------------------555509 Failure Check:['+str(fStatus)+'] Failure action:'+str(getAction)+'-----------------------',level=20)
+            if getAction is not None:            
+                try:
+                    sleeptime = [xy[6:8] for xy in getAction if 'sleep' in xy]                
+                except:
+                    sleeptime = None
+            if fStatus != 'notFound':
+                if 'crash()' in getAction:crash()
+                if len(sleeptime) != 0:sleep(int(sleeptime[0]))
+                if 'drop()' in getAction:return None        
+        
+            output('--------------------- Request client Id: ['+str(clientId)+'] ; request Id: ['+str(requestID)+']-----------------------',level=20)
+            forwardRequestMessageNo += 1
+
+
+            temp_verify_key = utilities.decodeVerifyKey(clients[clientId][1])
+            verified = ''
+            try:
+                verified = utilities.verifyTheStatement(temp_verify_key,signedRequestStatement)
+            except:
+                verified = 'Not verified'
+
+            if verified !='Not Verified':            
+                resultFound,resultShuttle = getResultFromResultCache(requestID)
+                output('---------------------'+resultFound+' in Result Cache-----------------------',level=20)
+                if resultFound == 'NoResult':
+                    if checkRequestIDInHistory(requestID):
+                        output('--------------------- Waiting for result shuttle to arrive-----------------------',level=20)                    
+                        # if await(some(received((result,tresultShuttle,)), has=(int(tresultShuttle[0]) == requestID))):
+                        if await(some(received(('result',tresultShuttle,resultShuttleNumber,clientId)), has=(int(tresultShuttle[0]) == requestID))):                            
+                            output('---------------------555509 Failure Check:['+str(fStatus)+'] Failure action:'+str(getAction)+'-----------------------',level=20)
+                            if fStatus != 'notFound':
+                                if 'change_result()' in getAction:                    
+                                    lst = list(tresultShuttle)
+                                    lst[1] = changeResult()
+                                    tresultShuttle = tuple(lst) 
+                                    output('--------------------- Changed result:['+str(resultShuttle[1])+'] -----------------------',level=20)
+
+                            output('---------------------555509 Failure Check:['+str(fStatus)+'] Failure action:'+str(getAction)+'-----------------------',level=20)
+                            if fStatus != 'notFound':                
+                                if 'drop_result_stmt()' in getAction:
+                                    lst = list(tresultShuttle)
+                                    lst[2] = dropResultStatement(resultShuttle[2])
+                                    tresultShuttle = tuple(lst)                           
+                            output('---------------------555536 Received Result Shuttle: Sending Shuttle to Client ['+str(clientId)+']-----------------------',level=20)                                                    
+                            send(('result',tresultShuttle), to=clients[clientId][0])
+                                
+                        elif timeout(HeadTIMEOUT):
+                            output('--------------------- Send Reconfiguration request to Olympus-----------------------',level=20)
+                            sendReconfigurationRequestToOlympus()                            
+                            # continue
+                    else:                    
+                        output('555538 Start the Operation from scratch for client Id: ['+str(clientId)+'] ; with request Id: ['+str(requestID)+']-----------------------',level=20)
+                        send(('initial',messageNumber,clientId,requestID,signedRequestStatement,1), to=replicas[0][0])
+                        # send(('forwardRequest',messageNumber,clientId,requestID,signedRequestStatement,2), to=replicas[0][0])
+                        output('--------------------- Waiting for result shuttle to arrive-----------------------',level=20)   
+                        # if await(some(received((result,tresultShuttle,)), has=(int(tresultShuttle[0]) == requestID))):         
+                        if await(some(received(('result',tresultShuttle,resultShuttleNumber,clientId)), has=(int(tresultShuttle[0]) == requestID))):                   
+                                output('---------------------555539 Received Result Shuttle: Sending Shuttle to Client ['+str(clientId)+']-----------------------',level=20)
+                                failureResultShuttle = 'forwarded_request('+str(clientId)+','+str(forwardRequestMessageNo)+')'            
+                                fStatus,getAction = checkForFailure(failureResultShuttle)
+                                output('---------------------555509 Failure Check:['+str(fStatus)+'] Failure action:'+str(getAction)+'-----------------------',level=20)
+                                if fStatus != 'notFound':
+                                    if 'change_result()' in getAction:                    
+                                        lst = list(tresultShuttle)
+                                        lst[1] = changeResult()
+                                        tresultShuttle = tuple(lst) 
+                                        output('--------------------- Changed result:['+str(resultShuttle[1])+'] -----------------------',level=20)
+
+                                output('---------------------555509 Failure Check:['+str(fStatus)+'] Failure action:'+str(getAction)+'-----------------------',level=20)
+                                if fStatus != 'notFound':                
+                                    if 'drop_result_stmt()' in getAction:
+                                        lst = list(tresultShuttle)
+                                        lst[2] = dropResultStatement(resultShuttle[2])
+                                        tresultShuttle = tuple(lst)    
+                                output('---------------------555536 Received Result Shuttle: Sending Shuttle to Client ['+str(clientId)+']-----------------------',level=20)                                             
+                                send(('result',tresultShuttle), to=clients[clientId][0])                                
+                        elif timeout(HeadTIMEOUT):
+                            output('--------------------- Send Reconfiguration request to Olympus-----------------------',level=40)
+                            sendReconfigurationRequestToOlympus()
+
+                elif resultFound=='Found':
+                    output('--------------------- Result Found:Sending ResultShuttle:to Client: ['+str(clientId)+'] -----------------------',level=20)
+                    failureResultShuttle = 'forwarded_request('+str(clientId)+','+str(forwardRequestMessageNo)+')'            
+                    fStatus,getAction = checkForFailure(failureResultShuttle)
+                    output('---------------------555509 Failure Check:['+str(fStatus)+'] Failure action:'+str(getAction)+'-----------------------',level=20)
+                    if fStatus != 'notFound':
+                        if 'change_result()' in getAction:                    
+                            lst = list(resultShuttle)
+                            lst[1] = changeResult()
+                            resultShuttle = tuple(lst) 
+                            output('--------------------- Changed result:['+str(resultShuttle[1])+'] -----------------------',level=20)
+
+                    output('---------------------555509 Failure Check:['+str(fStatus)+'] Failure action:'+str(getAction)+'-----------------------',level=20)
+                    if fStatus != 'notFound':                
+                        if 'drop_result_stmt()' in getAction:
+                            lst = list(resultShuttle)
+                            lst[2] = dropResultStatement(resultShuttle[2])
+                            resultShuttle = tuple(lst)                           
+                    send(('result',resultShuttle), to=clients[clientId][0])
+        else:
+            output('--------------------- Replica:IMMUTABLE, will not respond to the forward request -----------------------',level=20)
+    
+    def receive(msg=('result',resultShuttle,temessageNumber,clientId),from_=nextReplica):
+        output('************************************************************************************************',level=20)        
+        # output('--------------------555540 Received Result Shuttle from Next Replica -------------------------',level=20)
+        
+        if Mode != 'IMMUTABLE':
+            failureResultShuttle = 'result_shuttle('+str(clientId)+','+str(temessageNumber)+')'            
+            fStatus,getAction = checkForFailure(failureResultShuttle)
+            output('---------------------555509 Failure Check:['+str(fStatus)+'] Failure action:'+str(getAction)+'-----------------------',level=20)
+            if getAction is not None:            
+                try:
+                    sleeptime = [xy[6:8] for xy in getAction if 'sleep' in xy]                
+                except:
+                    sleeptime = None
+            if fStatus != 'notFound':
+                if 'crash()' in getAction:crash()
+                if len(sleeptime) != 0:sleep(int(sleeptime[0]))
+                if 'drop()' in getAction:return None        
+                #if 'invalid_result_sig()' in getAction:changeResultSig=True
+
+        
+            # resultVerification = verifyResultProofs(resultShuttle[2])
+            output('--------------------- Received Result Shuttle: Result Shuttle No.'+str(temessageNumber)+' for Client ['+str(clientId)+']-----------------------',level=20)
+
+            receivedResult = resultShuttle[1]
+            output('--------------------- Received Result',receivedResult)
+            rDigest,rEncodedMessage = utilities.hashResult(receivedResult)
+            resultVerified = checkResultProofIntegerity(resultShuttle[2],rDigest)
+            output('-------------------- Result Verified',resultVerified)
+            if resultVerified != 'False':               
+                
+                output('---------------------555509 Failure Check:['+str(fStatus)+'] Failure action:'+str(getAction)+'-----------------------',level=20)
+                if fStatus != 'notFound':
+                    if 'change_result()' in getAction:                    
+                        lst = list(resultShuttle)
+                        lst[1] = changeResult()
+                        resultShuttle = tuple(lst) 
+                        output('--------------------- Changed result:['+str(resultShuttle[1])+'] -----------------------',level=20)
+
+                output('--------------------555509 Failure Check:['+str(fStatus)+'] Failure action:'+str(getAction)+'-----------------------',level=20)
+                if fStatus != 'notFound':                
+                    if 'drop_result_stmt()' in getAction:
+                        lst = list(resultShuttle)
+                        lst[2] = dropResultStatement(resultShuttle[2])
+                        resultShuttle = tuple(lst)                                
+
+                if resultVerified == 'True':
+                    appendToResultCache(resultShuttle)
+                else:
+                    output('--------------------- Send Reconfiguration request to Olympus---------------',level=40)
+                    
+                #Verify Result Proofs
+                if i!=0:
+                    output('--------------------555541 Sending ResultShuttle: No:['+str(temessageNumber)+'] to Previous Replica: ['+str(i-1)+'] -----------------------',level=20)
+                    send(('result',resultShuttle,temessageNumber,clientId), to=replicas[i-1][0])
+            else:
+                output('---------------------Send Reconfiguration request to Olympus---------------',level=40)  
+                sendReconfigurationRequestToOlympus()         
+        #validate the result shuttle
+        else:
+            output('--------------------- Replica:IMMUTABLE, will not forward the result shuttle to the previous replica -----------------------',level=20)
+
+    def receive(msg=('sendWedgedRequest',wedgeRequestNo),from_=p):
+        output('************************************************************************************************',level=20)                
+        output('---------------------555550 Receive Send Wedged Requests from Olympus: ',wedgeRequestNo,level=20)
+        failureClientRequest = 'wedge_request('+str(wedgeRequestNo)+')'
+        fStatus,getAction = checkForFailure(failureClientRequest)
+        output('----------555509 Failure Check:['+str(fStatus)+'] Failure action:'+str(getAction)+'-----------------------',level=20)
+        if getAction is not None:
+            try:
+                sleeptime = [xy[6:8] for xy in getAction if 'sleep' in xy]                
+            except:
+                sleeptime = None
+            try:
+                truncateFrom = [xy[17:18] for xy in getAction if 'truncate_history' in xy]
+            except:
+                truncateFrom = None 
+    
+        if fStatus != 'notFound':
+            if 'crash()' in getAction:crash()
+            if len(sleeptime) != 0:sleep(int(sleeptime[0]))
+            if len(truncateFrom)!= 0:truncate_history(truncateFrom)
+            if 'drop()' in getAction:return None        
+        Mode = 'IMMUTABLE'
+        signedWedgedMessage = createSignedWedgedMessageStatement() 
+        output('---------------55551 SENDING WEDGED STATEMENT TO OLYMPUS----------------')
+        send(('wedgedMessage',i,signedWedgedMessage,checkPointFlag,oldCheckPoint,curCheckPoint), to=p)        
+    
+    def receive(msg=('catchUp_Message', deltaHistory,catchUpNo),from_=p):
+        output('************************************************************************************************',level=20)                
+        output('---------------------55552 Receive CatchUp Messages from Olympus: ',catchUpNo,level=20)
+        failureClientRequest = 'catch_up('+str(catchUpNo)+')'
+        fStatus,getAction = checkForFailure(failureClientRequest)
+        output('----------555509 Failure Check:['+str(fStatus)+'] Failure action:'+str(getAction)+'-----------------------',level=20)
+        if getAction is not None:        
+            try:
+                sleeptime = [xy[6:8] for xy in getAction if 'sleep' in xy]                
+            except:
+                sleeptime = None            
+        if fStatus != 'notFound':
+            if 'crash()' in getAction:crash()
+            if len(sleeptime) != 0:sleep(int(sleeptime[0]))
+            if 'drop()' in getAction:return None
+
+        for s,hist in deltaHistory.items():
+            o = statement = hist[0]
+            torderProof = hist[1]
+            treqID = hist[2]
+            operation,key,value = utilities.parseTheUnsignedStatement(bytes(statement,'utf8'))
+            tresult = executeOperation(operation,key,value)
+            tempSignedOrderStatement,tempSignedResultStatement = createStatements(s,bytes(statement,'utf8'),tresult,False,False)                    
+            torderProof.append(tempSignedOrderStatement)    
+            # appendToReplicaHistory(s,bytes(o,'utf8'),torderProof,tresult,None,clientId)        
+        rDigest,encodedResult = utilities.hashDictionary(data)
+        output('---------------------55553 Data After Caught Up: ',data)
+        hashedRunningState=(rDigest,encodedResult)
+        # msg=json.dumps(hashedRunningState)
+        msg=str(hashedRunningState)
+        # output(msg)
+        bMsg = bytes(msg,'utf8')     
+        signedHashedRunningState = utilities.signTheStatement(replica_signing_key,bMsg)
+        # output('lastClientRequests: ',lastClientRequests)
+        send(('caught_up',i,signedHashedRunningState,lastClientRequests), to=p)
+    
+    def receive(msg=('get_running_state',getRunningStateNo),from_=p):
+        output('---------------------55558 Receive get_running_state request from Olympus-----------------------',level=20)
+        failureClientRequest = 'get_running_state('+str(getRunningStateNo)+')'
+        fStatus,getAction = checkForFailure(failureClientRequest)
+        output('----------555509 Failure Check:['+str(fStatus)+'] Failure action:'+str(getAction)+'-----------------------',level=20)
+        if getAction is not None:        
+            try:
+                sleeptime = [xy[6:8] for xy in getAction if 'sleep' in xy]                
+            except:
+                sleeptime = None
+        if fStatus != 'notFound':
+            if 'crash()' in getAction:crash()
+            if len(sleeptime) != 0:sleep(int(sleeptime[0]))
+            if 'drop()' in getAction:return None
+            if 'extra_op()' in getAction:extra_op()
+        # msg=json.dumps(data)
+        msg=str(data)
+        bMsg = bytes(msg,'utf8')     
+        signedRunningState = utilities.signTheStatement(replica_signing_key,bMsg)        
+        send(('running_state',i,signedRunningState), to=p)        
+
+    def receive(msg=('inithistStatement',inithistStatement),from_=p):
+        output('--------------------- Received Inithist Message from Olympus-----------------------',level=20)
+        data = inithistStatement[1]
+        output('--------------------- Data After Reconfiguration: ',data)
+
+    def receive(msg=('checkPointShuttle',checkPointShuttle,curCheckPt,checkPointShuttleNo),from_=p):
+        output('************************************************************************************************',level=20)                
+        output('--------------------555560 Received from Previous Replica, Check Point Shuttle Number :',checkPointShuttleNo,level=20)
+        if Mode != 'IMMUTABLE':
+            failureClientRequest = 'checkpoint('+str(checkPointShuttleNo)+')'
+            fStatus,getAction = checkForFailure(failureClientRequest)
+            output('---------------------555509 Failure Check:['+str(fStatus)+'] Failure action:'+str(getAction)+'-----------------------',level=20)
+            if getAction is not None:            
+                try:
+                    sleeptime = [xy[6:8] for xy in getAction if 'sleep' in xy]                
+                except:
+                    sleeptime = None
+            if fStatus != 'notFound':
+                if 'crash()' in getAction:crash()
+                if len(sleeptime) != 0:sleep(int(sleeptime[0]))
+                if 'drop()' in getAction:return None
+                if 'extra_op()' in getAction:extra_op()
+
+            curCheckPoint=curCheckPt
+            checkPointData = data.copy()
+            checkPointProof = checkPointShuttle
+            doCheckPointing(checkPointData)        
+            output('---------------------555561 Length of CheckPoint Proof:',len(checkPointProof))                
+            checkPointShuttle = checkPointProof
+            if i != noOfReplicas-1:
+                output('---------------------555561 Sending CheckPoint Shuttle To Next Replica -----------------',level=20)
+                send(('checkPointShuttle',checkPointShuttle,curCheckPt,checkPointShuttleNo), to=replicas[i+1][0])
+            elif i==noOfReplicas-1:                
+                completeCheckPointShuttle = checkPointShuttle
+                output('---------------------555562 Replicas CheckPoint Statement',checkPointData,level=20)                
+                verifyCheckPoints(checkPointShuttle,completeCheckPointShuttleNo)
+                completeCheckPointShuttleNo+=1
+        else:
+            output('--------------------- Replica:IMMUTABLE, will not continue checkpointing-----------------------',level=20)    
+
+    def receive(msg=('completeCheckPointShuttle',tecompleteCheckPointShuttle,completeCheckPointShuttleNo),from_=p):        
+        output('************************************************************************************************',level=20)                
+        output('---------------------555563 Received Completed CheckPoint Shuttle from Next Replica',completeCheckPointShuttleNo,level=20)
+        if Mode != 'IMMUTABLE':
+            output('---------------------555562 Replicas CheckPoint Statement',checkPointData,level=20)
+            verifyCheckPoints(tecompleteCheckPointShuttle,completeCheckPointShuttleNo)            
+        else:
+            output('--------------------- Replica:IMMUTABLE, will not continue checkpointing process -----------------------',level=20)       
+
+    def receive(msg=('KillProcess'),from_=p):
+        output('--------------------- KILLING CURRENT PROCESS -----------------------',level=20)
+        os._exit(-1)
+    
+    def receive(msg=('new_configuration',configNo),from_=p):
+        output('--------------------- Received New Configutation From Olympus:',configNo,level=20)
+        failureClientRequest = 'new_configuration('+str(configNo)+')'
+        fStatus,getAction = checkForFailure(failureClientRequest)
+        output('---------------------555509 Failure Check:['+str(fStatus)+'] Failure action:'+str(getAction)+'-----------------------',level=20)
+        if getAction is not None:        
+            try:
+                sleeptime = [xy[6:8] for xy in getAction if 'sleep' in xy]                
+            except:
+                sleeptime = None
+        if fStatus != 'notFound':
+            if 'crash()' in getAction:crash()
+            if len(sleeptime) != 0:sleep(int(sleeptime[0]))
+            if 'drop()' in getAction:return None
+            if 'extra_op()' in getAction: extra_op()
+
+        Mode = 'ACTIVE'
+
+    def verifyCheckPoints(tcompleteCheckPointShuttle,completeCheckPointShuttleNo):
+        output('--------------------555563 INSIDE: Verify CheckPoint Proofs -------------------------',level=20)
+        failureClientRequest = 'completed_checkpoint('+str(completeCheckPointShuttleNo)+')'
+        fStatus,getAction = checkForFailure(failureClientRequest)
+        output('---------------------555509 Failure Check:['+str(fStatus)+'] Failure action:'+str(getAction)+'-----------------------',level=20)
+        dropped = False
+        if getAction is not None:            
+            try:
+                sleeptime = [xy[6:8] for xy in getAction if 'sleep' in xy]                
+            except:
+                sleeptime = None
+        if fStatus != 'notFound':
+            if 'crash()' in getAction:crash()
+            if len(sleeptime) != 0:sleep(int(sleeptime[0]))
+            if 'drop()' in getAction:return None
+            
+
+        rDigest,encodedResult = utilities.hashDictionary(checkPointData)        
+        # rDigest,rEncodedMessage = hashTheRunningState(checkPointData)
+        checkPointVerified = checkPointProofIntegrity(tcompleteCheckPointShuttle,rDigest)
+
+        if fStatus != 'notFound':
+            if 'drop_checkpt_stmts()' in getAction:
+                output('-------------------- Length Before Dropping: ',len(tcompleteCheckPointShuttle),level=20)                    
+                output('-------------------- DROPPING T+1 CHECK POINT STATEMENTS---------------------------',level=20)
+                tcompleteCheckPointShuttle = tcompleteCheckPointShuttle[t+1:]
+                dropped = True                    
+                output('-------------------- Length After Dropping: ',len(tcompleteCheckPointShuttle),level=20)
+
+        output('-----------------555564 Check Point Verified',checkPointVerified,'----------------')
+        if checkPointVerified != 'False':
+            truncateReplicaHistory(curCheckPoint)
+            checkPointFlag = True
+            checkPointProof = tcompleteCheckPointShuttle.copy()
+            curCheckPoint += checkPointInterval
+            if i!=0:
+                output('---------------------555565 Sending Complete CheckPoint Shuttle:to Previous Replica: ['+str(i-1)+']',level=20)
+                send(('completeCheckPointShuttle',tcompleteCheckPointShuttle,completeCheckPointShuttleNo), to=replicas[i-1][0])    
+            elif i==0:
+                self.checkPointProof = list()
+        else:
+            sendReconfigurationRequestToOlympus()
+            output('---------------------Send Reconfiguration request to Olympus---------------',level=40)           
+
+    def hashTheRunningState(runningState):
+        output('--------------------- hashTheRunningState -----------------------',level=20)
+        msg=json.dumps(runningState)
+        return utilities.hashResult(msg)
+        
+    def doCheckPointing(runningState):
+        output('---------------------555566 Do CheckPointing -----------------------',level=20)
+        rDigest,encodedResult = utilities.hashDictionary(runningState)        
+        # rDigest,encodedResult = hashTheRunningState(runningState)
+        hashedRunningState = (rDigest,encodedResult)
+        checkPointHistory = replicaHistory
+        signedCheckpointStatement = createCheckPointStatements(rDigest,encodedResult)
+        checkPointProof.append(signedCheckpointStatement)        
+        #Return hash of running state replicaHistory
+
+    def createStatements(s,o,r,changeOrderSig,changeResultSig):
+        output("---------------------- Create Signed Order Statement and Result Statement with: slot: "+str(s)+", operation: "+str(o)+", result"+str(r)+"--------------",level=20)                
+        orderStatement = bytes(str('\'order\';'+str(s)+';'+o.decode("utf-8")),'utf8')
+        signedOrderStatement = utilities.signTheStatement(replica_signing_key,orderStatement)    
+        if changeOrderSig:
+            output('---------------------555590 Changing Order Signature -----------------------',level=20)            
+            signedlist = list(signedOrderStatement)
+            signedlist[0] = (signedlist[0] + 1) % 256
+            signedOrderStatement=bytes(signedlist)
+            # invalid_signed = nacl.signing.SignedMessage._from_parts(signed._signature, signed._message, newsigned)                
+        rDigest,encodedResult = utilities.hashResult(r)                      
+        resultStatement = bytes('\'result\';'+str(s)+';'+rDigest+';'+encodedResult,'utf8')        
+        signedResultStatement = utilities.signTheStatement(replica_signing_key,resultStatement)
+        if changeResultSig:
+            output('---------------------555591 Changing Result Signature -----------------------',level=20)                        
+            signedlist = list(signedResultStatement)
+            signedlist[0] = (signedlist[0] + 1) % 256
+            signedResultStatement=bytes(signedlist)
+
+        return signedOrderStatement,signedResultStatement
+    
+    def createCheckPointStatements(rDigest,encodedResult):
+        output("---------------------555567 Create Check Point Statement with: slot: -------------",level=20)                                            
+        # rDigest,encodedResult = utilities.hashResult(r)                      
+        checkPointStatement = bytes('\'checkpoint\';'+rDigest+';'+encodedResult,'utf8')        
+        signedcheckPointStatement = utilities.signTheStatement(replica_signing_key,checkPointStatement)        
+        return signedcheckPointStatement
+
+    def createSignedWedgedMessageStatement():
+        output("---------------------555568 Create Signed Wedged Message Statement  -------------",level=20)
+        wedgedMessage = dict()
+        UnsignedHist = replicaHistory
+        UnsignedCheckPointProof = [checkPointProof]
+        output("--------------------- Length of History:",len(UnsignedHist),level=20)
+        output("--------------------- CheckPoint Flag:",checkPointFlag,level=20)
+        # UnsignedHist = returnUnsignedHistory()
+        # UnsignedCheckPointProof = returnUnsignedCheckPointProofs()
+        # output('UnsignedCheckPointProof: ',UnsignedCheckPointProof)
+        # output('checkPointFlag: ',checkPointFlag)
+        if(checkPointFlag):
+            wedgedMessage = (UnsignedHist,UnsignedCheckPointProof)
+        else:
+            wedgedMessage = (UnsignedHist,None)
+        # output('wedgedMessage: ',wedgedMessage)
+        # output("--------- Length of CheckPoint Proof:",len(wedgedMessage[1]),level=20)                
+        msg=str(wedgedMessage)
+        output(msg)
+        bMsg = bytes(msg,'utf8')     
+        return utilities.signTheStatement(replica_signing_key,bMsg)    
+
+    def returnUnsignedHistory():
+        output("--------- Inside: return Unsigned History  -------------",level=20)
+        UnsignedHist = dict()
+        tempReplicaHist = replicaHistory
+        output('-----replicaHistory------',replicaHistory)
+        output('-----Reached Here1------')
+        for tkey,tmp in tempReplicaHist.items():                   
+            tempOrderProof = tmp[1]
+            newTempOrderProof = []
+            output('-----Reached Here2------')
+            numOfOP = len(tempOrderProof)     
+            output('-----Reached Here3------')   
+            tempii=0
+            verified = ''
+            while tempii < numOfOP:
+                output('-----Reached Here4------')
+                tempSignedOP = tempOrderProof[tempii]
+                try:
+                    temp_verify_key = utilities.decodeVerifyKey(replicas[tempii][1])                               
+                    verified = utilities.verifyTheStatement(temp_verify_key,tempSignedOP)
+                    newTempOrderProof.append(verified.decode('utf8'))
+                except:
+                    newTempOrderProof.append(tempSignedOP)
+                tempii+=1
+            UnsignedHist[tkey] = (tmp[0],newTempOrderProof,tmp[2])
+        return UnsignedHist
+    
+    def returnUnsignedCheckPointProofs():
+        output("--------- Inside: return Unsigned Check Point Proofs -------------",level=20)
+        numOfRP = len(checkPointProof)
+        tempii=0
+        UnsignedCP = list()
+        while tempii < numOfRP:            
+            tempSignedCheckPointStatement = checkPointProof[tempii]
+            try:
+                temp_verify_key = utilities.decodeVerifyKey(replicas[tempii][1])                
+                verified = utilities.verifyTheStatement(temp_verify_key,tempSignedCheckPointStatement)                
+                UnsignedCP.append(verified)  
+            except:
+                UnsignedCP.append(tempSignedCheckPointStatement)
+                  
+            tempii+=1
+        return UnsignedCP
+
+    def sendReconfigurationRequestToOlympus():
+        Mode = 'IMMUTABLE'
+        wedgedMessage = createSignedWedgedMessageStatement()
+        output("--------------------- FINALLY Sending Reconfigutation Request To Olympus -------------",level=40)
+        send(('reconfigurationRequest',), to=p)                
+        # send(('reconfigurationRequest',i,wedgedMessage), to=p)        
+
+    def appendToLastClientRequest(clientId,ReqID,result,tResultStatement,tResultProof):
+        lastClientRequests[clientId] = (ReqID,result,tResultStatement,tResultProof)
+
+    def checkForFailure(failureTrigger):
+        output("--------------------- Get Failure Action for: ",failureTrigger,level=20)        
+        try:
+            failureAction = failuresDict[failureTrigger]
+            return 'foundFailure',failureAction
+        except:
+            return 'notFound',None
+
+    def checkOrderProofIntegerity(slot,verifiedClientStatement,tempOrderProof):
+        output("--------------------- Check for Order Proof Integrity:[Order-Statements:Signatures] and Result--------------",level=20)        
+        numOfOP = len(tempOrderProof)        
+        tempii=0
+        verified = ''
+        while tempii < numOfOP:
+            temp_verify_key = utilities.decodeVerifyKey(replicas[tempii][1])            
+            tempSignedOP = tempOrderProof[tempii]
+            try:
+                verified = utilities.verifyTheStatement(temp_verify_key,tempSignedOP)
+                tempOrderStatement = verified.decode('utf-8').split(';')
+                tempSlot = tempOrderStatement[1] 
+                tempSignedStatement = tempOrderStatement[2]
+                if (str(slot) != tempSlot) or (tempSignedStatement != verifiedClientStatement):
+                    verified = 'False'
+                else:
+                    verified = 'True'
+            except:
+                verified = 'False'
+                break
+            tempii+=1
+        return verified
+
+    def verifyResultProofs(tempResultProof):
+        output("--------------------- Verifying:[Result-Statements:Signatures] --------------",level=20)        
+        numOfRP = len(tempResultProof)
+        tempi=0
+        verified = ''
+        if numOfRP == 0:
+            return 'False'
+        while tempi < numOfRP:           
+            try:
+                temp_verify_key = utilities.decodeVerifyKey(replicas[tempi][1])
+                tempSignedRP = tempResultProof[tempi]                
+                verified = utilities.verifyTheStatement(temp_verify_key,tempSignedRP)
+                verified ='True'
+            except:
+                verified = 'False'
+                break          
+            tempi+=1
+        return verified
+    
+    def checkResultProofIntegerity(tempResultProof,rDigest):
+        output("--------------------- Check for Result Proof Integrity:[Result-Statements:Signatures] and Result--------------",level=20)       
+        numOfRP = len(tempResultProof)
+        tempii=0
+        verified = ''
+        while tempii < numOfRP:
+            temp_verify_key = utilities.decodeVerifyKey(replicas[tempii][1])
+            tempSignedRP = tempResultProof[tempii]
+            try:
+                verified = utilities.verifyTheStatement(temp_verify_key,tempSignedRP)                
+                strVerified = verified.decode('utf8')
+                verifiedTuple = strVerified.split(';')
+                if utilities.checkHashResult(verifiedTuple[2],rDigest):
+                    verified = 'True'
+                else:
+                    verified = 'False'
+                    break
+            except:
+                verified = 'False' 
+                break         
+            tempii+=1
+        return verified    
+
+    def checkRequestIDInHistory(reqID):
+        output('--------------------- Check for Request Id: '+str(reqID)+' in history-----------------------',level=20)
+        return reqID in [x for v in replicaHistory.values() for x in v]
+
+    def checkSlotInHistory(slot,operation):
+        inHistory = 'false'
+        output("--------------------- Check for <Slot,Operation> Integrity--------------",level=20)
+        try:
+            op = replicaHistory[slot][0]
+            output('op',op)
+            if operation ==  op:
+                inHistory = 'validOperation'
+            elif operation != op:
+                inHistory = 'invalidOperation'
+        except:
+            pass
+        return inHistory
+
+    def checkForHoles(slot):
+        output("--------------------- Check for holes in Replica history --------------",level=20)
+        holes = False
+        if slot == oldCheckPoint+1 or slot == 0:
+            return holes
+        try:
+            op = replicaHistory[slot-1]         
+        except:
+            holes = True
+        return holes    
+
+    def unionOrderProofs(orderProof,signedOS):
+        output("--------------------- Making union of order statements: Order Proof --------------",level=20)
+        return orderProof.append(signedOS)
+
+    def unionResultProofs(resultProof,signedRS):
+        output("--------------------- Making union of result statements: Result Proof --------------",level=20)
+        return resultProof.append(signedRS)
+
+    def appendToReplicaHistory(s,o,orderProof,reqID,signedRequestStatement,clientId):
+        output("-------------------------- Append to Replica History slot:"+str(s)+" operation:"+str(o)+" request Id:"+str(reqID)+" --------------",level=20)
+        replicaHistory[s] = (o.decode('utf-8'),orderProof,reqID,signedRequestStatement,clientId)
+
+    def appendToResultCache(resultSh):
+        output("--------------------- Append Result to Result Cache --------------",level=20)
+        resultCache[resultSh[0]] = (resultSh[1],resultSh[2])
+
+    def getResultFromResultCache(requestID):
+        output("--------------------- Get Result From Result Cache --------------",level=20)        
+        try:
+            tempResult = resultCache[requestID]
+            return 'Found',(requestID,tempResult[0],tempResult[1])
+        except KeyError:
+            return 'NoResult',None
+    
+    def changeOperation():
+        return 'get'
+    
+    def changeResult():
+        return 'OK'
+    
+    def dropResultStatement(resultProofToTruncate):
+        output("--------------------- Dropping Heads Result Statement --------------",level=20)        
+        numOfRP = len(resultProofToTruncate)        
+        verified = ''        
+        temp_verify_key = utilities.decodeVerifyKey(replicas[0][1])
+        tempSignedRP = resultProofToTruncate[0]
+        try:
+            verified = utilities.verifyTheStatement(temp_verify_key,tempSignedRP)            
+            resultProofToTruncate.pop(0)
+        except:
+            verified = 'False'    
+        return resultProofToTruncate
+    
+    def crash():
+        output('---------------------555594 Changing Order Signature -----------------------',level=20)            
+        logging.shutdown()
+        os._exit(-1)
+    
+    def truncate_history(n):
+        output('---------------------555593 Before Truncate',replicaHistory,level=20)       
+        end = max(replicaHistory)
+        output('end',end)
+        output('n',n[0])
+        start = end - int(n[0])
+        for sri in range(start,end):
+            try:
+                del replicaHistory[sri]     
+            except: pass
+        output('---------------------555593 After Truncate',replicaHistory,level=20)       
+    
+    def sleep(stime):
+        output('---------------------555595 [[Sleep]] -----------------------',level=20)                                  
+        time.sleep(stime)
+    
+    def drop():
+        pass   
+    
+    def extra_op():
+        output('---------------------555595 Extra Operation  -----------------------',level=20)                                         
+        executeOperation('put','a','a')
+        output('Data after extra op: ',data)
+
+    
+    def drop_checkpt_stmts():
+        output('---------------------555596 Drop CheckPoint Statements -----------------------',level=20)
+        checkPointProof = (noOfReplicas-1)/2
+           
+    def checkPointProofIntegrity(completeCheckPointShuttle,rDigest):
+        output("--------------------- Check for CheckPoint Proof Integrity:[CheckPoint statements:Signatures] and Result--------------",level=20)       
+        numOfRP = len(completeCheckPointShuttle)
+        # output('numOfRP:  ',numOfRP)
+        # output('completeCheckPointShuttle:  ',completeCheckPointShuttle)
+        tempii=0
+        verified = ''
+        if numOfRP != noOfReplicas:
+            verified = 'False'
+            output('---------------------Incomplete Checkpoint Statements-----------------',level=40)
+            return verified
+        while tempii < numOfRP:
+            # output('tempii:  ',tempii)
+            temp_verify_key = utilities.decodeVerifyKey(replicas[tempii][1])
+            tempSignedCheckPointStatement = completeCheckPointShuttle[tempii]
+            # output('tempSignedCheckPointStatement: ',numOfRP)
+            try:
+                verified = utilities.verifyTheStatement(temp_verify_key,tempSignedCheckPointStatement)                
+                # output('vCheckPoint',verified)
+                strVerified = verified.decode('utf8')
+                # output('sCheckPoint',strVerified)
+                verifiedTuple = strVerified.split(';')
+                # output('rec: ',verifiedTuple[1])
+                # output('my: ',rDigest)                
+                if utilities.checkHashResult(verifiedTuple[1],rDigest):
+                    verified = 'True'
+                else:
+                    verified = 'False'
+                    break
+            except:
+                verified = 'False' 
+                break         
+            tempii+=1
+        return verified
+    
+    def truncateReplicaHistory(curCheckPoint):
+        output('---------------------555566 Truncate Replica History -----------------------',level=20)        
+        output('---------------------Length of Replica History Before Truncate: ',len(replicaHistory))
+        for key in range(oldCheckPoint,curCheckPoint+1):
+            if key in replicaHistory.keys():
+                del replicaHistory[key]
+        output('---------------------Length of Replica History After Truncate: ',len(replicaHistory))        
+        oldCheckPoint = curCheckPoint
+        curCheckPoint += checkPointInterval
+        # del checkPointProof[:]        
+        output('--------------------- 555566 Old Checkpoint: ',oldCheckPoint)
+        output('--------------------- 555566 New Checkpoint: ',curCheckPoint)
+
+    def addToDictionary(key,val):
+        try:
+            data[key]=val
+            return 'OK'
+        except:
+            return 'Fail'
+
+    def getFrom(key,val):
+        try:
+            return data[key]
+        except:
+            return ''
+
+    def appendDictionary(key,val):
+        try:
+            valueExsist = data[key]
+            data[key] = valueExsist+val
+            return 'OK'
+        except:
+            return 'fail'
+
+    def sliceDictionary(key,val):
+        try:            
+            value = data[key]
+            indices = val.split(':')            
+            data[key] = value[int(indices[0]):int(indices[1])]
+            return 'OK'
+        except:
+            return 'fail'
+
+    def executeOperation(operation,key,val):
+        output("--------------------- Executing Operation to updata client dictionary with: --------------",level=20)
+        
+        function_launch = {
+            'put': addToDictionary,
+            'get': getFrom,
+            'append': appendDictionary,
+            'slice': sliceDictionary
+        }
+        
+        return(function_launch[operation](str(key), str(val)))
+
+def main():
+    output("---------------ENTERING main---------------------")
+    config(channel = 'reliable')
+    config(channel = 'fifo')
+    olympus = new(Olympus,args=(),at='olympus')    
+    start(olympus)

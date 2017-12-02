@@ -1,0 +1,364 @@
+[2017-11-22 22:58:18,542] da.sim.Router<MainProcess>:INFO: Bootstrap succeeded using <UdpTransport(127.0.0.1:20049)>.
+[2017-11-22 22:58:18,542] da.api<MainProcess>:INFO: <Node_:olympus> initialized at 127.0.0.1:(UdpTransport=20049, TcpTransport=10063).
+[2017-11-22 22:58:18,542] da.api<MainProcess>:INFO: Starting program <module 'ByzantineFaultTolerantProtocol' from 'C:\\Users\\SSDN-Dinesh\\Desktop\\SBU\\ASYNC\\New Folder\\Asynchronous-Systems\\phase3\\ByzantineFaultTolerantProtocol.py'>...
+[2017-11-22 22:58:18,542] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-11-22 22:58:18,542] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-11-22 22:58:18,542] ByzantineFaultTolerantProtocol.Node_<Node_:olympus>:OUTPUT: ---------------ENTERING main---------------------
+[2017-11-22 22:58:18,696] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING Olymus:setup ---------------
+[2017-11-22 22:58:18,696] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:OUTPUT: <Olympus:25002#olympus>
+[2017-11-22 22:58:18,696] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup ---------------
+[2017-11-22 22:58:18,696] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createKeys for clients and replicas---------------
+[2017-11-22 22:58:18,696] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createClientProcesses---------------
+[2017-11-22 22:58:18,696] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: Waiting to resolve name 'Client0'...
+[2017-11-22 22:58:18,843] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: Waiting to resolve name 'Client1'...
+[2017-11-22 22:58:19,012] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createKeys for clients and replicas---------------
+[2017-11-22 22:58:19,012] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createReplicaProcesses---------------
+[2017-11-22 22:58:19,012] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: Waiting to resolve name 'Replica0'...
+[2017-11-22 22:58:19,188] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: Waiting to resolve name 'Replica1'...
+[2017-11-22 22:58:19,364] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: Waiting to resolve name 'Replica2'...
+[2017-11-22 22:58:19,580] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Send New Configuration to Olympus --------------
+[2017-11-22 22:58:19,580] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- CREATING INIHIST MESSAGE --------------
+[2017-11-22 22:58:19,580] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:OUTPUT: ---in run--- [{<Client:36002#Client0>}, {<Client:dd002#Client1>}]
+[2017-11-22 22:58:19,580] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:OUTPUT: ---start_time--- 1511409499.5809083
+[2017-11-22 22:58:19,580] da.api<MainProcess>:INFO: Main process terminated.
+[2017-11-22 22:58:19,580] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: **********************************************************************************
+[2017-11-22 22:58:19,580] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING olympus:receieve:requestConfiguration ---------------
+[2017-11-22 22:58:19,580] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING olympus:receieve:requestNewConfiguration ---------------
+[2017-11-22 22:58:19,580] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: **********************************************************************************
+[2017-11-22 22:58:19,580] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING olympus:receieve:requestConfiguration ---------------
+[2017-11-22 22:58:19,580] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING olympus:receieve:requestNewConfiguration ---------------
+[2017-11-22 22:58:19,580] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING olympus:receieve:requestNewConfiguration ---------------
+[2017-11-22 22:58:19,580] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING olympus:receieve:requestNewConfiguration ---------------
+[2017-11-22 22:58:19,603] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: **********************************************************************************
+[2017-11-22 22:58:19,603] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client: 0
+[2017-11-22 22:58:19,603] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary 
+[2017-11-22 22:58:19,603] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put movie star
+[2017-11-22 22:58:19,618] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: **********************************************************************************
+[2017-11-22 22:58:19,618] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client: 1
+[2017-11-22 22:58:19,618] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary 
+[2017-11-22 22:58:19,618] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put jedi luke skywalker
+[2017-11-22 22:58:19,649] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: **********************************************************************************
+[2017-11-22 22:58:19,649] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key: movie
+[2017-11-22 22:58:19,649] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Sending globaData to client: ['OK', 'star']
+[2017-11-22 22:58:19,665] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING olympus:receieve:requestNewConfiguration ---------------
+[2017-11-22 22:58:19,665] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING olympus:receieve:requestNewConfiguration ---------------
+[2017-11-22 22:58:19,681] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: **********************************************************************************
+[2017-11-22 22:58:19,681] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client: 0
+[2017-11-22 22:58:19,681] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary 
+[2017-11-22 22:58:19,681] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- append movie wars
+[2017-11-22 22:58:19,697] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: **********************************************************************************
+[2017-11-22 22:58:19,697] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key: jedi
+[2017-11-22 22:58:19,697] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Sending globaData to client: ['OK', 'luke skywalker']
+[2017-11-22 22:58:19,703] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: **********************************************************************************
+[2017-11-22 22:58:19,703] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: ---------------7777001 ENTERING Received Request ReConfiguration:  ---------------
+[2017-11-22 22:58:19,703] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: ---------------7777002 Send Wedged Requests to all replicas --------------
+[2017-11-22 22:58:19,703] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Send Wedged Requests to replica: 0 --------------
+[2017-11-22 22:58:19,703] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Send Wedged Requests to replica: 1 --------------
+[2017-11-22 22:58:19,703] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Send Wedged Requests to replica: 2 --------------
+[2017-11-22 22:58:19,703] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING olympus:receieve:requestNewConfiguration ---------------
+[2017-11-22 22:58:19,703] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING olympus:receieve:requestNewConfiguration ---------------
+[2017-11-22 22:58:19,703] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: **********************************************************************************
+[2017-11-22 22:58:19,703] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: ---------------7777003 Receieved Wedged Requests from replica: 0 --------------
+[2017-11-22 22:58:19,703] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:OUTPUT: ---------------Verified Signature:  True
+[2017-11-22 22:58:19,703] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: **********************************************************************************
+[2017-11-22 22:58:19,703] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: ---------------7777003 Receieved Wedged Requests from replica: 1 --------------
+[2017-11-22 22:58:19,718] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:OUTPUT: ---------------Verified Signature:  True
+[2017-11-22 22:58:19,718] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: **********************************************************************************
+[2017-11-22 22:58:19,718] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: ---------------7777003 Receieved Wedged Requests from replica: 2 --------------
+[2017-11-22 22:58:19,718] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:OUTPUT: ---------------Verified Signature:  True
+[2017-11-22 22:58:20,720] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: **********************************************************************************
+[2017-11-22 22:58:20,720] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Making Combinations of Quorum --------------
+[2017-11-22 22:58:20,720] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Set of quorums:  [(0, 1), (0, 2), (1, 2)]
+[2017-11-22 22:58:20,720] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: **********************************************************************************
+[2017-11-22 22:58:20,720] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Selecting Quorum:  0
+[2017-11-22 22:58:20,720] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Current Quorum contains:  (0, 1)
+[2017-11-22 22:58:20,720] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: **********************************************************************************
+[2017-11-22 22:58:20,720] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: ---------------7777002a ENTERING Execute Reconfiguration ---------------
+[2017-11-22 22:58:20,720] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Old Check Point:  0
+[2017-11-22 22:58:20,720] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Current Check Point:  0
+[2017-11-22 22:58:20,720] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Check Point Flag:  0
+[2017-11-22 22:58:20,720] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: **********************************************************************************
+[2017-11-22 22:58:20,720] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING Check Consistent Histories ---------------
+[2017-11-22 22:58:20,720] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: **********************************************************************************
+[2017-11-22 22:58:20,720] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING Check Valid History ---------------
+[2017-11-22 22:58:20,720] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:ERROR: ---------------Holes Found in History VERIFIED HISTORY False
+[2017-11-22 22:58:20,720] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:ERROR: ---------------Histories Inconsitent Send Wedged Request to Another Quorum--------------
+[2017-11-22 22:58:20,720] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: **********************************************************************************
+[2017-11-22 22:58:20,720] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Selecting Quorum:  1
+[2017-11-22 22:58:20,720] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Current Quorum contains:  (0, 2)
+[2017-11-22 22:58:20,720] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: **********************************************************************************
+[2017-11-22 22:58:20,720] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: ---------------7777002a ENTERING Execute Reconfiguration ---------------
+[2017-11-22 22:58:20,720] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Old Check Point:  0
+[2017-11-22 22:58:20,720] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Current Check Point:  0
+[2017-11-22 22:58:20,720] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Check Point Flag:  0
+[2017-11-22 22:58:20,720] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: **********************************************************************************
+[2017-11-22 22:58:20,720] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING Check Consistent Histories ---------------
+[2017-11-22 22:58:20,720] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: **********************************************************************************
+[2017-11-22 22:58:20,720] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING Check Valid History ---------------
+[2017-11-22 22:58:20,735] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:ERROR: ---------------Holes Found in History VERIFIED HISTORY False
+[2017-11-22 22:58:20,735] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:ERROR: ---------------Histories Inconsitent Send Wedged Request to Another Quorum--------------
+[2017-11-22 22:58:20,735] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: **********************************************************************************
+[2017-11-22 22:58:20,735] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Selecting Quorum:  2
+[2017-11-22 22:58:20,735] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Current Quorum contains:  (1, 2)
+[2017-11-22 22:58:20,735] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: **********************************************************************************
+[2017-11-22 22:58:20,735] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: ---------------7777002a ENTERING Execute Reconfiguration ---------------
+[2017-11-22 22:58:20,735] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Old Check Point:  0
+[2017-11-22 22:58:20,735] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Current Check Point:  0
+[2017-11-22 22:58:20,735] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Check Point Flag:  0
+[2017-11-22 22:58:20,735] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: **********************************************************************************
+[2017-11-22 22:58:20,735] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING Check Consistent Histories ---------------
+[2017-11-22 22:58:20,735] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: **********************************************************************************
+[2017-11-22 22:58:20,735] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING Check Valid History ---------------
+[2017-11-22 22:58:20,767] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: ---------------VERIFIED HISTORY True
+[2017-11-22 22:58:20,767] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: ---------------Verified Checkpoint True
+[2017-11-22 22:58:20,767] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: ---------------Histories and Checkpoints Verified --------------
+[2017-11-22 22:58:20,767] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING Assign Checkpoint proof ---------------
+[2017-11-22 22:58:20,767] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: **********************************************************************************
+[2017-11-22 22:58:20,767] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING Calculate Longest History ---------------
+[2017-11-22 22:58:20,767] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Length of Longest History:  2
+[2017-11-22 22:58:20,767] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Send CatchUp Requests to quorum of replicas  --------------
+[2017-11-22 22:58:20,767] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Current Quorum:  (1, 2)
+[2017-11-22 22:58:20,767] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Send CatchUp Requests to replica : 1  --------------
+[2017-11-22 22:58:20,767] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Calculate Replica Delta History for Replica: 1--------------
+[2017-11-22 22:58:20,767] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: -------------- Length of Current Replica History:  2
+[2017-11-22 22:58:20,767] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: -------------- Last CheckPoint of Replica:  0
+[2017-11-22 22:58:20,767] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: -------------- Length of Longest History:  2
+[2017-11-22 22:58:20,767] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:OUTPUT: ********************************
+[2017-11-22 22:58:20,767] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: -------------- Length of Delta History:  0
+[2017-11-22 22:58:20,767] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Send CatchUp Requests to replica : 2  --------------
+[2017-11-22 22:58:20,767] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Calculate Replica Delta History for Replica: 2--------------
+[2017-11-22 22:58:20,767] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: -------------- Length of Current Replica History:  2
+[2017-11-22 22:58:20,767] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: -------------- Last CheckPoint of Replica:  0
+[2017-11-22 22:58:20,767] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: -------------- Length of Longest History:  2
+[2017-11-22 22:58:20,767] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:OUTPUT: ********************************
+[2017-11-22 22:58:20,767] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: -------------- Length of Delta History:  0
+[2017-11-22 22:58:20,767] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: **********************************************************************************
+[2017-11-22 22:58:20,767] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: ---------------7777005 Receieved caught_up from replica: 1 --------------
+[2017-11-22 22:58:20,767] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:OUTPUT: ---------------Verified Signature:  True
+[2017-11-22 22:58:20,767] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: **********************************************************************************
+[2017-11-22 22:58:20,767] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: ---------------7777005 Receieved caught_up from replica: 2 --------------
+[2017-11-22 22:58:20,782] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:OUTPUT: ---------------Verified Signature:  True
+[2017-11-22 22:58:20,782] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Receieved caught_ups from quorum of replicas --------------
+[2017-11-22 22:58:20,782] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: ---------------77777010 ENTERING Check Caught Up Messages ---------------
+[2017-11-22 22:58:20,782] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:OUTPUT: ---------------Length of Caught Up Message Set 2
+[2017-11-22 22:58:20,782] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:OUTPUT: --------- I gave 1:
+[2017-11-22 22:58:20,782] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Send Get Running State To Replica:1 --------------
+[2017-11-22 22:58:20,782] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: ---------------7777007 Receieved running_state from replica : 1 --------------
+[2017-11-22 22:58:20,782] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:OUTPUT: ---------------Verified Signature:  True
+[2017-11-22 22:58:20,782] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:OUTPUT: ch:  ('ca1ca741752123da380d7573f20dbb924e7eb6648ca6cad3849f37fe8426aa9f', '7b226d6f766965223a202273746172222c20226a656469223a20226c756b6520736b7977616c6b6572227d')
+[2017-11-22 22:58:20,782] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:OUTPUT: rDigest:  ca1ca741752123da380d7573f20dbb924e7eb6648ca6cad3849f37fe8426aa9f
+[2017-11-22 22:58:20,782] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- CREATING NEW CONFIGUTAION --------------
+[2017-11-22 22:58:20,782] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- KILLING EXSISTING PROCESSES --------------
+[2017-11-22 22:58:20,782] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createKeys for clients and replicas---------------
+[2017-11-22 22:58:20,782] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createReplicaProcesses---------------
+[2017-11-22 22:58:21,352] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Send New Configuration to Olympus --------------
+[2017-11-22 22:58:21,352] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- CREATING INIHIST MESSAGE --------------
+[2017-11-22 22:58:21,352] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Send New Configuration to Olympus --------------
+[2017-11-22 22:58:21,352] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- CREATING INIHIST MESSAGE --------------
+[2017-11-22 22:58:21,352] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- SEND INITHIST STATEMENTS --------------
+[2017-11-22 22:58:21,352] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- CREATING INIHIST MESSAGE --------------
+[2017-11-22 22:58:21,368] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Check For Consistent ResultStatements --------------
+[2017-11-22 22:58:21,368] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Last Result Statement for Client 0
+[2017-11-22 22:58:21,368] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Request ID 2782
+[2017-11-22 22:58:21,368] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- CREATING RESULT SHUTTLE FOR CLIENT: 0
+[2017-11-22 22:58:21,368] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Last Result Statement for Client 1
+[2017-11-22 22:58:21,368] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Request ID 103690
+[2017-11-22 22:58:21,368] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- CREATING RESULT SHUTTLE FOR CLIENT: 1
+[2017-11-22 22:58:21,368] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:OUTPUT: -----------REINITIALIZE DICTIONARY-------------
+[2017-11-22 22:58:21,368] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:OUTPUT: ---new running state--- {'movie': 'star', 'jedi': 'luke skywalker'}
+[2017-11-22 22:58:21,368] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:OUTPUT: globalData {}
+[2017-11-22 22:58:21,368] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:OUTPUT: globalData {'movie': ['OK', 'star'], 'jedi': ['OK', 'luke skywalker']}
+[2017-11-22 22:58:21,368] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Send Results To Clients  --------------
+[2017-11-22 22:58:21,368] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: **********************************************************************************
+[2017-11-22 22:58:21,368] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key: movie
+[2017-11-22 22:58:21,368] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Sending globaData to client: ['OK', 'star']
+[2017-11-22 22:58:21,368] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: **********************************************************************************
+[2017-11-22 22:58:21,368] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key: jedi
+[2017-11-22 22:58:21,368] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Sending globaData to client: ['OK', 'luke skywalker']
+[2017-11-22 22:58:21,383] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: **********************************************************************************
+[2017-11-22 22:58:21,383] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: ---------------7777001 ENTERING Received Request ReConfiguration:  ---------------
+[2017-11-22 22:58:21,383] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: ---------------7777002 Send Wedged Requests to all replicas --------------
+[2017-11-22 22:58:21,383] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Send Wedged Requests to replica: 0 --------------
+[2017-11-22 22:58:21,383] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Send Wedged Requests to replica: 1 --------------
+[2017-11-22 22:58:21,383] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Send Wedged Requests to replica: 2 --------------
+[2017-11-22 22:58:21,383] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: **********************************************************************************
+[2017-11-22 22:58:21,383] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: ---------------7777001 ENTERING Received Request ReConfiguration:  ---------------
+[2017-11-22 22:58:21,383] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:ERROR: --------------- Already in Reconfiguration ---------------
+[2017-11-22 22:58:21,383] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: **********************************************************************************
+[2017-11-22 22:58:21,383] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: ---------------7777003 Receieved Wedged Requests from replica: 0 --------------
+[2017-11-22 22:58:21,383] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:OUTPUT: ---------------Verified Signature:  True
+[2017-11-22 22:58:21,383] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: **********************************************************************************
+[2017-11-22 22:58:21,383] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: ---------------7777003 Receieved Wedged Requests from replica: 1 --------------
+[2017-11-22 22:58:21,383] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:OUTPUT: ---------------Verified Signature:  True
+[2017-11-22 22:58:21,383] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: **********************************************************************************
+[2017-11-22 22:58:21,383] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: ---------------7777003 Receieved Wedged Requests from replica: 2 --------------
+[2017-11-22 22:58:21,383] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:OUTPUT: ---------------Verified Signature:  True
+[2017-11-22 22:58:22,385] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: **********************************************************************************
+[2017-11-22 22:58:22,385] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Making Combinations of Quorum --------------
+[2017-11-22 22:58:22,385] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Set of quorums:  [(0, 1), (0, 2), (1, 2)]
+[2017-11-22 22:58:22,385] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: **********************************************************************************
+[2017-11-22 22:58:22,385] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Selecting Quorum:  0
+[2017-11-22 22:58:22,385] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Current Quorum contains:  (0, 1)
+[2017-11-22 22:58:22,385] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: **********************************************************************************
+[2017-11-22 22:58:22,385] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: ---------------7777002a ENTERING Execute Reconfiguration ---------------
+[2017-11-22 22:58:22,385] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Old Check Point:  0
+[2017-11-22 22:58:22,385] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Current Check Point:  0
+[2017-11-22 22:58:22,385] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Check Point Flag:  0
+[2017-11-22 22:58:22,385] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: **********************************************************************************
+[2017-11-22 22:58:22,385] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING Check Consistent Histories ---------------
+[2017-11-22 22:58:22,385] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: **********************************************************************************
+[2017-11-22 22:58:22,385] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING Check Valid History ---------------
+[2017-11-22 22:58:22,385] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: ---------------VERIFIED HISTORY True
+[2017-11-22 22:58:22,385] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: ---------------Verified Checkpoint True
+[2017-11-22 22:58:22,385] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: ---------------Histories and Checkpoints Verified --------------
+[2017-11-22 22:58:22,385] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING Assign Checkpoint proof ---------------
+[2017-11-22 22:58:22,385] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: **********************************************************************************
+[2017-11-22 22:58:22,385] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING Calculate Longest History ---------------
+[2017-11-22 22:58:22,385] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Length of Longest History:  0
+[2017-11-22 22:58:22,385] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Send CatchUp Requests to quorum of replicas  --------------
+[2017-11-22 22:58:22,385] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Current Quorum:  (0, 1)
+[2017-11-22 22:58:22,385] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Send CatchUp Requests to replica : 0  --------------
+[2017-11-22 22:58:22,385] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Calculate Replica Delta History for Replica: 0--------------
+[2017-11-22 22:58:22,385] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: -------------- Length of Current Replica History:  0
+[2017-11-22 22:58:22,385] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: -------------- Last CheckPoint of Replica:  0
+[2017-11-22 22:58:22,385] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: -------------- Length of Longest History:  0
+[2017-11-22 22:58:22,385] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:OUTPUT: ********************************
+[2017-11-22 22:58:22,385] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: -------------- Length of Delta History:  0
+[2017-11-22 22:58:22,385] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Send CatchUp Requests to replica : 1  --------------
+[2017-11-22 22:58:22,385] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Calculate Replica Delta History for Replica: 1--------------
+[2017-11-22 22:58:22,385] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: -------------- Length of Current Replica History:  0
+[2017-11-22 22:58:22,385] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: -------------- Last CheckPoint of Replica:  0
+[2017-11-22 22:58:22,385] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: -------------- Length of Longest History:  0
+[2017-11-22 22:58:22,385] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:OUTPUT: ********************************
+[2017-11-22 22:58:22,385] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: -------------- Length of Delta History:  0
+[2017-11-22 22:58:22,400] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: **********************************************************************************
+[2017-11-22 22:58:22,401] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: ---------------7777005 Receieved caught_up from replica: 0 --------------
+[2017-11-22 22:58:22,405] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:OUTPUT: ---------------Verified Signature:  True
+[2017-11-22 22:58:22,406] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: **********************************************************************************
+[2017-11-22 22:58:22,407] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: ---------------7777005 Receieved caught_up from replica: 1 --------------
+[2017-11-22 22:58:22,407] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:OUTPUT: ---------------Verified Signature:  True
+[2017-11-22 22:58:22,407] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Receieved caught_ups from quorum of replicas --------------
+[2017-11-22 22:58:22,407] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: ---------------77777010 ENTERING Check Caught Up Messages ---------------
+[2017-11-22 22:58:22,407] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:OUTPUT: ---------------Length of Caught Up Message Set 2
+[2017-11-22 22:58:22,407] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:OUTPUT: --------- I gave 1:
+[2017-11-22 22:58:22,407] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Send Get Running State To Replica:0 --------------
+[2017-11-22 22:58:22,407] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: ---------------7777007 Receieved running_state from replica : 0 --------------
+[2017-11-22 22:58:22,407] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:OUTPUT: ---------------Verified Signature:  True
+[2017-11-22 22:58:22,407] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:OUTPUT: ch:  ('ca1ca741752123da380d7573f20dbb924e7eb6648ca6cad3849f37fe8426aa9f', '7b226d6f766965223a202273746172222c20226a656469223a20226c756b6520736b7977616c6b6572227d')
+[2017-11-22 22:58:22,407] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:OUTPUT: rDigest:  ca1ca741752123da380d7573f20dbb924e7eb6648ca6cad3849f37fe8426aa9f
+[2017-11-22 22:58:22,407] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- CREATING NEW CONFIGUTAION --------------
+[2017-11-22 22:58:22,407] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- KILLING EXSISTING PROCESSES --------------
+[2017-11-22 22:58:22,407] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createKeys for clients and replicas---------------
+[2017-11-22 22:58:22,407] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING Olymus:initialSetup:createReplicaProcesses---------------
+[2017-11-22 22:58:22,875] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Send New Configuration to Olympus --------------
+[2017-11-22 22:58:22,875] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- CREATING INIHIST MESSAGE --------------
+[2017-11-22 22:58:22,875] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Send New Configuration to Olympus --------------
+[2017-11-22 22:58:22,875] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- CREATING INIHIST MESSAGE --------------
+[2017-11-22 22:58:22,875] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- SEND INITHIST STATEMENTS --------------
+[2017-11-22 22:58:22,875] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- CREATING INIHIST MESSAGE --------------
+[2017-11-22 22:58:22,875] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Check For Consistent ResultStatements --------------
+[2017-11-22 22:58:22,875] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:OUTPUT: -----------REINITIALIZE DICTIONARY-------------
+[2017-11-22 22:58:22,875] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:OUTPUT: ---new running state--- {'movie': 'star', 'jedi': 'luke skywalker'}
+[2017-11-22 22:58:22,875] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:OUTPUT: globalData {}
+[2017-11-22 22:58:22,875] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:OUTPUT: globalData {'movie': ['OK', 'star'], 'jedi': ['OK', 'luke skywalker']}
+[2017-11-22 22:58:22,875] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Send Results To Clients  --------------
+[2017-11-22 22:58:24,408] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Replica not replying ---------------
+[2017-11-22 22:58:24,408] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:OUTPUT: receivedRunningState False
+[2017-11-22 22:58:24,408] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:OUTPUT: inReconfig False
+[2017-11-22 22:58:25,409] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Replica not replying ---------------
+[2017-11-22 22:58:25,409] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:OUTPUT: receivedRunningState False
+[2017-11-22 22:58:25,409] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:OUTPUT: inReconfig False
+[2017-11-22 22:58:29,684] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING olympus:receieve:requestNewConfiguration ---------------
+[2017-11-22 22:58:29,715] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING olympus:receieve:requestNewConfiguration ---------------
+[2017-11-22 22:58:43,745] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING olympus:receieve:requestNewConfiguration ---------------
+[2017-11-22 22:58:43,780] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING olympus:receieve:requestNewConfiguration ---------------
+[2017-11-22 22:58:44,803] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: **********************************************************************************
+[2017-11-22 22:58:44,803] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client: 0
+[2017-11-22 22:58:44,803] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary 
+[2017-11-22 22:58:44,803] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- append movie wars
+[2017-11-22 22:58:44,841] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: **********************************************************************************
+[2017-11-22 22:58:44,841] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client: 1
+[2017-11-22 22:58:44,841] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary 
+[2017-11-22 22:58:44,841] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- slice jedi 0:4
+[2017-11-22 22:58:44,857] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: **********************************************************************************
+[2017-11-22 22:58:44,857] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key: movie
+[2017-11-22 22:58:44,857] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Sending globaData to client: ['OK', 'starwars']
+[2017-11-22 22:58:44,872] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING olympus:receieve:requestNewConfiguration ---------------
+[2017-11-22 22:58:44,872] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING olympus:receieve:requestNewConfiguration ---------------
+[2017-11-22 22:58:44,872] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: **********************************************************************************
+[2017-11-22 22:58:44,872] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client: 0
+[2017-11-22 22:58:44,872] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary 
+[2017-11-22 22:58:44,872] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- get movie 
+[2017-11-22 22:58:44,888] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: **********************************************************************************
+[2017-11-22 22:58:44,888] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key: jedi
+[2017-11-22 22:58:44,888] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Sending globaData to client: ['OK', 'luke']
+[2017-11-22 22:58:44,903] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING olympus:receieve:requestNewConfiguration ---------------
+[2017-11-22 22:58:44,903] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING olympus:receieve:requestNewConfiguration ---------------
+[2017-11-22 22:58:44,903] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: **********************************************************************************
+[2017-11-22 22:58:44,903] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client: 1
+[2017-11-22 22:58:44,903] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary 
+[2017-11-22 22:58:44,903] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- get jedi 
+[2017-11-22 22:58:44,919] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: **********************************************************************************
+[2017-11-22 22:58:44,919] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key: jedi
+[2017-11-22 22:58:44,919] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Sending globaData to client: ['', 'luke', '']
+[2017-11-22 22:58:44,919] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: **********************************************************************************
+[2017-11-22 22:58:44,919] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key: movie
+[2017-11-22 22:58:44,919] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Sending globaData to client: ['', 'starwars', '']
+[2017-11-22 22:58:44,944] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING olympus:receieve:requestNewConfiguration ---------------
+[2017-11-22 22:58:44,945] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING olympus:receieve:requestNewConfiguration ---------------
+[2017-11-22 22:58:44,954] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: **********************************************************************************
+[2017-11-22 22:58:44,955] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key: movie
+[2017-11-22 22:58:44,955] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Sending globaData to client: ['', 'starwars', '']
+[2017-11-22 22:58:44,968] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: **********************************************************************************
+[2017-11-22 22:58:44,968] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key: jedi
+[2017-11-22 22:58:44,968] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Sending globaData to client: ['', 'luke', '']
+[2017-11-22 22:58:44,980] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: **********************************************************************************
+[2017-11-22 22:58:44,980] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key: movie
+[2017-11-22 22:58:44,980] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Sending globaData to client: ['', 'starwars', '']
+[2017-11-22 22:58:44,997] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: **********************************************************************************
+[2017-11-22 22:58:44,997] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client: 0
+[2017-11-22 22:58:45,000] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary 
+[2017-11-22 22:58:45,000] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- put movie star
+[2017-11-22 22:58:45,001] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: **********************************************************************************
+[2017-11-22 22:58:45,001] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key: jedi
+[2017-11-22 22:58:45,001] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Sending globaData to client: ['', 'luke', '']
+[2017-11-22 22:58:45,009] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: **********************************************************************************
+[2017-11-22 22:58:45,009] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key: movie
+[2017-11-22 22:58:45,009] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Sending globaData to client: ['OK', 'star']
+[2017-11-22 22:58:45,013] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: **********************************************************************************
+[2017-11-22 22:58:45,013] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key: jedi
+[2017-11-22 22:58:45,014] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Sending globaData to client: ['', 'luke', '']
+[2017-11-22 22:58:45,026] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING olympus:receieve:requestNewConfiguration ---------------
+[2017-11-22 22:58:45,027] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:OUTPUT: elapsed time (seconds):  25.447023391723633
+[2017-11-22 22:58:45,061] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: **********************************************************************************
+[2017-11-22 22:58:45,061] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key: movie
+[2017-11-22 22:58:45,061] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Sending globaData to client: ['OK', 'star']
+[2017-11-22 22:58:45,074] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING olympus:receieve:requestNewConfiguration ---------------
+[2017-11-22 22:58:45,075] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING olympus:receieve:requestNewConfiguration ---------------
+[2017-11-22 22:58:45,090] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: **********************************************************************************
+[2017-11-22 22:58:45,091] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client: 0
+[2017-11-22 22:58:45,093] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary 
+[2017-11-22 22:58:45,094] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- append movie wars
+[2017-11-22 22:58:45,128] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: **********************************************************************************
+[2017-11-22 22:58:45,128] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key: movie
+[2017-11-22 22:58:45,128] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Sending globaData to client: ['OK', 'starwars']
+[2017-11-22 22:58:45,141] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING olympus:receieve:requestNewConfiguration ---------------
+[2017-11-22 22:58:45,143] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING olympus:receieve:requestNewConfiguration ---------------
+[2017-11-22 22:58:45,158] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: **********************************************************************************
+[2017-11-22 22:58:45,158] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client: 0
+[2017-11-22 22:58:45,160] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary 
+[2017-11-22 22:58:45,160] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- append movie wars
+[2017-11-22 22:58:45,193] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: **********************************************************************************
+[2017-11-22 22:58:45,193] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key: movie
+[2017-11-22 22:58:45,193] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Sending globaData to client: ['OK', 'starwarswars']
+[2017-11-22 22:58:45,204] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING olympus:receieve:requestNewConfiguration ---------------
+[2017-11-22 22:58:45,207] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING olympus:receieve:requestNewConfiguration ---------------
+[2017-11-22 22:58:45,221] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: **********************************************************************************
+[2017-11-22 22:58:45,222] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING Olymus:receives operation from head for client: 0
+[2017-11-22 22:58:45,224] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Olymus:headOperation:updateOwnDictionary 
+[2017-11-22 22:58:45,225] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Olymus:headOperation:executeOperation --------------- append movie wars
+[2017-11-22 22:58:45,255] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: **********************************************************************************
+[2017-11-22 22:58:45,255] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING Olymus:getGlobalData for key: movie
+[2017-11-22 22:58:45,255] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- Sending globaData to client: ['OK', 'starwarswarswars']
+[2017-11-22 22:58:45,267] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:INFO: --------------- ENTERING olympus:receieve:requestNewConfiguration ---------------
+[2017-11-22 22:58:45,269] ByzantineFaultTolerantProtocol.Olympus<Olympus:25002#olympus>:OUTPUT: elapsed time (seconds):  25.688164949417114

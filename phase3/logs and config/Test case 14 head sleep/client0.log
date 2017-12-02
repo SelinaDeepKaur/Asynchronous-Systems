@@ -1,0 +1,245 @@
+[2017-11-22 23:33:09,668] da.sim.Router<MainProcess>:INFO: Bootstrap succeeded using <UdpTransport(127.0.0.1:19058)>.
+[2017-11-22 23:33:09,668] da.api<MainProcess>:INFO: <Node_:Client0> initialized at 127.0.0.1:(UdpTransport=19058, TcpTransport=22852).
+[2017-11-22 23:33:09,668] da.api<MainProcess>:INFO: Starting program <module 'ByzantineFaultTolerantProtocol' from 'C:\\Users\\SSDN-Dinesh\\Desktop\\SBU\\ASYNC\\New Folder\\Asynchronous-Systems\\phase3\\ByzantineFaultTolerantProtocol.py'>...
+[2017-11-22 23:33:09,668] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-11-22 23:33:09,668] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-11-22 23:33:14,677] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- ENTERING Client:run ---------------
+[2017-11-22 23:33:14,677] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Requesting Configuration from Olympus---------------
+[2017-11-22 23:33:14,677] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Generating Workload for client --------------
+[2017-11-22 23:33:15,432] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Operations for Client:  ["put('movie','star')", " append('movie',' wars')", " get('movie')", " put('movie','star')", " append('movie',' wars')", " append('movie',' wars')", " append('movie',' wars')"]
+[2017-11-22 23:33:15,432] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Request new configuration from Olympus: ---------------
+[2017-11-22 23:33:15,432] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Received Same Configuration from Olympus --------------
+[2017-11-22 23:33:15,432] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Sending Request No: % :: Request Id: % :  0 8020
+[2017-11-22 23:33:15,432] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Request Message Number-------------- 1
+[2017-11-22 23:33:15,432] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Signing the request statement:  b"put('movie','star')"
+[2017-11-22 23:33:15,432] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Sending request to head --------------
+[2017-11-22 23:33:15,447] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Client updates its dictionary with:  put movie star
+[2017-11-22 23:33:15,447] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Executing Operation to updata client dictionary with:  put 8020 star movie
+[2017-11-22 23:33:15,447] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Result upon updating dictionary:  OK
+[2017-11-22 23:33:15,447] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Waiting for Result:  0 8020
+[2017-11-22 23:33:15,447] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Received Same Configuration from Olympus --------------
+[2017-11-22 23:33:15,494] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Received Result Shuttle for request ID: 8020
+[2017-11-22 23:33:15,494] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Checking result against expected result --------------
+[2017-11-22 23:33:15,494] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Result in Client Dictionary:  OK
+[2017-11-22 23:33:15,494] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Verifying result and signature of result statements --------------
+[2017-11-22 23:33:15,510] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: ---------------Quorum Size:  2
+[2017-11-22 23:33:15,510] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: ---------------No. of countOfCorrectResults:  3
+[2017-11-22 23:33:15,510] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Result Proof Verification check: %:  True
+[2017-11-22 23:33:15,510] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Client Dictionary Result: % :  OK
+[2017-11-22 23:33:15,510] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Global Dictionary Result: % :  ['OK', 'star']
+[2017-11-22 23:33:15,510] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Result From Replica: %:  OK
+[2017-11-22 23:33:15,510] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: ---------------  RESULT IS ACCEPTED --------------
+[2017-11-22 23:33:15,510] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Request new configuration from Olympus: ---------------
+[2017-11-22 23:33:15,510] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Request new configuration from Olympus: ---------------
+[2017-11-22 23:33:15,510] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Sending Request No: % :: Request Id: % :  1 1994
+[2017-11-22 23:33:15,510] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Request Message Number-------------- 2
+[2017-11-22 23:33:15,510] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Signing the request statement:  b"append('movie',' wars')"
+[2017-11-22 23:33:15,510] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Sending request to head --------------
+[2017-11-22 23:33:15,510] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Client updates its dictionary with:  append movie wars
+[2017-11-22 23:33:15,510] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Executing Operation to updata client dictionary with:  append 1994 wars movie
+[2017-11-22 23:33:15,510] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Result upon updating dictionary:  OK
+[2017-11-22 23:33:15,510] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Waiting for Result:  1 1994
+[2017-11-22 23:33:15,526] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Received Same Configuration from Olympus --------------
+[2017-11-22 23:33:15,526] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Received Same Configuration from Olympus --------------
+[2017-11-22 23:33:25,520] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- TIMEOUT:  1 1994
+[2017-11-22 23:33:25,520] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Sending Retransmission Request for Request No: % :: Request Id: %:  1 1994
+[2017-11-22 23:33:26,521] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Request Message Number-------------- 3
+[2017-11-22 23:33:26,521] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Signing the request statement:  b"append('movie',' wars')"
+[2017-11-22 23:33:26,521] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Sending Retransmission request to all replicas --------------
+[2017-11-22 23:33:26,521] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Sending Retransmission request to all replicas --------------
+[2017-11-22 23:33:26,521] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Sending Retransmission request to all replicas --------------
+[2017-11-22 23:33:26,521] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Received Same Configuration from Olympus --------------
+[2017-11-22 23:33:33,182] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Received New Configuration from Olympus --------------
+[2017-11-22 23:33:33,182] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Received Result Shuttle for request ID: 8020
+[2017-11-22 23:33:33,182] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Checking result against expected result --------------
+[2017-11-22 23:33:33,182] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Result in Client Dictionary:  OK
+[2017-11-22 23:33:33,182] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Verifying result and signature of result statements --------------
+[2017-11-22 23:33:33,198] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: ---------------Quorum Size:  2
+[2017-11-22 23:33:33,198] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: ---------------No. of countOfCorrectResults:  0
+[2017-11-22 23:33:33,198] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Result Proof Verification check: %:  False
+[2017-11-22 23:33:33,198] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Send Recnofiguration to Olympus --------------
+[2017-11-22 23:33:33,198] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Client Dictionary Result: % :  OK
+[2017-11-22 23:33:33,198] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Global Dictionary Result: % :  ['OK', 'star']
+[2017-11-22 23:33:33,198] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Result From Replica: %:  OK
+[2017-11-22 23:33:33,198] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: ---------------  RESULT IS ACCEPTED --------------
+[2017-11-22 23:33:36,532] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- TIMEOUT:  1 1994
+[2017-11-22 23:33:36,532] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Sending Retransmission Request for Request No: % :: Request Id: %:  1 1994
+[2017-11-22 23:33:37,547] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Request Message Number-------------- 1
+[2017-11-22 23:33:37,548] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Signing the request statement:  b"append('movie',' wars')"
+[2017-11-22 23:33:37,549] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Sending Retransmission request to all replicas --------------
+[2017-11-22 23:33:38,570] da.sim.Router<OSProcessContainer-1>:ERROR: Could not send message due to: TransportException("connection refused by ('127.0.0.1', 24323)",)
+[2017-11-22 23:33:38,570] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Sending Retransmission request to all replicas --------------
+[2017-11-22 23:33:39,587] da.sim.Router<OSProcessContainer-1>:ERROR: Could not send message due to: TransportException("connection refused by ('127.0.0.1', 37656)",)
+[2017-11-22 23:33:39,587] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Sending Retransmission request to all replicas --------------
+[2017-11-22 23:33:40,618] da.sim.Router<OSProcessContainer-1>:ERROR: Could not send message due to: TransportException("connection refused by ('127.0.0.1', 34390)",)
+[2017-11-22 23:33:40,618] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Received New Configuration from Olympus --------------
+[2017-11-22 23:33:50,628] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- TIMEOUT:  1 1994
+[2017-11-22 23:33:50,628] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Sending Retransmission Request for Request No: % :: Request Id: %:  1 1994
+[2017-11-22 23:33:51,643] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Request Message Number-------------- 1
+[2017-11-22 23:33:51,643] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Signing the request statement:  b"append('movie',' wars')"
+[2017-11-22 23:33:51,643] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Sending Retransmission request to all replicas --------------
+[2017-11-22 23:33:51,643] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Sending Retransmission request to all replicas --------------
+[2017-11-22 23:33:51,643] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Sending Retransmission request to all replicas --------------
+[2017-11-22 23:33:51,643] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Received New Configuration from Olympus --------------
+[2017-11-22 23:33:51,728] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Received Result Shuttle for request ID: 1994
+[2017-11-22 23:33:51,728] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Checking result against expected result --------------
+[2017-11-22 23:33:51,728] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Result in Client Dictionary:  OK
+[2017-11-22 23:33:51,743] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Verifying result and signature of result statements --------------
+[2017-11-22 23:33:51,743] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: ---------------Quorum Size:  2
+[2017-11-22 23:33:51,743] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: ---------------No. of countOfCorrectResults:  3
+[2017-11-22 23:33:51,743] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Result Proof Verification check: %:  True
+[2017-11-22 23:33:51,743] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Client Dictionary Result: % :  OK
+[2017-11-22 23:33:51,743] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Global Dictionary Result: % :  ['OK', 'starwars']
+[2017-11-22 23:33:51,743] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Result From Replica: %:  OK
+[2017-11-22 23:33:51,743] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: ---------------  RESULT IS ACCEPTED --------------
+[2017-11-22 23:33:51,743] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Request new configuration from Olympus: ---------------
+[2017-11-22 23:33:51,743] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Request new configuration from Olympus: ---------------
+[2017-11-22 23:33:51,743] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Sending Request No: % :: Request Id: % :  2 29659
+[2017-11-22 23:33:51,743] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Request Message Number-------------- 1
+[2017-11-22 23:33:51,743] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Signing the request statement:  b"get('movie')"
+[2017-11-22 23:33:51,743] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Sending request to head --------------
+[2017-11-22 23:33:51,743] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Client updates its dictionary with:  get movie 
+[2017-11-22 23:33:51,743] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Executing Operation to updata client dictionary with:  get 29659  movie
+[2017-11-22 23:33:51,743] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Result upon updating dictionary:  starwars
+[2017-11-22 23:33:51,743] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Waiting for Result:  2 29659
+[2017-11-22 23:33:51,759] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Received New Configuration from Olympus --------------
+[2017-11-22 23:33:51,760] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Received New Configuration from Olympus --------------
+[2017-11-22 23:33:51,812] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Received Result Shuttle for request ID: 29659
+[2017-11-22 23:33:51,812] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Checking result against expected result --------------
+[2017-11-22 23:33:51,812] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Result in Client Dictionary:  starwars
+[2017-11-22 23:33:51,812] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Received Result Shuttle for request ID: 1994
+[2017-11-22 23:33:51,812] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Checking result against expected result --------------
+[2017-11-22 23:33:51,812] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Result in Client Dictionary:  OK
+[2017-11-22 23:33:51,812] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Verifying result and signature of result statements --------------
+[2017-11-22 23:33:51,828] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: ---------------Quorum Size:  2
+[2017-11-22 23:33:51,828] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: ---------------No. of countOfCorrectResults:  3
+[2017-11-22 23:33:51,828] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Result Proof Verification check: %:  True
+[2017-11-22 23:33:51,828] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Client Dictionary Result: % :  OK
+[2017-11-22 23:33:51,828] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Global Dictionary Result: % :  ['', 'starwars', '']
+[2017-11-22 23:33:51,828] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Result From Replica: %:  OK
+[2017-11-22 23:33:51,828] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: ---------------  RESULT IS ACCEPTED --------------
+[2017-11-22 23:33:51,828] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Verifying result and signature of result statements --------------
+[2017-11-22 23:33:51,828] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: ---------------Quorum Size:  2
+[2017-11-22 23:33:51,828] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: ---------------No. of countOfCorrectResults:  3
+[2017-11-22 23:33:51,828] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Result Proof Verification check: %:  True
+[2017-11-22 23:33:51,828] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Client Dictionary Result: % :  starwars
+[2017-11-22 23:33:51,828] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Global Dictionary Result: % :  ['', 'starwars', '']
+[2017-11-22 23:33:51,828] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Result From Replica: %:  starwars
+[2017-11-22 23:33:51,828] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: ---------------  RESULT IS ACCEPTED --------------
+[2017-11-22 23:33:51,828] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Request new configuration from Olympus: ---------------
+[2017-11-22 23:33:51,844] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Request new configuration from Olympus: ---------------
+[2017-11-22 23:33:51,844] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Sending Request No: % :: Request Id: % :  3 39790
+[2017-11-22 23:33:51,844] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Request Message Number-------------- 1
+[2017-11-22 23:33:51,844] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Signing the request statement:  b"put('movie','star')"
+[2017-11-22 23:33:51,844] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Sending request to head --------------
+[2017-11-22 23:33:51,844] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Client updates its dictionary with:  put movie star
+[2017-11-22 23:33:51,844] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Executing Operation to updata client dictionary with:  put 39790 star movie
+[2017-11-22 23:33:51,844] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Result upon updating dictionary:  OK
+[2017-11-22 23:33:51,844] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Waiting for Result:  3 39790
+[2017-11-22 23:33:51,844] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Received New Configuration from Olympus --------------
+[2017-11-22 23:33:51,844] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Received New Configuration from Olympus --------------
+[2017-11-22 23:33:51,863] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Received Result Shuttle for request ID: 1994
+[2017-11-22 23:33:51,863] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Checking result against expected result --------------
+[2017-11-22 23:33:51,863] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Result in Client Dictionary:  OK
+[2017-11-22 23:33:51,866] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Verifying result and signature of result statements --------------
+[2017-11-22 23:33:51,866] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: ---------------Quorum Size:  2
+[2017-11-22 23:33:51,866] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: ---------------No. of countOfCorrectResults:  3
+[2017-11-22 23:33:51,866] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Result Proof Verification check: %:  True
+[2017-11-22 23:33:51,866] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Client Dictionary Result: % :  OK
+[2017-11-22 23:33:51,866] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Global Dictionary Result: % :  ['', 'starwars', '']
+[2017-11-22 23:33:51,866] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Result From Replica: %:  OK
+[2017-11-22 23:33:51,866] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: ---------------  RESULT IS ACCEPTED --------------
+[2017-11-22 23:33:51,866] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Received Result Shuttle for request ID: 1994
+[2017-11-22 23:33:51,866] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Checking result against expected result --------------
+[2017-11-22 23:33:51,866] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Result in Client Dictionary:  OK
+[2017-11-22 23:33:51,881] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Verifying result and signature of result statements --------------
+[2017-11-22 23:33:51,881] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: ---------------Quorum Size:  2
+[2017-11-22 23:33:51,881] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: ---------------No. of countOfCorrectResults:  3
+[2017-11-22 23:33:51,881] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Result Proof Verification check: %:  True
+[2017-11-22 23:33:51,881] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Client Dictionary Result: % :  OK
+[2017-11-22 23:33:51,881] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Global Dictionary Result: % :  ['OK', 'star']
+[2017-11-22 23:33:51,881] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Result From Replica: %:  OK
+[2017-11-22 23:33:51,881] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: ---------------  RESULT IS ACCEPTED --------------
+[2017-11-22 23:33:51,913] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Received Result Shuttle for request ID: 39790
+[2017-11-22 23:33:51,913] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Checking result against expected result --------------
+[2017-11-22 23:33:51,913] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Result in Client Dictionary:  OK
+[2017-11-22 23:33:51,913] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Verifying result and signature of result statements --------------
+[2017-11-22 23:33:51,913] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: ---------------Quorum Size:  2
+[2017-11-22 23:33:51,913] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: ---------------No. of countOfCorrectResults:  3
+[2017-11-22 23:33:51,913] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Result Proof Verification check: %:  True
+[2017-11-22 23:33:51,913] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Client Dictionary Result: % :  OK
+[2017-11-22 23:33:51,913] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Global Dictionary Result: % :  ['OK', 'star']
+[2017-11-22 23:33:51,913] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Result From Replica: %:  OK
+[2017-11-22 23:33:51,913] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: ---------------  RESULT IS ACCEPTED --------------
+[2017-11-22 23:33:51,913] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Request new configuration from Olympus: ---------------
+[2017-11-22 23:33:51,913] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Request new configuration from Olympus: ---------------
+[2017-11-22 23:33:51,913] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Sending Request No: % :: Request Id: % :  4 41440
+[2017-11-22 23:33:51,913] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Request Message Number-------------- 1
+[2017-11-22 23:33:51,913] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Signing the request statement:  b"append('movie',' wars')"
+[2017-11-22 23:33:51,928] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Sending request to head --------------
+[2017-11-22 23:33:51,928] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Client updates its dictionary with:  append movie wars
+[2017-11-22 23:33:51,928] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Executing Operation to updata client dictionary with:  append 41440 wars movie
+[2017-11-22 23:33:51,928] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Result upon updating dictionary:  OK
+[2017-11-22 23:33:51,928] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Waiting for Result:  4 41440
+[2017-11-22 23:33:51,928] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Received New Configuration from Olympus --------------
+[2017-11-22 23:33:51,928] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Received New Configuration from Olympus --------------
+[2017-11-22 23:33:51,966] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Received Result Shuttle for request ID: 41440
+[2017-11-22 23:33:51,966] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Checking result against expected result --------------
+[2017-11-22 23:33:51,966] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Result in Client Dictionary:  OK
+[2017-11-22 23:33:51,966] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Verifying result and signature of result statements --------------
+[2017-11-22 23:33:51,966] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: ---------------Quorum Size:  2
+[2017-11-22 23:33:51,966] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: ---------------No. of countOfCorrectResults:  3
+[2017-11-22 23:33:51,966] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Result Proof Verification check: %:  True
+[2017-11-22 23:33:51,966] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Client Dictionary Result: % :  OK
+[2017-11-22 23:33:51,966] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Global Dictionary Result: % :  ['OK', 'starwars']
+[2017-11-22 23:33:51,966] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Result From Replica: %:  OK
+[2017-11-22 23:33:51,966] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: ---------------  RESULT IS ACCEPTED --------------
+[2017-11-22 23:33:51,966] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Request new configuration from Olympus: ---------------
+[2017-11-22 23:33:51,966] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Request new configuration from Olympus: ---------------
+[2017-11-22 23:33:51,966] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Sending Request No: % :: Request Id: % :  5 56547
+[2017-11-22 23:33:51,966] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Request Message Number-------------- 1
+[2017-11-22 23:33:51,966] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Signing the request statement:  b"append('movie',' wars')"
+[2017-11-22 23:33:51,966] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Sending request to head --------------
+[2017-11-22 23:33:51,982] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Client updates its dictionary with:  append movie wars
+[2017-11-22 23:33:51,982] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Executing Operation to updata client dictionary with:  append 56547 wars movie
+[2017-11-22 23:33:51,982] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Result upon updating dictionary:  OK
+[2017-11-22 23:33:51,982] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Waiting for Result:  5 56547
+[2017-11-22 23:33:51,982] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Received New Configuration from Olympus --------------
+[2017-11-22 23:33:51,982] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Received New Configuration from Olympus --------------
+[2017-11-22 23:33:52,013] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Received Result Shuttle for request ID: 56547
+[2017-11-22 23:33:52,013] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Checking result against expected result --------------
+[2017-11-22 23:33:52,013] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Result in Client Dictionary:  OK
+[2017-11-22 23:33:52,013] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Verifying result and signature of result statements --------------
+[2017-11-22 23:33:52,013] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: ---------------Quorum Size:  2
+[2017-11-22 23:33:52,013] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: ---------------No. of countOfCorrectResults:  3
+[2017-11-22 23:33:52,013] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Result Proof Verification check: %:  True
+[2017-11-22 23:33:52,013] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Client Dictionary Result: % :  OK
+[2017-11-22 23:33:52,013] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Global Dictionary Result: % :  ['OK', 'starwarswars']
+[2017-11-22 23:33:52,013] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Result From Replica: %:  OK
+[2017-11-22 23:33:52,013] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: ---------------  RESULT IS ACCEPTED --------------
+[2017-11-22 23:33:52,013] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Request new configuration from Olympus: ---------------
+[2017-11-22 23:33:52,029] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Request new configuration from Olympus: ---------------
+[2017-11-22 23:33:52,029] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Sending Request No: % :: Request Id: % :  6 64288
+[2017-11-22 23:33:52,029] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Request Message Number-------------- 1
+[2017-11-22 23:33:52,029] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Signing the request statement:  b"append('movie',' wars')"
+[2017-11-22 23:33:52,029] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Sending request to head --------------
+[2017-11-22 23:33:52,029] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Client updates its dictionary with:  append movie wars
+[2017-11-22 23:33:52,029] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Executing Operation to updata client dictionary with:  append 64288 wars movie
+[2017-11-22 23:33:52,029] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Result upon updating dictionary:  OK
+[2017-11-22 23:33:52,029] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Waiting for Result:  6 64288
+[2017-11-22 23:33:52,029] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Received New Configuration from Olympus --------------
+[2017-11-22 23:33:52,029] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Received New Configuration from Olympus --------------
+[2017-11-22 23:33:52,066] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Received Result Shuttle for request ID: 64288
+[2017-11-22 23:33:52,066] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Checking result against expected result --------------
+[2017-11-22 23:33:52,066] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Result in Client Dictionary:  OK
+[2017-11-22 23:33:52,066] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Verifying result and signature of result statements --------------
+[2017-11-22 23:33:52,066] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: ---------------Quorum Size:  2
+[2017-11-22 23:33:52,066] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: ---------------No. of countOfCorrectResults:  3
+[2017-11-22 23:33:52,066] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Result Proof Verification check: %:  True
+[2017-11-22 23:33:52,066] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Client Dictionary Result: % :  OK
+[2017-11-22 23:33:52,066] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Global Dictionary Result: % :  ['OK', 'starwarswarswars']
+[2017-11-22 23:33:52,066] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Result From Replica: %:  OK
+[2017-11-22 23:33:52,066] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: ---------------  RESULT IS ACCEPTED --------------
+[2017-11-22 23:33:52,066] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Request new configuration from Olympus: ---------------
+[2017-11-22 23:33:52,066] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:OUTPUT: DONEEEEEE
+[2017-11-22 23:33:52,082] ByzantineFaultTolerantProtocol.Client<Client:7c002#Client0>:INFO: --------------- Received New Configuration from Olympus --------------

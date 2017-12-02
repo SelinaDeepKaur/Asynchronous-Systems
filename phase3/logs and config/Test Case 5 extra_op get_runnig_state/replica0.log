@@ -1,0 +1,411 @@
+[2017-11-22 22:22:02,397] da.api<MainProcess>:INFO: Bootstrapping attempt failed due to BootstrapException('Unable to contact a peer node.',),  continuing as a master node (use '--master' to disable bootstrapping at startup).
+[2017-11-22 22:22:02,397] da.api<MainProcess>:INFO: <Node_:Replica0> initialized at 127.0.0.1:(UdpTransport=15000, TcpTransport=15000).
+[2017-11-22 22:22:02,397] da.api<MainProcess>:INFO: Starting program <module 'ByzantineFaultTolerantProtocol' from 'C:\\Users\\SSDN-Dinesh\\Desktop\\SBU\\ASYNC\\New Folder\\Asynchronous-Systems\\phase3\\ByzantineFaultTolerantProtocol.py'>...
+[2017-11-22 22:22:02,397] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-11-22 22:22:02,397] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-11-22 22:22:12,450] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:OUTPUT: --------------------- Configuration Number:  0
+[2017-11-22 22:22:12,451] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: --------------------- Entering Replica Run: --------------
+[2017-11-22 22:22:12,451] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: ---------------------555501 Failures for Replica:  No Failures
+[2017-11-22 22:22:12,451] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: {}
+[2017-11-22 22:22:12,471] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: --------------------- Received New Configutation From Olympus: 0
+[2017-11-22 22:22:12,471] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: --------------------- Get Failure Action for:  new_configuration(0)
+[2017-11-22 22:22:12,471] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: ---------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:12,484] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: ************************************************************************************************
+[2017-11-22 22:22:12,485] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: ---------------------Received Request message no:[1 ; client Id: [0] ; request Id: [714]
+[2017-11-22 22:22:12,485] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: --------------------- Get Failure Action for:  client_request(0,1)
+[2017-11-22 22:22:12,485] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: --------------------- Check for Request Id: 714 in history-----------------------
+[2017-11-22 22:22:12,493] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: --------------------- Unsigned Statement from client:  b"put('movie','star')"
+[2017-11-22 22:22:12,493] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: ---------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:12,493] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: --------------------- Executing Operation to updata client dictionary with: --------------
+[2017-11-22 22:22:12,493] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: ---------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:12,493] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: ---------------------- Create Signed Order Statement and Result Statement with: slot: 0, operation: b"put('movie','star')", resultOK--------------
+[2017-11-22 22:22:12,495] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: ---------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:12,495] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: --------------------- Data in Replica Dictionary  {'movie': 'star'}
+[2017-11-22 22:22:12,495] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: -------------------------- Append to Replica History slot:0 operation:b"put('movie','star')" request Id:714 --------------
+[2017-11-22 22:22:12,496] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: --------------------- Sending Statement to Olympus coming from client:  0
+[2017-11-22 22:22:12,497] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: --------------------- Sending Statement:: message number1 from client: 0 to Next Replica -----------------------
+[2017-11-22 22:22:12,503] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: ------------------------------------------------------------
+[2017-11-22 22:22:12,504] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: ************************************************************************************************
+[2017-11-22 22:22:12,504] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: ---------------------Received Request message no:[1 ; client Id: [1] ; request Id: [10847]
+[2017-11-22 22:22:12,505] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: --------------------- Get Failure Action for:  client_request(1,1)
+[2017-11-22 22:22:12,505] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: --------------------- Check for Request Id: 10847 in history-----------------------
+[2017-11-22 22:22:12,508] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: --------------------- Unsigned Statement from client:  b"put('jedi','luke skywalker')"
+[2017-11-22 22:22:12,508] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: ---------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:12,508] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: --------------------- Executing Operation to updata client dictionary with: --------------
+[2017-11-22 22:22:12,508] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: ---------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:12,508] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: ---------------------- Create Signed Order Statement and Result Statement with: slot: 1, operation: b"put('jedi','luke skywalker')", resultOK--------------
+[2017-11-22 22:22:12,510] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: ---------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:12,511] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: --------------------- Data in Replica Dictionary  {'movie': 'star', 'jedi': 'luke skywalker'}
+[2017-11-22 22:22:12,511] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: -------------------------- Append to Replica History slot:1 operation:b"put('jedi','luke skywalker')" request Id:10847 --------------
+[2017-11-22 22:22:12,511] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: --------------------- Sending Statement to Olympus coming from client:  1
+[2017-11-22 22:22:12,512] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: --------------------- Sending Statement:: message number1 from client: 1 to Next Replica -----------------------
+[2017-11-22 22:22:12,512] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: ------------------------------------------------------------
+[2017-11-22 22:22:12,567] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: ************************************************************************************************
+[2017-11-22 22:22:12,567] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: ---------------------Received Request message no:[2 ; client Id: [0] ; request Id: [15022]
+[2017-11-22 22:22:12,567] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: --------------------- Get Failure Action for:  client_request(0,2)
+[2017-11-22 22:22:12,567] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: --------------------- Check for Request Id: 15022 in history-----------------------
+[2017-11-22 22:22:12,570] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: --------------------- Unsigned Statement from client:  b"append('movie',' wars')"
+[2017-11-22 22:22:12,571] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: ---------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:12,571] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: --------------------- Executing Operation to updata client dictionary with: --------------
+[2017-11-22 22:22:12,571] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: ---------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:12,576] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: ---------------------- Create Signed Order Statement and Result Statement with: slot: 2, operation: b"append('movie',' wars')", resultOK--------------
+[2017-11-22 22:22:12,578] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: ---------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:12,578] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: --------------------- Data in Replica Dictionary  {'movie': 'starwars', 'jedi': 'luke skywalker'}
+[2017-11-22 22:22:12,579] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: -------------------------- Append to Replica History slot:2 operation:b"append('movie',' wars')" request Id:15022 --------------
+[2017-11-22 22:22:12,579] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: --------------------- Sending Statement to Olympus coming from client:  0
+[2017-11-22 22:22:12,580] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: --------------------- Sending Statement:: message number2 from client: 0 to Next Replica -----------------------
+[2017-11-22 22:22:12,580] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: ------------------------------------------------------------
+[2017-11-22 22:22:12,580] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: ---------------------555566 Do CheckPointing -----------------------
+[2017-11-22 22:22:12,581] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: ---------------------555567 Create Check Point Statement with: slot: -------------
+[2017-11-22 22:22:12,582] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: --------------------- 555510 Sending CheckPoint Shuttle To Next Replica-----------------
+[2017-11-22 22:22:12,584] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: ************************************************************************************************
+[2017-11-22 22:22:12,584] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: --------------------- Get Failure Action for:  result_shuttle(0,1)
+[2017-11-22 22:22:12,584] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: ---------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:12,584] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: --------------------- Received Result Shuttle: Result Shuttle No.1 for Client [0]-----------------------
+[2017-11-22 22:22:12,585] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:OUTPUT: --------------------- Received Result OK
+[2017-11-22 22:22:12,585] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: --------------------- Check for Result Proof Integrity:[Result-Statements:Signatures] and Result--------------
+[2017-11-22 22:22:12,593] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:OUTPUT: -------------------- Result Verified True
+[2017-11-22 22:22:12,593] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: ---------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:12,593] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: --------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:12,593] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: --------------------- Append Result to Result Cache --------------
+[2017-11-22 22:22:12,609] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: ************************************************************************************************
+[2017-11-22 22:22:12,609] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: ---------------------Received Request message no:[2 ; client Id: [1] ; request Id: [117848]
+[2017-11-22 22:22:12,609] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: --------------------- Get Failure Action for:  client_request(1,2)
+[2017-11-22 22:22:12,609] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: --------------------- Check for Request Id: 117848 in history-----------------------
+[2017-11-22 22:22:12,612] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: --------------------- Unsigned Statement from client:  b"slice('jedi','0:4')"
+[2017-11-22 22:22:12,612] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: ---------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:12,612] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: --------------------- Executing Operation to updata client dictionary with: --------------
+[2017-11-22 22:22:12,612] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: ---------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:12,613] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: ---------------------- Create Signed Order Statement and Result Statement with: slot: 3, operation: b"slice('jedi','0:4')", resultOK--------------
+[2017-11-22 22:22:12,615] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: ---------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:12,616] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: --------------------- Data in Replica Dictionary  {'movie': 'starwars', 'jedi': 'luke'}
+[2017-11-22 22:22:12,616] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: -------------------------- Append to Replica History slot:3 operation:b"slice('jedi','0:4')" request Id:117848 --------------
+[2017-11-22 22:22:12,616] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: --------------------- Sending Statement to Olympus coming from client:  1
+[2017-11-22 22:22:12,618] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: --------------------- Sending Statement:: message number2 from client: 1 to Next Replica -----------------------
+[2017-11-22 22:22:12,619] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: ------------------------------------------------------------
+[2017-11-22 22:22:12,637] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: ************************************************************************************************
+[2017-11-22 22:22:12,638] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: --------------------- Get Failure Action for:  result_shuttle(1,1)
+[2017-11-22 22:22:12,638] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: ---------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:12,638] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: --------------------- Received Result Shuttle: Result Shuttle No.1 for Client [1]-----------------------
+[2017-11-22 22:22:12,638] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:OUTPUT: --------------------- Received Result OK
+[2017-11-22 22:22:12,639] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: --------------------- Check for Result Proof Integrity:[Result-Statements:Signatures] and Result--------------
+[2017-11-22 22:22:12,646] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:OUTPUT: -------------------- Result Verified True
+[2017-11-22 22:22:12,646] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: ---------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:12,646] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: --------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:12,647] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: --------------------- Append Result to Result Cache --------------
+[2017-11-22 22:22:12,647] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: ************************************************************************************************
+[2017-11-22 22:22:12,648] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: ---------------------555550 Receive Send Wedged Requests from Olympus:  0
+[2017-11-22 22:22:12,648] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: --------------------- Get Failure Action for:  wedge_request(0)
+[2017-11-22 22:22:12,648] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: ----------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:12,648] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: ---------------------555568 Create Signed Wedged Message Statement  -------------
+[2017-11-22 22:22:12,648] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: --------------------- Length of History: 4
+[2017-11-22 22:22:12,648] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: --------------------- CheckPoint Flag: False
+[2017-11-22 22:22:12,648] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:OUTPUT: ({0: ("put('movie','star')", [b"iA\xf5+\xbb\xf8\x95)t\x05\x8d\xe1\xd6<jF@\xcb)\xd9\xe2\xf7\xe9x\xbf\x00\xc7`\x82IA\xb1\xd8+^\xb7\x83\r\xdbvg\xa2N\x9b2\xd9<\x87\x8a<\x9b\x9bE\xee\xc0\x0e\xdbC\xf5\xaf\xcc>\x12\x04'order';0;put('movie','star')"], 714, b"\xfbw%\xca\xa9Al\x83/\xfb~\x88\x8f\x8e\xdd\xc2\xcc\xf6\x0f'S\x11\xfb\xeb\xf9\xe1\x81\xd8\xbdSP\x92\x8c\xf5\r\x88\x0ca\x8cJ$\xe3\xae]2\x9b\xaa'\x87\xbbRT:\x03\\\x88\xfa\xa4:\xc0WbP\x0eput('movie','star')", 0), 1: ("put('jedi','luke skywalker')", [b"\xbb!\x8e\xcd\x1f\x13\xaa\x176`\xbc\xc7\xe4~\xb6E\xb5\xff\x1e\xf0Iw&-c\xcfZ\xc6\x95o`\xa4z\r\x10\xa1\xdcx\x87\x12\x9b\x1d\x1e\x0c\xda\xde\r\xdfu\xd5\x11\xa3L\xad\xc8~\x80\xd9\xc7\xd1\xdd\xec\x1c\x02'order';1;put('jedi','luke skywalker')"], 10847, b'S\xdd\r\x1d2n\x92-\xf9)2\xe3~H\xcd\xc9\xee\xd2\x16o?$\xf9\xfbi8Q\xc6\xbb\xa7\xc6\x14\x1b\xf8\xc5\x99\xdc{\xd9\xa4\x03\xe2"c\x9a\x8dy\xd1\xd4\x8fZ\xf7S=\x03m\xfb\xd4\xadq\xf3e\x83\x0cput(\'jedi\',\'luke skywalker\')', 1), 2: ("append('movie',' wars')", [b"C\xae\xcc\x1c/\xb6\x87\x99\xa4\nM5\x1c~f=!\xc4t\xf5:\xa0\xa6\xe8\xd7\x81GzeCG\x88M\xb7\x14}\xef\xe0)\x12q\xf2\x9f\x9b\r\x84\nx\x13x( \xd2\xeeG\xe4\x94\xbb\x91\xeaS^\x93\x04'order';2;append('movie',' wars')"], 15022, b"\xe9\r\xe5\x01\xe3Tr\xd3\xb7\x02\xc4\xa6Z\xad1'a\xd1^\xaed\x88\\\x17\xb3\xe4pcu-\x93\x07\xb5a\x1a\xb5\xc5\x9c\xb2\x0c4-cxf\x92\xd2s\x9bZ\xfe\x8f\xfb\x81\xce\x0f\x86\xb5=%&L\xd1\tappend('movie',' wars')", 0), 3: ("slice('jedi','0:4')", [b"H\xfd\xcf\x1f\xfe\\\xa8\x11\xaa\xf0\xeb\x07s\x14?\xedO\xa2\xe1\xb2\xcf\r,\xfda\xbe\xe8,$\xda\xc1\x82\xd4\xfa\x99o\x91o*\xeb\xc3\xd1<\xf0\xc1\x8c\x01\x06\xec\x1b\xa5:\xda;X\xe2\x8ep\xf8\x81\xa8j\xa5\x06'order';3;slice('jedi','0:4')"], 117848, b'"\xe2\xf1\xd6r\x7f\xde\xd9Y\xdeOF\xc7\xcc&\xc51\xd25\x0cD\x95SD\x98\xd8\xe3\xcf\x0c,\x1bt\x90r;\xdb\xe8\x14\xc3n\xae\xd8\xd2\xa8\x1e\xbeI\x01\x9b\xa2{\x97\xc8\x97\xde/.\xbf\xac\xa9\xb0\x03\xd0\x02slice(\'jedi\',\'0:4\')', 1)}, None)
+[2017-11-22 22:22:12,650] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:OUTPUT: ---------------55551 SENDING WEDGED STATEMENT TO OLYMPUS----------------
+[2017-11-22 22:22:13,722] ByzantineFaultTolerantProtocol.Replica<Replica:b1002#Replica0>:INFO: --------------------- KILLING CURRENT PROCESS -----------------------
+[2017-11-22 22:22:14,267] ByzantineFaultTolerantProtocol.Replica<Replica:b1003#Replica0>:OUTPUT: --------------------- Configuration Number:  1
+[2017-11-22 22:22:14,267] ByzantineFaultTolerantProtocol.Replica<Replica:b1003#Replica0>:INFO: --------------------- Entering Replica Run: --------------
+[2017-11-22 22:22:14,267] ByzantineFaultTolerantProtocol.Replica<Replica:b1003#Replica0>:INFO: ---------------------555501 Failures for Replica:  No Failures
+[2017-11-22 22:22:14,267] ByzantineFaultTolerantProtocol.Replica<Replica:b1003#Replica0>:INFO: {}
+[2017-11-22 22:22:14,283] ByzantineFaultTolerantProtocol.Replica<Replica:b1003#Replica0>:INFO: --------------------- Received New Configutation From Olympus: 1
+[2017-11-22 22:22:14,283] ByzantineFaultTolerantProtocol.Replica<Replica:b1003#Replica0>:INFO: --------------------- Get Failure Action for:  new_configuration(1)
+[2017-11-22 22:22:14,283] ByzantineFaultTolerantProtocol.Replica<Replica:b1003#Replica0>:INFO: ---------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:14,283] ByzantineFaultTolerantProtocol.Replica<Replica:b1003#Replica0>:INFO: --------------------- Received New Configutation From Olympus: 1
+[2017-11-22 22:22:14,283] ByzantineFaultTolerantProtocol.Replica<Replica:b1003#Replica0>:INFO: --------------------- Get Failure Action for:  new_configuration(1)
+[2017-11-22 22:22:14,283] ByzantineFaultTolerantProtocol.Replica<Replica:b1003#Replica0>:INFO: ---------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:14,283] ByzantineFaultTolerantProtocol.Replica<Replica:b1003#Replica0>:INFO: --------------------- Received Inithist Message from Olympus-----------------------
+[2017-11-22 22:22:14,283] ByzantineFaultTolerantProtocol.Replica<Replica:b1003#Replica0>:OUTPUT: --------------------- Data After Reconfiguration:  {'movie': 'starwars', 'jedi': 'luke'}
+[2017-11-22 22:22:14,299] ByzantineFaultTolerantProtocol.Replica<Replica:b1003#Replica0>:INFO: ************************************************************************************************
+[2017-11-22 22:22:14,299] ByzantineFaultTolerantProtocol.Replica<Replica:b1003#Replica0>:INFO: ---------------------555550 Receive Send Wedged Requests from Olympus:  1
+[2017-11-22 22:22:14,314] ByzantineFaultTolerantProtocol.Replica<Replica:b1003#Replica0>:INFO: --------------------- Get Failure Action for:  wedge_request(1)
+[2017-11-22 22:22:14,314] ByzantineFaultTolerantProtocol.Replica<Replica:b1003#Replica0>:INFO: ----------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:14,314] ByzantineFaultTolerantProtocol.Replica<Replica:b1003#Replica0>:INFO: ---------------------555568 Create Signed Wedged Message Statement  -------------
+[2017-11-22 22:22:14,314] ByzantineFaultTolerantProtocol.Replica<Replica:b1003#Replica0>:INFO: --------------------- Length of History: 0
+[2017-11-22 22:22:14,314] ByzantineFaultTolerantProtocol.Replica<Replica:b1003#Replica0>:INFO: --------------------- CheckPoint Flag: False
+[2017-11-22 22:22:14,314] ByzantineFaultTolerantProtocol.Replica<Replica:b1003#Replica0>:OUTPUT: ({}, None)
+[2017-11-22 22:22:14,314] ByzantineFaultTolerantProtocol.Replica<Replica:b1003#Replica0>:OUTPUT: ---------------55551 SENDING WEDGED STATEMENT TO OLYMPUS----------------
+[2017-11-22 22:22:14,314] ByzantineFaultTolerantProtocol.Replica<Replica:b1003#Replica0>:INFO: ************************************************************************************************
+[2017-11-22 22:22:14,314] ByzantineFaultTolerantProtocol.Replica<Replica:b1003#Replica0>:INFO: ---------------------Received Request message no:[1 ; client Id: [0] ; request Id: [27996]
+[2017-11-22 22:22:14,314] ByzantineFaultTolerantProtocol.Replica<Replica:b1003#Replica0>:INFO: --------------------- Replica:IMMUTABLE, will not respond to the request from client-----------------------
+[2017-11-22 22:22:14,314] ByzantineFaultTolerantProtocol.Replica<Replica:b1003#Replica0>:INFO: ************************************************************************************************
+[2017-11-22 22:22:14,314] ByzantineFaultTolerantProtocol.Replica<Replica:b1003#Replica0>:INFO: ---------------------Received Request message no:[1 ; client Id: [1] ; request Id: [126649]
+[2017-11-22 22:22:14,314] ByzantineFaultTolerantProtocol.Replica<Replica:b1003#Replica0>:INFO: --------------------- Replica:IMMUTABLE, will not respond to the request from client-----------------------
+[2017-11-22 22:22:15,330] ByzantineFaultTolerantProtocol.Replica<Replica:b1003#Replica0>:INFO: --------------------- KILLING CURRENT PROCESS -----------------------
+[2017-11-22 22:22:15,869] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:OUTPUT: --------------------- Configuration Number:  2
+[2017-11-22 22:22:15,869] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Entering Replica Run: --------------
+[2017-11-22 22:22:15,869] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555501 Failures for Replica:  No Failures
+[2017-11-22 22:22:15,869] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: {}
+[2017-11-22 22:22:15,884] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Received New Configutation From Olympus: 2
+[2017-11-22 22:22:15,884] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Get Failure Action for:  new_configuration(2)
+[2017-11-22 22:22:15,884] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:15,884] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Received New Configutation From Olympus: 2
+[2017-11-22 22:22:15,884] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Get Failure Action for:  new_configuration(2)
+[2017-11-22 22:22:15,884] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:15,884] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Received Inithist Message from Olympus-----------------------
+[2017-11-22 22:22:15,884] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:OUTPUT: --------------------- Data After Reconfiguration:  {'movie': 'starwars', 'jedi': 'luke'}
+[2017-11-22 22:22:39,368] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ************************************************************************************************
+[2017-11-22 22:22:39,368] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555530 Replica:receives:retransmission from Client -----------------------
+[2017-11-22 22:22:39,368] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Request client Id: [1] ; request Id: [126649]-----------------------
+[2017-11-22 22:22:39,368] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Unsigned Statement from client  b"get('jedi')"
+[2017-11-22 22:22:39,368] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Get Result From Result Cache --------------
+[2017-11-22 22:22:39,368] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------NoResult in Result Cache-----------------------
+[2017-11-22 22:22:39,390] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ************************************************************************************************
+[2017-11-22 22:22:39,390] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555535 Replica:receives:forwardRequest from Previous Replica -----------------------
+[2017-11-22 22:22:39,391] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Get Failure Action for:  forwarded_request(1,0)
+[2017-11-22 22:22:39,391] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:39,391] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Request client Id: [1] ; request Id: [126649]-----------------------
+[2017-11-22 22:22:39,391] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Get Result From Result Cache --------------
+[2017-11-22 22:22:39,391] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------NoResult in Result Cache-----------------------
+[2017-11-22 22:22:39,391] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Check for Request Id: 126649 in history-----------------------
+[2017-11-22 22:22:39,391] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: 555538 Start the Operation from scratch for client Id: [1] ; with request Id: [126649]-----------------------
+[2017-11-22 22:22:39,391] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Waiting for result shuttle to arrive-----------------------
+[2017-11-22 22:22:39,391] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ************************************************************************************************
+[2017-11-22 22:22:39,391] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555535 Replica:receives:forwardRequest from Previous Replica -----------------------
+[2017-11-22 22:22:39,391] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Get Failure Action for:  forwarded_request(1,1)
+[2017-11-22 22:22:39,391] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:39,391] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Request client Id: [1] ; request Id: [126649]-----------------------
+[2017-11-22 22:22:39,406] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Get Result From Result Cache --------------
+[2017-11-22 22:22:39,406] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------NoResult in Result Cache-----------------------
+[2017-11-22 22:22:39,406] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Check for Request Id: 126649 in history-----------------------
+[2017-11-22 22:22:39,406] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: 555538 Start the Operation from scratch for client Id: [1] ; with request Id: [126649]-----------------------
+[2017-11-22 22:22:39,406] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Waiting for result shuttle to arrive-----------------------
+[2017-11-22 22:22:39,406] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ************************************************************************************************
+[2017-11-22 22:22:39,406] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555530 Replica:receives:retransmission from Client -----------------------
+[2017-11-22 22:22:39,406] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Request client Id: [0] ; request Id: [27996]-----------------------
+[2017-11-22 22:22:39,406] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Unsigned Statement from client  b"get('movie')"
+[2017-11-22 22:22:39,406] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Get Result From Result Cache --------------
+[2017-11-22 22:22:39,406] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------NoResult in Result Cache-----------------------
+[2017-11-22 22:22:39,406] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ************************************************************************************************
+[2017-11-22 22:22:39,406] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------Received Request message no:[1 ; client Id: [1] ; request Id: [126649]
+[2017-11-22 22:22:39,406] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Get Failure Action for:  client_request(1,1)
+[2017-11-22 22:22:39,406] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Check for Request Id: 126649 in history-----------------------
+[2017-11-22 22:22:39,406] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Unsigned Statement from client:  b"get('jedi')"
+[2017-11-22 22:22:39,406] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:39,406] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Executing Operation to updata client dictionary with: --------------
+[2017-11-22 22:22:39,406] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:39,406] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------- Create Signed Order Statement and Result Statement with: slot: 0, operation: b"get('jedi')", resultluke--------------
+[2017-11-22 22:22:39,406] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:39,406] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Data in Replica Dictionary  {'movie': 'starwars', 'jedi': 'luke'}
+[2017-11-22 22:22:39,406] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: -------------------------- Append to Replica History slot:0 operation:b"get('jedi')" request Id:126649 --------------
+[2017-11-22 22:22:39,406] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Sending Statement to Olympus coming from client:  1
+[2017-11-22 22:22:39,406] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Sending Statement:: message number1 from client: 1 to Next Replica -----------------------
+[2017-11-22 22:22:39,422] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ------------------------------------------------------------
+[2017-11-22 22:22:39,422] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ************************************************************************************************
+[2017-11-22 22:22:39,422] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------Received Request message no:[1 ; client Id: [1] ; request Id: [126649]
+[2017-11-22 22:22:39,422] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Get Failure Action for:  client_request(1,1)
+[2017-11-22 22:22:39,422] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Check for Request Id: 126649 in history-----------------------
+[2017-11-22 22:22:39,422] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Check for Request Id: 126649 in history-----------------------
+[2017-11-22 22:22:39,422] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------NO EXECUTION: Request already found in History -----------------------
+[2017-11-22 22:22:39,422] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ************************************************************************************************
+[2017-11-22 22:22:39,422] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555535 Replica:receives:forwardRequest from Previous Replica -----------------------
+[2017-11-22 22:22:39,422] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Get Failure Action for:  forwarded_request(0,2)
+[2017-11-22 22:22:39,422] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:39,422] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Request client Id: [0] ; request Id: [27996]-----------------------
+[2017-11-22 22:22:39,422] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Get Result From Result Cache --------------
+[2017-11-22 22:22:39,422] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------NoResult in Result Cache-----------------------
+[2017-11-22 22:22:39,422] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Check for Request Id: 27996 in history-----------------------
+[2017-11-22 22:22:39,422] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: 555538 Start the Operation from scratch for client Id: [0] ; with request Id: [27996]-----------------------
+[2017-11-22 22:22:39,422] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Waiting for result shuttle to arrive-----------------------
+[2017-11-22 22:22:39,422] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ************************************************************************************************
+[2017-11-22 22:22:39,422] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555535 Replica:receives:forwardRequest from Previous Replica -----------------------
+[2017-11-22 22:22:39,422] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Get Failure Action for:  forwarded_request(0,3)
+[2017-11-22 22:22:39,422] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:39,422] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Request client Id: [0] ; request Id: [27996]-----------------------
+[2017-11-22 22:22:39,422] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Get Result From Result Cache --------------
+[2017-11-22 22:22:39,422] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------NoResult in Result Cache-----------------------
+[2017-11-22 22:22:39,422] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Check for Request Id: 27996 in history-----------------------
+[2017-11-22 22:22:39,422] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: 555538 Start the Operation from scratch for client Id: [0] ; with request Id: [27996]-----------------------
+[2017-11-22 22:22:39,422] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Waiting for result shuttle to arrive-----------------------
+[2017-11-22 22:22:39,437] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ************************************************************************************************
+[2017-11-22 22:22:39,437] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------Received Request message no:[1 ; client Id: [0] ; request Id: [27996]
+[2017-11-22 22:22:39,437] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Get Failure Action for:  client_request(0,1)
+[2017-11-22 22:22:39,437] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Check for Request Id: 27996 in history-----------------------
+[2017-11-22 22:22:39,437] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Unsigned Statement from client:  b"get('movie')"
+[2017-11-22 22:22:39,437] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:39,437] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Executing Operation to updata client dictionary with: --------------
+[2017-11-22 22:22:39,437] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:39,437] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------- Create Signed Order Statement and Result Statement with: slot: 1, operation: b"get('movie')", resultstarwars--------------
+[2017-11-22 22:22:39,437] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:39,437] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Data in Replica Dictionary  {'movie': 'starwars', 'jedi': 'luke'}
+[2017-11-22 22:22:39,437] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: -------------------------- Append to Replica History slot:1 operation:b"get('movie')" request Id:27996 --------------
+[2017-11-22 22:22:39,437] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Sending Statement to Olympus coming from client:  0
+[2017-11-22 22:22:39,437] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Sending Statement:: message number1 from client: 0 to Next Replica -----------------------
+[2017-11-22 22:22:39,437] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ------------------------------------------------------------
+[2017-11-22 22:22:39,437] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ************************************************************************************************
+[2017-11-22 22:22:39,437] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------Received Request message no:[1 ; client Id: [0] ; request Id: [27996]
+[2017-11-22 22:22:39,437] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Get Failure Action for:  client_request(0,1)
+[2017-11-22 22:22:39,437] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Check for Request Id: 27996 in history-----------------------
+[2017-11-22 22:22:39,437] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Check for Request Id: 27996 in history-----------------------
+[2017-11-22 22:22:39,437] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------NO EXECUTION: Request already found in History -----------------------
+[2017-11-22 22:22:39,491] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ************************************************************************************************
+[2017-11-22 22:22:39,491] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Get Failure Action for:  result_shuttle(1,1)
+[2017-11-22 22:22:39,491] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:39,491] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Received Result Shuttle: Result Shuttle No.1 for Client [1]-----------------------
+[2017-11-22 22:22:39,491] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:OUTPUT: --------------------- Received Result luke
+[2017-11-22 22:22:39,491] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Check for Result Proof Integrity:[Result-Statements:Signatures] and Result--------------
+[2017-11-22 22:22:39,491] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:OUTPUT: -------------------- Result Verified True
+[2017-11-22 22:22:39,491] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:39,491] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:39,491] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Append Result to Result Cache --------------
+[2017-11-22 22:22:39,506] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ************************************************************************************************
+[2017-11-22 22:22:39,506] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------Received Request message no:[1 ; client Id: [0] ; request Id: [34351]
+[2017-11-22 22:22:39,506] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Get Failure Action for:  client_request(0,1)
+[2017-11-22 22:22:39,506] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Check for Request Id: 34351 in history-----------------------
+[2017-11-22 22:22:39,506] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Unsigned Statement from client:  b"put('movie','star')"
+[2017-11-22 22:22:39,506] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:39,522] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Executing Operation to updata client dictionary with: --------------
+[2017-11-22 22:22:39,522] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:39,522] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------- Create Signed Order Statement and Result Statement with: slot: 2, operation: b"put('movie','star')", resultOK--------------
+[2017-11-22 22:22:39,522] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:39,522] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Data in Replica Dictionary  {'movie': 'star', 'jedi': 'luke'}
+[2017-11-22 22:22:39,522] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: -------------------------- Append to Replica History slot:2 operation:b"put('movie','star')" request Id:34351 --------------
+[2017-11-22 22:22:39,522] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Sending Statement to Olympus coming from client:  0
+[2017-11-22 22:22:39,522] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Sending Statement:: message number1 from client: 0 to Next Replica -----------------------
+[2017-11-22 22:22:39,522] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ------------------------------------------------------------
+[2017-11-22 22:22:39,522] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555566 Do CheckPointing -----------------------
+[2017-11-22 22:22:39,522] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555567 Create Check Point Statement with: slot: -------------
+[2017-11-22 22:22:39,522] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- 555510 Sending CheckPoint Shuttle To Next Replica-----------------
+[2017-11-22 22:22:39,522] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ************************************************************************************************
+[2017-11-22 22:22:39,522] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Get Failure Action for:  result_shuttle(0,1)
+[2017-11-22 22:22:39,522] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:39,522] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Received Result Shuttle: Result Shuttle No.1 for Client [0]-----------------------
+[2017-11-22 22:22:39,522] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:OUTPUT: --------------------- Received Result starwars
+[2017-11-22 22:22:39,522] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Check for Result Proof Integrity:[Result-Statements:Signatures] and Result--------------
+[2017-11-22 22:22:39,538] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:OUTPUT: -------------------- Result Verified True
+[2017-11-22 22:22:39,538] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:39,538] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:39,538] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Append Result to Result Cache --------------
+[2017-11-22 22:22:39,538] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555539 Received Result Shuttle: Sending Shuttle to Client [0]-----------------------
+[2017-11-22 22:22:39,538] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Get Failure Action for:  forwarded_request(0,4)
+[2017-11-22 22:22:39,538] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:39,538] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:39,538] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555536 Received Result Shuttle: Sending Shuttle to Client [0]-----------------------
+[2017-11-22 22:22:39,553] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555539 Received Result Shuttle: Sending Shuttle to Client [0]-----------------------
+[2017-11-22 22:22:39,553] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Get Failure Action for:  forwarded_request(0,4)
+[2017-11-22 22:22:39,553] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:39,553] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:39,553] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555536 Received Result Shuttle: Sending Shuttle to Client [0]-----------------------
+[2017-11-22 22:22:39,553] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555539 Received Result Shuttle: Sending Shuttle to Client [1]-----------------------
+[2017-11-22 22:22:39,553] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Get Failure Action for:  forwarded_request(1,4)
+[2017-11-22 22:22:39,553] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:39,553] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:39,553] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555536 Received Result Shuttle: Sending Shuttle to Client [1]-----------------------
+[2017-11-22 22:22:39,553] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555539 Received Result Shuttle: Sending Shuttle to Client [1]-----------------------
+[2017-11-22 22:22:39,553] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Get Failure Action for:  forwarded_request(1,4)
+[2017-11-22 22:22:39,553] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:39,553] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:39,553] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555536 Received Result Shuttle: Sending Shuttle to Client [1]-----------------------
+[2017-11-22 22:22:39,569] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ************************************************************************************************
+[2017-11-22 22:22:39,569] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Get Failure Action for:  result_shuttle(0,1)
+[2017-11-22 22:22:39,569] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:39,569] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Received Result Shuttle: Result Shuttle No.1 for Client [0]-----------------------
+[2017-11-22 22:22:39,569] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:OUTPUT: --------------------- Received Result OK
+[2017-11-22 22:22:39,569] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Check for Result Proof Integrity:[Result-Statements:Signatures] and Result--------------
+[2017-11-22 22:22:39,592] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:OUTPUT: -------------------- Result Verified True
+[2017-11-22 22:22:39,593] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:39,593] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:39,593] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Append Result to Result Cache --------------
+[2017-11-22 22:22:39,609] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ************************************************************************************************
+[2017-11-22 22:22:39,609] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------Received Request message no:[1 ; client Id: [0] ; request Id: [42409]
+[2017-11-22 22:22:39,610] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Get Failure Action for:  client_request(0,1)
+[2017-11-22 22:22:39,610] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Check for Request Id: 42409 in history-----------------------
+[2017-11-22 22:22:39,612] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Unsigned Statement from client:  b"append('movie',' wars')"
+[2017-11-22 22:22:39,613] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:39,613] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Executing Operation to updata client dictionary with: --------------
+[2017-11-22 22:22:39,613] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:39,613] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------- Create Signed Order Statement and Result Statement with: slot: 3, operation: b"append('movie',' wars')", resultOK--------------
+[2017-11-22 22:22:39,615] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:39,615] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Data in Replica Dictionary  {'movie': 'starwars', 'jedi': 'luke'}
+[2017-11-22 22:22:39,615] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: -------------------------- Append to Replica History slot:3 operation:b"append('movie',' wars')" request Id:42409 --------------
+[2017-11-22 22:22:39,615] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Sending Statement to Olympus coming from client:  0
+[2017-11-22 22:22:39,616] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Sending Statement:: message number1 from client: 0 to Next Replica -----------------------
+[2017-11-22 22:22:39,617] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ------------------------------------------------------------
+[2017-11-22 22:22:39,618] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ************************************************************************************************
+[2017-11-22 22:22:39,619] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555563 Received Completed CheckPoint Shuttle from Next Replica 0
+[2017-11-22 22:22:39,619] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555562 Replicas CheckPoint Statement {'movie': 'star', 'jedi': 'luke'}
+[2017-11-22 22:22:39,619] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------555563 INSIDE: Verify CheckPoint Proofs -------------------------
+[2017-11-22 22:22:39,619] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Get Failure Action for:  completed_checkpoint(0)
+[2017-11-22 22:22:39,620] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:39,620] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Check for CheckPoint Proof Integrity:[CheckPoint statements:Signatures] and Result--------------
+[2017-11-22 22:22:39,627] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:OUTPUT: -----------------555564 Check Point Verified True ----------------
+[2017-11-22 22:22:39,628] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555566 Truncate Replica History -----------------------
+[2017-11-22 22:22:39,628] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:OUTPUT: ---------------------Length of Replica History Before Truncate:  4
+[2017-11-22 22:22:39,628] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:OUTPUT: ---------------------Length of Replica History After Truncate:  1
+[2017-11-22 22:22:39,628] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:OUTPUT: --------------------- 555566 Old Checkpoint:  2
+[2017-11-22 22:22:39,628] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:OUTPUT: --------------------- 555566 New Checkpoint:  4
+[2017-11-22 22:22:39,670] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ************************************************************************************************
+[2017-11-22 22:22:39,670] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------Received Request message no:[1 ; client Id: [0] ; request Id: [52263]
+[2017-11-22 22:22:39,670] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Get Failure Action for:  client_request(0,1)
+[2017-11-22 22:22:39,671] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Check for Request Id: 52263 in history-----------------------
+[2017-11-22 22:22:39,673] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Unsigned Statement from client:  b"append('movie',' wars')"
+[2017-11-22 22:22:39,674] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:39,674] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Executing Operation to updata client dictionary with: --------------
+[2017-11-22 22:22:39,674] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:39,674] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------- Create Signed Order Statement and Result Statement with: slot: 4, operation: b"append('movie',' wars')", resultOK--------------
+[2017-11-22 22:22:39,676] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:39,676] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Data in Replica Dictionary  {'movie': 'starwarswars', 'jedi': 'luke'}
+[2017-11-22 22:22:39,676] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: -------------------------- Append to Replica History slot:4 operation:b"append('movie',' wars')" request Id:52263 --------------
+[2017-11-22 22:22:39,676] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Sending Statement to Olympus coming from client:  0
+[2017-11-22 22:22:39,677] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Sending Statement:: message number1 from client: 0 to Next Replica -----------------------
+[2017-11-22 22:22:39,677] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ------------------------------------------------------------
+[2017-11-22 22:22:39,678] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555566 Do CheckPointing -----------------------
+[2017-11-22 22:22:39,678] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555567 Create Check Point Statement with: slot: -------------
+[2017-11-22 22:22:39,679] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- 555510 Sending CheckPoint Shuttle To Next Replica-----------------
+[2017-11-22 22:22:39,680] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ************************************************************************************************
+[2017-11-22 22:22:39,681] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Get Failure Action for:  result_shuttle(0,1)
+[2017-11-22 22:22:39,681] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:39,681] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Received Result Shuttle: Result Shuttle No.1 for Client [0]-----------------------
+[2017-11-22 22:22:39,681] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:OUTPUT: --------------------- Received Result OK
+[2017-11-22 22:22:39,681] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Check for Result Proof Integrity:[Result-Statements:Signatures] and Result--------------
+[2017-11-22 22:22:39,689] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:OUTPUT: -------------------- Result Verified True
+[2017-11-22 22:22:39,690] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:39,690] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:39,690] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Append Result to Result Cache --------------
+[2017-11-22 22:22:39,722] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ************************************************************************************************
+[2017-11-22 22:22:39,722] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Get Failure Action for:  result_shuttle(0,1)
+[2017-11-22 22:22:39,722] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:39,722] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Received Result Shuttle: Result Shuttle No.1 for Client [0]-----------------------
+[2017-11-22 22:22:39,722] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:OUTPUT: --------------------- Received Result OK
+[2017-11-22 22:22:39,722] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Check for Result Proof Integrity:[Result-Statements:Signatures] and Result--------------
+[2017-11-22 22:22:39,730] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:OUTPUT: -------------------- Result Verified True
+[2017-11-22 22:22:39,731] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:39,731] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:39,731] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Append Result to Result Cache --------------
+[2017-11-22 22:22:39,732] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ************************************************************************************************
+[2017-11-22 22:22:39,732] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------Received Request message no:[1 ; client Id: [0] ; request Id: [62509]
+[2017-11-22 22:22:39,732] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Get Failure Action for:  client_request(0,1)
+[2017-11-22 22:22:39,733] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Check for Request Id: 62509 in history-----------------------
+[2017-11-22 22:22:39,735] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Unsigned Statement from client:  b"append('movie',' wars')"
+[2017-11-22 22:22:39,735] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:39,736] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Executing Operation to updata client dictionary with: --------------
+[2017-11-22 22:22:39,736] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:39,736] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------- Create Signed Order Statement and Result Statement with: slot: 5, operation: b"append('movie',' wars')", resultOK--------------
+[2017-11-22 22:22:39,738] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:39,738] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Data in Replica Dictionary  {'movie': 'starwarswarswars', 'jedi': 'luke'}
+[2017-11-22 22:22:39,738] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: -------------------------- Append to Replica History slot:5 operation:b"append('movie',' wars')" request Id:62509 --------------
+[2017-11-22 22:22:39,738] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Sending Statement to Olympus coming from client:  0
+[2017-11-22 22:22:39,738] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Sending Statement:: message number1 from client: 0 to Next Replica -----------------------
+[2017-11-22 22:22:39,739] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ------------------------------------------------------------
+[2017-11-22 22:22:39,740] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ************************************************************************************************
+[2017-11-22 22:22:39,740] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555563 Received Completed CheckPoint Shuttle from Next Replica 1
+[2017-11-22 22:22:39,740] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555562 Replicas CheckPoint Statement {'movie': 'starwarswars', 'jedi': 'luke'}
+[2017-11-22 22:22:39,740] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------555563 INSIDE: Verify CheckPoint Proofs -------------------------
+[2017-11-22 22:22:39,741] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Get Failure Action for:  completed_checkpoint(1)
+[2017-11-22 22:22:39,741] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:39,741] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Check for CheckPoint Proof Integrity:[CheckPoint statements:Signatures] and Result--------------
+[2017-11-22 22:22:39,749] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:OUTPUT: -----------------555564 Check Point Verified True ----------------
+[2017-11-22 22:22:39,749] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555566 Truncate Replica History -----------------------
+[2017-11-22 22:22:39,750] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:OUTPUT: ---------------------Length of Replica History Before Truncate:  3
+[2017-11-22 22:22:39,750] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:OUTPUT: ---------------------Length of Replica History After Truncate:  1
+[2017-11-22 22:22:39,750] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:OUTPUT: --------------------- 555566 Old Checkpoint:  4
+[2017-11-22 22:22:39,750] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:OUTPUT: --------------------- 555566 New Checkpoint:  6
+[2017-11-22 22:22:39,767] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ************************************************************************************************
+[2017-11-22 22:22:39,767] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Get Failure Action for:  result_shuttle(0,1)
+[2017-11-22 22:22:39,767] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:39,767] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Received Result Shuttle: Result Shuttle No.1 for Client [0]-----------------------
+[2017-11-22 22:22:39,767] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:OUTPUT: --------------------- Received Result OK
+[2017-11-22 22:22:39,767] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Check for Result Proof Integrity:[Result-Statements:Signatures] and Result--------------
+[2017-11-22 22:22:39,783] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:OUTPUT: -------------------- Result Verified True
+[2017-11-22 22:22:39,783] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: ---------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:39,783] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------555509 Failure Check:[notFound] Failure action:None-----------------------
+[2017-11-22 22:22:39,783] ByzantineFaultTolerantProtocol.Replica<Replica:b1004#Replica0>:INFO: --------------------- Append Result to Result Cache --------------
