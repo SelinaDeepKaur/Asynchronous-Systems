@@ -9,6 +9,8 @@ Hosts : Laptops without VM
 OS : MAC/Windows
 Platform for multiple hosts : Olympus and Clients - Windows, Replicas - MAC
 
+
+
 INSTRUCTIONS : 
 
 We have included 5 scenarios of test cases in separate folders.
@@ -49,6 +51,8 @@ python -m da -H 172.24.18.144 -n olympus -f --logdir ./ --logfilename olympus.lo
 Here, I’m running 3 replicas on host - 172.24.21.17 (giving 172.24.18.144 as peer node)
 olympus and 3 clients on another host - 172.24.18.144 (giving 172.24.21.17 as peer node)
 
+
+
 WORKLOAD GENERATION :
 
 We have written this function ‘generatePseudoRandomRequests’ which generates the Pseudo Random workload for us. Based on the noOfRequests it picks up the specified number of requests from a set of requests stored in ‘listofRequest’ variable.
@@ -63,6 +67,8 @@ def generatePseudoRandomRequests(rSeed,noOfRequests):
 For seed value = 233 and no of requests = 5, as specified in the sample config file given to us.
 The code picks up the same set of 5 requests from the list of requests everytime we set the seed value to 233 before retrieving those 5 requests into the ‘requests’ variable.
 The  we return the requests stored in the ‘request’ variable to the client. It then sequentially sends those requests to replicas.
+
+
 
 CONTRIBUTIONS :
 
@@ -100,6 +106,8 @@ DOCUMENTATION
 README and testing.txt - Selina
 
 MAIN FILES : our main file ping.da in ./src/ contains all the code for olympus client and replica
+
+
 
 CODE SIZE :
 
